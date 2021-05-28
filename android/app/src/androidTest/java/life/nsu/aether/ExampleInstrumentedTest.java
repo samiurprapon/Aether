@@ -1,14 +1,21 @@
+/*
+ * ExampleInstrumentedTest Created by Samiur Prapon
+ * Last modified  5/29/21 5:36 AM
+ * Copyright (c) 2021. All rights reserved.
+ *
+ */
+
 package life.nsu.aether;
 
 import android.content.Context;
 
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.

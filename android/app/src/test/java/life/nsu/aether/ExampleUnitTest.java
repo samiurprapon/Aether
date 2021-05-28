@@ -1,8 +1,15 @@
+/*
+ * ExampleUnitTest Created by Samiur Prapon
+ * Last modified  5/29/21 5:36 AM
+ * Copyright (c) 2021. All rights reserved.
+ *
+ */
+
 package life.nsu.aether;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

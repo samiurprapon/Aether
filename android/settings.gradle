@@ -1,2 +1,9 @@
+/*
+ * settings Created by Samiur Prapon
+ * Last modified  5/29/21 5:18 AM
+ * Copyright (c) 2021. All rights reserved.
+ *
+ */
+
 include ':app'
 rootProject.name = "Aether"

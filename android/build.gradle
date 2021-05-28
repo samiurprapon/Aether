@@ -1,3 +1,10 @@
+/*
+ * build Created by Samiur Prapon
+ * Last modified  5/29/21 5:18 AM
+ * Copyright (c) 2021. All rights reserved.
+ *
+ */
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
