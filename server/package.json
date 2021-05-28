@@ -1,0 +1,25 @@
+{
+  "name": "aether",
+  "version": "1.0.0",
+  "description": "Aether server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samiurprapon/Aether.git"
+  },
+  "author": "Samiur Prapon",
+  "bugs": {
+    "url": "https://github.com/samiurprapon/Aether/issues"
+  },
+  "homepage": "https://github.com/samiurprapon/Aether#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
