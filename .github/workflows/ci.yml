@@ -10,6 +10,8 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[skip]')"
     runs-on: ubuntu-latest
     steps:
+      - name: Go to android forlder
+        run:  cd android 
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Setup Java JDK
@@ -17,11 +19,11 @@ jobs:
         with:
           java-version: 1.8
       - name: Make gradlew executable
-        run: chmod +x ./android/gradlew
+        run: chmod +x ./gradlew
       - name: Build with Gradle
-        run: ./android/gradlew clean assembleDebug
+        run: ./gradlew clean assembleDebug
       - name: Build apk
         uses: actions/upload-artifact@v2.1.4
         with:
           name: Aether
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
