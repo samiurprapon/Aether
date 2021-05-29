@@ -15,6 +15,7 @@ const Course = Sequelize.define("courses", {
   },
   code: {
     type: Datatypes.STRING,
+    unique: false,
     allowNull: false,
   },
   section: {
@@ -35,7 +36,11 @@ const Course = Sequelize.define("courses", {
     type: Datatypes.STRING,
     allowNull: true,
   },
-
+  archived: {
+    type: Datatypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
   uid: {
     type: Datatypes.UUID,
     allowNull: false,
