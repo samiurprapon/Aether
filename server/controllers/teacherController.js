@@ -1,21 +1,21 @@
-const Student = require("../models/students");
+const Teacher = require("../models/teachers");
 
 const upsert = (req, res) => {
   let user = res.locals.user;
 
   // console.log(user);
 
-  Student.upsert({
+  Teacher.upsert({
     nsuID: req.body.nsuID,
     name: req.body.name,
     sex: req.body.sex,
     uid: user.uid,
   })
-    .then((student) => {
+    .then((teacher) => {
       res.status(201);
       res.send({
-        message: "Student Profile updated!",
-        student: student,
+        message: "Teacher Profile updated!",
+        teacher: teacher,
       });
     })
     .catch((err) => {
@@ -29,13 +29,13 @@ const upsert = (req, res) => {
 const isCompleted = (req, res) => {
   let user = res.locals.user;
 
-  Student.findOne({
+  Teacher.findOne({
     where: {
       uid: user.uid,
     },
   })
-    .then((student) => {
-      if (student != null) {
+    .then((teacher) => {
+      if (teacher != null) {
         res.status(202);
         res.send({
           isCompleted: true,
