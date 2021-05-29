@@ -12,6 +12,7 @@
     "url": "git+https://github.com/samiurprapon/Aether.git"
   },
   "author": "Samiur Prapon",
+  "license": "",
   "bugs": {
     "url": "https://github.com/samiurprapon/Aether/issues"
   },
@@ -20,6 +21,14 @@
     "nodemon": "^1.19.2"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5",
+    "uuid": "^8.3.2"
   }
 }
