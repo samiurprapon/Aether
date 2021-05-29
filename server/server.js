@@ -38,7 +38,7 @@ server.use("/api/student", studentRoutes.router);
 server.use("/api/teacher", teacherRoutes.router);
 
 Sequelize.sync({
-  force: false,
+  force: true,
 })
   .then(() => {
     server.listen(port, () => {

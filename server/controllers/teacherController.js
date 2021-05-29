@@ -58,7 +58,28 @@ const isCompleted = (req, res) => {
     });
 };
 
+const details = (req, rs) => {
+
+    let user = res.locals.user;
+
+    Teacher.findOne({ where: {
+        uid: user.uid
+    }}).then(teacher => {
+        res.status(200);
+        res.send({
+            'message': 'request successful!', 
+            'teacher' : teacher
+        });
+    }).catch((err) => {
+        res.status(403);
+        res.send({
+            'message': 'unsuccessful request!', 
+        });
+    });
+}
+
 module.exports = {
   upsert,
-  isCompleted
+  isCompleted, 
+  details
 };
