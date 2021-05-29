@@ -9,6 +9,7 @@ const storage = require("./middlewares/fileUploadMiddleware");
 
 // routes
 const authRoutes = require("./routes/authRoutes");
+const studentRoutes = require("./routes/studentRoutes");
 
 // server config
 const serverConfig = require("./config/databaseSecrets.json");
@@ -32,6 +33,8 @@ server.use(cors());
 
 // routing
 server.use("/api/auth", authRoutes.router);
+server.use("/api/student", studentRoutes.router);
+
 
 Sequelize.sync({
   force: false,

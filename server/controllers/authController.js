@@ -47,6 +47,7 @@ const login = (req, res) => {
             });
 
         } else if (credential.validPassword(req.body.password)) {
+            details.uid = credential.dataValues.id;
             details.email = credential.dataValues.email;
             details.password = credential.dataValues.password;
             details.type = credential.dataValues.type;
