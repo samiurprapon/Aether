@@ -12,6 +12,7 @@ const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
 const courseRoutes = require("./routes/courseRoutes");
+const studentCourseRoutes = require("./routes/studentCourseRoutes");
 
 // server config
 const serverConfig = require("./config/databaseSecrets.json");
@@ -33,14 +34,18 @@ server.use(
 
 server.use(cors());
 
-// routing
+// routing starts
 server.use("/api/auth", authRoutes.router);
+
 server.use("/api/student", studentRoutes.router);
+server.use("/api/student/course", studentCourseRoutes.router);
+
 server.use("/api/teacher", teacherRoutes.router);
-server.use("/api/course", courseRoutes.router);
+server.use("/api/teacher/course", courseRoutes.router);
+// routing ends
 
 Sequelize.sync({
-  force: false,
+  force: true,
 })
   .then(() => {
     server.listen(port, () => {

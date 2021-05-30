@@ -1,6 +1,6 @@
 const Course = require("../models/courses");
 
-const add = (req, rs) => {
+const add = (req, res) => {
   let user = res.locals.user;
 
   Course.create({
@@ -45,34 +45,37 @@ const list = (req, res) => {
     });
 };
 
-const update = (req, rs) => {
-    let user = res.locals.user;
-  
-    Course.update({
+const update = (req, res) => {
+  let user = res.locals.user;
+
+  Course.update(
+    {
       code: req.body.code,
       section: req.body.section,
       name: req.body.name,
       semester: req.body.semester,
-    }, {
-        where: {
-            id: req.body.id,
-            uid: user.uid
-        }
-    })
-      .then((course) => {
-        res.status(201);
-        res.send({
-          message: "Course section created successfully!",
-          course: course,
-        });
-      })
-      .catch((err) => {
-        res.status(400);
-        res.send({
-          message: "creating course failed!",
-        });
+    },
+    {
+      where: {
+        id: req.body.id,
+        uid: user.uid,
+      },
+    }
+  )
+    .then((course) => {
+      res.status(201);
+      res.send({
+        message: "Course section created successfully!",
+        course: course,
       });
-  };
+    })
+    .catch((err) => {
+      res.status(400);
+      res.send({
+        message: "creating course failed!",
+      });
+    });
+};
 
 const remove = (req, res) => {
   let user = res.locals.user;
@@ -100,12 +103,14 @@ const remove = (req, res) => {
     });
 };
 
-const archived = (req, res, next) => {
+const archived = (req, res) => {
   let user = res.locals.user;
 
-  Course.update({
+  Course.update(
+    {
       archived: req.body.archived,
-    }, {
+    },
+    {
       where: {
         uid: user.uid,
         id: req.body.id,
@@ -131,5 +136,5 @@ module.exports = {
   list,
   update,
   remove,
-  archived
+  archived,
 };

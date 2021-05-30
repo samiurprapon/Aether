@@ -1,7 +1,8 @@
 const { v4: uuidv4 } = require("uuid");
-const { nanoid } = require('nanoid')
+const { nanoid } = require("nanoid");
 
 const Teacher = require("./teachers");
+const Student = require("./students");
 
 const Sequelize = require("./index").Sequelize;
 const Datatypes = require("./index").DataTypes;
@@ -39,7 +40,7 @@ const Course = Sequelize.define("courses", {
   archived: {
     type: Datatypes.BOOLEAN,
     allowNull: false,
-    defaultValue: false
+    defaultValue: false,
   },
   uid: {
     type: Datatypes.UUID,
@@ -53,5 +54,8 @@ const Course = Sequelize.define("courses", {
     onDelete: "CASCADE",
   },
 });
+
+Course.belongsToMany(Student, { through: "studentCourses" });
+Student.belongsToMany(Course, { through: "studentCourses" });
 
 module.exports = Course;

@@ -58,28 +58,31 @@ const isCompleted = (req, res) => {
     });
 };
 
-const details = (req, rs) => {
-
+const details = (req, res) => {
   let user = res.locals.user;
 
-  Student.findOne({ where: {
-      uid: user.uid
-  }}).then(student => {
+  Student.findOne({
+    where: {
+      uid: user.uid,
+    },
+  })
+    .then((student) => {
       res.status(200);
       res.send({
-        'message': 'request successful!', 
-        'student' : student
+        message: "request successful!",
+        student: student,
       });
-  }).catch((err) => {
+    })
+    .catch((err) => {
       res.status(403);
       res.send({
-          'message': 'unsuccessful request!', 
+        message: "unsuccessful request!",
       });
-  });
-}
+    });
+};
 
 module.exports = {
-upsert,
-isCompleted, 
-details
+  upsert,
+  isCompleted,
+  details,
 };
