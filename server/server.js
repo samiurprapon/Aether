@@ -12,6 +12,7 @@ const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
 const courseRoutes = require("./routes/courseRoutes");
+const sessionRoutes = require("./routes/sessionRoutes");
 const slideRoutes = require("./routes/slideRoutes");
 const studentCourseRoutes = require("./routes/studentCourseRoutes");
 
@@ -42,6 +43,7 @@ server.use("/api/student", studentRoutes.router);
 server.use("/api/student/course", studentCourseRoutes.router);
 
 server.use("/api/common/course/slide", slideRoutes.router);
+server.use("/api/common/course/session", sessionRoutes.router);
 
 server.use("/api/teacher", teacherRoutes.router);
 server.use("/api/teacher/course", courseRoutes.router);
