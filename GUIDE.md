@@ -2,7 +2,7 @@
 # First Contributions
 
 
-Aether appriciate [firstcontribution](https://github.com/firstcontributions/first-contributions) community to support beginners like me. I'm excited to add there steps here which I also followed earlier.
+Aether appriciate [firstcontribution](https://github.com/firstcontributions/first-contributions) community to support beginners like me. I'm excited to add their steps here which I also followed earlier.
 
 [firstcontribution](https://github.com/firstcontributions/first-contributions)  aims to simplify and guide the way beginners make their first contribution. If you are looking to make your first contribution, follow the steps below.
 
@@ -114,10 +114,10 @@ Congrats! You just completed the standard _fork -> clone -> edit -> pull request
 # 
 
 ## Acknowledgement
-This steps are explained in another opensource community development project also known as [firstcontributions](https://github.com/firstcontributions/first-contributions). You can get more materials to learn from them. Go [visit](https://firstcontributions.github.io/#project-list) there github page and explore.  
+This steps are explained in another opensource community development project also known as [firstcontributions](https://github.com/firstcontributions/first-contributions). You can get more materials to learn from them. Go [visit](https://firstcontributions.github.io/#project-list) their github page and explore.  
 
 Celebrate your contribution and share it with your friends and followers by going to [web app](https://firstcontributions.github.io/#social-share).
 
-You could join there slack team in case you need any help or have any questions. [Join slack team](https://join.slack.com/t/firstcontributors/shared_invite/zt-kpbyrmkk-JDkRtchcvRvQ0qK4iPmyvA).
+You could join their slack team in case you need any help or have any questions. [Join slack team](https://join.slack.com/t/firstcontributors/shared_invite/zt-kpbyrmkk-JDkRtchcvRvQ0qK4iPmyvA).
 
 Now let's get you started with contributing to other projects. They've compiled a list of projects with easy issues you can get started on. Check out [the list of projects in the web app](https://firstcontributions.github.io/#project-list).
