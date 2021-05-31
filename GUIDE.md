@@ -2,7 +2,7 @@
 # First Contributions
 
 
-Aether appriciate [firstcontribution](https://github.com/firstcontributions/first-contributions) community to support beginners like me. I'm excited to add their steps here which I also followed earlier.
+Aether appreciates [firstcontribution](https://github.com/firstcontributions/first-contributions) community to support beginners like me. I'm excited to add their steps here which I have also followed earlier.
 
 [firstcontribution](https://github.com/firstcontributions/first-contributions)  aims to simplify and guide the way beginners make their first contribution. If you are looking to make your first contribution, follow the steps below.
 
