@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ colors.xml Created by Samiur Prapon
-  ~ Last modified  5/29/21 5:36 AM
+  ~ Last modified  6/1/21 4:19 AM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
@@ -8,6 +8,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="_1">#F8FAFD</color>
+    <color name="_2">#DDE4EE</color>
+    <color name="_3">#76A6EF</color>
+    <color name="_4">#CFD8E6</color>
+    <color name="_5">#E7E0D1</color>
+    <color name="_6">#CAB4CC</color>
+    <color name="_7">#FDE69E</color>
+    <color name="_8">#91B1E7</color>
 
     <!--Material color list from https://material.io/guidelines/style/color.html-->
 

@@ -1,21 +1,21 @@
 <!--
   ~ themes.xml Created by Samiur Prapon
-  ~ Last modified  5/29/21 5:18 AM
+  ~ Last modified  6/1/21 4:26 AM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Aether" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Aether" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/_8</item>
+        <item name="colorPrimaryVariant">@color/_7</item>
+        <item name="colorOnPrimary">@color/overlay_dark_60</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/_3</item>
+        <item name="colorSecondaryVariant">@color/_5</item>
+        <item name="colorOnSecondary">@color/overlay_dark_60</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
