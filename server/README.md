@@ -156,6 +156,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
         "updatedAt" : "2021-05-31 08:14:21"
     }
 }
+```
 
 #### Create Student Profile
 
