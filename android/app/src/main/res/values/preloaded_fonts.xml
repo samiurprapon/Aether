@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ preloaded_fonts.xml Created by Samiur Prapon
+  ~ Last modified  4/12/21 3:51 PM
+  ~ Copyright (c) 2021. All rights reserved.
+  ~
+  -->
+
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/roboto</item>
+    </array>
+</resources>

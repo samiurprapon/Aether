@@ -1,13 +1,13 @@
 <!--
   ~ themes.xml Created by Samiur Prapon
-  ~ Last modified  6/1/21 4:26 AM
+  ~ Last modified  6/1/21 10:58 AM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Aether" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Aether" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/_8</item>
         <item name="colorPrimaryVariant">@color/_7</item>

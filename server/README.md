@@ -78,6 +78,13 @@ Express.js, Sequelize is used in this project.
 }
 ```
 **Description**: creates a new user; first user will be assigned as an admin user. Password is stored in `HS256` format
+
+```json
+{
+  "message": "Signed up successfully!",
+}
+```
+
 #### Login
 `POST /api/auth/login`
 ```json

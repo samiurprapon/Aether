@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ colors.xml Created by Samiur Prapon
-  ~ Last modified  6/1/21 4:19 AM
+  ~ Last modified  6/1/21 8:53 AM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
@@ -17,6 +17,8 @@
     <color name="_6">#CAB4CC</color>
     <color name="_7">#FDE69E</color>
     <color name="_8">#91B1E7</color>
+
+    <color name="text_gray">#636364</color>
 
     <!--Material color list from https://material.io/guidelines/style/color.html-->
 

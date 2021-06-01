@@ -1,13 +1,12 @@
 /*
  * build Created by Samiur Prapon
- * Last modified  6/1/21 4:59 AM
+ * Last modified  6/1/21 7:44 AM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -46,7 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 //      Life Cycle Components
-    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 //    UI components
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

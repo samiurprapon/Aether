@@ -1,10 +1,18 @@
 <!--
   ~ strings.xml Created by Samiur Prapon
-  ~ Last modified  5/29/21 5:18 AM
+  ~ Last modified  6/1/21 8:57 AM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
 
 <resources>
     <string name="app_name">Aether</string>
+
+    <string name="title_email_address">Email</string>
+    <string name="title_password">Password</string>
+    <string name="title_re_type_password">Re-type password</string>
+    <string name="title_select_user_type">You are a -</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+
 </resources>
