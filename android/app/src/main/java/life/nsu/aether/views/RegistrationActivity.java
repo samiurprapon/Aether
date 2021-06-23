@@ -1,6 +1,6 @@
 /*
  * RegistrationActivity Created by Samiur Prapon
- * Last modified  6/1/21 11:41 AM
+ * Last modified  6/23/21, 12:54 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
@@ -74,7 +74,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             switch (checkedId) {
                 case R.id.rb_student:
-                    type = "customer";
+                    type = "student";
                     break;
                 case R.id.rb_teacher:
                     type = "teacher";
