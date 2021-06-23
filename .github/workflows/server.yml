@@ -22,13 +22,20 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
+      - name: Checkout
       - uses: actions/checkout@v1
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: Go to directory
+        run: cd ./server
+
       - name: Install Packages 📦
-        run: cd server && npm Install
+        run: npm Install
+      
       - name: Run Server 🎨
         run: |
-          CI=false cd server && npm run start
+          CI=false && npm run start
