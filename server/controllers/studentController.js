@@ -15,7 +15,7 @@ const upsert = (req, res) => {
       res.status(201);
       res.send({
         message: "Student Profile updated!",
-        student: student,
+        student: student[0]
       });
     })
     .catch((err) => {
