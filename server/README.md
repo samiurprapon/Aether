@@ -63,10 +63,9 @@ Express.js, Sequelize is used in this project.
     npm run test
 ```
 
-## APIs
+# APIs
 
-### Auth Route
----
+## Auth Route
 
 #### Register
 `POST /api/auth/register`
