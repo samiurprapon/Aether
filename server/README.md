@@ -4,7 +4,7 @@ This project contains all the backend codes for <b>Aether</b> - <i>Medium of Stu
 Express.js, Sequelize is used in this project.
 
 ## Database Design
-[<img src="database_design.png" height="532"/>](1.png)
+[<img src="database_design.png" height="532"/>](database_design.png)
 
 
 ## Getting Started
