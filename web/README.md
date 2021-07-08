@@ -26,4 +26,4 @@
 - Only reading time and eye positioning data will be stored at server.
 
 ## Demo
- <img height=600 src="../../assets/demo_student.gif"/>
+ <img height=600 src="../assets/demo_student.gif"/>
