@@ -1,4 +1,4 @@
- <img height=100 src="aether_banner.png"/>
+ <img height=100 src="./assets/aether_banner.png"/>
 
 <b>Taking online education system to the moon 🚀</b>
 
@@ -6,13 +6,13 @@
 
 Aether or quintessence goes by many names such as spirit, soul or void, so for simplicity we will call it the <b>fifth element of education</b>. The main purpose of <b>Aether</b> is to track how long a student reads a certain section by tracking his eyes. Using that data instructor can get information about individual students that in which portion of the material student face difficulties and according to that he can make decisions.
 
-# Contribution
+## Contribution
 
 I highly encourage the community to step forward and improve this project further. You can fix any reported bug, propose or implement new features, write tests, etc.
 
 Pull requests are welcome! See the [contributor guidelines](https://github.com/samiurprapon/Aether/blob/master/CONTRIBUTING.md) for more details.
 
-# License
+## License
 
 ```
 Copyright 2021 Samiur Prapon
