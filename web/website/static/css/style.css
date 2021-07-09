@@ -1,8 +1,9 @@
 .navigation {
   display: flex;
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
   align-items: center;
+  justify-content: space-between;
 }
 
 body {
@@ -16,8 +17,13 @@ body {
   margin-left: 85px;
 }
 
+.menu-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #btn-sign-up {
-  margin-left: 768px;
   background-color: #f37172;
   padding: 13px 13px;
   height: 88%;
@@ -48,6 +54,7 @@ body {
   width: 38px;
   height: 32px;
   margin-left: 42px;
+  margin-right: 85px;
 }
 
 h1 {
@@ -84,10 +91,11 @@ h1 {
 }
 
 #picture {
-  width: 426px;
-  height: 399px;
-  margin-left: 248px;
-  margin-top: 118px;
+  position: relative;
+  width: 454.4px;
+  height: 478.8px;
+  top: 75px;
+  left: 290px;
 }
 
 .footer {
