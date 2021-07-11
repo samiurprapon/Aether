@@ -7,6 +7,7 @@
 }
 
 body {
+  display: block;
   margin: 0 auto;
   justify-content: center;
 }
@@ -33,7 +34,6 @@ body {
   font-size: 18px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  font-size: 18px;
 }
 
 #btn-sign-in {
@@ -47,7 +47,6 @@ body {
   font-size: 18px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  font-size: 18px;
 }
 
 #hamburger-menu {
@@ -84,7 +83,6 @@ h1 {
   font-size: 18px;
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
-  font-size: 18px;
 }
 .main {
   display: flex;
