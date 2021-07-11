@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navigation {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-items {
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+  align-items: center;
+}
+#btn-sign-up {
+  background-color: #f37172;
+  padding: 8px;
+  height: 50%;
+  border: #f37172;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+#btn-sign-in {
+  padding: 8px;
+  height: 50%;
+  background-color: transparent;
+  border: 1px solid #979797;
+  border-radius: 4px;
+  color: #979797;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+#hamburger-menu {
+  width: 30px;
+  height: 25px;
+}
+.main {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  gap: 30px;
+  flex-direction: column-reverse;
+  padding: 20px;
+  flex-direction: column-reverse;
+  width: 100vw;
+  height: auto;
+}
+#picture {
+  width: 190px;
+  height: 200px;
+}
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 750;
+  font-size: 50px;
+  text-align: center;
+}
+#sub-title {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+#btn-sign-up-free {
+  width: 100%;
+  background-color: #f37172;
+  border: #f37172;
+  padding: 13px;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+}
+
+.footer {
+  margin-top: 5%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 700px) {
+  #picture {
+    width: 285px;
+    height: 300px;
+  }
+  #btn-sign-up {
+    padding: 14px;
+    height: 50%;
+  }
+
+  #btn-sign-in {
+    padding: 14px;
+    height: 50%;
+  }
+
+  .menu-items {
+    width: 350px;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  #sub-title {
+    font-size: 30px;
+  }
+
+  #btn-sign-up-free {
+    font-size: 25px;
+  }
+}
