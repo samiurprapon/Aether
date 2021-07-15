@@ -18,5 +18,6 @@
     <string name="title_register">Register</string>
     <string name="title_existing_member">Already a member?</string>
     <string name="sign_in">Sign in</string>
+    <string name="forget_password">Forget Password?</string>
 
 </resources>
