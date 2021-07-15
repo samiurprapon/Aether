@@ -11,8 +11,12 @@
     <string name="title_email_address">Email</string>
     <string name="title_password">Password</string>
     <string name="title_re_type_password">Re-type password</string>
-    <string name="title_select_user_type">You are a -</string>
+    <string name="title_select_user_type">I am -</string>
     <string name="student">Student</string>
     <string name="teacher">Teacher</string>
+    <string name="title_create_an_account">Create an Account</string>
+    <string name="title_register">Register</string>
+    <string name="title_existing_member">Already a member?</string>
+    <string name="sign_in">Sign in</string>
 
 </resources>
