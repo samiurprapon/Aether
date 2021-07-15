@@ -191,7 +191,7 @@
             android:id="@+id/mb_sign_up"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
-            android:layout_height="49dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@color/main_color"
             android:fontFamily="@font/montserrat_bold"
