@@ -18,6 +18,11 @@
     <color name="_7">#FDE69E</color>
     <color name="_8">#91B1E7</color>
 
+    <color name="main_color">#F37172</color>
+    <color name="text_color_dark">#F37179</color>
+    <color name="border_color">#F37172</color>
+    <color name="black_text">#2F281E</color>
+
     <color name="text_gray">#636364</color>
 
     <!--Material color list from https://material.io/guidelines/style/color.html-->

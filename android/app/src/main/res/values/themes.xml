@@ -9,15 +9,16 @@
     <!-- Base application theme. -->
     <style name="Theme.Aether" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/_8</item>
-        <item name="colorPrimaryVariant">@color/_7</item>
-        <item name="colorOnPrimary">@color/overlay_dark_60</item>
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryVariant">@color/main_color</item>
+        <item name="colorOnPrimary">@color/black_text</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/_3</item>
+        <item name="colorSecondary">@color/main_color</item>
         <item name="colorSecondaryVariant">@color/_5</item>
         <item name="colorOnSecondary">@color/overlay_dark_60</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>
