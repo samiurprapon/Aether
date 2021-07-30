@@ -21,4 +21,13 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="SpinnerTheme" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:background">#00FFFFFF</item>
+        <item name="android:fontFamily">@font/baloobhai_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:divider">#A8A8A8</item>
+        <item name="android:dividerHeight">0.5dp</item>
+    </style>
 </resources>

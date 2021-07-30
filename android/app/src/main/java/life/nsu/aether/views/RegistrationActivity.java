@@ -61,7 +61,6 @@ public class RegistrationActivity extends AppCompatActivity {
 //            mSignUp.setError(null);
             new Handler(Looper.myLooper()).postDelayed(() -> {
                 viewModel.register(email, password, type);
-
 //                loadingDialog.hide();
 
             }, 250);

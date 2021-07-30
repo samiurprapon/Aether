@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ bubble_bottom_navigation_item_transition_background_item.xml Created by Sharif Rafid
+  ~ Last modified  25/7/21, 10:29 pm
+  ~ Copyright (c) 2021. All rights reserved.
+  ~
+  -->
+<transition xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- use whatever drawables you want, gradients, shapes etc-->
+    <item android:drawable="@android:color/transparent"/>
+    <item android:drawable="@drawable/home_background_oval"/>
+</transition>

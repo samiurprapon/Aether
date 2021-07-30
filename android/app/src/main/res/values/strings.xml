@@ -19,5 +19,13 @@
     <string name="title_existing_member">Already a member?</string>
     <string name="sign_in">Sign in</string>
     <string name="forget_password">Forget Password?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="bubble_bottom_navigation_item_title_home">Home</string>
+    <string name="bubble_bottom_navigation_item_title_books">Courses</string>
+    <string name="bubble_bottom_navigation_item_title_class">Class</string>
+    <string name="bubble_bottom_navigation_item_title_exam">Exam</string>
+    <string name="bubble_bottom_navigation_item_title_more">More</string>
 
 </resources>
