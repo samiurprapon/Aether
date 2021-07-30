@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ colors.xml Created by Samiur Prapon
-  ~ Last modified  6/1/21 8:53 AM
+  ~ Last modified  7/30/21, 6:23 PM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
@@ -335,10 +335,10 @@
     <color name="grey_900">#212121</color>
     <color name="grey_1000">#1a1a1a</color>
 
-    <color name="bubble_bottom_navigation_bg_color">#F37172</color>
-    <color name="bubble_bottom_navigation_item_active_color">#FFFFFF</color>
-    <color name="bubble_bottom_navigation_item_inactive_color">#FFFFFF</color>
-    <color name="bubble_bottom_navigation_item_bg_color_white_30p_opacity">#4DFFFFFF</color>
+    <color name="nav_bg_color">#F37172</color>
+    <color name="nav_item_active">#FFFFFF</color>
+    <color name="nav_item_inactive">#FFFFFF</color>
+    <color name="nav_item_bg_white_30p_opacity">#4DFFFFFF</color>
     <color name="curved_home_item_bg_color">#F5F5F7</color>
     <color name="spinner_text_color_1">#1D1D1D</color>
     <color name="spinner_bg_color_1">#F3F3F3</color>

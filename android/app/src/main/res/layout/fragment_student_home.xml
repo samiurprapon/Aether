@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ fragment_home.xml Created by Sharif Rafid
-  ~ Last modified  17/7/21, 11:11 am
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ fragment_student_home.xml Created by Samiur Prapon
+  ~ Last modified  7/30/21, 6:23 PM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
@@ -12,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".views.fragments.HomeFragment">
+    tools:context=".views.fragments.StudentHomeFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -20,10 +19,10 @@
         android:layout_height="120dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/curved_home_item_bg"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,38 +32,42 @@
         android:adjustViewBounds="true"
         android:src="@drawable/home_page_person_character_image"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginStart="20dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" >
+        app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/baloobhai_regular"
-            android:text="Hello Harry"
-            android:textSize="28sp"
-            android:textColor="@color/black"/>
+            android:fontFamily="@font/baloo_bhai_regular"
+            android:text="@string/demo_welcome_message"
+            android:textColor="@color/black"
+            android:textSize="28sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
-            android:text="It's good to see you again"
-            android:textSize="13sp"
-            android:textColor="@color/black"/>
+            android:text="@string/title_welcome_sub"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,8 +90,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloobhai_regular"
-                android:text="11"
+                android:fontFamily="@font/baloo_bhai_regular"
+                android:text="@string/demo_course_complete"
                 android:textColor="@color/black"
                 android:textSize="34sp" />
 
@@ -97,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/roboto"
-                android:text="Courses\nCompleted"
+                android:text="@string/title_course_complete"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -118,8 +121,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloobhai_regular"
-                android:text="4"
+                android:fontFamily="@font/baloo_bhai_regular"
+                android:text="@string/demo_course_count"
                 android:textColor="@color/main_color"
                 android:textSize="34sp" />
 
@@ -128,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/roboto"
-                android:text="Courses\nIn Progress"
+                android:text="@string/title_course_in_progress"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -141,8 +144,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/baloobhai_regular"
-        android:text="Ongoing"
+        android:fontFamily="@font/baloo_bhai_regular"
+        android:text="@string/tittle_ongoing"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,7 +172,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/curved_white_image_item_bg"
             android:padding="10dp"
-            android:src="@drawable/ic_books__1_" />
+            android:src="@drawable/ic_books__1_"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -181,8 +185,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloobhai_regular"
-                android:text="Bioorganic Chemistry I"
+                android:fontFamily="@font/baloo_bhai_regular"
+                android:text="@string/demo_course_name"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -190,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="by Walter White"
+                android:text="@string/demo_course_instructor_name"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -205,16 +209,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:progress="83"
+                android:indeterminate="false"
                 android:indeterminateOnly="false"
-                android:indeterminate="false"/>
+                android:progress="83" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto"
-                android:text="83%"
+                android:text="@string/demo_course_progress_value"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
         </RelativeLayout>
@@ -222,13 +226,14 @@
 
     <ImageView
         android:id="@+id/imageView2"
+        style="@style/Widget.AppCompat.ActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.ActionButton"
         android:src="@drawable/ic_arrows"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout3"
+        tools:ignore="ContentDescription" />
 
 
     <TextView
@@ -237,8 +242,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/baloobhai_regular"
-        android:text="Learning Growth"
+        android:fontFamily="@font/baloo_bhai_regular"
+        android:text="@string/title_learning_growth"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/spinner_1"
@@ -252,9 +257,10 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:paddingStart="10dp"
         android:gravity="center"
         android:padding="2dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:popupBackground="@color/white"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"

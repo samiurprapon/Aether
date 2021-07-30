@@ -1,7 +1,7 @@
 
 /*
  * SplashActivity Created by Samiur Prapon
- * Last modified  5/29/21 5:36 AM
+ * Last modified  7/30/21, 6:23 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import life.nsu.aether.viewModels.SplashActivityViewModel;
-import life.nsu.aether.views.home.HomeActivity;
+import life.nsu.aether.views.home.StudentHomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -29,6 +29,6 @@ public class SplashActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(SplashActivityViewModel.class);
 
         // Temporary redirect for test purposes
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, StudentHomeActivity.class));
     }
 }

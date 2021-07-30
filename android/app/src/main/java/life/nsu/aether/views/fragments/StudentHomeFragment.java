@@ -1,26 +1,26 @@
 /*
- * HomeFragment Created by Sharif Rafid
- * Last modified  17/7/21, 11:11 am
+ * StudentHomeFragment Created by Samiur Prapon
+ * Last modified  7/30/21, 6:23 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
 package life.nsu.aether.views.fragments;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -29,7 +29,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,26 +36,41 @@ import java.util.ArrayList;
 
 import life.nsu.aether.R;
 
-public class HomeFragment extends Fragment {
+public class StudentHomeFragment extends Fragment {
 
     private Spinner dateTypesSpinner;
     private LineChart lineChart;
+    @SuppressLint("StaticFieldLeak")
+    static StudentHomeFragment fragment = null;
 
-    public HomeFragment() {
+
+    public StudentHomeFragment() {
         // Required empty public constructor
+    }
+
+    public static StudentHomeFragment newInstance() {
+        if (fragment == null) {
+            synchronized (StudentHomeFragment.class) {
+                if (fragment == null) {
+                    return new StudentHomeFragment();
+                }
+            }
+        }
+
+        return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_student_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         // When the view is created we can start working with the fragment
-        initiliazeVariables(view);
+        initializeVariables(view);
         initializeLogic();
     }
 
@@ -111,8 +125,8 @@ public class HomeFragment extends Fragment {
         d1.setCircleRadius(4.5f);
         d1.setHighLightColor(Color.BLACK);
         d1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        d1.setCircleColor(Color.rgb(245,245,247));
-        d1.setCircleHoleColor(Color.rgb(245,245,247));
+        d1.setCircleColor(Color.rgb(245, 245, 247));
+        d1.setCircleHoleColor(Color.rgb(245, 245, 247));
         d1.setDrawValues(false);
 
         ArrayList<ILineDataSet> sets = new ArrayList<>();
@@ -122,11 +136,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadSpinnerData() {
-        ArrayList<String> dateTypesArrayList = new ArrayList<String>();
+        ArrayList<String> dateTypesArrayList = new ArrayList<>();
         dateTypesArrayList.add("Daily");
         dateTypesArrayList.add("Weekly");
         dateTypesArrayList.add("Monthly");
         dateTypesArrayList.add("Yearly");
+
         ArrayAdapter spinnerAdapter = new ArrayAdapter(getActivity(), R.layout.custom_spinner_view,
                 dateTypesArrayList);
         spinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_item_view);
@@ -134,8 +149,8 @@ public class HomeFragment extends Fragment {
         dateTypesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
-                    case 0 :
+                switch (position) {
+                    case 0:
                 }
             }
 
@@ -146,7 +161,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void initiliazeVariables(@NotNull View view) {
+    private void initializeVariables(@NotNull View view) {
         dateTypesSpinner = view.findViewById(R.id.spinner_1);
         lineChart = view.findViewById(R.id.chart);
     }

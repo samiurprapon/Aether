@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ fragment_more.xml Created by Samiur Prapon
-  ~ Last modified  25/7/21, 11:07 pm
+  ~ fragment_student_course.xml Created by Samiur Prapon
+  ~ Last modified  7/30/21, 6:23 PM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
@@ -10,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.MoreFragment">
+    tools:context=".views.fragments.StudentCourseFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
