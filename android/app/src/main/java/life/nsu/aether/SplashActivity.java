@@ -29,6 +29,6 @@ public class SplashActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(SplashActivityViewModel.class);
 
         // Temporary redirect for test purposes
-        startActivity(new Intent(this, StudentHomeActivity.class));
+        startActivity(new Intent(SplashActivity.this, StudentHomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }
