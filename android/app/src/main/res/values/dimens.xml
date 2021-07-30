@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ dimens.xml Created by Samiur Prapon
+  ~ Last modified  25/7/21, 10:28 pm
+  ~ Copyright (c) 2021. All rights reserved.
+  ~
+  -->
+
+<resources>
+    <dimen name="bubble_bottom_navigation_item_internal_padding">8dp</dimen>
+</resources>

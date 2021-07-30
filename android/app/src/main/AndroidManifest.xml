@@ -10,10 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Aether">
-
+        <activity android:name=".views.home.HomeActivity"></activity>
         <activity android:name=".views.LoginActivity" />
         <activity android:name=".views.RegistrationActivity" />
-
         <activity
             android:name=".SplashActivity"
             android:launchMode="singleTask">

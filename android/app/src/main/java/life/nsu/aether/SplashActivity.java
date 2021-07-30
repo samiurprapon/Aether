@@ -8,12 +8,14 @@
 
 package life.nsu.aether;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import life.nsu.aether.viewModels.SplashActivityViewModel;
+import life.nsu.aether.views.home.HomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -26,5 +28,7 @@ public class SplashActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(SplashActivityViewModel.class);
 
+        // Temporary redirect for test purposes
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }
