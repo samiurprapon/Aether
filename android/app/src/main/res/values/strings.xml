@@ -1,6 +1,6 @@
 <!--
   ~ strings.xml Created by Samiur Prapon
-  ~ Last modified  6/1/21 8:57 AM
+  ~ Last modified  7/30/21, 6:23 PM
   ~ Copyright (c) 2021. All rights reserved.
   ~
   -->
@@ -19,5 +19,25 @@
     <string name="title_existing_member">Already a member?</string>
     <string name="sign_in">Sign in</string>
     <string name="forget_password">Forget Password?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="nav_item_home">Home</string>
+    <string name="nav_item_course">Course</string>
+    <string name="nav_item_class">Class</string>
+    <string name="nav_item_exam">Exam</string>
+    <string name="nav_item_more">More</string>
+    <string name="demo_welcome_message">Hello Harry</string>
+    <string name="title_welcome_sub">It\'s good to see you again</string>
+    <string name="title_course_complete">Courses\nCompleted</string>
+    <string name="demo_course_count">9</string>
+    <string name="title_course_in_progress">Courses\nIn Progress</string>
+    <string name="tittle_ongoing">Ongoing</string>
+    <string name="demo_course_name">Bio-organic Chemistry I</string>
+    <string name="demo_course_instructor_name">by Walter White</string>
+    <string name="demo_course_progress_value">83%</string>
+    <string name="title_learning_growth">Learning Growth</string>
+    <string name="demo_course_complete">11</string>
 
 </resources>

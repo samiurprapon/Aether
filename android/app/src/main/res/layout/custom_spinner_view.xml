@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Daily"
+    android:background="@drawable/spinner_bg"
+    android:gravity="center"
+    android:padding="6dp"
+    android:fontFamily="@font/baloo_bhai_regular"
+    android:textColor="@color/spinner_text_color_1"
+    android:textSize="14sp"
+    app:drawableRightCompat="@drawable/ic_drop_down_24"
+    app:drawableTint="#757575" />
