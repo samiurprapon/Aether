@@ -120,17 +120,19 @@ public class StudentHomeFragment extends Fragment {
             values1.add(new Entry(i, (int) (Math.random() * 65) + 40));
         }
 
-        LineDataSet d1 = new LineDataSet(values1, "New DataSet " + cnt + ", (1)");
-        d1.setLineWidth(2.5f);
-        d1.setCircleRadius(4.5f);
-        d1.setHighLightColor(Color.BLACK);
-        d1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        d1.setCircleColor(Color.rgb(245, 245, 247));
-        d1.setCircleHoleColor(Color.rgb(245, 245, 247));
-        d1.setDrawValues(false);
+        LineDataSet dataSet = new LineDataSet(values1, "New DataSet " + cnt + ", (1)");
+        dataSet.setLineWidth(2.5f);
+        dataSet.setCircleRadius(4.5f);
+        dataSet.setHighLightColor(Color.BLACK);
+
+        dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        dataSet.setColor(Color.rgb(0, 0, 0));
+        dataSet.setCircleColor(Color.rgb(243, 113, 114));
+        dataSet.setCircleHoleColor(Color.rgb(243, 113, 114));
+        dataSet.setDrawValues(false);
 
         ArrayList<ILineDataSet> sets = new ArrayList<>();
-        sets.add(d1);
+        sets.add(dataSet);
 
         return new LineData(sets);
     }

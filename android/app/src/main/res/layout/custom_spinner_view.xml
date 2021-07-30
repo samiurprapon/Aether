@@ -7,7 +7,7 @@
     android:text="Daily"
     android:background="@drawable/spinner_bg"
     android:gravity="center"
-    android:padding="4dp"
+    android:padding="6dp"
     android:fontFamily="@font/baloo_bhai_regular"
     android:textColor="@color/spinner_text_color_1"
     android:textSize="14sp"

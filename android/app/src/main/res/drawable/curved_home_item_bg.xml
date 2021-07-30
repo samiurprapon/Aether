@@ -10,5 +10,5 @@
     <solid
         android:color="@color/curved_home_item_bg_color"/>
     <corners
-        android:radius="10dp"/>
+        android:radius="8dp"/>
 </shape>
