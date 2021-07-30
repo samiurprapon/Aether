@@ -10,6 +10,7 @@ package life.nsu.aether.views.fragments;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -105,7 +106,10 @@ public class StudentHomeFragment extends Fragment {
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         // set data
-        lineChart.setData((LineData) generateDataLine(5));
+        lineChart.setData(generateDataLine(5));
+
+        Drawable background = lineChart.getBackground();
+        background.setAlpha(20);
 
         // do not forget to refresh the chart
         // lineChart.invalidate();
