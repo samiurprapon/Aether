@@ -10,11 +10,9 @@ package life.nsu.aether.views.home;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
-import com.gauravk.bubblenavigation.BubbleToggleView;
 
 import life.nsu.aether.R;
 import life.nsu.aether.utils.adapters.ViewPagerAdapter;

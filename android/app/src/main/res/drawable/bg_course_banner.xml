@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ bg_course_banner.xml Created by Samiur Prapon
+  ~ Last modified  7/31/21, 3:24 PM
+  ~ Copyright (c) 2021. All rights reserved.
+  ~
+  -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_course_banner" />
+
+    <item>
+        <shape
+            android:shape="rectangle" android:padding="4dp">
+            <corners android:radius="8dp" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/curved_home_item_bg_color" />
+        </shape>
+    </item>
+</layer-list>

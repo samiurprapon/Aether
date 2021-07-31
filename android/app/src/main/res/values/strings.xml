@@ -8,6 +8,16 @@
 <resources>
     <string name="app_name">Aether</string>
 
+    <!-- Placeholders   -->
+    <string name="demo_welcome_message">Hello Harry</string>
+    <string name="demo_course_count">9</string>
+    <string name="demo_course_instructor_name">by Walter White</string>
+    <string name="demo_course_progress_value">83%</string>
+    <string name="demo_course_complete">11</string>
+    <string name="demo_course_name">Bio-organic Chemistry I</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Authentication   -->
     <string name="title_email_address">Email</string>
     <string name="title_password">Password</string>
     <string name="title_re_type_password">Re-type password</string>
@@ -20,24 +30,24 @@
     <string name="sign_in">Sign in</string>
     <string name="forget_password">Forget Password?</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <!--  Bottom Navigation  -->
     <string name="nav_item_home">Home</string>
     <string name="nav_item_course">Course</string>
     <string name="nav_item_class">Class</string>
     <string name="nav_item_exam">Exam</string>
     <string name="nav_item_more">More</string>
-    <string name="demo_welcome_message">Hello Harry</string>
+
+    <!--  Student Home Fragment  -->
     <string name="title_welcome_sub">It\'s good to see you again</string>
     <string name="title_course_complete">Courses\nCompleted</string>
-    <string name="demo_course_count">9</string>
     <string name="title_course_in_progress">Courses\nIn Progress</string>
     <string name="tittle_ongoing">Ongoing</string>
-    <string name="demo_course_name">Bio-organic Chemistry I</string>
-    <string name="demo_course_instructor_name">by Walter White</string>
-    <string name="demo_course_progress_value">83%</string>
     <string name="title_learning_growth">Learning Growth</string>
-    <string name="demo_course_complete">11</string>
+
+    <!--  Student Course Fragment  -->
+    <string name="title_start">start</string>
+    <string name="title_course_study_materials">what will we\nstudy today?</string>
+    <string name="title_ongoing_course">Ongoing</string>
+    <string name="title_archived_course">Archive</string>
 
 </resources>
