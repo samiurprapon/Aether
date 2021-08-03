@@ -41,6 +41,7 @@ public class StudentHomeFragment extends Fragment {
 
     private Spinner dateTypesSpinner;
     private LineChart lineChart;
+
     @SuppressLint("StaticFieldLeak")
     static StudentHomeFragment fragment = null;
 
@@ -114,6 +115,9 @@ public class StudentHomeFragment extends Fragment {
         // do not forget to refresh the chart
         // lineChart.invalidate();
         lineChart.animateX(750);
+
+        // hide dataset name and legend
+        lineChart.getLegend().setEnabled(false);
     }
 
     private LineData generateDataLine(int cnt) {
@@ -124,7 +128,7 @@ public class StudentHomeFragment extends Fragment {
             values1.add(new Entry(i, (int) (Math.random() * 65) + 40));
         }
 
-        LineDataSet dataSet = new LineDataSet(values1, "New DataSet " + cnt + ", (1)");
+        LineDataSet dataSet = new LineDataSet(values1, "");
         dataSet.setLineWidth(2.5f);
         dataSet.setCircleRadius(4.5f);
         dataSet.setHighLightColor(Color.BLACK);
