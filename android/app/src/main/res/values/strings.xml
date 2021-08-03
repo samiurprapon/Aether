@@ -15,6 +15,8 @@
     <string name="demo_course_progress_value">83%</string>
     <string name="demo_course_complete">11</string>
     <string name="demo_course_name">Bio-organic Chemistry I</string>
+    <string name="demo_course_name_2">Software Engineering</string>
+    <string name="demo_course_instructor">Jesse Pinkman</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Authentication   -->
@@ -49,5 +51,6 @@
     <string name="title_course_study_materials">what will we\nstudy today?</string>
     <string name="title_ongoing_course">Ongoing</string>
     <string name="title_archived_course">Archive</string>
+    <string name="title_by">by</string>
 
 </resources>

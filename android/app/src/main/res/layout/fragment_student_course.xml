@@ -11,6 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="14dp"
+    android:scrollbars="none"
     tools:context=".views.fragments.StudentCourseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,8 +53,8 @@
                 app:layout_constraintStart_toStartOf="@+id/tv_banner_title" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextAppearance.AppCompat.Medium"
                 android:id="@+id/tv_banner_title"
+                style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -71,13 +72,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.94" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <!--    Course options    -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_ongoing_course"
+            android:id="@+id/mb_ongoing_course"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_banner" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_archive"
+            android:id="@+id/mb_archive_course"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,22 +102,25 @@
             android:text="@string/title_archived_course"
             android:textAllCaps="false"
             android:textColor="#B3B3B3"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_ongoing_course"
+            app:layout_constraintBottom_toBottomOf="@+id/mb_ongoing_course"
             app:layout_constraintEnd_toEndOf="@+id/cl_banner"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/btn_ongoing_course"
-            app:layout_constraintTop_toTopOf="@+id/btn_ongoing_course" />
+            app:layout_constraintStart_toEndOf="@+id/mb_ongoing_course"
+            app:layout_constraintTop_toTopOf="@+id/mb_ongoing_course" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_course"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
+            tools:listitem="@layout/item_ongoing_course"
+            tools:itemCount="5"
+            app:layout_constraintHeight_percent=".65"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/cl_banner"
             app:layout_constraintStart_toStartOf="@+id/cl_banner"
-            app:layout_constraintTop_toBottomOf="@+id/btn_ongoing_course" />
+            app:layout_constraintTop_toBottomOf="@+id/mb_ongoing_course" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

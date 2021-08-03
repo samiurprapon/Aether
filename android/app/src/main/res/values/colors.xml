@@ -342,5 +342,6 @@
     <color name="curved_home_item_bg_color">#F5F5F7</color>
     <color name="spinner_text_color_1">#1D1D1D</color>
     <color name="spinner_bg_color_1">#F3F3F3</color>
+    <color name="card_color">#F5F5F7</color>
 
 </resources>

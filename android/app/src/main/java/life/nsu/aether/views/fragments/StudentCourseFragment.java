@@ -7,6 +7,7 @@
 
 package life.nsu.aether.views.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,30 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.button.MaterialButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import life.nsu.aether.R;
+import life.nsu.aether.models.Course;
+import life.nsu.aether.utils.adapters.CourseRecyclerAdapter;
 
 
 public class StudentCourseFragment extends Fragment {
 
+    MaterialButton mOngoing;
+    MaterialButton mArchived;
+    MaterialButton mStudy;
+    RecyclerView recyclerView;
+
+    List<Course> courseList;
+
+    CourseRecyclerAdapter adapter;
     static StudentCourseFragment fragment = null;
 
     public static StudentCourseFragment newInstance() {
@@ -42,7 +61,61 @@ public class StudentCourseFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        mOngoing = view.findViewById(R.id.mb_ongoing_course);
+        mArchived = view.findViewById(R.id.mb_archive_course);
+        mStudy = view.findViewById(R.id.mb_start_study);
+        recyclerView = view.findViewById(R.id.rv_course);
 
+        // course adapter initialized
+        adapter = new CourseRecyclerAdapter(getContext());
+
+        // initialize courses
+        courseList = new ArrayList<>();
+
+        mOngoing.setEnabled(false);
+
+        initializeRecyclerView();
+
+        mStudy.setOnClickListener(v -> {
+            // Go to immediate next course material
+            // immediate next course will be selected with respect to time
+        });
+
+        mArchived.setOnClickListener(v -> {
+            mArchived.setEnabled(false);
+            mOngoing.setEnabled(true);
+
+            mOngoing.setTextColor(Color.parseColor("#B3B3B3"));
+            mArchived.setTextColor(Color.parseColor("#000000"));
+        });
+
+        mOngoing.setOnClickListener(v -> {
+            mOngoing.setEnabled(false);
+            mArchived.setEnabled(true);
+
+            mArchived.setTextColor(Color.parseColor("#B3B3B3"));
+            mOngoing.setTextColor(Color.parseColor("#000000"));
+        });
     }
 
+    private void initializeRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setNestedScrollingEnabled(true);
+
+        getCourseList();
+
+        adapter.setCourseList(courseList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void getCourseList() {
+        courseList.clear();
+
+        courseList.add(new Course("Software Engineering", false, "Jesse Pinkman"));
+        courseList.add(new Course("Discrete Mathematics", false, "Christopher Nolan"));
+        courseList.add(new Course("Bio-organic Chemistry I", false, "Walter White"));
+        courseList.add(new Course("Engineering Drawing", false, " Leonardo da Vinci"));
+        courseList.add(new Course("Data Structures  and Algorithm", false, "David Green"));
+    }
 }
