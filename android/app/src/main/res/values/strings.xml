@@ -53,4 +53,10 @@
     <string name="title_archived_course">Archive</string>
     <string name="title_by">by</string>
 
+    <!--  Student Class Fragment  -->
+    <string name="title_today_class">Today\’s Class</string>
+    <string name="title_class_recordings">Class Recordings</string>
+    <string name="title_no_classes">No classes</string>
+    <string name="description_no_class">No classes left to attend</string>
+
 </resources>

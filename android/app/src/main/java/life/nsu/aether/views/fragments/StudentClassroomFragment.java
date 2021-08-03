@@ -7,6 +7,7 @@
 
 package life.nsu.aether.views.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +17,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.button.MaterialButton;
+
 import life.nsu.aether.R;
 
 
 public class StudentClassroomFragment extends Fragment {
+
+    MaterialButton mClasses;
+    MaterialButton mRecordings;
 
     static StudentClassroomFragment fragment = null;
 
@@ -42,6 +48,26 @@ public class StudentClassroomFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        mClasses = view.findViewById(R.id.mb_today_class);
+        mRecordings = view.findViewById(R.id.mb_class_recording);
 
+        mClasses.setEnabled(false);
+
+
+        mRecordings.setOnClickListener(v -> {
+            mRecordings.setEnabled(false);
+            mClasses.setEnabled(true);
+
+            mClasses.setTextColor(Color.parseColor("#B3B3B3"));
+            mRecordings.setTextColor(Color.parseColor("#000000"));
+        });
+
+        mClasses.setOnClickListener(v -> {
+            mClasses.setEnabled(false);
+            mRecordings.setEnabled(true);
+
+            mRecordings.setTextColor(Color.parseColor("#B3B3B3"));
+            mClasses.setTextColor(Color.parseColor("#000000"));
+        });
     }
 }
