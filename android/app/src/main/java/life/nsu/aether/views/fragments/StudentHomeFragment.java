@@ -146,7 +146,7 @@ public class StudentHomeFragment extends Fragment {
         dateTypesArrayList.add("Daily");
         dateTypesArrayList.add("Weekly");
         dateTypesArrayList.add("Monthly");
-        dateTypesArrayList.add("Yearly");
+        dateTypesArrayList.add("Semester");
 
         ArrayAdapter spinnerAdapter = new ArrayAdapter(getActivity(), R.layout.custom_spinner_view,
                 dateTypesArrayList);

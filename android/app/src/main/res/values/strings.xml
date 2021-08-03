@@ -59,4 +59,10 @@
     <string name="title_no_classes">No classes</string>
     <string name="description_no_class">No classes left to attend</string>
 
+    <!--  Student exam Fragment  -->
+    <string name="title_assigned_tasks">Assigned tasks</string>
+    <string name="title_already_submitted">Already Submitted</string>
+    <string name="title_no_tasks">No tasks left</string>
+    <string name="description_no_tasks">You’ve done a great job</string>
+
 </resources>
