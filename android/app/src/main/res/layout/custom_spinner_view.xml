@@ -8,7 +8,7 @@
     android:background="@drawable/spinner_bg"
     android:gravity="center"
     android:padding="6dp"
-    android:fontFamily="@font/baloo_bhai_regular"
+    android:fontFamily="@font/primary_bold"
     android:textColor="@color/spinner_text_color_1"
     android:textSize="14sp"
     app:drawableRightCompat="@drawable/ic_drop_down_24"
