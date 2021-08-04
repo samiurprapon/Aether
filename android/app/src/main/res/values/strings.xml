@@ -17,7 +17,6 @@
     <string name="demo_course_name">Bio-organic Chemistry I</string>
     <string name="demo_course_name_2">Software Engineering</string>
     <string name="demo_course_instructor">Jesse Pinkman</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Authentication   -->
     <string name="title_email_address">Email</string>
@@ -64,5 +63,13 @@
     <string name="title_already_submitted">Already Submitted</string>
     <string name="title_no_tasks">No tasks left</string>
     <string name="description_no_tasks">You’ve done a great job</string>
+
+    <!--  Student More Fragment  -->
+    <string name="placeholder_app_version">App version : 0.0.1</string>
+    <string name="title_app_settings">App Settings</string>
+    <string name="title_privacy_policy">Privacy Policy</string>
+    <string name="title_terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="logout">Logout</string>
+
 
 </resources>
