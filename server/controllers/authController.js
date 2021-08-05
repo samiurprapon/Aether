@@ -6,7 +6,7 @@ const config = require("../config/databaseSecrets.json");
 const register = (req, res) => {
   let user = {};
 
-  console.log(req.body);
+  // console.log(req.body);
 
   user.email = req.body.email;
   user.password = req.body.password;
@@ -46,6 +46,7 @@ const login = (req, res) => {
       if (!credential) {
         res.status(400);
         res.send({
+          success: false,
           message: "invalid credentials!",
         });
       } else if (credential.validPassword(req.body.password)) {
@@ -75,6 +76,7 @@ const login = (req, res) => {
           .then((_result) => {
             res.status(200);
             res.send({
+              success: true,
               message: "Login successfully!",
               type: credential.type,
               accessToken: token.accessToken,
@@ -84,6 +86,7 @@ const login = (req, res) => {
           .catch((err) => {
             res.status(403);
             res.send({
+              success: false,
               messasge: "Server failed!",
             });
           });
@@ -91,6 +94,7 @@ const login = (req, res) => {
         // wrong passwrord
         res.status(401);
         res.send({
+          success: false,
           message: "invalid credentials!",
         });
       }
@@ -98,6 +102,7 @@ const login = (req, res) => {
     .catch((err) => {
       res.status(401);
       res.send({
+        success: false,
         message: "Login failed!",
       });
     });
