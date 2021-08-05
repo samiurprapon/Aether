@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkingService {
 
     private static NetworkingService mInstance = null;
-    public Retrofit retrofit;
+    Retrofit retrofit;
 
     public static synchronized NetworkingService getInstance() {
         if (mInstance == null) {
@@ -28,6 +28,10 @@ public class NetworkingService {
 
     public ServerEndpoints getRoute() {
         return retrofit.create(ServerEndpoints.class);
+    }
+
+    public Retrofit getRetrofit() {
+        return retrofit;
     }
 
     private NetworkingService() {

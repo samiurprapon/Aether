@@ -36,7 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
     RadioGroup mType;
     MaterialButton mSignUp;
 
-    private String type;
+    private String type = "student";
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -67,18 +67,15 @@ public class RegistrationActivity extends AppCompatActivity {
             }
 
 //            mSignUp.setError(null);
-            new Handler(Looper.myLooper()).postDelayed(() -> {
-                viewModel.getMessageResponseLiveData(email, password, type).observe(this, messageResponse -> {
-                    progressBar.hide();
+            new Handler(Looper.myLooper()).postDelayed(() -> viewModel.getMessageResponseLiveData(email, password, type).observe(this, messageResponse -> {
+                progressBar.hide();
 
-                    viewModel.switchActivity(messageResponse);
-                });
-            }, 250);
+                viewModel.switchActivity(messageResponse);
+            }), 250);
 
         });
 
         mType.setOnCheckedChangeListener((group, checkedId) -> {
-
             if (checkedId == R.id.rb_teacher) {
                 type = "teacher";
             } else {

@@ -9,7 +9,6 @@
 package life.nsu.aether;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -27,9 +26,8 @@ public class SplashActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(SplashActivityViewModel.class);
 
-//        TODO Replace Observer with SingleTaskObserver
         viewModel.getRefreshResponseMutableLiveData().observe(this, refreshResponse -> {
-            Log.d("refreshResponse", refreshResponse.getMessage() +" " + refreshResponse.isSuccess() + " " + refreshResponse.getAccessToken());
+//            Log.d("refreshResponse", refreshResponse.getMessage() +" " + refreshResponse.isSuccess() + " " + refreshResponse.getAccessToken());
             viewModel.switchActivity(refreshResponse);
         });
     }

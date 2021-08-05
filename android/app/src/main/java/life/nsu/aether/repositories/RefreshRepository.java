@@ -8,13 +8,9 @@
 package life.nsu.aether.repositories;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -59,15 +55,15 @@ public class RefreshRepository {
             public void onResponse(@NonNull Call<RefreshResponse> call, @NonNull Response<RefreshResponse> response) {
                 if (response.body() != null) {
                     refreshResponseMutableLiveData.postValue(response.body());
-                    Log.d("refreshResponse", response.body().getMessage() +" " + response.body().isSuccess() + " " + response.body().getAccessToken());
+//                    Log.d("refreshResponse", response.body().getMessage() + " " + response.body().isSuccess() + " " + response.body().getAccessToken());
                 }
-                if(response.errorBody() != null){
-                    Converter<ResponseBody, RefreshResponse> converter
-                            = NetworkingService.getInstance().retrofit
+
+                if (response.errorBody() != null) {
+                    Converter<ResponseBody, RefreshResponse> converter = NetworkingService.getInstance().getRetrofit()
                             .responseBodyConverter(RefreshResponse.class, new Annotation[0]);
-                    RefreshResponse errorResponse = null;
+
                     try {
-                        errorResponse = converter.convert(response.errorBody());
+                        RefreshResponse errorResponse = converter.convert(response.errorBody());
                         refreshResponseMutableLiveData.postValue(errorResponse);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -78,7 +74,7 @@ public class RefreshRepository {
 
             @Override
             public void onFailure(@NonNull Call<RefreshResponse> call, @NonNull Throwable t) {
-                Log.d("refreshResponse", t.getMessage());
+//                Log.d("refreshResponse", t.getMessage());
                 refreshResponseMutableLiveData.postValue(new RefreshResponse(false, t.getMessage(), ""));
             }
         });

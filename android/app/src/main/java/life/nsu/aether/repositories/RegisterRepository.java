@@ -8,16 +8,20 @@
 package life.nsu.aether.repositories;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+
 import life.nsu.aether.utils.networking.NetworkingService;
 import life.nsu.aether.utils.networking.requests.RegistrationRequest;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Converter;
 import retrofit2.Response;
 
 public class RegisterRepository {
@@ -42,7 +46,7 @@ public class RegisterRepository {
         mutableMessage = new MutableLiveData<>();
     }
 
-    public MutableLiveData<MessageResponse>  getMutableMessage(String email, String password, String type) {
+    public MutableLiveData<MessageResponse> getMutableMessage(String email, String password, String type) {
         Call<MessageResponse> call = NetworkingService.getInstance()
                 .getRoute()
                 .registration(new RegistrationRequest(email, password, type));
@@ -50,15 +54,27 @@ public class RegisterRepository {
         call.enqueue(new Callback<MessageResponse>() {
             @Override
             public void onResponse(@NonNull Call<MessageResponse> call, @NonNull Response<MessageResponse> response) {
-                if (response.code() == 201 && response.body() != null) {
+                if (response.body() != null) {
                     mutableMessage.postValue(response.body());
+                }
+
+                if (response.errorBody() != null) {
+                    Converter<ResponseBody, MessageResponse> converter = NetworkingService.getInstance().getRetrofit()
+                            .responseBodyConverter(MessageResponse.class, new Annotation[0]);
+
+                    try {
+                        MessageResponse errorResponse = converter.convert(response.errorBody());
+                        mutableMessage.postValue(errorResponse);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<MessageResponse> call, @NonNull Throwable t) {
-                Log.d("messageResponse", "onFailure: "+t.getMessage());
-                mutableMessage.postValue(new MessageResponse(false, "Failed to register"));
+//                Log.d("messageResponse", "onFailure: " + t.getMessage());
+                mutableMessage.postValue(new MessageResponse(false, t.getMessage()));
             }
         });
 
