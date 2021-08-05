@@ -29,7 +29,7 @@
     <string name="title_register">Register</string>
     <string name="title_existing_member">Already a member?</string>
     <string name="sign_in">Sign in</string>
-    <string name="forget_password">Forget Password?</string>
+    <string name="forget_password">Forgot Password?</string>
 
     <!--  Bottom Navigation  -->
     <string name="nav_item_home">Home</string>

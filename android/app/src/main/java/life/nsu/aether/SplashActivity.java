@@ -8,14 +8,13 @@
 
 package life.nsu.aether;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import life.nsu.aether.viewModels.SplashActivityViewModel;
-import life.nsu.aether.views.home.StudentHomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,7 +27,19 @@ public class SplashActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(SplashActivityViewModel.class);
 
-        // Temporary redirect for test purposes
-        startActivity(new Intent(SplashActivity.this, StudentHomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+//        TODO Replace Observer with SingleTaskObserver
+        viewModel.getRefreshResponseMutableLiveData().observe(this, refreshResponse -> {
+            Log.d("refreshResponse", refreshResponse.getMessage() +" " + refreshResponse.isSuccess() + " " + refreshResponse.getAccessToken());
+            viewModel.switchActivity(refreshResponse);
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if(viewModel.getRefreshResponseMutableLiveData().hasActiveObservers()) {
+            viewModel.getRefreshResponseMutableLiveData().removeObservers(this);
+        }
     }
 }

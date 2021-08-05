@@ -1,27 +1,29 @@
 /*
- * MessageResponse Created by Samiur Prapon
- * Last modified  6/1/21 8:14 AM
+ * RefreshResponse Created by Samiur Prapon
+ * Last modified  8/5/21, 7:53 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
 package life.nsu.aether.utils.networking.responses;
 
-public class MessageResponse {
+public class RefreshResponse {
     private boolean success;
     private String message;
+    private String accessToken;
 
-    public MessageResponse(String message) {
-        this.message = message;
-    }
-
-    public MessageResponse(boolean success, String message) {
+    public RefreshResponse(boolean success, String message, String accessToken) {
         this.success = success;
         this.message = message;
+        this.accessToken = accessToken;
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
     }
 
     public boolean isSuccess() {

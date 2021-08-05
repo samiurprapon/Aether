@@ -9,8 +9,10 @@ package life.nsu.aether.utils.networking;
 
 import life.nsu.aether.utils.networking.requests.RegistrationRequest;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
+import life.nsu.aether.utils.networking.responses.RefreshResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ServerEndpoints {
@@ -18,5 +20,7 @@ public interface ServerEndpoints {
     @POST("auth/register")
     Call<MessageResponse> registration(@Body RegistrationRequest request);
 
+    @POST("auth/refresh")
+    Call<RefreshResponse> refreshSession(@Header("Authorization") String refreshToken);
 
 }

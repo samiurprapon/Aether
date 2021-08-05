@@ -8,18 +8,27 @@
 package life.nsu.aether.viewModels;
 
 import android.app.Application;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import java.util.Objects;
+
 import life.nsu.aether.repositories.RegisterRepository;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
+import life.nsu.aether.utils.networking.responses.RefreshResponse;
+import life.nsu.aether.views.LoginActivity;
+import life.nsu.aether.views.home.StudentHomeActivity;
 
 public class RegistrationActivityViewModel extends AndroidViewModel {
 
     RegisterRepository registerRepository;
-    private LiveData<MessageResponse> messageResponseLiveData;
 
     public RegistrationActivityViewModel(@NonNull Application application) {
         super(application);
@@ -27,15 +36,22 @@ public class RegistrationActivityViewModel extends AndroidViewModel {
         registerRepository = RegisterRepository.getInstance(application);
     }
 
-    public void initialize() {
-        messageResponseLiveData = registerRepository.getMutableMessage();
+    public LiveData<MessageResponse> getMessageResponseLiveData(String email, String password, String type) {
+        return registerRepository.getMutableMessage(email, password, type);
     }
 
-    public void register(String email, String password, String type) {
-        registerRepository.register(email, password, type);
-    }
+    public void switchActivity(MessageResponse messageResponse) {
+        new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
 
-    public LiveData<MessageResponse> getMessageResponseLiveData() {
-        return messageResponseLiveData;
+            if (messageResponse.isSuccess()) {
+                Intent intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                getApplication().getApplicationContext().startActivity(intent);
+            } else {
+                Log.d("messageResponse", messageResponse.getMessage()+" "+messageResponse.isSuccess());
+                Toast.makeText(getApplication().getApplicationContext(), ""+messageResponse.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        }, 250);
     }
 }

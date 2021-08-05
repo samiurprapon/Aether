@@ -50,7 +50,7 @@ server.use("/api/teacher/course", courseRoutes.router);
 // routing ends
 
 Sequelize.sync({
-  force: true,
+  force: false,
 })
   .then(() => {
     server.listen(port, () => {

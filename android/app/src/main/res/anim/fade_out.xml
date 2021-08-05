@@ -1,0 +1,14 @@
+<!--
+  ~ Created by Samiur Prapon on 3/7/21 12:12 AM
+  ~ Last modified 12/31/20 12:08 PM
+  ~ Copyright (c) 2021. All rights reserved.
+  ~
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+    <alpha
+        android:duration="500"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0" />
+</set>

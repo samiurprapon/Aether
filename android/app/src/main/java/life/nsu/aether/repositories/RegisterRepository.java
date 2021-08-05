@@ -8,6 +8,7 @@
 package life.nsu.aether.repositories;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -21,9 +22,9 @@ import retrofit2.Response;
 
 public class RegisterRepository {
 
-    private Application application;
+    Application application;
 
-    private MutableLiveData<MessageResponse> mutableMessage;
+    MutableLiveData<MessageResponse> mutableMessage;
 
     private static RegisterRepository registerRepository = null;
 
@@ -41,7 +42,7 @@ public class RegisterRepository {
         mutableMessage = new MutableLiveData<>();
     }
 
-    public void register(String email, String password, String type) {
+    public MutableLiveData<MessageResponse>  getMutableMessage(String email, String password, String type) {
         Call<MessageResponse> call = NetworkingService.getInstance()
                 .getRoute()
                 .registration(new RegistrationRequest(email, password, type));
@@ -56,12 +57,11 @@ public class RegisterRepository {
 
             @Override
             public void onFailure(@NonNull Call<MessageResponse> call, @NonNull Throwable t) {
-                mutableMessage.postValue(new MessageResponse("Failed to register"));
+                Log.d("messageResponse", "onFailure: "+t.getMessage());
+                mutableMessage.postValue(new MessageResponse(false, "Failed to register"));
             }
         });
-    }
 
-    public MutableLiveData<MessageResponse> getMutableMessage() {
         return mutableMessage;
     }
 }

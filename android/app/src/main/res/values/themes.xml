@@ -21,6 +21,13 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="CustomProgressBarTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
     <style name="SpinnerTheme" parent="Widget.AppCompat.Spinner.Underlined">
         <item name="android:paddingStart">0dp</item>
         <item name="android:paddingEnd">0dp</item>

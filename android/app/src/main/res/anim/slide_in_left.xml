@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Created by Samiur Prapon on 3/7/21 12:12 AM
+  ~ Last modified 12/31/20 12:08 PM
+  ~ Copyright (c) 2021. All rights reserved.
+  ~
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="@android:integer/config_mediumAnimTime"
+        android:fromXDelta="-100%p"
+        android:toXDelta="0" />
+</set>

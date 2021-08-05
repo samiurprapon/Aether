@@ -6,6 +6,8 @@ const config = require("../config/databaseSecrets.json");
 const register = (req, res) => {
   let user = {};
 
+  console.log(req.body);
+
   user.email = req.body.email;
   user.password = req.body.password;
   user.type = req.body.type;
@@ -18,6 +20,7 @@ const register = (req, res) => {
     .then((result) => {
       res.status(201);
       res.send({
+        success: true,
         message: "Signed up successfully!",
       });
     })
@@ -25,6 +28,7 @@ const register = (req, res) => {
       // err.errors.map(e => console.log(e.message))
       res.status(400);
       res.send({
+        success: false,
         message: "Email must be unique!",
       });
     });
@@ -128,13 +132,15 @@ const refresh = (req, res) => {
   if (token) {
     res.status(200);
     res.send({
+      success: true,
       message: "Token refreshed Successfully!",
       accessToken: "Bearer " + token.accessToken,
     });
   } else {
     res.status(403);
     res.send({
-      message: "Unauthozized access!",
+      success: false,
+      message: "Unauthorized access!",
     });
   }
 };
@@ -142,11 +148,9 @@ const refresh = (req, res) => {
 const deAuth = (req, res) => {
   let user = res.locals.user;
 
-  Credential.update(
-    {
+  Credential.update({
       token: null,
-    },
-    {
+    }, {
       where: {
         email: user.email,
       },
