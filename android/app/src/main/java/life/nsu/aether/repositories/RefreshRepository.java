@@ -17,11 +17,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 
 import life.nsu.aether.utils.networking.NetworkingService;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Converter;
 import retrofit2.Response;
 
 public class RefreshRepository {
@@ -57,19 +60,18 @@ public class RefreshRepository {
                 if (response.body() != null) {
                     refreshResponseMutableLiveData.postValue(response.body());
                     Log.d("refreshResponse", response.body().getMessage() +" " + response.body().isSuccess() + " " + response.body().getAccessToken());
-
                 }
-
                 if(response.errorBody() != null){
+                    Converter<ResponseBody, RefreshResponse> converter
+                            = NetworkingService.getInstance().retrofit
+                            .responseBodyConverter(RefreshResponse.class, new Annotation[0]);
+                    RefreshResponse errorResponse = null;
                     try {
-                        JSONObject errorObject = new JSONObject(response.errorBody().string());
-                        refreshResponseMutableLiveData.postValue(new RefreshResponse(false, "Login first!", ""));
-                        Log.d("refreshResponse", " "+errorObject);
-
-                    } catch (JSONException | IOException e) {
+                        errorResponse = converter.convert(response.errorBody());
+                        refreshResponseMutableLiveData.postValue(errorResponse);
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
 
             }
