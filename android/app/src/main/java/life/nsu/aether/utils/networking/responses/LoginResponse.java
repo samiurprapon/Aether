@@ -12,6 +12,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class LoginResponse {
 
+    @SerializedName("success")
+    @Expose()
+    private boolean success;
+
     @SerializedName("message")
     @Expose()
     private String message;
@@ -27,6 +31,15 @@ public class LoginResponse {
     @SerializedName("type")
     @Expose()
     private String type;
+
+    public LoginResponse(boolean success, String message) {
+        this.success = success;
+        this.message = message;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
 
     public String getMessage() {
         return message;

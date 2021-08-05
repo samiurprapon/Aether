@@ -17,6 +17,7 @@ public class Preference {
 
     String refreshToken;
     String accessToken;
+    String type;
 
     public Preference(Application application) {
         this.application = application;
@@ -39,5 +40,15 @@ public class Preference {
 
     public void setAccessToken(String accessToken) {
         authPreferences.edit().putString("accessToken", accessToken).apply();
+    }
+
+    public String getType() {
+        type = authPreferences.getString("type", null);
+        return type;
+    }
+
+    public void setType(String type) {
+        authPreferences.edit().putString("type", type).apply();
+
     }
 }
