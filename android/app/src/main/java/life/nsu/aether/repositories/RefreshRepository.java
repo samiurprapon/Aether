@@ -8,9 +8,15 @@
 package life.nsu.aether.repositories;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import life.nsu.aether.utils.networking.NetworkingService;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
@@ -48,14 +54,30 @@ public class RefreshRepository {
         call.enqueue(new Callback<RefreshResponse>() {
             @Override
             public void onResponse(@NonNull Call<RefreshResponse> call, @NonNull Response<RefreshResponse> response) {
-                if (response.code() == 200 && response.body() != null) {
+                if (response.body() != null) {
                     refreshResponseMutableLiveData.postValue(response.body());
+                    Log.d("refreshResponse", response.body().getMessage() +" " + response.body().isSuccess() + " " + response.body().getAccessToken());
+
                 }
+
+                if(response.errorBody() != null){
+                    try {
+                        JSONObject errorObject = new JSONObject(response.errorBody().string());
+                        refreshResponseMutableLiveData.postValue(new RefreshResponse(false, "Login first!", ""));
+                        Log.d("refreshResponse", " "+errorObject);
+
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
             }
 
             @Override
             public void onFailure(@NonNull Call<RefreshResponse> call, @NonNull Throwable t) {
-                refreshResponseMutableLiveData.postValue(new RefreshResponse(false, "Unauthorized access!", ""));
+                Log.d("refreshResponse", t.getMessage());
+                refreshResponseMutableLiveData.postValue(new RefreshResponse(false, t.getMessage(), ""));
             }
         });
 
