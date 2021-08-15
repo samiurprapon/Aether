@@ -1,11 +1,11 @@
 /*
  * RegistrationActivity Created by Samiur Prapon
- * Last modified  6/23/21, 12:54 PM
+ * Last modified  8/6/21, 1:21 AM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.views;
+package life.nsu.aether.views.authentication;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -23,11 +23,11 @@ import java.util.Objects;
 
 import life.nsu.aether.R;
 import life.nsu.aether.utils.CustomProgressBar;
-import life.nsu.aether.viewModels.RegistrationActivityViewModel;
+import life.nsu.aether.viewModels.authentication.RegistrationViewModel;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private RegistrationActivityViewModel viewModel;
+    private RegistrationViewModel viewModel;
     CustomProgressBar progressBar;
 
     private TextInputEditText mEmail;
@@ -52,7 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mType = findViewById(R.id.radioGroup);
         mSignUp = findViewById(R.id.mb_sign_up);
 
-        viewModel = new ViewModelProvider(this).get(RegistrationActivityViewModel.class);
+        viewModel = new ViewModelProvider(this).get(RegistrationViewModel.class);
         progressBar = new CustomProgressBar(this);
 
         mSignUp.setOnClickListener(v -> {

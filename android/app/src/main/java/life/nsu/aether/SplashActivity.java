@@ -13,18 +13,18 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import life.nsu.aether.viewModels.SplashActivityViewModel;
+import life.nsu.aether.viewModels.SplashViewModel;
 
 public class SplashActivity extends AppCompatActivity {
 
-    SplashActivityViewModel viewModel;
+    SplashViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        viewModel = new ViewModelProvider(this).get(SplashActivityViewModel.class);
+        viewModel = new ViewModelProvider(this).get(SplashViewModel.class);
 
         viewModel.getRefreshResponseMutableLiveData().observe(this, refreshResponse -> {
 //            Log.d("refreshResponse", refreshResponse.getMessage() +" " + refreshResponse.isSuccess() + " " + refreshResponse.getAccessToken());

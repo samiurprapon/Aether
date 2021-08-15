@@ -1,11 +1,11 @@
 /*
  * RegistrationActivityViewModel Created by Samiur Prapon
- * Last modified  6/1/21 9:36 AM
+ * Last modified  8/15/21, 12:05 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.viewModels;
+package life.nsu.aether.viewModels.authentication;
 
 import android.app.Application;
 import android.content.Intent;
@@ -22,15 +22,13 @@ import java.util.Objects;
 
 import life.nsu.aether.repositories.RegisterRepository;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
-import life.nsu.aether.utils.networking.responses.RefreshResponse;
-import life.nsu.aether.views.LoginActivity;
-import life.nsu.aether.views.home.StudentHomeActivity;
+import life.nsu.aether.views.authentication.LoginActivity;
 
-public class RegistrationActivityViewModel extends AndroidViewModel {
+public class RegistrationViewModel extends AndroidViewModel {
 
     RegisterRepository registerRepository;
 
-    public RegistrationActivityViewModel(@NonNull Application application) {
+    public RegistrationViewModel(@NonNull Application application) {
         super(application);
 
         registerRepository = RegisterRepository.getInstance(application);

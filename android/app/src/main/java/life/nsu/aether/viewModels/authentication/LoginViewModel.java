@@ -1,11 +1,11 @@
 /*
  * LoginViewModel Created by Samiur Prapon
- * Last modified  8/6/21, 1:26 AM
+ * Last modified  8/15/21, 12:05 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.viewModels;
+package life.nsu.aether.viewModels.authentication;
 
 import android.app.Application;
 import android.content.Intent;
@@ -23,7 +23,7 @@ import java.util.Objects;
 import life.nsu.aether.repositories.LoginRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
-import life.nsu.aether.views.home.StudentHomeActivity;
+import life.nsu.aether.views.student.StudentHomeActivity;
 
 public class LoginViewModel extends AndroidViewModel {
     LoginRepository loginRepository;

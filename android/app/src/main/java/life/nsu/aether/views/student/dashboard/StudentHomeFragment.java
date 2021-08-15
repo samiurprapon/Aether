@@ -1,11 +1,11 @@
 /*
  * StudentHomeFragment Created by Samiur Prapon
- * Last modified  7/30/21, 6:23 PM
+ * Last modified  8/4/21, 5:58 AM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.views.fragments;
+package life.nsu.aether.views.student.dashboard;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;

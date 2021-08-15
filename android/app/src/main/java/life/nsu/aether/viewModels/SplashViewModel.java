@@ -21,15 +21,15 @@ import java.util.Objects;
 import life.nsu.aether.repositories.RefreshRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
-import life.nsu.aether.views.LoginActivity;
-import life.nsu.aether.views.home.StudentHomeActivity;
+import life.nsu.aether.views.authentication.LoginActivity;
+import life.nsu.aether.views.student.StudentHomeActivity;
 
-public class SplashActivityViewModel extends AndroidViewModel {
+public class SplashViewModel extends AndroidViewModel {
 
     RefreshRepository refreshRepository;
     Preference preference;
 
-    public SplashActivityViewModel(@NonNull Application application) {
+    public SplashViewModel(@NonNull Application application) {
         super(application);
 
 

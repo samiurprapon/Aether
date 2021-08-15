@@ -49,6 +49,9 @@ public class Preference {
 
     public void setType(String type) {
         authPreferences.edit().putString("type", type).apply();
+    }
 
+    public void clearAuth() {
+        authPreferences.edit().clear().apply();
     }
 }

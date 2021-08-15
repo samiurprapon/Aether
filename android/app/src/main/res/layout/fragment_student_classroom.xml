@@ -14,7 +14,7 @@
     android:paddingEnd="14dp"
     android:paddingBottom="14dp"
     android:scrollbars="none"
-    tools:context=".views.fragments.StudentClassroomFragment">
+    tools:context=".views.student.classroom.StudentClassroomFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

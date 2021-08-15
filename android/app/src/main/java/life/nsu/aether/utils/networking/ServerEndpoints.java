@@ -28,4 +28,7 @@ public interface ServerEndpoints {
     @POST("auth/refresh")
     Call<RefreshResponse> refreshSession(@Header("Authorization") String refreshToken);
 
+    @POST("auth/logout")
+    Call<MessageResponse> deAuthentication(@Header("Authorization") String accessToken);
+
 }

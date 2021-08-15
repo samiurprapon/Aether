@@ -1,11 +1,11 @@
 /*
  * StudentExamFragment Created by Samiur Prapon
- * Last modified  7/30/21, 6:23 PM
+ * Last modified  8/4/21, 5:38 AM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.views.fragments;
+package life.nsu.aether.views.student.examination;
 
 import android.graphics.Color;
 import android.os.Bundle;

@@ -12,7 +12,7 @@
     android:layout_height="wrap_content"
     android:padding="14dp"
     android:scrollbars="none"
-    tools:context=".views.fragments.StudentCourseFragment">
+    tools:context=".views.student.course.StudentCourseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

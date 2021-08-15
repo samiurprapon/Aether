@@ -1,11 +1,11 @@
 /*
  * StudentHomeActivity Created by Samiur Prapon
- * Last modified  7/30/21, 6:23 PM
+ * Last modified  8/5/21, 9:01 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.views.home;
+package life.nsu.aether.views.student;
 
 import android.os.Bundle;
 
@@ -16,11 +16,11 @@ import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 
 import life.nsu.aether.R;
 import life.nsu.aether.utils.adapters.ViewPagerAdapter;
-import life.nsu.aether.views.fragments.StudentClassroomFragment;
-import life.nsu.aether.views.fragments.StudentCourseFragment;
-import life.nsu.aether.views.fragments.StudentExamFragment;
-import life.nsu.aether.views.fragments.StudentHomeFragment;
-import life.nsu.aether.views.fragments.StudentMoreFragment;
+import life.nsu.aether.views.student.classroom.StudentClassroomFragment;
+import life.nsu.aether.views.student.course.StudentCourseFragment;
+import life.nsu.aether.views.student.examination.StudentExamFragment;
+import life.nsu.aether.views.student.dashboard.StudentHomeFragment;
+import life.nsu.aether.views.student.options.StudentMoreFragment;
 
 public class StudentHomeActivity extends AppCompatActivity {
 

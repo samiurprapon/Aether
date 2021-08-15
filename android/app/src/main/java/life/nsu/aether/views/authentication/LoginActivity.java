@@ -1,11 +1,11 @@
 /*
  * LoginActivity Created by Samiur Prapon
- * Last modified  7/15/21, 7:39 AM
+ * Last modified  8/6/21, 1:50 AM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.views;
+package life.nsu.aether.views.authentication;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,7 +27,7 @@ import java.util.Objects;
 
 import life.nsu.aether.R;
 import life.nsu.aether.utils.CustomProgressBar;
-import life.nsu.aether.viewModels.LoginViewModel;
+import life.nsu.aether.viewModels.authentication.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 

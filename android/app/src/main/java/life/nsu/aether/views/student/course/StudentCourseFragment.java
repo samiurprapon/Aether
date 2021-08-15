@@ -1,11 +1,11 @@
 /*
  * StudentCourseFragment Created by Samiur Prapon
- * Last modified  7/30/21, 6:23 PM
+ * Last modified  8/15/21, 12:08 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
-package life.nsu.aether.views.fragments;
+package life.nsu.aether.views.student.course;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -28,6 +28,7 @@ import java.util.List;
 import life.nsu.aether.R;
 import life.nsu.aether.models.Course;
 import life.nsu.aether.utils.adapters.CourseRecyclerAdapter;
+import life.nsu.aether.views.student.dashboard.StudentHomeFragment;
 
 
 public class StudentCourseFragment extends Fragment {

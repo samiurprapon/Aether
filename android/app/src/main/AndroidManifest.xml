@@ -20,9 +20,9 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Aether"
         tools:ignore="AllowBackup">
-        <activity android:name=".views.home.StudentHomeActivity"/>
-        <activity android:name=".views.LoginActivity" />
-        <activity android:name=".views.RegistrationActivity" />
+        <activity android:name=".views.student.StudentHomeActivity"/>
+        <activity android:name=".views.authentication.LoginActivity" />
+        <activity android:name=".views.authentication.RegistrationActivity" />
         <activity
             android:name=".SplashActivity"
             android:launchMode="singleTask">
