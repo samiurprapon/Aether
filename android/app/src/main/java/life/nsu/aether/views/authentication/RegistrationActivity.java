@@ -1,6 +1,6 @@
 /*
  * RegistrationActivity Created by Samiur Prapon
- * Last modified  8/6/21, 1:21 AM
+ * Last modified  8/15/21, 3:22 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
@@ -33,8 +33,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextInputEditText mEmail;
     private TextInputEditText mPassword;
     private TextInputEditText mConfirmPassword;
+
     RadioGroup mType;
     MaterialButton mSignUp;
+    MaterialButton mLogin;
 
     private String type = "student";
 
@@ -51,6 +53,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mConfirmPassword = findViewById(R.id.et_confirm_password);
         mType = findViewById(R.id.radioGroup);
         mSignUp = findViewById(R.id.mb_sign_up);
+        mLogin = findViewById(R.id.mb_sign_in);
 
         viewModel = new ViewModelProvider(this).get(RegistrationViewModel.class);
         progressBar = new CustomProgressBar(this);
@@ -82,6 +85,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 type = "student";
             }
         });
+
+        mLogin.setOnClickListener(v -> onBackPressed());
     }
 
     private boolean validation(String password, String confirmPassword) {
