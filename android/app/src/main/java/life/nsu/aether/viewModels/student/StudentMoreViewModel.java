@@ -1,6 +1,6 @@
 /*
  * StudentMoreViewModel Created by Samiur Prapon
- * Last modified  8/15/21, 12:23 PM
+ * Last modified  8/15/21, 1:11 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
@@ -11,6 +11,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -50,7 +51,7 @@ public class StudentMoreViewModel extends AndroidViewModel {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 getApplication().getApplicationContext().startActivity(intent);
             } else {
-                // TODO set error alert
+                Toast.makeText(getApplication().getApplicationContext(), "request failed!", Toast.LENGTH_SHORT).show();
             }
 
         }, 250);
