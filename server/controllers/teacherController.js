@@ -6,7 +6,7 @@ const upsert = (req, res) => {
   // console.log(user);
 
   Teacher.upsert({
-    nsuID: req.body.nsuID,
+    initial: req.body.initial,
     name: req.body.name,
     sex: req.body.sex,
     uid: user.uid,

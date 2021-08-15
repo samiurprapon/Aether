@@ -6,7 +6,7 @@ const upsert = (req, res) => {
   // console.log(user);
 
   Student.upsert({
-    nsuID: req.body.nsuID,
+    studentID: req.body.studentID,
     name: req.body.name,
     sex: req.body.sex,
     uid: user.uid,
@@ -14,13 +14,15 @@ const upsert = (req, res) => {
     .then((student) => {
       res.status(201);
       res.send({
+        success: true,
         message: "Student Profile updated!",
-        student: student[0]
+        student: student[0],
       });
     })
     .catch((err) => {
       res.status(403);
       res.send({
+        success: false,
         message: "Profile update failed!",
       });
     });
@@ -38,20 +40,23 @@ const isCompleted = (req, res) => {
       if (student != null) {
         res.status(202);
         res.send({
+          success: true,
           isCompleted: true,
           message: "Profile verification is completed!",
         });
       } else {
         res.status(204);
         res.send({
+          success: true,
           isCompleted: false,
-          message: "Profile verification is completed!",
+          message: "Profile verification is not completed!",
         });
       }
     })
     .catch((err) => {
       res.status(204);
       res.send({
+        success: false,
         isCompleted: false,
         message: err.message,
       });
@@ -69,6 +74,7 @@ const details = (req, res) => {
     .then((student) => {
       res.status(200);
       res.send({
+        success: true,
         message: "request successful!",
         student: student,
       });
@@ -76,6 +82,7 @@ const details = (req, res) => {
     .catch((err) => {
       res.status(403);
       res.send({
+        success: false,
         message: "unsuccessful request!",
       });
     });

@@ -113,8 +113,7 @@ const refresh = (req, res) => {
 
   jwt.verify(
     res.locals.refreshToken,
-    process.env.REFRESH_TOKEN_SECRET || config.REFRESH_TOKEN_SECRET,
-    (err, user) => {
+    process.env.REFRESH_TOKEN_SECRET || config.REFRESH_TOKEN_SECRET, (err, user) => {
       if (err) {
         console.log(err);
         return null;
@@ -125,9 +124,7 @@ const refresh = (req, res) => {
       delete user["exp"];
 
       token.accessToken = jwt.sign(
-        user,
-        process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET,
-        {
+        user, process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET, {
           expiresIn: "45m",
         }
       );
@@ -182,8 +179,7 @@ function generateTokens(user) {
 
   let refreshToken = jwt.sign(
     user,
-    process.env.REFRESH_TOKEN_SECRET || config.REFRESH_TOKEN_SECRET,
-    {
+    process.env.REFRESH_TOKEN_SECRET || config.REFRESH_TOKEN_SECRET, {
       expiresIn: "30d",
     }
   );
@@ -192,8 +188,7 @@ function generateTokens(user) {
 
   let accessToken = jwt.sign(
     user,
-    process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET,
-    {
+    process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET, {
       expiresIn: "45m",
     }
   );

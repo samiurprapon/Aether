@@ -154,11 +154,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
 
 ```json
 {
+    "success": true, 
     "message": "Student Profile updated!",
     "student" : {
         "id" : "75442486-0878-440c-9db1-a7006c25a39f",
         "name": "Harry", 
-        "nsuID" : "1712345678",
+        "studentID" : "1712345678",
         "sex": "male",
         "uid": "74, 65", 
         "status": "open",
@@ -177,7 +178,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
 ```
 ```json
 {
-    "nsuID": "1712345678",
+    "studentID": "1712345678",
     "name" : "Harry",
     "sex": "male",
 }
@@ -187,11 +188,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
 
 ```json
 {
+    "success": true, 
     "message": "Student Profile updated!",
     "student" : {
         "id" : "75442486-0878-440c-9db1-a7006c25a39f",
         "name": "Harry", 
-        "nsuID" : "1712345678",
+        "studentID" : "1712345678",
         "sex": "male",
         "uid": "74, 65", 
         "status": "open",
@@ -213,11 +215,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
 
 ```json
 {
+    "success": true, 
     "isCompleted": true,
     "message": "Profile verification is completed!",
 }
 ```
-
 
 
 # License

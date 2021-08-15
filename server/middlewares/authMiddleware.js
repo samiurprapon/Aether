@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 
 const config = require('../config/databaseSecrets.json');
 
-
 // check refresh token is valid or not
 const authentication = (req, res, next) => {
 
@@ -56,7 +55,7 @@ const validation = (req, res, next) => {
     if(err) {
       return res.status(403).send({
         success: false,
-        message: "Unauthorized access!",
+        message: err.message,
       });
     }
 

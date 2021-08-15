@@ -12,7 +12,7 @@ const Student = Sequelize.define("students", {
     primaryKey: true,
     allowNull: false,
   },
-  nsuID: {
+  studentID: {
     type: Datatypes.INTEGER,
     allowNull: true,
     unique: true,
