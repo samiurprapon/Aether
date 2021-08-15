@@ -65,6 +65,7 @@
     <string name="description_no_tasks">You’ve done a great job</string>
 
     <!--  Student More Fragment  -->
+    <string name="title_reminders">Reminders</string>
     <string name="placeholder_app_version">App version : 0.0.1</string>
     <string name="title_app_settings">App Settings</string>
     <string name="title_privacy_policy">Privacy Policy</string>
