@@ -80,6 +80,7 @@ Express.js, Sequelize is used in this project.
 
 ```json
 {
+  "success": true, 
   "message": "Signed up successfully!",
 }
 ```
@@ -95,6 +96,7 @@ Express.js, Sequelize is used in this project.
 **Description**: logs in to the server. Server will return a JWT token as:
 ```json
 {
+  "success": true,
   "message": "Login successfully!",
   "type": "student",
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvbjNAdGVzdC5jb20iLCJ0eXBlIjoidmVuZG9yIiwiaWF0IjoxNjA4MDY0MTE1LCJleHAiOjE2MDgwNjY4MTV9.tfuZTC3J8D7nCyLYDzO2d6k-uHHwoQOmNtDKipsCySA",
@@ -114,6 +116,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
 
 ```json
 {
+  "success": true,
   "message": "Token refreshed Successfully!",
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvbjRAdGVzdC5jb20iLCJ0eXBlIjoidmVuZG9yIiwiaWF0IjoxNjA4MDY0MjkzLCJleHAiOjE2MDgwNjY5OTN9.410H5v_uipB8l7JrNDuOLoCIg__IokGlCukJB99MJO0"
 }
@@ -131,6 +134,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
 
 ```json
 {
+  "success": true,    
   "message": "Logout successfully!"
 }
 ```
