@@ -9,6 +9,5 @@ package life.nsu.aether.utils;
 
 public class NetworkCredentials {
 
-    public static String SERVER_BASE_URL = "https://17757c3d0cc2.ngrok.io/api/";
-    public static String myEncryptionKey = "sbdjksabd";
+    public static String SERVER_BASE_URL = "http://103.198.139.224:3100/api/";
 }
