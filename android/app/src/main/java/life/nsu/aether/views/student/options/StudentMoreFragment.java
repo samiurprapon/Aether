@@ -1,18 +1,20 @@
 /*
  * StudentMoreFragment Created by Samiur Prapon
- * Last modified  7/30/21, 6:23 PM
+ * Last modified  8/15/21, 5:08 PM
  * Copyright (c) 2021. All rights reserved.
  *
  */
 
 package life.nsu.aether.views.student.options;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.card.MaterialCardView;
 
+import life.nsu.aether.BuildConfig;
 import life.nsu.aether.R;
 import life.nsu.aether.utils.CustomProgressBar;
 import life.nsu.aether.viewModels.student.StudentMoreViewModel;
@@ -28,6 +31,7 @@ import life.nsu.aether.viewModels.student.StudentMoreViewModel;
 
 public class StudentMoreFragment extends Fragment {
 
+    @SuppressLint("StaticFieldLeak")
     static StudentMoreFragment fragment = null;
     StudentMoreViewModel viewModel;
     CustomProgressBar progressBar;
@@ -36,6 +40,7 @@ public class StudentMoreFragment extends Fragment {
     MaterialCardView mAppSettings;
     MaterialCardView mTerms;
     MaterialCardView mPrivacy;
+    TextView mAppVersion;
 
     public static StudentMoreFragment newInstance() {
         if (fragment == null) {
@@ -67,6 +72,10 @@ public class StudentMoreFragment extends Fragment {
         mAppSettings = view.findViewById(R.id.mcv_app_settings);
         mTerms = view.findViewById(R.id.mcv_terms_conditions);
         mPrivacy = view.findViewById(R.id.mcv_privacy_policy);
+        mAppVersion = view.findViewById(R.id.tv_app_version);
+
+//        application current version name will be fetched from Build info
+        mAppVersion.setText(String.format("Current version: %s", BuildConfig.VERSION_NAME));
 
         mLogout.setOnClickListener(v -> {
             progressBar.show("Logging out ...");
