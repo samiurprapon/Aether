@@ -164,12 +164,14 @@ const deAuth = (req, res) => {
     .then((_result) => {
       res.status(200);
       res.send({
+        success: true,
         message: "Logout successfully!",
       });
     })
     .catch((err) => {
       res.status(403);
       res.send({
+        success: false,
         message: "Logout failed!",
       });
     });
