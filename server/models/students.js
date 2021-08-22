@@ -29,13 +29,14 @@ const Student = Sequelize.define("students", {
   uid: {
     type: Datatypes.UUID,
     allowNull: false,
-
+    unique: true,
+    
     references: {
       model: Credential,
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "RESTRICT",
   },
 });
 

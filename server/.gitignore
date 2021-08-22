@@ -1,5 +1,8 @@
 # api end point testing
-api.rest
+postman.rest
+
+# server configuration
+config/config.json
 
 # Logs
 logs
