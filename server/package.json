@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/samiurprapon/Aether#readme",
   "devDependencies": {
-    "nodemon": "^1.19.2"
+    "nodemon": "^2.0.12"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
