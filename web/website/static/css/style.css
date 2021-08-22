@@ -1,3 +1,15 @@
+:root {
+  --pale-pink: #f37172;
+  --pale-gray: #dde2e4;
+  --light-gray: rgba(0, 0, 0, 0.6);
+}
+
+html {
+  height: auto;
+  min-height: 100vh;
+  font-size: 16px;
+}
+
 #nav {
   width: 94%;
   padding: auto auto;
@@ -10,22 +22,31 @@
   font-family: Montserrat, sans-serif;
   color: #252c32;
   border-color: #dde2e4;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding: 10px 16px;
+  background-color: #fdfdfd;
+}
+#btn-sign-in:hover {
+  color: #fdfdfd;
+  background-color: #f37172;
 }
 
 #btn-sign-up {
   background: #f37172;
   border-color: rgb(243, 113, 114);
   font-family: Montserrat, sans-serif;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  color: #fdfdfd;
+  padding: 10px 16px;
 }
 
 #main {
   max-width: 92%;
   width: 90%;
   margin-top: 2%;
+}
+
+body {
+  flex: 1;
+  padding: 0.25rem;
 }
 
 #title {
@@ -70,9 +91,8 @@
 
 .download-title h1 {
   font-size: 18px;
-  font-family:'Montserrat'
+  font-family: "Montserrat";
 }
-
 
 .btn-outline-primary:hover {
   color: #fff;
@@ -89,7 +109,7 @@
   margin-top: 36px;
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  width: 71%;
 }
 
 .store {
@@ -152,56 +172,4 @@
     width: 100%;
     margin-right: 2px;
   }
-}
-
-
-.footer-basic {
-  padding: 50px 0;
-  color: #4b4c4d;
-  font-family: Montserrat, sans-serif;
-}
-
-.footer-basic ul {
-  padding: 0px;
-  list-style: none;
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
-.footer-basic li {
-  padding: 0 10px;
-}
-
-.footer-basic ul a {
-  color: inherit;
-  text-decoration: none;
-  opacity: 0.8;
-}
-
-.footer-basic ul a:hover {
-  opacity: 1;
-}
-
-.footer-basic .copyright {
-  margin-top: 15px;
-  text-align: center;
-  font-size: 13px;
-  color: #aaa;
-  margin-bottom: 0;
-  font-family: Montserrat, sans-serif;
-  font-weight:400;
-}
-
-@media only screen and (min-width: 1600px) {
-  .footer-basic {
-    padding: 40px 0;
-    color: #4b4c4d;
-    font-family: Montserrat, sans-serif;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-
 }
