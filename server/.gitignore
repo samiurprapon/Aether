@@ -3,6 +3,10 @@ postman.rest
 
 # server configuration
 config/config.json
+config/databaseSecret.json
+
+# package-lock
+package-lock.json
 
 # Logs
 logs
