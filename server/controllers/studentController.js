@@ -52,7 +52,8 @@ const upsert = (req, res) => {
           .catch((err) => {
             res.status(400);
             res.send({
-              message: "creating course failed!",
+              success: false,
+              message: err.message,
             });
           });
       }

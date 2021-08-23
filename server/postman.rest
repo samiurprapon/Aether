@@ -1,5 +1,5 @@
 ### register 
-POST http://localhost:3000/api/auth/register HTTP/1.1 
+POST http://192.168.31.22:3100/api/auth/register HTTP/1.1 
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### 
-POST http://localhost:3000/api/auth/login HTTP/1.1 
+POST http://192.168.31.22:3100/api/auth/login HTTP/1.1 
 Content-Type: application/json
 
 {
@@ -18,24 +18,24 @@ Content-Type: application/json
 }
 
 ### 
-POST http://localhost:3000/api/auth/refresh HTTP/1.1 
+POST http://192.168.31.22:3100/api/auth/refresh HTTP/1.1 
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkN2JhZjY4OC1hODc5LTRlNTMtOTJkMi1kMmJiYmJmMjZlZTEiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk2MzY0ODQsImV4cCI6MTYyOTYzOTE4NH0.AEo9QY4XEs9o9MuT4uriB69qChV6dALa8TvwGzNV2Xk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwZjczMTA5ZC0xODJhLTQ1ZTAtYjZjOS0xYjUxY2NkM2IzYmMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk3Mjk5ODYsImV4cCI6MTYyOTczMjY4Nn0._f_tSAr-cvCq7nxRh2Jhdgw27QDMEq_0j3sQVZJBAYM
 
 ### 
-POST http://localhost:3000/api/auth/logout HTTP/1.1 
+POST http://192.168.31.22:3100/api/auth/logout HTTP/1.1 
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJkN2JhZjY4OC1hODc5LTRlNTMtOTJkMi1kMmJiYmJmMjZlZTEiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk2MzY0ODQsImV4cCI6MTYyOTYzOTE4NH0.AEo9QY4XEs9o9MuT4uriB69qChV6dALa8TvwGzNV2Xk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwZjczMTA5ZC0xODJhLTQ1ZTAtYjZjOS0xYjUxY2NkM2IzYmMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk3Mjk5ODYsImV4cCI6MTYyOTczMjY4Nn0._f_tSAr-cvCq7nxRh2Jhdgw27QDMEq_0j3sQVZJBAYM
 
 ### 
-GET http://localhost:3000/api/student/
+GET http://192.168.31.22:3100/api/student/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk2MzY3MjIsImV4cCI6MTYyOTYzOTQyMn0.xC1Lk4LirBYafwDHkcYQbm2JPOkl7BvKhbY7x7NZIy0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwZjczMTA5ZC0xODJhLTQ1ZTAtYjZjOS0xYjUxY2NkM2IzYmMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk3Mjk5ODYsImV4cCI6MTYyOTczMjY4Nn0._f_tSAr-cvCq7nxRh2Jhdgw27QDMEq_0j3sQVZJBAYM
 
 ### 
-POST http://localhost:3000/api/student/
+POST http://192.168.31.22:3100/api/student/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk2MzY3MjIsImV4cCI6MTYyOTYzOTQyMn0.xC1Lk4LirBYafwDHkcYQbm2JPOkl7BvKhbY7x7NZIy0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwZjczMTA5ZC0xODJhLTQ1ZTAtYjZjOS0xYjUxY2NkM2IzYmMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk3Mjk5ODYsImV4cCI6MTYyOTczMjY4Nn0._f_tSAr-cvCq7nxRh2Jhdgw27QDMEq_0j3sQVZJBAYM
 
 {
     "studentID": "1723456798", 
@@ -44,6 +44,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5M
 }
 
 ### 
-GET http://localhost:3000/api/student/valid
+GET http://192.168.31.22:3100/api/student/valid
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk2MzY3MjIsImV4cCI6MTYyOTYzOTQyMn0.xC1Lk4LirBYafwDHkcYQbm2JPOkl7BvKhbY7x7NZIy0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwZjczMTA5ZC0xODJhLTQ1ZTAtYjZjOS0xYjUxY2NkM2IzYmMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2Mjk3Mjk5ODYsImV4cCI6MTYyOTczMjY4Nn0._f_tSAr-cvCq7nxRh2Jhdgw27QDMEq_0j3sQVZJBAYM
