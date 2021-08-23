@@ -69,7 +69,6 @@ public class RefreshRepository {
                         e.printStackTrace();
                     }
                 }
-
             }
 
             @Override

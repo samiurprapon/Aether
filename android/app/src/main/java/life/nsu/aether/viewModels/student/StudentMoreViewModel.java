@@ -44,7 +44,6 @@ public class StudentMoreViewModel extends AndroidViewModel {
 
     public void switchActivity(MessageResponse messageResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
-
             if (messageResponse.isSuccess()) {
                 preference.clearAuth();
                 Intent intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);

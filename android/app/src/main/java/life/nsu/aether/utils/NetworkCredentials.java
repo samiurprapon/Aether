@@ -9,5 +9,5 @@ package life.nsu.aether.utils;
 
 public class NetworkCredentials {
 
-    public static String SERVER_BASE_URL = "http://103.198.139.224:3100/api/";
+    public static String SERVER_BASE_URL = "http://103.198.139.224:3101/api/";
 }

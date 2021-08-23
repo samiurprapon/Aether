@@ -188,7 +188,7 @@
         </RadioGroup>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/mb_sign_up"
+            android:id="@+id/mb_save"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -212,9 +212,9 @@
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/mb_sign_up"
-            app:layout_constraintStart_toStartOf="@+id/mb_sign_up"
-            app:layout_constraintTop_toBottomOf="@+id/mb_sign_up"
+            app:layout_constraintEnd_toEndOf="@+id/mb_save"
+            app:layout_constraintStart_toStartOf="@+id/mb_save"
+            app:layout_constraintTop_toBottomOf="@+id/mb_save"
             app:layout_constraintVertical_bias="0.120000005">
 
             <androidx.appcompat.widget.AppCompatTextView

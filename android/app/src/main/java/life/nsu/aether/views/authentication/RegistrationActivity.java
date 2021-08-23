@@ -52,7 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.et_password);
         mConfirmPassword = findViewById(R.id.et_confirm_password);
         mType = findViewById(R.id.radioGroup);
-        mSignUp = findViewById(R.id.mb_sign_up);
+        mSignUp = findViewById(R.id.mb_save);
         mLogin = findViewById(R.id.mb_sign_in);
 
         viewModel = new ViewModelProvider(this).get(RegistrationViewModel.class);
