@@ -71,6 +71,13 @@
     <string name="title_privacy_policy">Privacy Policy</string>
     <string name="title_terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
     <string name="logout">Logout</string>
+    <string name="user_profile_imageview">User Profile ImageView</string>
+    <string name="save">Save</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="gender">Gender</string>
+    <string name="name">Name</string>
+    <string name="student_id">Student Id</string>
 
 
 </resources>
