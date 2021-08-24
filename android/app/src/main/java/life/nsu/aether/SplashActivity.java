@@ -27,17 +27,18 @@ public class SplashActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(SplashViewModel.class);
 
         viewModel.getRefreshResponseMutableLiveData().observe(this, refreshResponse -> {
-//            Log.d("refreshResponse", refreshResponse.getMessage() +" " + refreshResponse.isSuccess() + " " + refreshResponse.getAccessToken());
-            viewModel.switchActivity(refreshResponse);
+            if(!refreshResponse.isSuccess()){
+                viewModel.switchActivity(refreshResponse);
+            }else{
+                viewModel.getProfileValidityResponseMutableLiveData().observe(this, profileValidityResponse -> {
+                    viewModel.switchActivity(profileValidityResponse);
+                });
+            }
         });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        if(viewModel.getRefreshResponseMutableLiveData().hasActiveObservers()) {
-            viewModel.getRefreshResponseMutableLiveData().removeObservers(this);
-        }
     }
 }

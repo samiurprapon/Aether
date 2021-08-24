@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ AndroidManifest.xml Created by Samiur Prapon
-  ~ Last modified  7/30/21, 6:23 PM
-  ~ Copyright (c) 2021. All rights reserved.
-  ~
-  -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="life.nsu.aether">
@@ -17,10 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Aether"
+        android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".views.student.StudentHomeActivity"/>
+        <activity
+            android:name=".views.student.profile.EditProfileActivity"
+            android:exported="true" />
+        <activity android:name=".views.student.StudentHomeActivity" />
         <activity android:name=".views.authentication.LoginActivity" />
         <activity android:name=".views.authentication.RegistrationActivity" />
         <activity

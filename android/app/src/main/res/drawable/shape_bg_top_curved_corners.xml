@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ shape_bg_top_curved_corners.xml Created by Samiur Prapon
+  ~ Last modified  24/8/21, 12:51 am
+  ~ Copyright (c) 2021. All rights reserved.
+  ~
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:topLeftRadius="40dp"
+        android:topRightRadius="40dp"/>
+    <solid
+        android:color="@color/white"/>
+</shape>

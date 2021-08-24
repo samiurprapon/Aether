@@ -188,7 +188,7 @@
         </RadioGroup>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/mb_sign_up"
+            android:id="@+id/mb_save"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

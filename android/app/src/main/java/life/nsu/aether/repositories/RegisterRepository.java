@@ -66,6 +66,7 @@ public class RegisterRepository {
                         MessageResponse errorResponse = converter.convert(response.errorBody());
                         mutableMessage.postValue(errorResponse);
                     } catch (IOException e) {
+                        mutableMessage.postValue(new MessageResponse(false, e.getMessage()));
                         e.printStackTrace();
                     }
                 }

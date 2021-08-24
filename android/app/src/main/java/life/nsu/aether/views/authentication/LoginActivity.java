@@ -67,12 +67,17 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.hide();
                 return;
             }
-
-            new Handler(Looper.myLooper()).postDelayed(() -> viewModel.getMessageResponseLiveData(email, password).observe(this, loginResponse -> {
-                progressBar.hide();
-
-                viewModel.switchActivity(loginResponse);
-            }), 250);
+            viewModel.getMessageResponseLiveData(email, password).observe(this, loginResponse -> {
+                if(loginResponse.isSuccess()){
+                    viewModel.getProfileValidityResponseMutableLiveData().observe(this, profileValidityResponse -> {
+                        progressBar.hide();
+                        viewModel.switchActivity(loginResponse, profileValidityResponse);
+                    });
+                }else{
+                    progressBar.hide();
+                    viewModel.switchActivity(loginResponse);
+                }
+            });
         });
 
         mRegister.setOnClickListener(v -> {
