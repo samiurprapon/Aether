@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup - aether</title>
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png" />
+    <link rel="manifest" href="static/images/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- w3-css CDN -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="static/css/signup.css" />
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav id="nav" class="w3-hide-small navbar navbar-light navbar-expand-md bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img class="d-flex justify-content-center" src="static/images/logo.svg" />
+            </a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/login">
+                            <button id="btn-sign-up" class="btn btn-outline-primary" data-toggle="modal"
+                                data-target="#signin" type="button">
+                                Log In
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            <button id="btn-sign-in" class="btn btn-primary" data-toggle="modal" data-target="#signup"
+                                type="button">
+                                <i class="fas fa-home"></i> <span>Home</span>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- don't need header -->
+    <!-- main -->
+    <main class="w3-content">
+        <section id="form-content">
+            <h1 class="section-title">Create Your Account</h1>
+            <br>
+            <form action="">
+                <fieldset>
+                    <label for="sd-user-mail" class="w3-hide-medium w3-hide-large custom-color">E-Mail Address</label>
+                    <label for="user-mail" class="w3-hide-small">E-Mail Address</label>
+                    <input class="w3-hide-small" type="email" name="mail" id="user-mail">
+                    <div class="input-small-device w3-hide-medium w3-hide-large">
+                        <input type="email" name="mail" id="sd-user-mail">
+                    </div>
+
+                </fieldset>
+                <fieldset>
+                    <label for="sd-user-pass" class="w3-hide-medium w3-hide-large custom-color">Password</label>
+                    <label for="user-pass" class="w3-hide-small">Password</label>
+                    <input class="w3-hide-small" type="password" name="password" id="user-pass">
+                    <div class="input-small-device w3-hide-medium w3-hide-large">
+                        <input type="password" name="password" id="sd-user-pass">
+                        <span class="eye"><i class="fas fa-eye-slash eye-toggle"></i></span>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <label for="sd-user-pass-conf" class="w3-hide-medium w3-hide-large custom-color">Confirm
+                        Password</label>
+                    <label for="user-pass-conf" class="w3-hide-small">Confirm Password</label>
+                    <input class="w3-hide-small" type="password" name="password" id="user-pass-conf">
+                    <div class="input-small-device w3-hide-medium w3-hide-large">
+                        <input type="password" name="password" id="sd-user-pass-conf">
+                        <span class="eye"><i class="fas fa-eye-slash eye-toggle"></i></span>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <p class="i-am-a">I'm a -</p>
+                    <!-- <br> -->
+                    <div class="radios">
+                        <div class="radio-group">
+                            <input type="radio" name="student-teacher" id="student" value="student">
+                            <label for="student">Student</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" name="student-teacher" id="teacher" value="teacher">
+                            <label for="teacher">Teacher</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <input type="submit" value="Register" class="w3-mobile w3-padding-large">
+                </fieldset>
+                <fieldset class="w3-hide-large w3-hide-medium w3-border-0">
+                    <a href="/login" class="login w3-padding-large w3-mobile w3-center">Already a member?
+                        <span>Login</span></a>
+                </fieldset>
+            </form>
+        </section>
+        <section id="image-content">
+            <img src="static/images/content.svg" alt="" class="w3-hide-small">
+            <h1 class="section-title w3-text-black w3-xxlarge w3-hide-large w3-hide-medium">
+                <img src="static/images/logo.svg" alt="" class="w3-image w3-margin-bottom">
+                <!-- <br> -->
+                <span class="w3-large w3-mobile">Make learning fun!</span>
+            </h1>
+        </section>
+    </main>
+    <!-- scripts -->
+    <script src="static/js/signup.js"></script>
+</body>
+
+</html>
