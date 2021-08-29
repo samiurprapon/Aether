@@ -6,7 +6,7 @@ Express.js, Sequelize is used in this project.
 
 ## Database Design
 
-[<img src="database_design.png" height="532"/>](database_design.png)
+[<img src="database_design.png" height="532"/>](../assets/database_design.png)
 
 ## Getting Started
 
