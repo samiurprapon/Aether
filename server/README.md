@@ -254,6 +254,76 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvb
 
 ---
 
+#### Enroll course
+POST `/api/student/course/`
+```http
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvbjNAdGVzdC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqNFUvbnVDLnlwZ2lNRC5Bbk5SdFZ1em53emNWVHpCd2JPTDhTaWlKa1RrbDFnck5SRGE4RyIsInR5cGUiOiJ2ZW5kb3IiLCJpYXQiOjE2MDgwNjQxMTUsImV4cCI6MTYxMDY1NjExNX0.J6uIMHHCzIhIrZWeB3nyLq7OlfZHJ7-lGhsdstW85J4
+```
+```json
+{
+    "enroll": "0Oxfp2"
+}
+```
+**Description**: checks the JWT. Token from `Authorization` from should be passed as Url-encoded query or `x-access-token` header.
+
+```json
+{
+  "success": true,
+  "message": "Successfully enrolled in Software Engineering!"
+}
+```
+
+#### Enrolled courselist
+
+GET `/api/student/course/`
+
+```http
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvbjNAdGVzdC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqNFUvbnVDLnlwZ2lNRC5Bbk5SdFZ1em53emNWVHpCd2JPTDhTaWlKa1RrbDFnck5SRGE4RyIsInR5cGUiOiJ2ZW5kb3IiLCJpYXQiOjE2MDgwNjQxMTUsImV4cCI6MTYxMDY1NjExNX0.J6uIMHHCzIhIrZWeB3nyLq7OlfZHJ7-lGhsdstW85J4
+```
+
+**Description**: checks the JWT. Token from `Authorization` from should be passed as Url-encoded query or `x-access-token` header.
+
+```json
+{
+  "success": true,
+  "message": "Successfully listed courses!",
+  "courses": [
+    {
+      "id": "228840b8-f40b-4b6a-863e-fa87a7a02291",
+      "code": "CSE327",
+      "section": "1",
+      "name": "Software Engineering",
+      "enroll": "0Oxfp2",
+      "semester": "Summer 2021",
+      "archived": false,
+      "tid": "85d20cb1-1a88-4b27-baab-b33917fe83c9"
+    }
+  ]
+}
+```
+
+#### Drop course
+POST `/api/student/course/drop`
+```http
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYXBvbjNAdGVzdC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqNFUvbnVDLnlwZ2lNRC5Bbk5SdFZ1em53emNWVHpCd2JPTDhTaWlKa1RrbDFnck5SRGE4RyIsInR5cGUiOiJ2ZW5kb3IiLCJpYXQiOjE2MDgwNjQxMTUsImV4cCI6MTYxMDY1NjExNX0.J6uIMHHCzIhIrZWeB3nyLq7OlfZHJ7-lGhsdstW85J4
+```
+```json
+{
+    "courseId": "228840b8-f40b-4b6a-863e-fa87a7a02291"
+}
+```
+**Description**: checks the JWT. Token from `Authorization` from should be passed as Url-encoded query or `x-access-token` header.
+
+```json
+{
+  "success": true,
+  "message": "Course dropped successfully!"
+}
+```
+
 ## Teacher Routes
 
 ### Teacher Profile Routes
