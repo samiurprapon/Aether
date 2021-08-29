@@ -85,7 +85,7 @@ const isCompleted = (req, res) => {
           message: "Profile verification is completed!",
         });
       } else {
-        res.status(204);
+        res.status(202);
         res.send({
           success: true,
           isCompleted: false,

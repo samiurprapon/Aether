@@ -1,4 +1,16 @@
-### student registeration 
+### Auth routes
+### 
+POST http://127.0.0.1:3000/api/auth/refresh HTTP/1.1 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
+
+### 
+POST http://127.0.0.1:3000/api/auth/logout HTTP/1.1 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
+
+
+### student routes 
 POST http://127.0.0.1:3000/api/auth/register HTTP/1.1 
 Content-Type: application/json
 
@@ -18,24 +30,14 @@ Content-Type: application/json
 }
 
 ### 
-POST http://127.0.0.1:3000/api/auth/refresh HTTP/1.1 
-Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
-
-### 
-POST http://127.0.0.1:3000/api/auth/logout HTTP/1.1 
-Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
-
-### 
 GET http://127.0.0.1:3000/api/student/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmY2YyODFkOS0wY2EwLTQ4NDItODAxMC00Yjg2NDBjODE0OTkiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNTk5MTQsImV4cCI6MTYzMDI2MjYxNH0.iR2FsF3hb5LIUBwi3wG6F2tq677ZBFtDTf-cfj0BbAc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0OTJhODA2Yi01OTYxLTRiNzYtOTc1My1kNWE4MzcxYmY2NGMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNzcyNDIsImV4cCI6MTYzMDI3OTk0Mn0.7L7TsqC93Co6Keo4h89EO0_rwGNHdaMTVnxf4KUYRKY
 
 ### 
 POST http://127.0.0.1:3000/api/student/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmY2YyODFkOS0wY2EwLTQ4NDItODAxMC00Yjg2NDBjODE0OTkiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNTk5MTQsImV4cCI6MTYzMDI2MjYxNH0.iR2FsF3hb5LIUBwi3wG6F2tq677ZBFtDTf-cfj0BbAc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0OTJhODA2Yi01OTYxLTRiNzYtOTc1My1kNWE4MzcxYmY2NGMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNzcyNDIsImV4cCI6MTYzMDI3OTk0Mn0.7L7TsqC93Co6Keo4h89EO0_rwGNHdaMTVnxf4KUYRKY
 
 {
     "studentID": "1723456798", 
@@ -46,32 +48,31 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmY2YyODFkO
 ### 
 GET http://127.0.0.1:3000/api/student/valid
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmY2YyODFkOS0wY2EwLTQ4NDItODAxMC00Yjg2NDBjODE0OTkiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNTk5MTQsImV4cCI6MTYzMDI2MjYxNH0.iR2FsF3hb5LIUBwi3wG6F2tq677ZBFtDTf-cfj0BbAc
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0OTJhODA2Yi01OTYxLTRiNzYtOTc1My1kNWE4MzcxYmY2NGMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNzcyNDIsImV4cCI6MTYzMDI3OTk0Mn0.7L7TsqC93Co6Keo4h89EO0_rwGNHdaMTVnxf4KUYRKY
 
 ### Student course routes
 ### course list
 GET http://127.0.0.1:3000/api/student/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0OTJhODA2Yi01OTYxLTRiNzYtOTc1My1kNWE4MzcxYmY2NGMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNzcyNDIsImV4cCI6MTYzMDI3OTk0Mn0.7L7TsqC93Co6Keo4h89EO0_rwGNHdaMTVnxf4KUYRKY
 
 
 ### enroll new course
 POST http://127.0.0.1:3000/api/student/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0OTJhODA2Yi01OTYxLTRiNzYtOTc1My1kNWE4MzcxYmY2NGMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNzcyNDIsImV4cCI6MTYzMDI3OTk0Mn0.7L7TsqC93Co6Keo4h89EO0_rwGNHdaMTVnxf4KUYRKY
 
 {
-    enroll: ""
+    "enroll": "0Oxfp2"
 }
 
-### enroll new course
+### drop course
 POST http://127.0.0.1:3000/api/student/course/drop
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0OTJhODA2Yi01OTYxLTRiNzYtOTc1My1kNWE4MzcxYmY2NGMiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyNzcyNDIsImV4cCI6MTYzMDI3OTk0Mn0.7L7TsqC93Co6Keo4h89EO0_rwGNHdaMTVnxf4KUYRKY
 
 {
-    courseId: ""
+    "courseId": "9f260568-d64c-4e3d-8e5b-32e8dcfdfaae"
 }
 
 ### Teacher routes
@@ -100,13 +101,12 @@ Content-Type: application/json
 ### Teacher profile
 GET http://127.0.0.1:3000/api/teacher/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI4NTUwMTBlNC1hZWUyLTRlZjMtYWM3NS01MWRlMTc2NjUwZjciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNzc0MTksImV4cCI6MTYzMDI4MDExOX0.GPLkBjXPDdnrsVNQySWZ5E-e1NyRfXSSTik9adXqh7U
 
 ### 
 POST http://127.0.0.1:3000/api/teacher/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI4NTUwMTBlNC1hZWUyLTRlZjMtYWM3NS01MWRlMTc2NjUwZjciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNzc0MTksImV4cCI6MTYzMDI4MDExOX0.GPLkBjXPDdnrsVNQySWZ5E-e1NyRfXSSTik9adXqh7U
 
 {
     "initial": "HPR", 
@@ -117,23 +117,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3Z
 ### 
 GET http://127.0.0.1:3000/api/teacher/valid
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI4NTUwMTBlNC1hZWUyLTRlZjMtYWM3NS01MWRlMTc2NjUwZjciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNzc0MTksImV4cCI6MTYzMDI4MDExOX0.GPLkBjXPDdnrsVNQySWZ5E-e1NyRfXSSTik9adXqh7U
 
 ### Teacher course routes
 ### course list
 GET http://127.0.0.1:3000/api/teacher/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI4NTUwMTBlNC1hZWUyLTRlZjMtYWM3NS01MWRlMTc2NjUwZjciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNzc0MTksImV4cCI6MTYzMDI4MDExOX0.GPLkBjXPDdnrsVNQySWZ5E-e1NyRfXSSTik9adXqh7U
 
 ### create new course
 POST http://127.0.0.1:3000/api/teacher/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI4NTUwMTBlNC1hZWUyLTRlZjMtYWM3NS01MWRlMTc2NjUwZjciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNzc0MTksImV4cCI6MTYzMDI4MDExOX0.GPLkBjXPDdnrsVNQySWZ5E-e1NyRfXSSTik9adXqh7U
 
 {
-    "code": "CSE327",
-    "section": "14",
-    "name": "Software Engineering",
+    "code": "CSE427",
+    "section": "1",
+    "name": "Software Engineering 2",
     "semester": "Summer 2021"
 }
 

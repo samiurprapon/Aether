@@ -6,54 +6,49 @@ const Course = require("../models/courses");
 const StudentCourse = Sequelize.model("studentCourses");
 
 const enroll = (req, res) => {
-  let user = res.locals.user;
+  let student = res.locals.student;
 
-  Student.findOne({
+  Course.findOne({
     where: {
-      uid: user.uid,
+      enroll: req.body.enroll,
     },
   })
-    .then((student) => {
-      Course.findOne({
-        where: {
-          enroll: req.body.enroll,
-        },
-      }).then((course) => {
-        StudentCourse.upsert({
-          courseId: course.id,
-          studentId: student.id,
-        })
-          .then((studentCourse) => {
-            res.status(201);
-            res.send({
-              message: "Successfully enrolled in $(course.name)!",
-            });
-          })
-          .catch((errr) => {
-            res.status(404);
-            res.send({
-              message: "enroll code not found!",
-            });
+    .then((course) => {
+      StudentCourse.upsert({
+        courseId: course.id,
+        studentId: student.id,
+      })
+        .then((studentCourse) => {
+          res.status(201);
+          res.send({
+            success: true,
+            message: "Successfully enrolled in " + course.name + "!",
           });
-      });
+        })
+        .catch((er) => {
+          res.status(404);
+          res.send({
+            success: false,
+            message: er.message,
+          });
+        });
     })
     .catch((err) => {
-      res.status(403);
+      res.status(404);
       res.send({
-        message: "No student found!",
+        success: false,
+        message: err.message,
       });
     });
-
-  // console.log(user);
 };
 
 const drop = (req, res) => {
-  let user = res.locals.user;
+  let student = res.locals.student;
 
   StudentCourse.findOne({
     where: {
       courseId: req.body.courseId,
-      studentId: user.id,
+      studentId: student.id,
     },
   })
     .then((studentCourse) => {
@@ -62,35 +57,54 @@ const drop = (req, res) => {
     .then((result) => {
       res.status(200);
       res.send({
+        success: true,
         message: "Course dropped successfully!",
       });
     })
     .catch((err) => {
       res.status(404);
       res.send({
+        success: false,
         message: err.message,
       });
     });
 };
 
 const list = (req, res) => {
-  let user = res.locals.user;
+  let student = res.locals.student;
 
-  StudentCourse.getCourses({
+  Student.findOne({
     where: {
-      studentId: user.id,
+      id: student.id,
+    },
+    include: {
+      model: Course,
     },
   })
-    .then((courses) => {
+    .then((data) => {
       res.status(200);
       res.send({
-        courses: courses,
+        success: true,
+        message: "Successfully listed courses!",
+        courses: data.courses.map((course) => {
+          return {
+            id: course.id,
+            code: course.code,
+            section: course.section,
+            name: course.name,
+            enroll: course.enroll,
+            semester: course.semester,
+            archived: course.archived,
+            tid: course.tid
+          };
+        }),
       });
     })
     .catch((err) => {
-      res.status(403);
+      res.status(400);
       res.send({
-        message: "unsuccessful request!",
+        success: false,
+        message: err.message,
       });
     });
 };
