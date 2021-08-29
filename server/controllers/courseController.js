@@ -3,6 +3,14 @@ const Course = require("../models/courses");
 const add = (req, res) => {
   let user = res.locals.user;
 
+  if (user.type !== "teacher") {
+    res.status(400);
+    res.send({
+      success: false,
+      message: "you are not authorized to add courses!",
+    });
+  }
+
   Course.create({
     code: req.body.code,
     section: req.body.section,
@@ -13,6 +21,7 @@ const add = (req, res) => {
     .then((course) => {
       res.status(201);
       res.send({
+        success: true,
         message: "Course section created successfully!",
         course: course,
       });
@@ -20,7 +29,8 @@ const add = (req, res) => {
     .catch((err) => {
       res.status(400);
       res.send({
-        message: "creating course failed!",
+        success: false,
+        message: err.message,
       });
     });
 };
@@ -41,12 +51,23 @@ const list = (req, res) => {
     })
     .catch((err) => {
       res.status(400);
-      res.send({ error: "true" });
+      res.send({
+        success: false,
+        message: err.message,
+      });
     });
 };
 
 const update = (req, res) => {
   let user = res.locals.user;
+
+  if (user.type !== "teacher") {
+    res.status(400);
+    res.send({
+      success: false,
+      message: "you are not authorized to make changes!",
+    });
+  }
 
   Course.update(
     {
@@ -65,6 +86,7 @@ const update = (req, res) => {
     .then((course) => {
       res.status(201);
       res.send({
+        success: true,
         message: "Course section created successfully!",
         course: course,
       });
@@ -72,13 +94,22 @@ const update = (req, res) => {
     .catch((err) => {
       res.status(400);
       res.send({
-        message: "creating course failed!",
+        success: false,
+        message: err.message,
       });
     });
 };
 
 const remove = (req, res) => {
   let user = res.locals.user;
+
+  if (user.type !== "teacher") {
+    res.status(400);
+    res.send({
+      success: false,
+      message: "you are not authorized to make changes!",
+    });
+  }
 
   Course.findOne({
     where: {
@@ -98,13 +129,21 @@ const remove = (req, res) => {
     .catch((err) => {
       res.status(400);
       res.send({
-        message: "delete action failed!",
+        message: err.message,
       });
     });
 };
 
 const archived = (req, res) => {
   let user = res.locals.user;
+
+  if (user.type !== "teacher") {
+    res.status(400);
+    res.send({
+      success: false,
+      message: "you are not authorized to make changes!",
+    });
+  }
 
   Course.update(
     {
@@ -120,13 +159,15 @@ const archived = (req, res) => {
     .then((course) => {
       res.status(200);
       res.send({
+        success: true,
         message: "archived successful!",
       });
     })
     .catch((err) => {
       res.status(400);
       res.send({
-        message: "delete action failed!",
+        success: false,
+        message: err.message,
       });
     });
 };
