@@ -17,25 +17,6 @@ Content-Type: application/json
     "password": "12345678"
 }
 
-### Teacher registeration
-POST http://127.0.0.1:3000/api/auth/register HTTP/1.1 
-Content-Type: application/json
-
-{
-    "email" : "abc@abc.com", 
-    "password": "12345678", 
-    "type" : "teacher"
-}
-
-### Teacher login
-POST http://127.0.0.1:3000/api/auth/login HTTP/1.1 
-Content-Type: application/json
-
-{
-    "email" : "abc@abc.com", 
-    "password": "12345678"
-}
-
 ### 
 POST http://127.0.0.1:3000/api/auth/refresh HTTP/1.1 
 Content-Type: application/json 
@@ -93,18 +74,39 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5M
     courseId: ""
 }
 
-### Teacher profile routes
+### Teacher routes
+
+
+### Teacher registeration
+POST http://127.0.0.1:3000/api/auth/register HTTP/1.1 
+Content-Type: application/json
+
+{
+    "email" : "abc@abc.com", 
+    "password": "12345678", 
+    "type" : "teacher"
+}
+
+### Teacher login
+POST http://127.0.0.1:3000/api/auth/login HTTP/1.1 
+Content-Type: application/json
+
+{
+    "email" : "abc@abc.com", 
+    "password": "12345678"
+}
+
 
 ### Teacher profile
 GET http://127.0.0.1:3000/api/teacher/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYWM3MjU0Yi04YzA3LTQwMmEtYTc2Ni00NTkwNTNiNzIyNzMiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjEzNzEsImV4cCI6MTYzMDI2NDA3MX0.Pk9x6VKVNf6xmOWCGUiniQikfD79TrZrBkxGlZsZbBA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
 
 
 ### 
 POST http://127.0.0.1:3000/api/teacher/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYWM3MjU0Yi04YzA3LTQwMmEtYTc2Ni00NTkwNTNiNzIyNzMiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjEzNzEsImV4cCI6MTYzMDI2NDA3MX0.Pk9x6VKVNf6xmOWCGUiniQikfD79TrZrBkxGlZsZbBA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
 
 {
     "initial": "HPR", 
@@ -115,19 +117,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYWM3MjU0Y
 ### 
 GET http://127.0.0.1:3000/api/teacher/valid
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYWM3MjU0Yi04YzA3LTQwMmEtYTc2Ni00NTkwNTNiNzIyNzMiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjEzNzEsImV4cCI6MTYzMDI2NDA3MX0.Pk9x6VKVNf6xmOWCGUiniQikfD79TrZrBkxGlZsZbBA
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
 
 ### Teacher course routes
 ### course list
 GET http://127.0.0.1:3000/api/teacher/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYWM3MjU0Yi04YzA3LTQwMmEtYTc2Ni00NTkwNTNiNzIyNzMiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjEzNzEsImV4cCI6MTYzMDI2NDA3MX0.Pk9x6VKVNf6xmOWCGUiniQikfD79TrZrBkxGlZsZbBA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
 
 ### create new course
 POST http://127.0.0.1:3000/api/teacher/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYWM3MjU0Yi04YzA3LTQwMmEtYTc2Ni00NTkwNTNiNzIyNzMiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjEzNzEsImV4cCI6MTYzMDI2NDA3MX0.Pk9x6VKVNf6xmOWCGUiniQikfD79TrZrBkxGlZsZbBA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwNDY2MTg3ZS0zZTMzLTQxZmQtOWM2Zi0wYTA2YzQ0YmFlNDciLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyNjg5MDQsImV4cCI6MTYzMDI3MTYwNH0.pyO6E9izGrCLuyXarEoPq-Xo1affbggIRIqp_cjWfTg
 
 {
     "code": "CSE327",

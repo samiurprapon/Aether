@@ -1,22 +1,15 @@
 const Course = require("../models/courses");
+const Teacher = require("../models/teachers");
 
 const add = (req, res) => {
-  let user = res.locals.user;
-
-  if (user.type !== "teacher") {
-    res.status(400);
-    res.send({
-      success: false,
-      message: "you are not authorized to add courses!",
-    });
-  }
+  let teacher = res.locals.teacher;
 
   Course.create({
     code: req.body.code,
     section: req.body.section,
     name: req.body.name,
     semester: req.body.semester,
-    uid: user.uid,
+    tid: teacher.id,
   })
     .then((course) => {
       res.status(201);
@@ -36,16 +29,23 @@ const add = (req, res) => {
 };
 
 const list = (req, res) => {
-  let user = res.locals.user;
+  let teacher = res.locals.teacher;
+  let archive = false;
+
+  if (req.body.archived) {
+    archive = req.body.archived;
+  }
 
   Course.findAll({
     where: {
-      uid: user.uid,
+      tid: teacher.id,
+      archived: archive,
     },
   })
     .then((courses) => {
       res.status(200);
       res.send({
+        success: true,
         courses: courses,
       });
     })
@@ -59,15 +59,7 @@ const list = (req, res) => {
 };
 
 const update = (req, res) => {
-  let user = res.locals.user;
-
-  if (user.type !== "teacher") {
-    res.status(400);
-    res.send({
-      success: false,
-      message: "you are not authorized to make changes!",
-    });
-  }
+  let teacher = res.locals.teacher;
 
   Course.update(
     {
@@ -79,7 +71,7 @@ const update = (req, res) => {
     {
       where: {
         id: req.body.id,
-        uid: user.uid,
+        tid: teacher.id,
       },
     }
   )
@@ -101,19 +93,11 @@ const update = (req, res) => {
 };
 
 const remove = (req, res) => {
-  let user = res.locals.user;
-
-  if (user.type !== "teacher") {
-    res.status(400);
-    res.send({
-      success: false,
-      message: "you are not authorized to make changes!",
-    });
-  }
+  let teacher = res.locals.teacher;
 
   Course.findOne({
     where: {
-      uid: user.uid,
+      tid: teacher.id,
       id: req.body.id,
     },
   })
@@ -135,15 +119,7 @@ const remove = (req, res) => {
 };
 
 const archived = (req, res) => {
-  let user = res.locals.user;
-
-  if (user.type !== "teacher") {
-    res.status(400);
-    res.send({
-      success: false,
-      message: "you are not authorized to make changes!",
-    });
-  }
+  let teacher = res.locals.teacher;
 
   Course.update(
     {
@@ -151,7 +127,7 @@ const archived = (req, res) => {
     },
     {
       where: {
-        uid: user.uid,
+        tid: teacher.id,
         id: req.body.id,
       },
     }
