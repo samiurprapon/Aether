@@ -1,0 +1,21 @@
+.landing-main {
+  .title {
+    text-align: left;
+    font-family: $primary-font;
+    font-weight: bold;
+    font-size: 4rem;
+    margin-top: 6%;
+  }
+
+  .sub-title {
+    font-family: $primary-font;
+    font-weight: normal;
+    font-size: 1.5rem;
+    margin: 1.2rem 0;
+  }
+
+  img {
+    width: 80%;
+    height: auto;
+  }
+}

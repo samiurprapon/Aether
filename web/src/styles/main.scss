@@ -1,0 +1,14 @@
+@import 'base/base';
+@import 'base/mixins';
+@import 'base/grids';
+@import 'base/colors';
+@import 'base/typography';
+
+@import 'base/config';
+
+// components
+@import 'components/navigation-header';
+@import 'components/buttons';
+@import 'components/footer';
+
+@import 'pages/landing';

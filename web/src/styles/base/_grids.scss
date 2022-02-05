@@ -1,0 +1,122 @@
+// grid system like bootstrap
+
+/*
+|------------------------------------------------------------------|
+|                             GRID SYSTEM                          |
+|------------------------------------------------------------------|
+*/
+
+.container,
+.container-fluid {
+  padding: 0 1rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.row {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  -webkit-box-sizing: border-box;
+  -webkit-box-flex: 0;
+  -ms-flex-wrap: wrap;
+  -ms-flex: 0 1 auto;
+}
+
+.col,
+[class*="col-"] {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  -webkit-box-sizing: border-box;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+}
+
+.col-lg,
+.col-md,
+.col-sm,
+.col-xs {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  -ms-flex-preferred-size: 0;
+}
+
+/* ---------------------------------------------
+------------ mobile first media query ---------*/
+
+/* mobile */
+@include screen(xs, min, $break-point-xs) {
+  @include grids(xs);
+  @include spacing(xs);
+}
+
+/* tablet */
+@include screen(sm, min, $break-point-sm) {
+  @include grids(sm);
+  @include spacing(sm);
+}
+
+/* desktop */
+@include screen(md, min, $break-point-md) {
+  @include grids(md);
+  @include spacing(md);
+}
+
+/* wide desktop */
+@include screen(lg, min, $break-point-lg) {
+  @include grids(lg);
+  @include spacing(lg);
+}
+
+/* large desktop */
+@include screen(xl, min, $break-point-xl) {
+  @include grids(xl);
+  @include spacing(xl);
+}
+
+/* ---------------------------------------------
+----------- desktop first media query ---------*/
+
+/* wide desktop */
+@include screen(lg, max, $break-point-lg) {
+  [class*="col-lg"]:not([class*="col-xs"]):not([class*="col-sm"]):not([class*="col-md"]) {
+    @include fluid_grid;
+  }
+}
+
+/* desktop */
+@include screen(md, max, $break-point-md) {
+  [class*="col-md"]:not([class*="col-xs"]):not([class*="col-sm"]) {
+    @include fluid_grid;
+  }
+}
+
+/* tablet */
+@include screen(sm, max, $break-point-sm) {
+  [class*="col-sm"]:not([class*="col-xs"]) {
+    @include fluid_grid;
+  }
+}
+
+/* mobile */
+@include screen(xs, max, $break-point-xs) {
+  [class*="col-xs"] {
+    @include fluid_grid;
+  }
+}

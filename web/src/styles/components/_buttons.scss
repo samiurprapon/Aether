@@ -1,0 +1,41 @@
+.btn-blank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $primary-font;
+  background-color: white;
+  color: black;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 600;
+  padding: 0.625rem 1rem;
+  border: $platinum solid 2px;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.btn-fill {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: $primary-font;
+  background-color: $primary-color;
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 600;
+  padding: 0.625rem 1rem;
+  margin: 1.5rem 0;
+  border: $primary-color solid 2px;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
