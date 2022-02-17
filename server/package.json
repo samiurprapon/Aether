@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/samiurprapon/Aether#readme",
   "devDependencies": {
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.15",
     "sequelize-cli": "^6.2.0"
   },
   "dependencies": {
