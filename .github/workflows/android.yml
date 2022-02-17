@@ -6,8 +6,12 @@ on:
   pull_request:
     branches: [ master ]
 
+
+
 jobs:
   build:
+    # if commit message contains android then run android build
+    if: "contains(github.event.head_commit.message, 'android')"
 
     runs-on: ubuntu-latest
 
