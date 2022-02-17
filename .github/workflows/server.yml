@@ -1,34 +1,24 @@
-# This is a basic workflow to help you get started with Actions
-name: server
+name: Server Build
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-env:
-  CI: true
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
+    if: "contains(github.event.head_commit.message, 'server')"  # skips everything in this job if head commit message does not contain 'server'
+
     steps:
       - name: Checkout
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16.x'
 
       - name: Go to directory
         run: cd ./server

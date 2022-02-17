@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Android Build
   
 on:
   push:
@@ -6,14 +6,10 @@ on:
   pull_request:
     branches: [ master ]
 
-
-
 jobs:
   build:
-    # if commit message contains android then run android build
-    if: "contains(github.event.head_commit.message, 'android')"
-
     runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'android')"  # skips everything in this job if head commit message does not contain 'android'
 
     steps:
     - name: Checkout
