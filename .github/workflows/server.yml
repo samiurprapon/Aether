@@ -17,6 +17,9 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
+    # if commit message contains server then run server build
+    if: "contains(github.event.head_commit.message, 'server')"
+
     runs-on: ubuntu-latest
     strategy:
       matrix:
