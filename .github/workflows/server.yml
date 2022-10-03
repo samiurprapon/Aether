@@ -24,7 +24,7 @@ jobs:
         run: cd ./server
 
       - name: Install Packages 📦
-        run: npm Install
+        run: npm install
       
       - name: Run Server 🎨
         run: |
