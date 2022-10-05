@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+# cloudflare workers
+wrangler.toml
+workers-site/*
+
 # package-lock
 package-lock.json
 yarn.lock
