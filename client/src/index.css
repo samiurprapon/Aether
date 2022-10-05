@@ -4,14 +4,12 @@
 
 @font-face {
 	font-family: 'BalooBhai';
-	src: url('/src/assets/fonts/BalooBhai-Regular.ttf') 
-  format('truetype');
+	src: url('/src/assets/fonts/BalooBhai-Regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Montserrat';
-	src: url('/src/assets/fonts/Montserrat-Regular.ttf') 
-  format('truetype');
+	src: url('/src/assets/fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
 :root {
@@ -31,3 +29,9 @@
 	-webkit-text-size-adjust: 100%;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	margin: 0px;
+}
