@@ -16,21 +16,21 @@ const GlobalTopbar = () => {
 				{/* <!-- menu --> */}
 				<div className='flex items-center'>
 					<ul className='flex'>
-						<li className='mx-2 font-Montserrat'>
+						<li className='mx-2 hidden md:block font-Montserrat'>
 							<Button className='text-primary' variant='outlined'>
 								Login
 							</Button>
 						</li>
-						<li className='mr-2 hidden md:block '>
+						<li className='mr-2 hidden md:block'>
 							<Button className='text-primary' variant='outlined'>
 								Signup
 							</Button>
 						</li>
-						<li className='mr-2 hidden md:block '>
+						{/* <li className='mr-2 hidden md:block '>
 							<Button variant='outlined' size='medium'>
 								<FaHome className='mr-1' /> Home
 							</Button>
-						</li>
+						</li> */}
 
 						<li className='ml-1'>
 							<Button variant='text'>
