@@ -58,7 +58,7 @@ const Index = () => {
             <a href="/about">About</a>
           </li>
         </ul>
-        <p className="mt-3">aether © 2021</p>
+        <p className="mt-1">aether © 2021</p>
       </div>
     </>
   );
