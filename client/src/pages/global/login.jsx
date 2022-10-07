@@ -1,6 +1,8 @@
 import GlobalTopbar from "../../layout/GlobalTopbar";
 import { Button } from "@mui/material";
 
+import contentImg from "../../assets/content.svg";
+
 const login = () => {
   return (
     <>
@@ -35,18 +37,14 @@ const login = () => {
             {/* <!-- form controller --> */}
             <div className="mt-2 w-3/4 sm:w-96">
               <p className="text-right sm:text-lg">Forgot Password?</p>
-              {/* <button className="mt-4 rounded-sm bg-red-400 py-1 px-7 text-2xl text-white font-Montserrat">
-                Log in
-              </button> */}
-              <Button variant="contained" size="large">Login</Button>
+              <Button variant="contained" size="large">
+                Login
+              </Button>
             </div>
           </form>
           {/* <!-- body doodle --> */}
           <div className="hidden w-full sm:w-1/2 md:flex md:justify-center">
-            <img
-              src="https://stage.aether.buzz/assets/content.bff395fe.svg"
-              alt="doodle"
-            />
+            <img src={contentImg} alt="doodle" />
           </div>
         </div>
       </div>
