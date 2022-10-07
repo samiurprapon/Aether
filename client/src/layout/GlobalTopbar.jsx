@@ -26,12 +26,6 @@ const GlobalTopbar = () => {
 								Signup
 							</Button>
 						</li>
-						{/* <li className='mr-2 hidden md:block '>
-							<Button variant='outlined' size='medium'>
-								<FaHome className='mr-1' /> Home
-							</Button>
-						</li> */}
-
 						<li className='ml-1'>
 							<Button variant='text'>
 								<SvgIcon>
