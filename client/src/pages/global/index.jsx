@@ -4,6 +4,8 @@ import appleStoreImg from "../../assets/apple_store.svg";
 import playStoreImg from "../../assets/play_store.svg";
 import contentImg from "../../assets/content.svg";
 
+import { SIGNUP_PATH } from "../../utils/helper/pathHelper";
+
 const Index = () => {
   return (
     <>
@@ -32,7 +34,7 @@ const Index = () => {
               way to make you understand.
             </p>
             <button className="mt-14 rounded-md bg-primary px-14 py-3 text-white text-lg font-bold">
-              <Link to='/Register'>Sign up for free</Link>
+              <Link to={SIGNUP_PATH}>Sign up for free</Link>
             </button>
           </div>
           {/* play store and apple store buttons */}
