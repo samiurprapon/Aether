@@ -1,5 +1,5 @@
 import GlobalTopbar from "../../layout/GlobalTopbar";
-
+import { Link } from 'react-router-dom';
 import appleStoreImg from "../../assets/apple_store.svg";
 import playStoreImg from "../../assets/play_store.svg";
 import contentImg from "../../assets/content.svg";
@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <>
       <GlobalTopbar />
-			{/* Main Body */}
+      {/* Main Body */}
       <div className="container mx-auto w-4/5 mt-20 font-Montserrat mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 md:gap-x-40">
           <div className="text-center">
@@ -32,7 +32,7 @@ const Index = () => {
               way to make you understand.
             </p>
             <button className="mt-14 rounded-md bg-primary px-14 py-3 text-white text-lg font-bold">
-              Sign up for free
+              <Link to='/Register'>Sign up for free</Link>
             </button>
           </div>
           {/* play store and apple store buttons */}
