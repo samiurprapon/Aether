@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import "./App.css";
-// import {
-//   INDEX_PATH,
-//   LOGIN_PATH,
-//   REGISTER_PATH,
-// } from "./utils/helper/pathHelper";
+import {
+  INDEX_PATH,
+  LOGIN_PATH,
+  SIGNUP_PATH,
+} from "./utils/helper/pathHelper";
 
 /* Pages for routing */
 import Index from "./pages/global";
@@ -17,9 +17,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path={INDEX_PATH} element={<Index />} />
+        <Route path={LOGIN_PATH} element={<Login />} />
+        <Route path={SIGNUP_PATH} element={<Register />} />
+        <Route path="*" element={<h3>404 Not Found!</h3>} />
       </Routes>
     </Router>
   );

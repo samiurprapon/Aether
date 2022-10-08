@@ -1,8 +1,8 @@
 import Logo from '../assets/images/logo.svg';
-import HamburgerMenu from '../assets/images/menu.svg';
 import { Button, IconButton, SvgIcon } from '@mui/material';
-import { FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
+import { LOGIN_PATH, SIGNUP_PATH } from '../utils/helper/pathHelper';
 
 const GlobalTopbar = () => {
 	return (
@@ -19,12 +19,12 @@ const GlobalTopbar = () => {
 					<ul className='flex'>
 						<li className='mx-2 hidden md:block font-Montserrat'>
 							<Button className='text-primary' variant='outlined'>
-								<Link to='/Login'>Login</Link>
+								<Link to={LOGIN_PATH}>Login</Link>
 							</Button>
 						</li>
 						<li className='mr-2 hidden md:block'>
 							<Button className='text-primary' variant='outlined'>
-								<Link to='/Register'>Signup</Link>
+								<Link to={SIGNUP_PATH}>Signup</Link>
 							</Button>
 						</li>
 						<li className='ml-1'>
