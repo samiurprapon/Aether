@@ -1,17 +1,17 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const authMiddleware = require("../middlewares/authMiddleware");
-const studentMiddleware = require("../middlewares/studentMiddleware");
+const { validation } = require('../middlewares/authMiddleware');
+const { isStudent } = require('../middlewares/roleMiddleware');
 
-const studentCourseController = require("../controllers/studentCourseController");
+const { list, enroll, drop } = require('../controllers/studentCourseController');
 
 // get courselist
-router.get("/", authMiddleware.validation, studentMiddleware.studentValidation, studentCourseController.list);
+router.get('/', validation, isStudent, list);
 
 // add new course
-router.post("/", authMiddleware.validation, studentMiddleware.studentValidation, studentCourseController.enroll);
+router.post('/', validation, isStudent, enroll);
 
 // remove course
-router.post("/drop", authMiddleware.validation, studentMiddleware.studentValidation, studentCourseController.drop);
+router.post('/drop', validation, isStudent, drop);
 
 module.exports = router;

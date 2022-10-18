@@ -1,9 +1,11 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const authMiddleware = require("../middlewares/authMiddleware");
-const sessionController = require("../controllers/sessionController");
+const { validation } = require('../middlewares/authMiddleware');
+const { isStudent } = require('../middlewares/roleMiddleware');
+
+const { reading } = require('../controllers/sessionController');
 
 // student reading endpoint
-router.post("/", authMiddleware.validation, sessionController.reading);
+router.post('/', validation, isStudent, reading);
 
 module.exports = router;
