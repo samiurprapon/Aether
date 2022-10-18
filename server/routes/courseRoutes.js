@@ -20,6 +20,4 @@ router.post("/remove", authMiddleware.validation, teacherMiddleware.teacherValid
 // archive course after it's done
 router.post("/archive", authMiddleware.validation, teacherMiddleware.teacherValidation, courseController.archived);
 
-module.exports = {
-  router,
-};
+module.exports = router;

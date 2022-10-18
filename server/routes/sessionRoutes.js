@@ -6,6 +6,4 @@ const sessionController = require("../controllers/sessionController");
 // student reading endpoint
 router.post("/", authMiddleware.validation, sessionController.reading);
 
-module.exports = {
-  router,
-};
+module.exports = router;

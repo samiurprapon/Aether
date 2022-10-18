@@ -12,6 +12,4 @@ router.post("/", authMiddleware.validation, slideController.upload);
 // remove slide
 router.post("/remove", authMiddleware.validation, slideController.remove);
 
-module.exports = {
-  router,
-};
+module.exports = router;

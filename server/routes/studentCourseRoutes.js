@@ -14,6 +14,4 @@ router.post("/", authMiddleware.validation, studentMiddleware.studentValidation,
 // remove course
 router.post("/drop", authMiddleware.validation, studentMiddleware.studentValidation, studentCourseController.drop);
 
-module.exports = {
-  router,
-};
+module.exports = router;

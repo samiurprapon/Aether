@@ -8,6 +8,4 @@ router.get("/valid", authMiddleware.validation, studentController.isCompleted);
 router.get("/", authMiddleware.validation, studentController.details);
 router.post("/", authMiddleware.validation, studentController.upsert);
 
-module.exports = {
-  router,
-};
+module.exports = router;
