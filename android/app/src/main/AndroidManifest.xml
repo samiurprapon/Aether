@@ -21,7 +21,8 @@
         <activity android:name=".views.authentication.RegistrationActivity" />
         <activity
             android:name=".SplashActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

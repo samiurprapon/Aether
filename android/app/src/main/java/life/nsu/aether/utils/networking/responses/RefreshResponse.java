@@ -7,15 +7,30 @@
 
 package life.nsu.aether.utils.networking.responses;
 
-public class RefreshResponse {
-    private boolean success;
-    private String message;
-    private String accessToken;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public RefreshResponse(boolean success, String message, String accessToken) {
-        this.success = success;
+public class RefreshResponse {
+    @SerializedName("isError")
+    @Expose()
+    private final boolean isError;
+
+    @SerializedName("message")
+    @Expose()
+    private final String message;
+
+    @SerializedName("accessToken")
+    @Expose()
+    private final String accessToken;
+
+    public RefreshResponse(boolean isError, String message, String accessToken) {
+        this.isError = isError;
         this.message = message;
         this.accessToken = accessToken;
+    }
+
+    public boolean isError() {
+        return isError;
     }
 
     public String getMessage() {
@@ -24,9 +39,5 @@ public class RefreshResponse {
 
     public String getAccessToken() {
         return accessToken;
-    }
-
-    public boolean isSuccess() {
-        return success;
     }
 }

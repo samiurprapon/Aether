@@ -8,13 +8,16 @@
 
 package life.nsu.aether;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import life.nsu.aether.viewModels.SplashViewModel;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     SplashViewModel viewModel;
@@ -27,13 +30,8 @@ public class SplashActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(SplashViewModel.class);
 
         viewModel.getRefreshResponseMutableLiveData().observe(this, refreshResponse -> {
-            if(!refreshResponse.isSuccess()){
+            Log.d("SplashActivity:refreshResponse", refreshResponse.getMessage());
                 viewModel.switchActivity(refreshResponse);
-            }else{
-                viewModel.getProfileValidityResponseMutableLiveData().observe(this, profileValidityResponse -> {
-                    viewModel.switchActivity(profileValidityResponse);
-                });
-            }
         });
     }
 

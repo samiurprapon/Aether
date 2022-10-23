@@ -11,8 +11,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -68,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
             viewModel.getMessageResponseLiveData(email, password).observe(this, loginResponse -> {
-                if(loginResponse.isSuccess()){
+                if(!loginResponse.isError()){
                     viewModel.getProfileValidityResponseMutableLiveData().observe(this, profileValidityResponse -> {
                         progressBar.hide();
                         viewModel.switchActivity(loginResponse, profileValidityResponse);

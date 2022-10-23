@@ -23,7 +23,7 @@ import retrofit2.http.POST;
 
 public interface ServerEndpoints {
 
-    @POST("auth/register")
+    @POST("auth/signup")
     Call<MessageResponse> registration(@Body RegistrationRequest request);
 
     @POST("auth/login")
