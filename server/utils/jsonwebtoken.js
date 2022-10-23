@@ -2,14 +2,21 @@ const jwt = require('jsonwebtoken');
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = require('../config/secrets');
 
-function generateTokens(user, role, userDetails) {
+const generateTokens = (user, details, permissions) => {
 	let token = {};
 
-	let refreshToken = jwt.sign({ user, role, userDetails }, process.env.REFRESH_TOKEN_SECRET || REFRESH_TOKEN_SECRET, {
-		expiresIn: '30d',
-	});
+	delete details['uid'];
+	delete permissions['uid'];
 
-	let accessToken = jwt.sign({ user, role, userDetails }, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, {
+	let refreshToken = jwt.sign(
+		{ user, details, permissions },
+		process.env.REFRESH_TOKEN_SECRET || REFRESH_TOKEN_SECRET,
+		{
+			expiresIn: '30d',
+		}
+	);
+
+	let accessToken = jwt.sign({ user, details, permissions }, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, {
 		expiresIn: '15m',
 	});
 
@@ -17,18 +24,18 @@ function generateTokens(user, role, userDetails) {
 	token.refreshToken = 'Bearer ' + refreshToken;
 
 	return token;
-}
+};
 
-function generateAccessTokens(user) {
+const generateAccessToken = async (data) => {
 	// console.log("generateAccessTokens: ", user);
 
-	if (user) {
-		delete user['iat'];
-		delete user['exp'];
+	if (data) {
+		delete data['iat'];
+		delete data['exp'];
 	}
 	// console.log("Generate Access Token: starts");
 
-	let accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET, {
+	let accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, {
 		expiresIn: '15m',
 	});
 
@@ -37,13 +44,15 @@ function generateAccessTokens(user) {
 	// console.log("Generate Access Token: ", token);
 
 	return token;
-}
+};
 
-function decodeToken(token, isRefreshToken) {
+const decodeToken = async (token, isRefreshToken) => {
 	let tokenData = token.split(' ')[1];
 
+	console.log('tokenData: ', process.env.REFRESH_TOKEN_SECRET);
+
 	if (isRefreshToken) {
-		return jwt.verify(tokenData, process.env.REFRESH_TOKEN_SECRET || config.REFRESH_TOKEN_SECRET, (err, decoded) => {
+		return jwt.verify(tokenData, process.env.REFRESH_TOKEN_SECRET || REFRESH_TOKEN_SECRET, (err, decoded) => {
 			if (err) {
 				return null;
 			}
@@ -51,7 +60,7 @@ function decodeToken(token, isRefreshToken) {
 			return decoded;
 		});
 	} else {
-		return jwt.verify(tokenData, process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET, (err, decoded) => {
+		return jwt.verify(tokenData, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, (err, decoded) => {
 			if (err) {
 				return null;
 			}
@@ -59,10 +68,10 @@ function decodeToken(token, isRefreshToken) {
 			return decoded;
 		});
 	}
-}
+};
 
 module.exports = {
 	generateTokens,
-	generateAccessTokens,
+	generateAccessToken,
 	decodeToken,
 };

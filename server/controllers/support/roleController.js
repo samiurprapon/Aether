@@ -23,6 +23,9 @@ const getRole = async (userId) => {
 		where: {
 			uid: userId,
 		},
+		attributes: {
+			exclude: ['createdAt', 'updatedAt'],
+		},
 		raw: true,
 		logging: false,
 	})

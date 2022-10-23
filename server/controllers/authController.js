@@ -5,7 +5,7 @@ const User = require('../models/users');
 const Student = require('../models/students');
 const Teacher = require('../models/teachers');
 
-const { generateTokens } = require('../utils/jsonwebtoken');
+const { generateTokens, generateAccessToken } = require('../utils/jsonwebtoken');
 const { create, getRole } = require('../controllers/support/roleController');
 
 const register = async (req, res) => {
@@ -199,6 +199,9 @@ const login = async (req, res) => {
 		where: {
 			email: email,
 		},
+		attributes: {
+			exclude: ['createdAt', 'updatedAt'],
+		},
 		raw: true,
 		logging: false,
 	})
@@ -221,6 +224,9 @@ const login = async (req, res) => {
 	const credential = await Credential.findOne({
 		where: {
 			id: user.cid,
+		},
+		attributes: {
+			exclude: ['createdAt', 'updatedAt'],
 		},
 		raw: true,
 		logging: false,
@@ -267,22 +273,26 @@ const login = async (req, res) => {
 			where: {
 				uid: user.id,
 			},
+			attributes: {
+				exclude: ['createdAt', 'updatedAt'],
+			},
 			raw: true,
 			logging: false,
 		})
 			.then((details) => {
-				console.log('details: ', details);
 				return details ? details : null;
 			})
 			.catch((err) => {
 				console.log('Login error: ', err);
 				return null;
 			});
-		console.log('Student details: ', details);
 	} else if (role.type === 'teacher') {
 		details = await Teacher.findOne({
 			where: {
 				id: user.id,
+			},
+			attributes: {
+				exclude: ['createdAt', 'updatedAt'],
 			},
 			raw: true,
 			logging: false,
@@ -304,10 +314,8 @@ const login = async (req, res) => {
 		});
 	}
 
-	console.log('details: ', details);
-
 	// generate tokens
-	const tokens = generateTokens(user, role.id, details);
+	const tokens = generateTokens(user, details, role);
 
 	// update credential last login time
 	await Credential.update(
@@ -318,6 +326,7 @@ const login = async (req, res) => {
 			where: {
 				id: user.cid,
 			},
+			logging: false,
 		}
 	)
 		.then((result) => {
@@ -338,38 +347,16 @@ const login = async (req, res) => {
 		});
 };
 
-const refresh = (req, res) => {
-	let token = {};
+const refresh = async (req, res) => {
+	const data = res.locals.data;
 
-	jwt.verify(res.locals.refreshToken, process.env.REFRESH_TOKEN_SECRET || config.REFRESH_TOKEN_SECRET, (err, user) => {
-		if (err) {
-			console.log(err);
-			return null;
-		}
+	const token = await generateAccessToken(data, true);
 
-		delete user['password'];
-		delete user['iat'];
-		delete user['exp'];
-
-		token.accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET, {
-			expiresIn: '45m',
-		});
+	return res.status(200).json({
+		isError: false,
+		message: 'Token refreshed successfully!',
+		accessToken: token,
 	});
-
-	if (token) {
-		res.status(200);
-		res.send({
-			success: true,
-			message: 'Token refreshed Successfully!',
-			accessToken: 'Bearer ' + token.accessToken,
-		});
-	} else {
-		res.status(403);
-		res.send({
-			success: false,
-			message: 'Unauthorized access!',
-		});
-	}
 };
 
 const deAuth = (req, res) => {
