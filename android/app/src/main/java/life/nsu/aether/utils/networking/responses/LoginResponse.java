@@ -10,50 +10,43 @@ package life.nsu.aether.utils.networking.responses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import life.nsu.aether.models.Token;
+
 public class LoginResponse {
 
-    @SerializedName("success")
+    @SerializedName("isError")
     @Expose()
-    private boolean success;
+    private final boolean isError;
 
     @SerializedName("message")
     @Expose()
-    private String message;
+    private final String message;
 
-    @SerializedName("accessToken")
+
+    @SerializedName("tokens")
     @Expose()
-    private String accessToken;
+    private Token token;
 
-    @SerializedName("refreshToken")
-    @Expose()
-    private String refreshToken;
-
-    @SerializedName("type")
-    @Expose()
-    private String type;
-
-    public LoginResponse(boolean success, String message) {
-        this.success = success;
+    public LoginResponse(boolean isError, String message) {
+        this.isError = isError;
         this.message = message;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public LoginResponse(boolean isError, String message, Token token) {
+        this.isError = isError;
+        this.message = message;
+        this.token = token;
+    }
+
+    public boolean isError() {
+        return isError;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public String getType() {
-        return type;
+    public Token getToken() {
+        return token;
     }
 }

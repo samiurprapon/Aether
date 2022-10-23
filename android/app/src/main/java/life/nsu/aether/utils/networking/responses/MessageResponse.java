@@ -7,16 +7,24 @@
 
 package life.nsu.aether.utils.networking.responses;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class MessageResponse {
-    private boolean success;
-    private String message;
+    @SerializedName("message")
+    @Expose()
+    private final String message;
+
+    @SerializedName("isError")
+    @Expose()
+    private boolean isError;
 
     public MessageResponse(String message) {
         this.message = message;
     }
 
-    public MessageResponse(boolean success, String message) {
-        this.success = success;
+    public MessageResponse(boolean isError, String message) {
+        this.isError = isError;
         this.message = message;
     }
 
@@ -25,6 +33,6 @@ public class MessageResponse {
     }
 
     public boolean isSuccess() {
-        return success;
+        return isError;
     }
 }

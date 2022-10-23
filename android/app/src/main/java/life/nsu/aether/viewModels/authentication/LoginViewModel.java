@@ -22,6 +22,7 @@ import java.util.Objects;
 
 import life.nsu.aether.repositories.LoginRepository;
 import life.nsu.aether.repositories.ProfileRepository;
+import life.nsu.aether.utils.DecodeJwt;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
@@ -51,19 +52,19 @@ public class LoginViewModel extends AndroidViewModel {
 
     public void switchActivity(LoginResponse loginResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
-            if (loginResponse.isSuccess()) {
-                if(loginResponse.getType().equals("student")) {
-                    preference.setType(loginResponse.getType());
-                    preference.setAccessToken(loginResponse.getAccessToken());
-                    preference.setRefreshToken(loginResponse.getRefreshToken());
+            if (!loginResponse.isError()) {
+                if (new DecodeJwt(loginResponse.getToken().getAccessToken()).getData().getPermissions().getType().equals("student")) {
+                    preference.setType(new DecodeJwt(loginResponse.getToken().getAccessToken()).getData().getPermissions().getType());
+                    preference.setAccessToken(loginResponse.getToken().getAccessToken());
+                    preference.setRefreshToken(loginResponse.getToken().getRefreshToken());
 
                     Intent intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     getApplication().getApplicationContext().startActivity(intent);
                 }
             } else {
-                Log.d("loginResponse", loginResponse.getMessage()+" "+loginResponse.isSuccess());
-                Toast.makeText(getApplication().getApplicationContext(), ""+loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("loginResponse", loginResponse.getMessage() + " " + loginResponse.isError());
+                Toast.makeText(getApplication().getApplicationContext(), "" + loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
         }, 250);
@@ -72,15 +73,15 @@ public class LoginViewModel extends AndroidViewModel {
     public void switchActivity(LoginResponse loginResponse, ProfileValidityResponse profileValidityResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
             Intent intent;
-            if(loginResponse.getType().equals("student")) {
-                preference.setType(loginResponse.getType());
-                preference.setAccessToken(loginResponse.getAccessToken());
-                preference.setRefreshToken(loginResponse.getRefreshToken());
+            if (new DecodeJwt(loginResponse.getToken().getAccessToken()).getData().getPermissions().getType().equals("student")) {
+                preference.setType(new DecodeJwt(loginResponse.getToken().getAccessToken()).getData().getPermissions().getType());
+                preference.setAccessToken(loginResponse.getToken().getAccessToken());
+                preference.setRefreshToken(loginResponse.getToken().getRefreshToken());
             }
             if (!profileValidityResponse.isSuccess() || !profileValidityResponse.isCompleted()) {
                 intent = new Intent(getApplication().getApplicationContext(), EditProfileActivity.class);
                 intent.putExtra("fetch_profile_data", false);
-            } else{
+            } else {
                 intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
             }
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
