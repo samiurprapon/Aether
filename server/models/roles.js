@@ -1,37 +1,32 @@
 'use strict';
 
 const { v4: uuidv4 } = require('uuid');
+const sequelize = require('sequelize');
 
+const { Sequelize } = require('./index');
 const User = require('./users');
 
-const sequelize = require('sequelize');
-const { Sequelize } = require('./index');
-
-const Student = Sequelize.define('students', {
+const Role = Sequelize.define('roles', {
 	id: {
 		type: sequelize.UUID,
 		defaultValue: () => uuidv4(),
 		primaryKey: true,
 		allowNull: false,
 	},
-	studentID: {
-		type: sequelize.INTEGER,
-		allowNull: true,
-		unique: true,
-	},
-	school: {
-		type: sequelize.STRING,
-		allowNull: true,
+	type: {
+		type: sequelize.ENUM('student', 'teacher', 'admin', 'authority'),
+		allowNull: false,
+		defaultValue: 'student',
 	},
 });
 
-Student.belongsTo(User, {
+Role.belongsTo(User, {
 	foreignKey: 'uid',
 	allowNull: false,
-	as: 'student',
+	as: 'userrole',
 
 	onUpdate: 'CASCADE',
 	onDelete: 'CASCADE',
 });
 
-module.exports = Student;
+module.exports = Role;
