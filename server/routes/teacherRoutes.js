@@ -1,13 +1,12 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const teacherController = require("../controllers/teacherController");
-const authMiddleware = require("../middlewares/authMiddleware");
+const { validation } = require('../middlewares/authMiddleware');
+const { isTeacher } = require('../middlewares/roleMiddleware');
 
-router.get("/valid", authMiddleware.validation, teacherController.isCompleted);
+const { isCompleted, upsert, details } = require('../controllers/teacherController');
 
-router.post("/", authMiddleware.validation, teacherController.upsert);
-router.get("/", authMiddleware.validation, teacherController.details);
+router.get('/valid', validation, isTeacher, isCompleted);
+router.post('/', validation, upsert);
+router.get('/', validation, details);
 
-module.exports = {
-  router,
-};
+module.exports = router;

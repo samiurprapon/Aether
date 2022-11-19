@@ -1,36 +1,41 @@
 {
-  "name": "aether",
-  "version": "1.0.0",
-  "description": "Aether server",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/samiurprapon/Aether.git"
-  },
-  "author": "Samiur Prapon",
-  "license": "",
-  "bugs": {
-    "url": "https://github.com/samiurprapon/Aether/issues"
-  },
-  "homepage": "https://github.com/samiurprapon/Aether#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.15",
-    "sequelize-cli": "^6.2.0"
-  },
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0",
-    "multer": "^1.4.2",
-    "mysql2": "^2.2.5",
-    "nanoid": "^3.3.1",
-    "sequelize": "^6.3.5",
-    "uuid": "^8.3.2"
-  }
+	"name": "aether",
+	"version": "1.0.0",
+	"description": "Aether server",
+	"main": "app.js",
+	"private": true,
+	"scripts": {
+		"start": "node app.js",
+		"dev": "nodemon app.js NODE_ENV=development",
+		"test": "nodemon app.js NODE_ENV=test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/samiurprapon/Aether.git"
+	},
+	"author": "Samiur Prapon",
+	"license": "",
+	"bugs": {
+		"url": "https://github.com/samiurprapon/Aether/issues"
+	},
+	"homepage": "https://github.com/samiurprapon/Aether#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.15",
+		"sequelize-cli": "^6.2.0"
+	},
+	"dependencies": {
+		"bcrypt": "^5.0.0",
+		"cors": "^2.8.5",
+		"cookie-parser": "^1.4.6",
+		"express": "^4.18.1",
+		"helmet": "^6.0.0",
+		"jsonwebtoken": "^8.5.1",
+		"morgan": "^1.10.0",
+		"multer": "^1.4.5-lts.1",
+		"nanoid": "^3.3.1",
+		"pg": "^8.7.3",
+		"pg-hstore": "^2.3.4",
+		"sequelize": "^6.3.5",
+		"uuid": "^9.0.0"
+	}
 }

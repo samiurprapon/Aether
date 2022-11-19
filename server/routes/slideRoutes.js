@@ -1,17 +1,17 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const authMiddleware = require("../middlewares/authMiddleware");
-const slideController = require("../controllers/slideController");
+const { validation } = require('../middlewares/authMiddleware');
+const { docsUploader } = require('../middlewares/fileUploadMiddleware');
+
+const { list, remove, upload } = require('../controllers/slideController');
 
 // get courselist
-router.get("/", authMiddleware.validation, slideController.list);
+router.get('/', validation, list);
 
 // add new slide
-router.post("/", authMiddleware.validation, slideController.upload);
+router.post('/', validation, docsUploader, upload);
 
 // remove slide
-router.post("/remove", authMiddleware.validation, slideController.remove);
+router.post('/remove', validation, remove);
 
-module.exports = {
-  router,
-};
+module.exports = router;

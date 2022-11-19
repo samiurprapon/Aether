@@ -1,23 +1,53 @@
 {
     "development": {
-        "username"  : "root", 
+			"username": "username",
+			"password": "password",
+			"database": "aether_development",
+			"host": "127.0.0.1",
+			"dialect": "postgres",
+			"pool": {
+				"max": 10,
+				"min": 1,
+				"idle": 30000,
+				"acquire": 90000
+			},
+			"dialectOptions": {
+				"useUTC": false
+			},
+			"timezone": "+06:00"
+		}, 
+    "test": {
+        "username"  : "username", 
         "password"  : "password",
         "database"  : "aether_development",
         "host"      : "127.0.0.1",
-        "dialect"   : "mysql"
-    }, 
-    "test": {
-        "username"  : "root", 
-        "password"  : "",
-        "database"  : "aether_test",
-        "host"      : "127.0.0.1",
-        "dialect"   : "mysql"
+			"dialect": "postgres",
+			"pool": {
+				"max": 10,
+				"min": 1,
+				"idle": 30000,
+				"acquire": 90000
+			},
+			"dialectOptions": {
+				"useUTC": false
+			},
+			"timezone": "+06:00"
     }, 
     "production": {
-        "username"  : "root", 
-        "password"  : "",
+        "username"  : "username", 
+        "password"  : "password",
         "database"  : "aether_production",
         "host"      : "127.0.0.1",
-        "dialect"   : "mysql"
+			"dialect": "postgres",
+			"pool": {
+				"max": 10,
+				"min": 1,
+				"idle": 30000,
+				"acquire": 90000
+			},
+			"dialectOptions": {
+				"useUTC": false
+			},
+			"timezone": "+06:00"
     }
 }

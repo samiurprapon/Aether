@@ -73,7 +73,7 @@ Express.js, Sequelize is used in this project.
 ### Run the server
 
 ```
-    npm run test
+    npm run dev
 ```
 
 # APIs

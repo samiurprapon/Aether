@@ -1,25 +1,23 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const authMiddleware = require("../middlewares/authMiddleware");
-const teacherMiddleware = require("../middlewares/teacherMiddleware");
+const { validation } = require('../middlewares/authMiddleware');
+const { isTeacher } = require('../middlewares/roleMiddleware');
 
-const courseController = require("../controllers/courseController");
+const { add, archived, list, remove, update } = require('../controllers/courseController');
 
 // get courselist
-router.get("/", authMiddleware.validation, teacherMiddleware.teacherValidation, courseController.list);
+router.get('/', validation, isTeacher, list);
 
 // add new course
-router.post("/", authMiddleware.validation, teacherMiddleware.teacherValidation, courseController.add);
+router.post('/', validation, isTeacher, add);
 
 // update course details
-router.post("/edit", authMiddleware.validation, teacherMiddleware.teacherValidation, courseController.remove);
+router.post('/edit', validation, isTeacher, remove);
 
 // remove course
-router.post("/remove", authMiddleware.validation, teacherMiddleware.teacherValidation, courseController.remove);
+router.post('/remove', validation, isTeacher, remove);
 
 // archive course after it's done
-router.post("/archive", authMiddleware.validation, teacherMiddleware.teacherValidation, courseController.archived);
+router.post('/archive', validation, isTeacher, archived);
 
-module.exports = {
-  router,
-};
+module.exports = router;

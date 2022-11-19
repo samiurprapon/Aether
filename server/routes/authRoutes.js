@@ -1,12 +1,11 @@
-const router = require("express").Router();
-const authController = require("../controllers/authController");
-const authMiddleware = require("../middlewares/authMiddleware");
+const router = require('express').Router();
 
-router.post("/register", authController.register);
-router.post("/login", authController.login);
-router.post("/refresh", authMiddleware.authentication, authController.refresh);
-router.post("/logout", authMiddleware.validation, authController.deAuth);
+const { register, login, refresh, deAuth } = require('../controllers/authController');
+const { authentication, validation } = require('../middlewares/authMiddleware');
 
-module.exports = {
-  router,
-};
+router.post('/signup', register);
+router.post('/login', login);
+router.post('/refresh', validation, refresh);
+router.post('/logout', authentication, deAuth);
+
+module.exports = router;

@@ -1,43 +1,37 @@
-const { v4: uuidv4 } = require("uuid");
+'use strict';
 
-const Credential = require("./credentials");
+const { v4: uuidv4 } = require('uuid');
 
-const Sequelize = require("./index").Sequelize;
-const Datatypes = require("./index").DataTypes;
+const User = require('./users');
 
-const Student = Sequelize.define("students", {
-  id: {
-    type: Datatypes.UUID,
-    defaultValue: () => uuidv4(),
-    primaryKey: true,
-    allowNull: false,
-  },
-  studentID: {
-    type: Datatypes.INTEGER,
-    allowNull: true,
-    unique: true,
-  },
-  name: {
-    type: Datatypes.STRING,
-    allowNull: true,
-  },
-  sex: {
-    type: Datatypes.STRING,
-    allowNull: false,
-    defaultValue: "male",
-  },
-  uid: {
-    type: Datatypes.UUID,
-    allowNull: false,
-    unique: true,
-    
-    references: {
-      model: Credential,
-      key: "id",
-    },
-    onUpdate: "CASCADE",
-    onDelete: "RESTRICT",
-  },
+const sequelize = require('sequelize');
+const { Sequelize } = require('./index');
+
+const Student = Sequelize.define('students', {
+	id: {
+		type: sequelize.UUID,
+		defaultValue: () => uuidv4(),
+		primaryKey: true,
+		allowNull: false,
+	},
+	studentID: {
+		type: sequelize.INTEGER,
+		allowNull: true,
+		unique: true,
+	},
+	school: {
+		type: sequelize.STRING,
+		allowNull: true,
+	},
+});
+
+Student.belongsTo(User, {
+	foreignKey: 'uid',
+	allowNull: false,
+	as: 'student',
+
+	onUpdate: 'CASCADE',
+	onDelete: 'CASCADE',
 });
 
 module.exports = Student;

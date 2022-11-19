@@ -27,7 +27,6 @@ public class RefreshRepository {
     Application application;
     MutableLiveData<RefreshResponse> refreshResponseMutableLiveData;
 
-
     private static RefreshRepository refreshRepository = null;
 
     public synchronized static RefreshRepository getInstance(Application application) {
@@ -55,7 +54,7 @@ public class RefreshRepository {
             public void onResponse(@NonNull Call<RefreshResponse> call, @NonNull Response<RefreshResponse> response) {
                 if (response.body() != null) {
                     refreshResponseMutableLiveData.postValue(response.body());
-//                    Log.d("refreshResponse", response.body().getMessage() + " " + response.body().isSuccess() + " " + response.body().getAccessToken());
+//                    Log.d("refreshResponse", response.body().getMessage() + " " + response.body().isError() + " " + response.body().getAccessToken());
                 }
 
                 if (response.errorBody() != null) {
