@@ -2,20 +2,21 @@ const jwt = require('jsonwebtoken');
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = require('../config/secrets');
 
-// check refresh token is valid or not
+// check access token is valid or not
 const authentication = (req, res, next) => {
 	if (!req.headers['authorization']) {
 		return res.status(401).json({
-			success: false,
+			isError: true,
 			message: 'Login first!',
 		});
 	}
+
 	const authHeader = req.headers['authorization'];
 	const token = authHeader && authHeader.split(' ')[1];
 
-	if (token == null) {
+	if (!token) {
 		return res.status(401).json({
-			success: false,
+			isError: true,
 			message: 'jwt malformed!',
 		});
 	}
@@ -24,7 +25,7 @@ const authentication = (req, res, next) => {
 		if (err) {
 			// console.log(err);
 			return res.status(403).json({
-				success: false,
+				isError: true,
 				message: err.message,
 			});
 		}
@@ -35,14 +36,14 @@ const authentication = (req, res, next) => {
 	});
 };
 
-// check acces token is valid or not
+// check refresh token is valid or not
 const validation = async (req, res, next) => {
 	const authHeader = req.headers['authorization'];
 	const token = authHeader && authHeader.split(' ')[1];
 
 	if (!token) {
 		return res.status(401).send({
-			success: false,
+			isError: true,
 			message: 'Unauthorized access!',
 		});
 	}
@@ -50,7 +51,7 @@ const validation = async (req, res, next) => {
 	return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET || REFRESH_TOKEN_SECRET, (err, details) => {
 		if (err) {
 			return res.status(403).send({
-				success: false,
+				isError: true,
 				message: err.message,
 			});
 		}

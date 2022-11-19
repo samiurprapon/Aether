@@ -359,33 +359,24 @@ const refresh = async (req, res) => {
 	});
 };
 
-const deAuth = (req, res) => {
-	let user = res.locals.user;
+const deAuth = async (req, res) => {
+	// let user = res.locals.user;
 
-	Credential.update(
-		{
-			token: null,
-		},
-		{
-			where: {
-				email: user.email,
-			},
-		}
-	)
-		.then((_result) => {
-			res.status(200);
-			res.send({
-				success: true,
-				message: 'Logout successfully!',
-			});
-		})
-		.catch((err) => {
-			res.status(403);
-			res.send({
-				success: false,
-				message: 'Logout failed!',
-			});
+	const { refreshToken } = req.body;
+
+	console.log('deAuth: ', refreshToken);
+
+	if (!refreshToken) {
+		return res.status(400).json({
+			isError: true,
+			message: 'Refresh token is required!',
 		});
+	} else {
+		return res.status(200).json({
+			isError: false,
+			message: 'Logged out successfully!',
+		});
+	}
 };
 
 module.exports = {
