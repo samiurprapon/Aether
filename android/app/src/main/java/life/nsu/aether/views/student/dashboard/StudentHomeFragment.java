@@ -43,7 +43,7 @@ public class StudentHomeFragment extends Fragment {
     private LineChart lineChart;
 
     @SuppressLint("StaticFieldLeak")
-    static StudentHomeFragment fragment = null;
+    static volatile StudentHomeFragment fragment = null;
 
 
     public StudentHomeFragment() {
@@ -107,7 +107,7 @@ public class StudentHomeFragment extends Fragment {
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         // set data
-        lineChart.setData(generateDataLine(5));
+        lineChart.setData(generateDataLine());
 
         Drawable background = lineChart.getBackground();
         background.setAlpha(20);
@@ -120,7 +120,7 @@ public class StudentHomeFragment extends Fragment {
         lineChart.getLegend().setEnabled(false);
     }
 
-    private LineData generateDataLine(int cnt) {
+    private LineData generateDataLine() {
 
         ArrayList<Entry> values1 = new ArrayList<>();
 
@@ -152,16 +152,15 @@ public class StudentHomeFragment extends Fragment {
         dateTypesArrayList.add("Monthly");
         dateTypesArrayList.add("Semester");
 
-        ArrayAdapter spinnerAdapter = new ArrayAdapter(getActivity(), R.layout.custom_spinner_view,
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.custom_spinner_view,
                 dateTypesArrayList);
         spinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_item_view);
         dateTypesSpinner.setAdapter(spinnerAdapter);
         dateTypesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                }
+//                if (position == 0) {
+//                }
             }
 
             @Override

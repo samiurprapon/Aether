@@ -8,13 +8,16 @@
 
 package life.nsu.aether;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import life.nsu.aether.utils.CustomProgressBar;
 import life.nsu.aether.viewModels.SplashViewModel;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     SplashViewModel viewModel;
@@ -27,12 +30,12 @@ public class SplashActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(SplashViewModel.class);
 
         viewModel.getRefreshResponseMutableLiveData().observe(this, refreshResponse -> {
-            if(!refreshResponse.isSuccess()){
+//            Log.d("SplashActivity", "onCreate: " + refreshResponse.toString());
+
+            if (!refreshResponse.isError()) {
                 viewModel.switchActivity(refreshResponse);
-            }else{
-                viewModel.getProfileValidityResponseMutableLiveData().observe(this, profileValidityResponse -> {
-                    viewModel.switchActivity(profileValidityResponse);
-                });
+            } else {
+                new CustomProgressBar(this).show(refreshResponse.getMessage());
             }
         });
     }

@@ -8,6 +8,7 @@
 package life.nsu.aether.repositories;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 
 import life.nsu.aether.utils.networking.NetworkingService;
+import life.nsu.aether.utils.networking.requests.LogoutRequest;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -44,17 +46,17 @@ public class LogoutRepository {
     }
 
 
-    public MutableLiveData<MessageResponse> getDeAuthResponseMutableLiveData(String accessToken) {
+    public MutableLiveData<MessageResponse> getDeAuthResponseMutableLiveData(String accessToken, String refreshToken) {
         Call<MessageResponse> call = NetworkingService.getInstance()
                 .getRoute()
-                .deAuthentication(accessToken);
+                .deAuthentication(accessToken, new LogoutRequest(refreshToken));
 
         call.enqueue(new Callback<MessageResponse>() {
             @Override
             public void onResponse(@NonNull Call<MessageResponse> call, @NonNull Response<MessageResponse> response) {
                 if (response.body() != null) {
                     deAuthResponseMutableLiveData.postValue(response.body());
-//                    Log.d("refreshResponse", response.body().getMessage() + " " + response.body().isSuccess() + " " + response.body().getAccessToken());
+                    Log.d("refreshResponse", response.body().getMessage() + " " + response.body().isError() + " " + response.body().getMessage());
                 }
 
                 if (response.errorBody() != null) {

@@ -15,17 +15,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 
 import life.nsu.aether.models.Student;
 import life.nsu.aether.utils.networking.NetworkingService;
 import life.nsu.aether.utils.networking.requests.ProfileUpdateRequest;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
 import life.nsu.aether.utils.networking.responses.StudentProfileDetailsResponse;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Converter;
 import retrofit2.Response;
 
 public class ProfileRepository {

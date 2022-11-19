@@ -44,7 +44,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+//        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
 
         setContentView(R.layout.activity_registration);
 
@@ -101,6 +101,6 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

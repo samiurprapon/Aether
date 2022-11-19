@@ -8,6 +8,7 @@
 package life.nsu.aether.utils.networking;
 
 import life.nsu.aether.utils.networking.requests.LoginRequest;
+import life.nsu.aether.utils.networking.requests.LogoutRequest;
 import life.nsu.aether.utils.networking.requests.ProfileUpdateRequest;
 import life.nsu.aether.utils.networking.requests.RegistrationRequest;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
@@ -33,7 +34,7 @@ public interface ServerEndpoints {
     Call<RefreshResponse> refreshSession(@Header("Authorization") String refreshToken);
 
     @POST("auth/logout")
-    Call<MessageResponse> deAuthentication(@Header("Authorization") String accessToken);
+    Call<MessageResponse> deAuthentication(@Header("Authorization") String accessToken, @Body LogoutRequest request);
 
     @GET("student/valid")
     Call<ProfileValidityResponse> validateStudentProfile(@Header("Authorization") String accessToken);

@@ -1,84 +1,41 @@
 /*
- * Student Created by Samiur Prapon
- * Last modified  24/8/21, 12:51 am
- * Copyright (c) 2021. All rights reserved.
+ * StudentLoginResponse Created by Samiur Prapon
+ * Last modified  11/19/22, 2:10 PM
+ * Copyright (c) 2022. All rights reserved.
  *
  */
 
 package life.nsu.aether.models;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Student {
+    @SerializedName("user")
+    @Expose()
+    private User user;
 
-    private String id;
-    private String name;
-    private String studentID;
-    private String sex;
-    private String uid;
-    private String status;
-    private String createdAt;
-    private String updatedAt;
+    @SerializedName("details")
+    @Expose()
+    private UserDetails details;
 
-    public String getId() {
-        return id;
+    @SerializedName("permissions")
+    @Expose()
+    private Permission permission;
+
+    public Student() {
+        // empty constructor for retrofit2.Retrofit
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public User getUser() {
+        return user;
     }
 
-    public String getName() {
-        return name;
+    public UserDetails getDetails() {
+        return details;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Permission getPermission() {
+        return permission;
     }
-
-    public String getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
 }

@@ -25,10 +25,10 @@ import life.nsu.aether.utils.networking.responses.MessageResponse;
 import life.nsu.aether.views.authentication.LoginActivity;
 
 public class StudentMoreViewModel extends AndroidViewModel {
-//    web services
+    //    web services
     LogoutRepository logoutRepository;
 
-//    local data storage
+    //    local data storage
     Preference preference;
 
     public StudentMoreViewModel(@NonNull Application application) {
@@ -39,12 +39,12 @@ public class StudentMoreViewModel extends AndroidViewModel {
     }
 
     public LiveData<MessageResponse> getDeAuthResponse() {
-        return logoutRepository.getDeAuthResponseMutableLiveData(preference.getAccessToken());
+        return logoutRepository.getDeAuthResponseMutableLiveData(preference.getAccessToken(), preference.getRefreshToken());
     }
 
     public void switchActivity(MessageResponse messageResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
-            if (messageResponse.isSuccess()) {
+            if (!messageResponse.isError()) {
                 preference.clearAuth();
                 Intent intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

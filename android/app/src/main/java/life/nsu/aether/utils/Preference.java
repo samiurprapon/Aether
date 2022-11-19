@@ -14,14 +14,18 @@ import android.content.SharedPreferences;
 public class Preference {
     Application application;
     SharedPreferences authPreferences;
+    JwtDecode decoder;
 
     String refreshToken;
     String accessToken;
     String type;
+    String decodedAccessToken;
+    String decodedRefreshToken;
 
     public Preference(Application application) {
         this.application = application;
         authPreferences = application.getSharedPreferences("auth", Context.MODE_PRIVATE);
+        decoder = new JwtDecode();
     }
 
     public String getRefreshToken() {
@@ -36,10 +40,22 @@ public class Preference {
 
     public void setRefreshToken(String refreshToken) {
         authPreferences.edit().putString("refreshToken", refreshToken).apply();
+        authPreferences.edit().putString("decodedRefreshToken", decoder.getDecodedString(refreshToken)).apply();
     }
 
     public void setAccessToken(String accessToken) {
         authPreferences.edit().putString("accessToken", accessToken).apply();
+        authPreferences.edit().putString("decodedAccessToken", decoder.getDecodedString(accessToken)).apply();
+    }
+
+    public String getDecodedAccessToken() {
+        decodedAccessToken = authPreferences.getString("decodedAccessToken", null);
+        return decodedAccessToken;
+    }
+
+    public String getDecodedRefreshToken() {
+        decodedRefreshToken = authPreferences.getString("decodedRefreshToken", null);
+        return decodedRefreshToken;
     }
 
     public String getType() {

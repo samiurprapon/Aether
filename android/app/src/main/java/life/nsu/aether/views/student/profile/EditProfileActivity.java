@@ -55,8 +55,8 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void changeUiAccordingToStudentsProfileData(StudentProfileDetailsResponse studentProfileDetailsResponse) {
-        textInputEditTextName.setText(studentProfileDetailsResponse.getStudent().getName());
-        if(studentProfileDetailsResponse.getStudent().getSex().equals("male")){
+        textInputEditTextName.setText(studentProfileDetailsResponse.getStudent().getUser().getName());
+        if(studentProfileDetailsResponse.getStudent().getUser().getSex().equals("male")){
             genderSelectionRadioGroup.check(R.id.rb_male);
         }else{
             genderSelectionRadioGroup.check(R.id.rb_female);

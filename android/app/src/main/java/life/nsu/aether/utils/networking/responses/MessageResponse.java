@@ -7,24 +7,28 @@
 
 package life.nsu.aether.utils.networking.responses;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MessageResponse {
-    private boolean success;
+    @SerializedName("isError")
+    private boolean isError;
     private String message;
 
-    public MessageResponse(String message) {
+    public MessageResponse() {
+        // empty constructor for Retrofit
+    }
+
+    public MessageResponse(boolean isError, String message) {
+        this.isError = isError;
         this.message = message;
     }
 
-    public MessageResponse(boolean success, String message) {
-        this.success = success;
-        this.message = message;
+    public boolean isError() {
+        return isError;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public boolean isSuccess() {
-        return success;
-    }
 }

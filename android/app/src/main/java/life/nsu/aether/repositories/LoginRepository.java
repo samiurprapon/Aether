@@ -73,7 +73,7 @@ public class LoginRepository {
             @Override
             public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
 //                Log.d("messageResponse", "onFailure: " + t.getMessage());
-                mutableLoginResponse.postValue(new LoginResponse(false, t.getMessage()));
+                mutableLoginResponse.postValue(new LoginResponse(true, t.getMessage()));
             }
         });
 

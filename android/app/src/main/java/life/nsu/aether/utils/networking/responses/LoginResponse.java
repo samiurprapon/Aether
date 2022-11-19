@@ -7,53 +7,56 @@
 
 package life.nsu.aether.utils.networking.responses;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import life.nsu.aether.models.Tokens;
+
 public class LoginResponse {
 
-    @SerializedName("success")
+    @SerializedName("isError")
     @Expose()
-    private boolean success;
+    private boolean isError;
 
     @SerializedName("message")
     @Expose()
     private String message;
 
-    @SerializedName("accessToken")
+    @SerializedName("tokens")
     @Expose()
-    private String accessToken;
+    private Tokens tokens;
 
-    @SerializedName("refreshToken")
-    @Expose()
-    private String refreshToken;
+    public LoginResponse() {
+        // empty constructor for Retrofit
+    }
 
-    @SerializedName("type")
-    @Expose()
-    private String type;
-
-    public LoginResponse(boolean success, String message) {
-        this.success = success;
+    public LoginResponse(boolean isError, String message) {
+        this.isError = isError;
         this.message = message;
     }
 
-    public boolean isSuccess() {
-        return success;
+
+    public boolean isError() {
+        return isError;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public Tokens getTokens() {
+        return tokens;
     }
 
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public String getType() {
-        return type;
+    @NonNull
+    @Override
+    public String toString() {
+        return "LoginResponse{" +
+                "isError=" + isError +
+                ", message='" + message + '\'' +
+                ", tokens=" + tokens.toString() +
+                '}';
     }
 }
