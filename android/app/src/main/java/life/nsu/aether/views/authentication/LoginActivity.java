@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         mRegister = findViewById(R.id.mb_register);
 
         mLogin.setOnClickListener(v -> {
+            mLogin.setEnabled(false); // prevent double clicking
             hideKeyboard(this, v);
             progressBar.show("");
 
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplication().getApplicationContext(), "Invalid Credentials!", Toast.LENGTH_SHORT).show();
                 }
             });
+            mLogin.setEnabled(true);
         });
 
         mRegister.setOnClickListener(v -> {

@@ -47,7 +47,7 @@ public class RegistrationViewModel extends AndroidViewModel {
                 getApplication().getApplicationContext().startActivity(intent);
             } else {
                 Log.d("messageResponse", messageResponse.getMessage() + " " + messageResponse.isError());
-                Toast.makeText(getApplication().getApplicationContext(), "" + messageResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication().getApplicationContext(), "Error" + messageResponse.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
         }, 250);
