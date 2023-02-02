@@ -32,11 +32,12 @@ public class SplashActivity extends AppCompatActivity {
         viewModel.getRefreshResponseMutableLiveData().observe(this, refreshResponse -> {
 //            Log.d("SplashActivity", "onCreate: " + refreshResponse.toString());
 
-            if (!refreshResponse.isError()) {
+            viewModel.switchActivity(refreshResponse);
+            /*if (!refreshResponse.isError()) {
                 viewModel.switchActivity(refreshResponse);
             } else {
                 new CustomProgressBar(this).show(refreshResponse.getMessage());
-            }
+            }*/
         });
     }
 

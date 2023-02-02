@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -72,9 +73,8 @@ public class RegistrationActivity extends AppCompatActivity {
 //            mSignUp.setError(null);
             new Handler(Looper.myLooper()).postDelayed(() -> viewModel.getMessageResponseLiveData(email, password, type).observe(this, messageResponse -> {
                 progressBar.hide();
-
                 viewModel.switchActivity(messageResponse);
-            }), 250);
+            }), 500);
 
         });
 
