@@ -5,7 +5,6 @@ const { isStudent } = require('../middlewares/roleMiddleware');
 
 const { reading } = require('../controllers/sessionController');
 
-// student reading endpoint
-router.post('/', validation, isStudent, reading);
+router.post('/', validation, isStudent, reading); // student reading endpoint
 
 module.exports = router;

@@ -5,13 +5,8 @@ const { docsUploader } = require('../middlewares/fileUploadMiddleware');
 
 const { list, remove, upload } = require('../controllers/slideController');
 
-// get courselist
-router.get('/', validation, list);
-
-// add new slide
-router.post('/', validation, docsUploader, upload);
-
-// remove slide
-router.post('/remove', validation, remove);
+router.get('/', validation, list); // get courselist
+router.post('/', validation, docsUploader, upload); // add new slide
+router.delete('/', validation, remove); // remove slide
 
 module.exports = router;

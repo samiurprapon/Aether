@@ -1,43 +1,43 @@
 ### Auth routes
 ### 
-POST http://frustrated.engineer/api/auth/refresh HTTP/1.1 
+POST https://aether.buzz/api/v1/auth/refresh HTTP/1.1 
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
 
 ### 
-POST http://frustrated.engineer/api/auth/logout HTTP/1.1 
+POST https://aether.buzz/api/v1/auth/logout HTTP/1.1 
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0Y2FmMmU5My03NTZjLTRhZDAtODY3OC1kZjMyNmUyMGQ2NzIiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyMzgzOTksImV4cCI6MTYzMDI0MTA5OX0.1V4vbAnqJ6ALkJ8Sxlt0j2nTaBZfv_JurKxNQcXg6pc
 
 
 ### student routes 
-POST http://frustrated.engineer/api/auth/register HTTP/1.1 
+POST https://aether.buzz/api/v1/auth/register HTTP/1.1 
 Content-Type: application/json
 
 {
-    "email" : "samiur.prapon@dotdot.ba", 
+    "email" : "test@test.com", 
     "password": "12345678", 
     "type" : "student"
 }
 
 ### Student login
-POST http://frustrated.engineer/api/auth/login HTTP/1.1 
+POST https://aether.buzz/api/v1/auth/login HTTP/1.1 
 Content-Type: application/json
 
 {
-    "email" : "samiur.prapon@dotdot.ba", 
+    "email" : "test@test.com", 
     "password": "12345678"
 }
 
 ### 
-GET http://frustrated.engineer/api/student/
+GET https://aether.buzz/api/v1/student/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhMS0yMmIyLTQxMDQtYWMzNi0yYjY1MmUzMjRmZDAiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyODA0NTgsImV4cCI6MTYzMDI4MzE1OH0.zGrynb41NgIsay8rAX8aEz_dFEyuj7a_JoesXRkoZfg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGExYjVhYmMtZTdhOS00NGQwLThlYjMtYzhhOWZiODE5ZGZhIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwibmFtZSI6bnVsbCwic2V4IjoibWFsZSIsImlzQmFuIjpmYWxzZSwiY2lkIjoiNjM4ZDc1ODUtMzU2NC00YmVkLWI2MTAtMjhjOGI2ZWY2YTUyIn0sImRldGFpbHMiOnsiaWQiOiIxNThiZmFkNS0xYmUyLTQ0NjQtOWU5Zi1mMzIxY2JkYjVmODQiLCJzdHVkZW50SUQiOm51bGwsInNjaG9vbCI6bnVsbH0sInBlcm1pc3Npb25zIjp7ImlkIjoiNDdlODkxZTEtNDM3OS00OWMxLWFlYzAtNGVhZmJiYTNmZDM4IiwidHlwZSI6InN0dWRlbnQifSwiaWF0IjoxNjc1NjAwMDAwLCJleHAiOjE2NzU2MDA5MDB9.DoV_QkosZHxc_2zTvaSGptHsldNH0YRZM9TUVQg5PFQ
 
 ### 
-POST http://frustrated.engineer/api/student/
+POST https://aether.buzz/api/v1/student/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhMS0yMmIyLTQxMDQtYWMzNi0yYjY1MmUzMjRmZDAiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyODA0NTgsImV4cCI6MTYzMDI4MzE1OH0.zGrynb41NgIsay8rAX8aEz_dFEyuj7a_JoesXRkoZfg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGExYjVhYmMtZTdhOS00NGQwLThlYjMtYzhhOWZiODE5ZGZhIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwibmFtZSI6bnVsbCwic2V4IjoibWFsZSIsImlzQmFuIjpmYWxzZSwiY2lkIjoiNjM4ZDc1ODUtMzU2NC00YmVkLWI2MTAtMjhjOGI2ZWY2YTUyIn0sImRldGFpbHMiOnsiaWQiOiIxNThiZmFkNS0xYmUyLTQ0NjQtOWU5Zi1mMzIxY2JkYjVmODQiLCJzdHVkZW50SUQiOm51bGwsInNjaG9vbCI6bnVsbH0sInBlcm1pc3Npb25zIjp7ImlkIjoiNDdlODkxZTEtNDM3OS00OWMxLWFlYzAtNGVhZmJiYTNmZDM4IiwidHlwZSI6InN0dWRlbnQifSwiaWF0IjoxNjc1NjAwMDAwLCJleHAiOjE2NzU2MDA5MDB9.DoV_QkosZHxc_2zTvaSGptHsldNH0YRZM9TUVQg5PFQ
 
 {
     "studentID": "1723456798", 
@@ -46,30 +46,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhM
 }
 
 ### 
-GET http://frustrated.engineer/api/student/valid
+GET https://aether.buzz/api/v1/student/valid
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhMS0yMmIyLTQxMDQtYWMzNi0yYjY1MmUzMjRmZDAiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyODA0NTgsImV4cCI6MTYzMDI4MzE1OH0.zGrynb41NgIsay8rAX8aEz_dFEyuj7a_JoesXRkoZfg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGExYjVhYmMtZTdhOS00NGQwLThlYjMtYzhhOWZiODE5ZGZhIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwibmFtZSI6bnVsbCwic2V4IjoibWFsZSIsImlzQmFuIjpmYWxzZSwiY2lkIjoiNjM4ZDc1ODUtMzU2NC00YmVkLWI2MTAtMjhjOGI2ZWY2YTUyIn0sImRldGFpbHMiOnsiaWQiOiIxNThiZmFkNS0xYmUyLTQ0NjQtOWU5Zi1mMzIxY2JkYjVmODQiLCJzdHVkZW50SUQiOm51bGwsInNjaG9vbCI6bnVsbH0sInBlcm1pc3Npb25zIjp7ImlkIjoiNDdlODkxZTEtNDM3OS00OWMxLWFlYzAtNGVhZmJiYTNmZDM4IiwidHlwZSI6InN0dWRlbnQifSwiaWF0IjoxNjc1NjAwMDAwLCJleHAiOjE2NzU2MDA5MDB9.DoV_QkosZHxc_2zTvaSGptHsldNH0YRZM9TUVQg5PFQ
 
 ### Student course routes
 ### course list
-GET http://frustrated.engineer/api/student/course/
+GET https://aether.buzz/api/v1/student/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhMS0yMmIyLTQxMDQtYWMzNi0yYjY1MmUzMjRmZDAiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyODA0NTgsImV4cCI6MTYzMDI4MzE1OH0.zGrynb41NgIsay8rAX8aEz_dFEyuj7a_JoesXRkoZfg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGExYjVhYmMtZTdhOS00NGQwLThlYjMtYzhhOWZiODE5ZGZhIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwibmFtZSI6bnVsbCwic2V4IjoibWFsZSIsImlzQmFuIjpmYWxzZSwiY2lkIjoiNjM4ZDc1ODUtMzU2NC00YmVkLWI2MTAtMjhjOGI2ZWY2YTUyIn0sImRldGFpbHMiOnsiaWQiOiIxNThiZmFkNS0xYmUyLTQ0NjQtOWU5Zi1mMzIxY2JkYjVmODQiLCJzdHVkZW50SUQiOm51bGwsInNjaG9vbCI6bnVsbH0sInBlcm1pc3Npb25zIjp7ImlkIjoiNDdlODkxZTEtNDM3OS00OWMxLWFlYzAtNGVhZmJiYTNmZDM4IiwidHlwZSI6InN0dWRlbnQifSwiaWF0IjoxNjc1NjAwMDAwLCJleHAiOjE2NzU2MDA5MDB9.DoV_QkosZHxc_2zTvaSGptHsldNH0YRZM9TUVQg5PFQ
 
 
 ### enroll new course
-POST http://frustrated.engineer/api/student/course/
+POST https://aether.buzz/api/v1/student/course/
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhMS0yMmIyLTQxMDQtYWMzNi0yYjY1MmUzMjRmZDAiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyODA0NTgsImV4cCI6MTYzMDI4MzE1OH0.zGrynb41NgIsay8rAX8aEz_dFEyuj7a_JoesXRkoZfg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGExYjVhYmMtZTdhOS00NGQwLThlYjMtYzhhOWZiODE5ZGZhIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwibmFtZSI6bnVsbCwic2V4IjoibWFsZSIsImlzQmFuIjpmYWxzZSwiY2lkIjoiNjM4ZDc1ODUtMzU2NC00YmVkLWI2MTAtMjhjOGI2ZWY2YTUyIn0sImRldGFpbHMiOnsiaWQiOiIxNThiZmFkNS0xYmUyLTQ0NjQtOWU5Zi1mMzIxY2JkYjVmODQiLCJzdHVkZW50SUQiOm51bGwsInNjaG9vbCI6bnVsbH0sInBlcm1pc3Npb25zIjp7ImlkIjoiNDdlODkxZTEtNDM3OS00OWMxLWFlYzAtNGVhZmJiYTNmZDM4IiwidHlwZSI6InN0dWRlbnQifSwiaWF0IjoxNjc1NjAwMDAwLCJleHAiOjE2NzU2MDA5MDB9.DoV_QkosZHxc_2zTvaSGptHsldNH0YRZM9TUVQg5PFQ
 
 {
     "enroll": "0Oxfp2"
 }
 
 ### drop course
-POST http://frustrated.engineer/api/student/course/drop
+POST https://aether.buzz/api/v1/student/course/drop
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhMS0yMmIyLTQxMDQtYWMzNi0yYjY1MmUzMjRmZDAiLCJlbWFpbCI6InNhbWl1ci5wcmFwb25AZG90ZG90LmJhIiwidHlwZSI6InN0dWRlbnQiLCJpYXQiOjE2MzAyODA0NTgsImV4cCI6MTYzMDI4MzE1OH0.zGrynb41NgIsay8rAX8aEz_dFEyuj7a_JoesXRkoZfg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGExYjVhYmMtZTdhOS00NGQwLThlYjMtYzhhOWZiODE5ZGZhIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwibmFtZSI6bnVsbCwic2V4IjoibWFsZSIsImlzQmFuIjpmYWxzZSwiY2lkIjoiNjM4ZDc1ODUtMzU2NC00YmVkLWI2MTAtMjhjOGI2ZWY2YTUyIn0sImRldGFpbHMiOnsiaWQiOiIxNThiZmFkNS0xYmUyLTQ0NjQtOWU5Zi1mMzIxY2JkYjVmODQiLCJzdHVkZW50SUQiOm51bGwsInNjaG9vbCI6bnVsbH0sInBlcm1pc3Npb25zIjp7ImlkIjoiNDdlODkxZTEtNDM3OS00OWMxLWFlYzAtNGVhZmJiYTNmZDM4IiwidHlwZSI6InN0dWRlbnQifSwiaWF0IjoxNjc1NjAwMDAwLCJleHAiOjE2NzU2MDA5MDB9.DoV_QkosZHxc_2zTvaSGptHsldNH0YRZM9TUVQg5PFQ
 
 {
     "courseId": "9f260568-d64c-4e3d-8e5b-32e8dcfdfaae"
@@ -79,7 +79,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MTA0NTRhM
 
 
 ### Teacher registeration
-POST http://frustrated.engineer/api/auth/register HTTP/1.1 
+POST https://aether.buzz/api/v1/auth/register HTTP/1.1 
 Content-Type: application/json
 
 {
@@ -89,7 +89,7 @@ Content-Type: application/json
 }
 
 ### Teacher login
-POST http://frustrated.engineer/api/auth/login HTTP/1.1 
+POST https://aether.buzz/api/v1/auth/login HTTP/1.1 
 Content-Type: application/json
 
 {
@@ -99,12 +99,12 @@ Content-Type: application/json
 
 
 ### Teacher profile
-GET http://frustrated.engineer/api/teacher/
+GET https://aether.buzz/api/v1/teacher/
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlNjQ2MTVlMy1hN2I5LTQ3OGUtYTZiNi1iNDY4ZTAxNDE5ZTgiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyODA1MTUsImV4cCI6MTYzMDI4MzIxNX0.5n6fbLW6eduU4xu96fHD-ihjt-rYyIS7tg9XS399Juk
 
 ### 
-POST http://frustrated.engineer/api/teacher/
+POST https://aether.buzz/api/v1/teacher/
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlNjQ2MTVlMy1hN2I5LTQ3OGUtYTZiNi1iNDY4ZTAxNDE5ZTgiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyODA1MTUsImV4cCI6MTYzMDI4MzIxNX0.5n6fbLW6eduU4xu96fHD-ihjt-rYyIS7tg9XS399Juk
 
@@ -115,18 +115,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlNjQ2MTVlM
 }
 
 ### 
-GET http://frustrated.engineer/api/teacher/valid
+GET https://aether.buzz/api/v1/teacher/valid
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlNjQ2MTVlMy1hN2I5LTQ3OGUtYTZiNi1iNDY4ZTAxNDE5ZTgiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyODA1MTUsImV4cCI6MTYzMDI4MzIxNX0.5n6fbLW6eduU4xu96fHD-ihjt-rYyIS7tg9XS399Juk
 
 ### Teacher course routes
 ### course list
-GET http://frustrated.engineer/api/teacher/course/
+GET https://aether.buzz/api/v1/teacher/course/
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlNjQ2MTVlMy1hN2I5LTQ3OGUtYTZiNi1iNDY4ZTAxNDE5ZTgiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyODA5OTksImV4cCI6MTYzMDI4MzY5OX0.8oVwDAtQsdjfHFVid4GUHzGeX8rNWbkpuR480GB5l18
 
 ### create new course
-POST http://frustrated.engineer/api/teacher/course/
+POST https://aether.buzz/api/v1/teacher/course/
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlNjQ2MTVlMy1hN2I5LTQ3OGUtYTZiNi1iNDY4ZTAxNDE5ZTgiLCJlbWFpbCI6ImFiY0BhYmMuY29tIiwidHlwZSI6InRlYWNoZXIiLCJpYXQiOjE2MzAyODA1MTUsImV4cCI6MTYzMDI4MzIxNX0.5n6fbLW6eduU4xu96fHD-ihjt-rYyIS7tg9XS399Juk
 
