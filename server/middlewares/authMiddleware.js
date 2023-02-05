@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = require('../config/secrets');
+const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 
 // check access token is valid or not
 const authentication = (req, res, next) => {

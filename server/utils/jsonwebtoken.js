@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = require('../config/secrets');
+const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 
 const generateTokens = (user, details, permissions) => {
 	let token = {};
