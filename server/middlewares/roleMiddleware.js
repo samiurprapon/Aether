@@ -4,7 +4,7 @@ const Teacher = require('../models/teachers');
 const isStudent = async (req, res, next) => {
 	const user = res.locals.user;
 
-	return await Student.findOne({ user: user.id })
+	return await Student.findOne({ uid: user.id })
 		.then((student) => {
 			if (student) {
 				res.locals.student = student;
