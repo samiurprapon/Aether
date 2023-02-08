@@ -79,5 +79,14 @@
     <string name="name">Name</string>
     <string name="student_id">Student Id</string>
 
+    <!--  Student More Fragment  -->
+    <string name="title_profile">Profile</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="title_name">NAME</string>
+    <string name="title_student_id">STUDENT ID</string>
+    <string name="title_email">EMAIL</string>
+    <string name="title_school">SCHOOL</string>
+    <string name="title_gender">GENDER</string>
+    <string name="title_date_of_birth">DATE OF BIRTH</string>
 
 </resources>
