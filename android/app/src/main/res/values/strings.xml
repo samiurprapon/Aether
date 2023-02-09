@@ -89,4 +89,21 @@
     <string name="title_gender">GENDER</string>
     <string name="title_date_of_birth">DATE OF BIRTH</string>
 
+    <!-- Teacher Home Fragment -->
+    <string name="appbar_teacher">It’s good to see you again.</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard_monthly_earning">This Month’s Earning</string>
+    <string name="title_dashboard_total_course">Total Courses</string>
+    <string name="title_dashboard_task_in_progress">Task in Progress</string>
+    <string name="title_dashboard_grade_submission_remaining">Grade Submission</string>
+    <string name="title_monthly_earning">Monthly Earning</string>
+    <string name="title_courses">Courses</string>
+    <string name="title_remaining_task">Remaining Task</string>
+
+    <!-- Teacher Course Fragment -->
+    <string name="search_bar_hint">   Search material or people</string>
+    <string name="title_all_student">All Student</string>
+    <string name="title_student_status">Student Status</string>
+    <string name="title_task">Assigned Task</string>
+
 </resources>

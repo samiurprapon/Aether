@@ -41,4 +41,8 @@
         <item name="android:divider">#A8A8A8</item>
         <item name="android:dividerHeight">0.5dp</item>
     </style>
+
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/teacher_main_color</item>
+    </style>
 </resources>
