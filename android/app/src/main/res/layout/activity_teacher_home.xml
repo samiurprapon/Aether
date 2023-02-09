@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ activity_teacher_home.xml Created by Mahfuj Ahmed Jim
+  ~ Last modified  2/9/23, 1:10 AM
+  ~ Copyright (c) 2023. All rights reserved.
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.teacher.TeacherHomeActivity">
+
+    <FrameLayout
+        android:id="@+id/fragment_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

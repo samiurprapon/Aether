@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ adapter_all_student.xml Created by Mahfuj Ahmed Jim
+  ~ Last modified  2/10/23, 2:12 AM
+  ~ Copyright (c) 2023. All rights reserved.
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:max="100"
+        android:indeterminate="false"
+        android:indeterminateDrawable="@drawable/progress_bar"
+        android:progress="10"
+        android:theme="@style/ProgressBarStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ProgressBar>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/home_page_person_character_image"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="@+id/progressBar">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jim"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar">
+
+    </TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

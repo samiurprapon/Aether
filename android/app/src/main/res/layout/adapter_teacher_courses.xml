@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ adapter_teacher_courses.xml Created by Samiur Prapon
+  ~ Last modified  2/10/23, 1:29 AM
+  ~ Copyright (c) 2023. All rights reserved.
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ly_courses"
+        android:orientation="vertical"
+        android:background="@drawable/dashboard_background"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="14dp"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_course_name"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:text="Software Engineering"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_course_date"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="10dp"
+            android:textColor="@color/grey_500"
+            android:text="Date: 2 February, 2023"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <RatingBar
+            android:id="@+id/rb_courses"
+            android:progressTint="@color/yellow_700"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4.5"
+            android:layout_marginTop="2dp"
+            android:elevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </RatingBar>
+
+        <ProgressBar
+            android:id="@+id/pb_courses"
+            android:theme="@style/ProgressBarStyle"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progress="10"
+            android:indeterminate="false"
+            android:indeterminateTint="@color/teacher_main_color" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ adapter_tasks.xml Created by Samiur Prapon
+  ~ Last modified  2/10/23, 2:40 AM
+  ~ Copyright (c) 2023. All rights reserved.
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/dashboard_background"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="14dp"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_task_name"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:text="Final Report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_task_date"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="10dp"
+            android:textColor="@color/grey_500"
+            android:text="Date: 2 February, 2023"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_task_time"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="10dp"
+            android:textColor="@color/grey_500"
+            android:text="Time: 11:59 PM"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

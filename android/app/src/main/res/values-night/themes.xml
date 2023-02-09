@@ -31,4 +31,8 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/teacher_main_color</item>
+    </style>
 </resources>
