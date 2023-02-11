@@ -2,9 +2,16 @@ const Student = require('../models/students');
 const Teacher = require('../models/teachers');
 
 const isStudent = async (req, res, next) => {
-	const user = res.locals.user;
+	const data = res.locals.data;
 
-	return await Student.findOne({ uid: user.id })
+	return await Student.findOne({
+		where: { uid: data.user.id },
+		attributes: {
+			exclude: ['createdAt', 'updatedAt', 'uid'],
+		},
+		logging: false,
+		raw: true,
+	})
 		.then((student) => {
 			if (student) {
 				res.locals.student = student;
@@ -27,9 +34,16 @@ const isStudent = async (req, res, next) => {
 };
 
 const isTeacher = async (req, res, next) => {
-	const user = res.locals.user;
+	const data = res.locals.data;
 
-	return await Teacher.findOne({ user: user.id })
+	return await Teacher.findOne({
+		where: { uid: data.user.id },
+		attributes: {
+			exclude: ['createdAt', 'updatedAt', 'uid'],
+		},
+		logging: false,
+		raw: true,
+	})
 		.then((teacher) => {
 			if (teacher) {
 				res.locals.teacher = teacher;
