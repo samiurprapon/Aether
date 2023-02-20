@@ -33,14 +33,14 @@ const add = async (req, res) => {
 };
 
 const list = async (req, res) => {
-	let teacher = res.locals.teacher;
+	let teacher = res.locals.data.details;
 
-	const { archived } = req.body;
+	const { archived } = req.params;
 
 	return await Course.findAll({
 		where: {
 			tid: teacher.id,
-			archived: archived ? true : false,
+			isArchived: archived ? true : false,
 		},
 	})
 		.then((courses) => {
@@ -58,9 +58,9 @@ const list = async (req, res) => {
 };
 
 const update = async (req, res) => {
-	let teacher = res.locals.teacher;
+	let teacher = res.locals.data.details;
 
-	var { id, name, section, code, semester } = req.body;
+	var { courseId, name, section, code, semester } = req.body;
 
 	return await Course.update(
 		{
@@ -71,7 +71,7 @@ const update = async (req, res) => {
 		},
 		{
 			where: {
-				id: id,
+				id: courseId,
 				tid: teacher.id,
 			},
 		}
@@ -91,12 +91,13 @@ const update = async (req, res) => {
 };
 
 const remove = async (req, res) => {
-	let teacher = res.locals.teacher;
+	let teacher = res.locals.data.details;
+
+	const { courseId } = req.body;
 
 	return await Course.destroy({
 		where: {
-			id: req.body.id,
-
+			id: courseId,
 			tid: teacher.id,
 		},
 	})
@@ -115,17 +116,17 @@ const remove = async (req, res) => {
 };
 
 const archived = async (req, res) => {
-	let teacher = res.locals.teacher;
+	let teacher = res.locals.data.details;
 
-	const { archived, id } = req.body;
+	const { archived, courseId } = req.body;
 
 	return await Course.update(
 		{
-			archived: archived ? true : false,
+			isArchived: archived ? true : false,
 		},
 		{
 			where: {
-				id: id,
+				id: courseId,
 				tid: teacher.id,
 			},
 		}
