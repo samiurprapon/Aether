@@ -105,5 +105,7 @@
     <string name="title_all_student">All Student</string>
     <string name="title_student_status">Student Status</string>
     <string name="title_task">Assigned Task</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
