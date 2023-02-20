@@ -5,7 +5,7 @@
  *
  */
 
-package life.nsu.aether.repositories;
+package life.nsu.aether.repositories.student;
 
 import android.app.Application;
 import android.util.Log;
@@ -25,24 +25,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProfileRepository {
+public class StudentProfileRepository {
     Application application;
     MutableLiveData<ProfileValidityResponse> profileValidityResponseMutableLiveData;
     MutableLiveData<StudentProfileDetailsResponse> studentProfileDetailsResponseMutableLiveData;
     MutableLiveData<StudentProfileDetailsResponse> studentProfileUpdateDetailsResponseMutableLiveData;
 
 
-    private static ProfileRepository profileRepository = null;
+    private static StudentProfileRepository profileRepository = null;
 
-    public synchronized static ProfileRepository getInstance(Application application) {
+    public synchronized static StudentProfileRepository getInstance(Application application) {
         if (profileRepository == null) {
-            profileRepository = new ProfileRepository(application);
+            profileRepository = new StudentProfileRepository(application);
         }
 
         return profileRepository;
     }
 
-    private ProfileRepository(Application application) {
+    private StudentProfileRepository(Application application) {
         this.application = application;
 
         profileValidityResponseMutableLiveData = new MutableLiveData<>();

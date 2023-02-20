@@ -1,14 +1,13 @@
 /*
- * LogoutRepository Created by Samiur Prapon
- * Last modified  8/15/21, 11:56 AM
- * Copyright (c) 2021. All rights reserved.
+ * RegisterRepository Created by Samiur Prapon
+ * Last modified  2/6/23, 1:32 AM
+ * Copyright (c) 2023. All rights reserved.
  *
  */
 
-package life.nsu.aether.repositories;
+package life.nsu.aether.repositories.authorization;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -17,7 +16,7 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 
 import life.nsu.aether.utils.networking.NetworkingService;
-import life.nsu.aether.utils.networking.requests.LogoutRequest;
+import life.nsu.aether.utils.networking.requests.RegistrationRequest;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -25,38 +24,38 @@ import retrofit2.Callback;
 import retrofit2.Converter;
 import retrofit2.Response;
 
-public class LogoutRepository {
+public class RegisterRepository {
+
     Application application;
-    MutableLiveData<MessageResponse> deAuthResponseMutableLiveData;
 
-    private static LogoutRepository logoutRepository = null;
+    MutableLiveData<MessageResponse> mutableMessage;
 
-    public synchronized static LogoutRepository getInstance(Application application) {
-        if (logoutRepository == null) {
-            logoutRepository = new LogoutRepository(application);
+    private static RegisterRepository registerRepository = null;
+
+    public synchronized static RegisterRepository getInstance(Application application) {
+        if (registerRepository == null) {
+            registerRepository = new RegisterRepository(application);
         }
 
-        return logoutRepository;
+        return registerRepository;
     }
 
-    private LogoutRepository(Application application) {
+    private RegisterRepository(Application application) {
         this.application = application;
 
-        deAuthResponseMutableLiveData = new MutableLiveData<>();
+        mutableMessage = new MutableLiveData<>();
     }
 
-
-    public MutableLiveData<MessageResponse> getDeAuthResponseMutableLiveData(String accessToken, String refreshToken) {
+    public MutableLiveData<MessageResponse> getMutableMessage(String email, String password, String type) {
         Call<MessageResponse> call = NetworkingService.getInstance()
                 .getRoute()
-                .deAuthentication(accessToken, new LogoutRequest(refreshToken));
+                .registration(new RegistrationRequest(email, password, type));
 
         call.enqueue(new Callback<MessageResponse>() {
             @Override
             public void onResponse(@NonNull Call<MessageResponse> call, @NonNull Response<MessageResponse> response) {
                 if (response.body() != null) {
-                    deAuthResponseMutableLiveData.postValue(response.body());
-                    Log.d("refreshResponse", response.body().getMessage() + " " + response.body().isError() + " " + response.body().getMessage());
+                    mutableMessage.postValue(response.body());
                 }
 
                 if (response.errorBody() != null) {
@@ -65,21 +64,22 @@ public class LogoutRepository {
 
                     try {
                         MessageResponse errorResponse = converter.convert(response.errorBody());
-                        deAuthResponseMutableLiveData.postValue(errorResponse);
+                        mutableMessage.postValue(errorResponse);
                     } catch (IOException e) {
+                        mutableMessage.postValue(new MessageResponse(false, e.getMessage()));
                         e.printStackTrace();
                     }
                 }
-
             }
 
             @Override
             public void onFailure(@NonNull Call<MessageResponse> call, @NonNull Throwable t) {
-//                Log.d("refreshResponse", t.getMessage());
-                deAuthResponseMutableLiveData.postValue(new MessageResponse(false, t.getMessage()));
+//                Log.d("messageResponse", "onFailure: " + t.getMessage());
+                mutableMessage.postValue(new MessageResponse(false, t.getMessage()));
             }
         });
 
-        return deAuthResponseMutableLiveData;
+        return mutableMessage;
     }
 }
+

@@ -18,8 +18,8 @@ import androidx.lifecycle.LiveData;
 
 import java.util.Objects;
 
-import life.nsu.aether.repositories.ProfileRepository;
-import life.nsu.aether.repositories.RefreshRepository;
+import life.nsu.aether.repositories.StudentProfileRepository;
+import life.nsu.aether.repositories.authorization.RefreshRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
 import life.nsu.aether.views.authentication.LoginActivity;
@@ -28,7 +28,7 @@ import life.nsu.aether.views.student.StudentHomeActivity;
 public class SplashViewModel extends AndroidViewModel {
 
     RefreshRepository refreshRepository;
-    ProfileRepository profileRepository;
+    StudentProfileRepository profileRepository;
     Preference preference;
 
     public SplashViewModel(@NonNull Application application) {
@@ -37,7 +37,7 @@ public class SplashViewModel extends AndroidViewModel {
         preference = new Preference(application);
 
         refreshRepository = RefreshRepository.getInstance(application);
-        profileRepository = ProfileRepository.getInstance(application);
+        profileRepository = StudentProfileRepository.getInstance(application);
     }
 
     public LiveData<RefreshResponse> getRefreshResponseMutableLiveData() {

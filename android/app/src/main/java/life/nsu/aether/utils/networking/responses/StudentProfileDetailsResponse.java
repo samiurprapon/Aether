@@ -7,6 +7,9 @@
 
 package life.nsu.aether.utils.networking.responses;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import life.nsu.aether.models.Student;
 
 public class StudentProfileDetailsResponse {
@@ -17,8 +20,14 @@ public class StudentProfileDetailsResponse {
         this.student = student;
     }
 
+    @SerializedName("success")
+    @Expose()
     private Boolean success;
+    @SerializedName("message")
+    @Expose()
     private String message;
+    @SerializedName("data")
+    @Expose()
     private Student student;
 
     public Boolean getSuccess() {
