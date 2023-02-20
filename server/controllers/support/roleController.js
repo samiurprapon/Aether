@@ -1,9 +1,10 @@
 const Role = require('../../models/roles');
 
-const create = async (userId) => {
+const create = async (userId, type) => {
 	return await Role.create(
 		{
 			uid: userId,
+			type: type
 		},
 		{
 			logging: false,

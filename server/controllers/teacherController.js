@@ -5,66 +5,66 @@ const upsert = (req, res) => {
 
   // console.log(user);
 
-    Teacher.findOne({
-      where: {
-        uid: user.uid,
-      },
-    })
-      .then((teacher) => {
-        if (teacher !== null) {
-          // console.log("teacher found");)
-          teacher
-            .update({
-              initial: req.body.initial,
-              name: req.body.name,
-              sex: req.body.sex,
-            })
-            .then((updatedTeacher) => {
-              res.status(201);
-              res.send({
-                success: true,
-                message: "Teacher Profile updated!",
-                teacher: updatedTeacher,
-              });
-            })
-            .catch((err) => {
-              res.status(403);
-              res.send({
-                success: false,
-                message: err.message,
-              });
-            });
-        } else {
-          Teacher.create({
+  Teacher.findOne({
+    where: {
+      uid: user.uid,
+    },
+  })
+    .then((teacher) => {
+      if (teacher !== null) {
+        // console.log("teacher found");)
+        teacher
+          .update({
             initial: req.body.initial,
             name: req.body.name,
             sex: req.body.sex,
-            uid: user.uid,
           })
-            .then((newTeacher) => {
-              res.status(201);
-              res.send({
-                success: true,
-                message: "Teacher account created successfully!",
-                teacher: newTeacher,
-              });
-            })
-            .catch((err) => {
-              res.status(400);
-              res.send({
-                success: false,
-                message: err.message,
-              });
+          .then((updatedTeacher) => {
+            res.status(201);
+            res.send({
+              success: true,
+              message: "Teacher Profile updated!",
+              teacher: updatedTeacher,
             });
-        }
-      })
-      .catch((err) => {
-        res.status(403);
-        res.send({
-          success: false,
-          message: err.message,
-        });
+          })
+          .catch((err) => {
+            res.status(403);
+            res.send({
+              success: false,
+              message: err.message,
+            });
+          });
+      } else {
+        Teacher.create({
+          initial: req.body.initial,
+          name: req.body.name,
+          sex: req.body.sex,
+          uid: user.uid,
+        })
+          .then((newTeacher) => {
+            res.status(201);
+            res.send({
+              success: true,
+              message: "Teacher account created successfully!",
+              teacher: newTeacher,
+            });
+          })
+          .catch((err) => {
+            res.status(400);
+            res.send({
+              success: false,
+              message: err.message,
+            });
+          });
+      }
+    })
+    .catch((err) => {
+      res.status(403);
+      res.send({
+        success: false,
+        message: err.message,
       });
+    });
 
 };
 
@@ -103,28 +103,28 @@ const isCompleted = (req, res) => {
     });
 };
 
-const details = (req, res) => {
-  let user = res.locals.user;
+const details = async (req, res) => {
+  let teacherId = res.locals.data.details.id;
 
-  Teacher.findOne({
+  return await Teacher.findOne({
     where: {
-      uid: user.uid,
+      id: teacherId,
     },
+    logging: false,
+    raw: true
   })
     .then((teacher) => {
-      res.status(200);
-      res.send({
+      return res.status(200).json({
         success: true,
         message: "request successful!",
         teacher: teacher,
-      });
+      })
     })
     .catch((err) => {
-      res.status(403);
-      res.send({
-        success: false,
-        message: "unsuccessful request!",
-      });
+      return res.status(400).json({
+        success: true,
+        message: err.message,
+      })
     });
 };
 
