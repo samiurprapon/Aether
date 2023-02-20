@@ -35,12 +35,12 @@ const add = async (req, res) => {
 const list = async (req, res) => {
 	let teacher = res.locals.data.details;
 
-	const { archived } = req.params;
+	const { archive } = req.query;
 
 	return await Course.findAll({
 		where: {
 			tid: teacher.id,
-			isArchived: archived ? true : false,
+			isArchived: archive ? true : false,
 		},
 	})
 		.then((courses) => {
@@ -118,11 +118,11 @@ const remove = async (req, res) => {
 const archived = async (req, res) => {
 	let teacher = res.locals.data.details;
 
-	const { archived, courseId } = req.body;
+	const { archive, courseId } = req.body;
 
 	return await Course.update(
 		{
-			isArchived: archived ? true : false,
+			isArchived: archive ? true : false,
 		},
 		{
 			where: {
