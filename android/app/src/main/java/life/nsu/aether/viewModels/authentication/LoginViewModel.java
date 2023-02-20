@@ -23,7 +23,7 @@ import com.google.gson.Gson;
 import java.util.Objects;
 
 import life.nsu.aether.models.Student;
-import life.nsu.aether.repositories.StudentProfileRepository;
+import life.nsu.aether.repositories.student.StudentProfileRepository;
 import life.nsu.aether.repositories.authorization.LoginRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.LoginResponse;

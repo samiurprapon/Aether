@@ -18,7 +18,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.Objects;
 
-import life.nsu.aether.repositories.StudentProfileRepository;
+import life.nsu.aether.repositories.student.StudentProfileRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.StudentProfileDetailsResponse;
 import life.nsu.aether.views.student.StudentHomeActivity;

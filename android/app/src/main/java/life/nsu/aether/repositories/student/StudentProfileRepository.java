@@ -77,10 +77,10 @@ public class StudentProfileRepository {
         return profileValidityResponseMutableLiveData;
     }
 
-    public MutableLiveData<StudentProfileDetailsResponse> getStudentProfileDetailsResponseMutableLiveData(String refreshToken) {
+    public MutableLiveData<StudentProfileDetailsResponse> getStudentProfileDetailsResponseMutableLiveData(String accessToken) {
         Call<StudentProfileDetailsResponse> call = NetworkingService.getInstance()
                 .getRoute()
-                .getStudentProfile(refreshToken);
+                .getStudentProfile(accessToken);
 
         call.enqueue(new Callback<StudentProfileDetailsResponse>() {
             @Override

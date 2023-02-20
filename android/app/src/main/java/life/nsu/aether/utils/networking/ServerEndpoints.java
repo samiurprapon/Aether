@@ -42,7 +42,7 @@ public interface ServerEndpoints {
     @POST("student")
     Call<StudentProfileDetailsResponse> updateProfile(@Header("Authorization") String accessToken, @Body ProfileUpdateRequest request);
 
-    @GET("student")
+    @GET("student/profile")
     Call<StudentProfileDetailsResponse> getStudentProfile(@Header("Authorization") String accessToken);
 
 }
