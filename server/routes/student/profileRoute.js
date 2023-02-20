@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
-const { validation } = require('../../middlewares/authMiddleware');
+const { authentication } = require('../../middlewares/authMiddleware');
 const { isStudent } = require('../../middlewares/roleMiddleware');
 
 const { isCompleted, details, upsert } = require('../../controllers/studentController');
 
-router.get('/valid', validation, isStudent, isCompleted);
-router.get('/', validation, isStudent, details);
-router.post('/', validation, isStudent, upsert);
+router.get('/valid', authentication, isStudent, isCompleted);
+router.get('/', authentication, isStudent, details);
+router.post('/', authentication, isStudent, upsert);
 
 module.exports = router;

@@ -17,7 +17,7 @@ const Teacher = Sequelize.define('teachers', {
 	},
 	initial: {
 		type: sequelize.STRING,
-		allowNull: false,
+		allowNull: true,
 		unique: true,
 	},
 });

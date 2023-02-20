@@ -106,7 +106,10 @@
     <string name="title_student_status">Student Status</string>
     <string name="title_task">Assigned Task</string>
 
+<<<<<<< HEAD
     <!-- Teacher profile Fragment -->
     <string name="title_initial">INITIAL</string>
 
+=======
+>>>>>>> ad60ca38fdaaa3472589e9bfe433cedb49d8439c
 </resources>

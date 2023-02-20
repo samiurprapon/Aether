@@ -1,9 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
-
 // check access token is valid or not
-const authentication = (req, res, next) => {
+const authentication = async (req, res, next) => {
 	if (!req.headers['authorization']) {
 		return res.status(401).json({
 			isError: true,
@@ -21,9 +19,8 @@ const authentication = (req, res, next) => {
 		});
 	}
 
-	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, (err, data) => {
+	return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET || 'ACCESS_TOKEN_SECRET', (err, data) => {
 		if (err) {
-			// console.log(err);
 			return res.status(403).json({
 				isError: true,
 				message: err.message,
@@ -48,7 +45,7 @@ const validation = async (req, res, next) => {
 		});
 	}
 
-	return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET || REFRESH_TOKEN_SECRET, (err, details) => {
+	return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET || 'REFRESH_TOKEN_SECRET', (err, details) => {
 		if (err) {
 			return res.status(403).send({
 				isError: true,

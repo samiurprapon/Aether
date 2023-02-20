@@ -108,7 +108,7 @@ const register = async (req, res) => {
 	}
 
 	// create role
-	const role = await create(user.id);
+	const role = await create(user.id, type);
 
 	if (!role) {
 		return res.status(500).json({
@@ -289,7 +289,7 @@ const login = async (req, res) => {
 	} else if (role.type === 'teacher') {
 		details = await Teacher.findOne({
 			where: {
-				id: user.id,
+				uid: user.id,
 			},
 			attributes: {
 				exclude: ['createdAt', 'updatedAt'],
@@ -310,7 +310,7 @@ const login = async (req, res) => {
 	if (!details) {
 		return res.status(400).json({
 			isError: true,
-			message: 'Invalid email or password!',
+			message: 'Invalid email or password!2',
 		});
 	}
 

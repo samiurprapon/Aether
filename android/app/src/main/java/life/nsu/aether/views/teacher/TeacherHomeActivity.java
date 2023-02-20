@@ -8,6 +8,7 @@
 package life.nsu.aether.views.teacher;
 
 import androidx.appcompat.app.AppCompatActivity;
+<<<<<<< HEAD
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
@@ -36,11 +37,23 @@ public class TeacherHomeActivity extends AppCompatActivity {
     ViewPagerAdapter adapter;
 
     @SuppressLint("MissingInflatedId")
+=======
+
+import android.os.Bundle;
+
+import life.nsu.aether.R;
+import life.nsu.aether.views.teacher.courses.TeacherCourseFragment;
+import life.nsu.aether.views.teacher.dashboard.TeacherDashboardFragment;
+
+public class TeacherHomeActivity extends AppCompatActivity {
+
+>>>>>>> ad60ca38fdaaa3472589e9bfe433cedb49d8439c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_home);
 
+<<<<<<< HEAD
         navigationView = findViewById(R.id.nav_container);
 //        navigationView.setTypeface(ResourcesCompat.getFont(this, R.font.roboto_medium));
 
@@ -75,6 +88,10 @@ public class TeacherHomeActivity extends AppCompatActivity {
             // automatic fragment changing
             viewPager.setCurrentItem(position, true);
         });
+=======
+        TeacherDashboardFragment teacherDashboardFragment = new TeacherDashboardFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_id, teacherDashboardFragment).commit();
+>>>>>>> ad60ca38fdaaa3472589e9bfe433cedb49d8439c
 
     }
 }

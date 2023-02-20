@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
-
 const generateTokens = (user, details, permissions) => {
 	let token = {};
 
@@ -10,13 +8,13 @@ const generateTokens = (user, details, permissions) => {
 
 	let refreshToken = jwt.sign(
 		{ user, details, permissions },
-		process.env.REFRESH_TOKEN_SECRET || REFRESH_TOKEN_SECRET,
+		process.env.REFRESH_TOKEN_SECRET || 'REFRESH_TOKEN_SECRET',
 		{
 			expiresIn: '30d',
 		}
 	);
 
-	let accessToken = jwt.sign({ user, details, permissions }, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, {
+	let accessToken = jwt.sign({ user, details, permissions }, process.env.ACCESS_TOKEN_SECRET || 'ACCESS_TOKEN_SECRET', {
 		expiresIn: '15m',
 	});
 
@@ -35,7 +33,7 @@ const generateAccessToken = async (data) => {
 	}
 	// console.log("Generate Access Token: starts");
 
-	let accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, {
+	let accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET || 'ACCESS_TOKEN_SECRET', {
 		expiresIn: '15m',
 	});
 
@@ -52,7 +50,7 @@ const decodeToken = async (token, isRefreshToken) => {
 	console.log('tokenData: ', process.env.REFRESH_TOKEN_SECRET);
 
 	if (isRefreshToken) {
-		return jwt.verify(tokenData, process.env.REFRESH_TOKEN_SECRET || REFRESH_TOKEN_SECRET, (err, decoded) => {
+		return jwt.verify(tokenData, process.env.REFRESH_TOKEN_SECRET || 'REFRESH_TOKEN_SECRET', (err, decoded) => {
 			if (err) {
 				return null;
 			}
@@ -60,7 +58,7 @@ const decodeToken = async (token, isRefreshToken) => {
 			return decoded;
 		});
 	} else {
-		return jwt.verify(tokenData, process.env.ACCESS_TOKEN_SECRET || ACCESS_TOKEN_SECRET, (err, decoded) => {
+		return jwt.verify(tokenData, process.env.ACCESS_TOKEN_SECRET || 'ACCESS_TOKEN_SECRET', (err, decoded) => {
 			if (err) {
 				return null;
 			}

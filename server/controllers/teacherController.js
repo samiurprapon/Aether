@@ -1,70 +1,44 @@
 const Teacher = require("../models/teachers");
+const User = require("../models/users");
 
-const upsert = (req, res) => {
-  let user = res.locals.user;
+const upsert = async (req, res) => {
+  let teacher = res.locals.data;
 
-  // console.log(user);
+  var { initial, name, sex } = req.body;
 
-    Teacher.findOne({
-      where: {
-        uid: user.uid,
-      },
-    })
-      .then((teacher) => {
-        if (teacher !== null) {
-          // console.log("teacher found");)
-          teacher
-            .update({
-              initial: req.body.initial,
-              name: req.body.name,
-              sex: req.body.sex,
-            })
-            .then((updatedTeacher) => {
-              res.status(201);
-              res.send({
-                success: true,
-                message: "Teacher Profile updated!",
-                teacher: updatedTeacher,
-              });
-            })
-            .catch((err) => {
-              res.status(403);
-              res.send({
-                success: false,
-                message: err.message,
-              });
-            });
-        } else {
-          Teacher.create({
-            initial: req.body.initial,
-            name: req.body.name,
-            sex: req.body.sex,
-            uid: user.uid,
-          })
-            .then((newTeacher) => {
-              res.status(201);
-              res.send({
-                success: true,
-                message: "Teacher account created successfully!",
-                teacher: newTeacher,
-              });
-            })
-            .catch((err) => {
-              res.status(400);
-              res.send({
-                success: false,
-                message: err.message,
-              });
-            });
+  if (teacher.user.sex !== sex) {
+    await User.update({
+      sex: sex
+    },
+      {
+        where: {
+          id: teacher.user.id
         }
       })
-      .catch((err) => {
-        res.status(403);
-        res.send({
-          success: false,
-          message: err.message,
-        });
+  }
+
+  return await Teacher.update({
+    initial: initial,
+    name: name,
+    sex: sex,
+  }, {
+    where: {
+      id: teacher.details.id
+    }
+  })
+    .then(() => {
+
+      return res.status(200).json({
+        success: true,
+        message: "Teacher Profile updated!",
+      })
+    })
+    .catch((err) => {
+      return res.status(403).json({
+        success: false,
+        message: err.message,
       });
+    });
 
 };
 
@@ -103,28 +77,28 @@ const isCompleted = (req, res) => {
     });
 };
 
-const details = (req, res) => {
-  let user = res.locals.user;
+const details = async (req, res) => {
+  let teacherId = res.locals.data.details.id;
 
-  Teacher.findOne({
+  return await Teacher.findOne({
     where: {
-      uid: user.uid,
+      id: teacherId,
     },
+    logging: false,
+    raw: true
   })
     .then((teacher) => {
-      res.status(200);
-      res.send({
+      return res.status(200).json({
         success: true,
         message: "request successful!",
         teacher: teacher,
-      });
+      })
     })
     .catch((err) => {
-      res.status(403);
-      res.send({
-        success: false,
-        message: "unsuccessful request!",
-      });
+      return res.status(400).json({
+        success: true,
+        message: err.message,
+      })
     });
 };
 
