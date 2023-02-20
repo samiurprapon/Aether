@@ -337,6 +337,7 @@
     <color name="grey_1000">#1a1a1a</color>
 
     <color name="nav_bg_color">#F37172</color>
+    <color name="teacher_nav_color">#7F56D9</color>
     <color name="nav_item_active">#FFFFFF</color>
     <color name="nav_item_inactive">#FFFFFF</color>
     <color name="nav_item_bg_white_30p_opacity">#4DFFFFFF</color>

@@ -16,6 +16,7 @@ import life.nsu.aether.utils.networking.responses.MessageResponse;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
 import life.nsu.aether.utils.networking.responses.StudentProfileDetailsResponse;
+import life.nsu.aether.utils.networking.responses.TeacherProfileDetailsResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -42,7 +43,10 @@ public interface ServerEndpoints {
     @POST("student")
     Call<StudentProfileDetailsResponse> updateProfile(@Header("Authorization") String accessToken, @Body ProfileUpdateRequest request);
 
-    @GET("student")
+    @GET("student/profile")
     Call<StudentProfileDetailsResponse> getStudentProfile(@Header("Authorization") String accessToken);
+
+    @GET("teacher/profile")
+    Call<TeacherProfileDetailsResponse> getTeacherProfile(@Header("Authorization") String accessToken);
 
 }

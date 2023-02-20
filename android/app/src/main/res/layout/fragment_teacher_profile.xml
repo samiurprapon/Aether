@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ fragment_profile.xml Created by Mahfuj Ahmed Jim
-  ~ Last modified  2/6/23, 5:02 PM
+  ~ fragment_teacher_profile.xml Created by Mahfuj Ahmed Jim
+  ~ Last modified  2/21/23, 1:51 AM
   ~ Copyright (c) 2023. All rights reserved.
   ~
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.student.profile.ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.teacher.profile.TeacherProfileFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,8 +32,8 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/mb_back"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:background="@drawable/ic_arrow_back"
                     app:backgroundTint="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -99,7 +99,7 @@
                 android:layout_height="0.8dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="8dp"
-                android:background="@color/main_color">
+                android:background="@color/teacher_main_color">
 
             </View>
 
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/student_id"
+                android:text="@string/title_initial"
                 android:textColor="@color/grey_500"
                 android:textSize="12dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,12 +117,12 @@
             </TextView>
 
             <TextView
-                android:id="@+id/tv_student_id"
+                android:id="@+id/tv_initial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="2.5dp"
-                android:text="192 122 134"
+                android:text="Jde"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,7 @@
                 android:layout_height="0.8dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="8dp"
-                android:background="@color/main_color">
+                android:background="@color/teacher_main_color">
 
             </View>
 
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/title_email"
+                android:text="@string/gender"
                 android:textColor="@color/grey_500"
                 android:textSize="12dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -153,12 +153,12 @@
             </TextView>
 
             <TextView
-                android:id="@+id/tv_email"
+                android:id="@+id/tv_sex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="2.5dp"
-                android:text="johnsondoe@nomail.com"
+                android:text="Male"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -171,120 +171,7 @@
                 android:layout_height="0.8dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="8dp"
-                android:background="@color/main_color">
-
-            </View>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/title_school"
-                android:textColor="@color/grey_500"
-                android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_school"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="2.5dp"
-                android:text="National Ideal School"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView">
-
-            </TextView>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/main_color">
-
-            </View>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title_gender"
-                        android:textColor="@color/grey_500"
-                        android:textSize="12dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/circleImageView">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/tv_gender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2.5dp"
-                        android:text="Male"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/circleImageView">
-
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DATE OF BIRTH"
-                        android:textColor="@color/grey_500"
-                        android:textSize="12dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/circleImageView"></TextView>
-
-                    <TextView
-                        android:id="@+id/tv_date_of_birth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2.5dp"
-                        android:text="@string/title_date_of_birth"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/circleImageView"></TextView>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/main_color">
+                android:background="@color/teacher_main_color">
 
             </View>
 
@@ -301,10 +188,8 @@
         app:fabCustomSize="68dp"
         android:src="@drawable/ic_edit"
         app:tint="@color/white"
+        app:backgroundTint="@color/teacher_main_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

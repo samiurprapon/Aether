@@ -23,16 +23,17 @@ import com.google.gson.Gson;
 import java.util.Objects;
 
 import life.nsu.aether.models.Student;
-import life.nsu.aether.repositories.LoginRepository;
-import life.nsu.aether.repositories.ProfileRepository;
+import life.nsu.aether.repositories.student.StudentProfileRepository;
+import life.nsu.aether.repositories.authorization.LoginRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
 import life.nsu.aether.views.student.StudentHomeActivity;
+import life.nsu.aether.views.teacher.TeacherHomeActivity;
 
 public class LoginViewModel extends AndroidViewModel {
     LoginRepository loginRepository;
-    ProfileRepository profileRepository;
+    StudentProfileRepository profileRepository;
     Preference preference;
     Gson gson;
 
@@ -41,7 +42,7 @@ public class LoginViewModel extends AndroidViewModel {
 
         preference = new Preference(application);
         loginRepository = LoginRepository.getInstance(application);
-        profileRepository = ProfileRepository.getInstance(application);
+        profileRepository = StudentProfileRepository.getInstance(application);
     }
 
     public LiveData<LoginResponse> getMessageResponseLiveData(String email, String password) {
@@ -72,13 +73,15 @@ public class LoginViewModel extends AndroidViewModel {
 //                    Log.d("LoginViewModel", "Decode-user : " + student.getPermission().getType());
 
                     if (student.getPermission().getType().equals("student")) {
-
+                        preference.setType("student");
                         Intent intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         getApplication().getApplicationContext().startActivity(intent);
-                    } else {
-//                        Not allowed to login from app right now
-                        Toast.makeText(getApplication().getApplicationContext(), "Not allowed to login from app right now", Toast.LENGTH_SHORT).show();
+                    } else if(student.getPermission().getType().equals("teacher")){
+                        preference.setType("teacher");
+                        Intent intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        getApplication().getApplicationContext().startActivity(intent);
                     }
 
                 }

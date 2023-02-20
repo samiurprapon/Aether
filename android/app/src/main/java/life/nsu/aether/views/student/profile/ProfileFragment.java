@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import life.nsu.aether.R;
+import life.nsu.aether.utils.networking.responses.StudentProfileDetailsResponse;
+import life.nsu.aether.viewModels.student.StudentProfileViewModel;
 import life.nsu.aether.views.student.examination.StudentExamFragment;
 
 public class ProfileFragment extends Fragment {
@@ -31,7 +34,8 @@ public class ProfileFragment extends Fragment {
     TextView mEmail;
     TextView mSchool;
     TextView mGender;
-    Text mDateOfBirth;
+    TextView mDateOfBirth;
+    StudentProfileViewModel studentProfileViewModel;
 
     public static ProfileFragment newInstance() {
         if (fragment == null) {
@@ -55,6 +59,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        studentProfileViewModel = new ViewModelProvider(this).get(StudentProfileViewModel.class);
         mName = view.findViewById(R.id.tv_name);
         mStudentId = view.findViewById(R.id.tv_student_id);
         mEmail = view.findViewById(R.id.tv_email);
@@ -62,5 +67,16 @@ public class ProfileFragment extends Fragment {
         mGender = view.findViewById(R.id.tv_gender);
         mDateOfBirth = view.findViewById(R.id.tv_date_of_birth);
 
+        // Fetch students previous data and place them on ui for editing profile
+        studentProfileViewModel.getStudentProfileDetailsResponseMutableLiveData().observe(getActivity(), this::changeUiAccordingToStudentsProfileData);
+
     }
+
+    private void changeUiAccordingToStudentsProfileData(StudentProfileDetailsResponse studentProfileDetailsResponse) {
+        mName.setText(studentProfileDetailsResponse.getStudent().getUser().getName());
+        mStudentId.setText(studentProfileDetailsResponse.getStudent().getDetails().getStudentID());
+        mEmail.setText(studentProfileDetailsResponse.getStudent().getUser().getEmail());
+        mGender.setText(studentProfileDetailsResponse.getStudent().getUser().getSex());
+    }
+
 }

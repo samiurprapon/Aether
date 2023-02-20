@@ -1,11 +1,11 @@
 /*
  * LoginRepository Created by Samiur Prapon
- * Last modified  8/6/21, 1:22 AM
- * Copyright (c) 2021. All rights reserved.
+ * Last modified  2/6/23, 1:32 AM
+ * Copyright (c) 2023. All rights reserved.
  *
  */
 
-package life.nsu.aether.repositories;
+package life.nsu.aether.repositories.authorization;
 
 import android.app.Application;
 

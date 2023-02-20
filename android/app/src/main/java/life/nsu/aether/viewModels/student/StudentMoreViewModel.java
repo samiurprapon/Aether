@@ -19,7 +19,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.Objects;
 
-import life.nsu.aether.repositories.LogoutRepository;
+import life.nsu.aether.repositories.authorization.LogoutRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
 import life.nsu.aether.views.authentication.LoginActivity;

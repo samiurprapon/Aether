@@ -1,7 +1,7 @@
 /*
- * StudentProfileDetailsResponse Created by Samiur Prapon
- * Last modified  24/8/21, 12:51 am
- * Copyright (c) 2021. All rights reserved.
+ * TeacherProfileDetailsResponse Created by Mahfuj Ahmed Jim
+ * Last modified  2/21/23, 3:13 AM
+ * Copyright (c) 2023. All rights reserved.
  *
  */
 
@@ -10,14 +10,14 @@ package life.nsu.aether.utils.networking.responses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import life.nsu.aether.models.Student;
+import life.nsu.aether.models.Teacher;
 
-public class StudentProfileDetailsResponse {
+public class TeacherProfileDetailsResponse {
 
-    public StudentProfileDetailsResponse(boolean success, String message, Student student) {
+    public TeacherProfileDetailsResponse(Boolean success, String message, Teacher teacher) {
         this.success = success;
         this.message = message;
-        this.student = student;
+        this.teacher = teacher;
     }
 
     @SerializedName("success")
@@ -26,9 +26,9 @@ public class StudentProfileDetailsResponse {
     @SerializedName("message")
     @Expose()
     private String message;
-    @SerializedName("data")
+    @SerializedName("teacher")
     @Expose()
-    private Student student;
+    private Teacher teacher;
 
     public Boolean getSuccess() {
         return success;
@@ -46,12 +46,12 @@ public class StudentProfileDetailsResponse {
         this.message = message;
     }
 
-    public Student getStudent() {
-        return student;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
 }
