@@ -75,7 +75,7 @@
     <string name="save">Save</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
-    <string name="gender">Gender</string>
+    <string name="gender">SEX</string>
     <string name="name">Name</string>
     <string name="student_id">Student Id</string>
 
@@ -105,7 +105,8 @@
     <string name="title_all_student">All Student</string>
     <string name="title_student_status">Student Status</string>
     <string name="title_task">Assigned Task</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Teacher profile Fragment -->
+    <string name="title_initial">INITIAL</string>
 
 </resources>
