@@ -24,6 +24,7 @@ import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
 import life.nsu.aether.views.authentication.LoginActivity;
 import life.nsu.aether.views.student.StudentHomeActivity;
+import life.nsu.aether.views.teacher.TeacherHomeActivity;
 
 public class SplashViewModel extends AndroidViewModel {
 
@@ -49,9 +50,12 @@ public class SplashViewModel extends AndroidViewModel {
             Intent intent;
             if (refreshResponse.isError()) {
                 intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
-            } else {
+            } else if (preference.getType().equals("student")){
                 preference.setAccessToken(refreshResponse.getAccessToken());
                 intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
+            } else {
+                preference.setAccessToken(refreshResponse.getAccessToken());
+                intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
             }
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             getApplication().getApplicationContext().startActivity(intent);

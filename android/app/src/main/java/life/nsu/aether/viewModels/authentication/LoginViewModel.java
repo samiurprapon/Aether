@@ -29,6 +29,7 @@ import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
 import life.nsu.aether.views.student.StudentHomeActivity;
+import life.nsu.aether.views.teacher.TeacherHomeActivity;
 
 public class LoginViewModel extends AndroidViewModel {
     LoginRepository loginRepository;
@@ -72,13 +73,15 @@ public class LoginViewModel extends AndroidViewModel {
 //                    Log.d("LoginViewModel", "Decode-user : " + student.getPermission().getType());
 
                     if (student.getPermission().getType().equals("student")) {
-
+                        preference.setType("student");
                         Intent intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         getApplication().getApplicationContext().startActivity(intent);
-                    } else {
-//                        Not allowed to login from app right now
-                        Toast.makeText(getApplication().getApplicationContext(), "Not allowed to login from app right now", Toast.LENGTH_SHORT).show();
+                    } else if(student.getPermission().getType().equals("teacher")){
+                        preference.setType("teacher");
+                        Intent intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        getApplication().getApplicationContext().startActivity(intent);
                     }
 
                 }
