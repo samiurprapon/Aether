@@ -1,157 +1,153 @@
-const Course = require("../models/courses");
-const Teacher = require("../models/teachers");
+const Course = require('../models/courses');
 
-const add = (req, res) => {
-  let teacher = res.locals.teacher;
+const add = async (req, res) => {
+	let teacher = res.locals.teacher;
 
-  Course.create({
-    code: req.body.code,
-    section: req.body.section,
-    name: req.body.name,
-    semester: req.body.semester,
-    tid: teacher.id,
-  })
-    .then((course) => {
-      res.status(201);
-      res.send({
-        success: true,
-        message: "Course section created successfully!",
-        course: course,
-      });
-    })
-    .catch((err) => {
-      res.status(400);
-      res.send({
-        success: false,
-        message: err.message,
-      });
-    });
+	var { name, section, code, semester } = req.body;
+
+	return await Course.create(
+		{
+			name: name,
+			code: code,
+			section: section,
+			semester: semester,
+			tid: teacher.id,
+		},
+		{
+			logging: false,
+		}
+	)
+		.then((course) => {
+			return res.status(201).json({
+				success: true,
+				message: 'Course section created successfully!',
+				course: course,
+			});
+		})
+		.catch((err) => {
+			return res.status(400).json({
+				success: false,
+				message: err.message,
+			});
+		});
 };
 
-const list = (req, res) => {
-  let teacher = res.locals.teacher;
-  let archive = false;
+const list = async (req, res) => {
+	let teacher = res.locals.teacher;
 
-  if (req.body.archived) {
-    archive = req.body.archived;
-  }
+	const { archived } = req.body;
 
-  Course.findAll({
-    where: {
-      tid: teacher.id,
-      archived: archive,
-    },
-  })
-    .then((courses) => {
-      res.status(200);
-      res.send({
-        success: true,
-        courses: courses,
-      });
-    })
-    .catch((err) => {
-      res.status(400);
-      res.send({
-        success: false,
-        message: err.message,
-      });
-    });
+	return await Course.findAll({
+		where: {
+			tid: teacher.id,
+			archived: archived ? true : false,
+		},
+	})
+		.then((courses) => {
+			return res.status(200).json({
+				success: true,
+				courses: courses,
+			});
+		})
+		.catch((err) => {
+			return res.status(400).json({
+				success: false,
+				message: err.message,
+			});
+		});
 };
 
-const update = (req, res) => {
-  let teacher = res.locals.teacher;
+const update = async (req, res) => {
+	let teacher = res.locals.teacher;
 
-  Course.update(
-    {
-      code: req.body.code,
-      section: req.body.section,
-      name: req.body.name,
-      semester: req.body.semester,
-    },
-    {
-      where: {
-        id: req.body.id,
-        tid: teacher.id,
-      },
-    }
-  )
-    .then((course) => {
-      res.status(201);
-      res.send({
-        success: true,
-        message: "Course section created successfully!",
-        course: course,
-      });
-    })
-    .catch((err) => {
-      res.status(400);
-      res.send({
-        success: false,
-        message: err.message,
-      });
-    });
+	var { id, name, section, code, semester } = req.body;
+
+	return await Course.update(
+		{
+			code: code,
+			section: section,
+			name: name,
+			semester: semester,
+		},
+		{
+			where: {
+				id: id,
+				tid: teacher.id,
+			},
+		}
+	)
+		.then((course) => {
+			return res.status(200).json({
+				success: true,
+				message: 'Course section updated successfully!',
+			});
+		})
+		.catch((err) => {
+			return res.status(400).json({
+				success: false,
+				message: err.message,
+			});
+		});
 };
 
-const remove = (req, res) => {
-  let teacher = res.locals.teacher;
+const remove = async (req, res) => {
+	let teacher = res.locals.teacher;
 
-  Course.findOne({
-    where: {
-      tid: teacher.id,
-      id: req.body.id,
-    },
-  })
-    .then((course) => {
-      return course.destroy();
-    })
-    .then((result) => {
-      res.status(200);
-      res.send({
-        message: "deleted successful!",
-      });
-    })
-    .catch((err) => {
-      res.status(400);
-      res.send({
-        message: err.message,
-      });
-    });
+	return await Course.destroy({
+		where: {
+			id: req.body.id,
+
+			tid: teacher.id,
+		},
+	})
+		.then(() => {
+			return res.status(200).json({
+				success: true,
+				message: 'Course section deleted successfully!',
+			});
+		})
+		.catch((err) => {
+			return res.status(400).json({
+				success: false,
+				message: err.message,
+			});
+		});
 };
 
-const archived = (req, res) => {
-  let teacher = res.locals.teacher;
+const archived = async (req, res) => {
+	let teacher = res.locals.teacher;
 
-  Course.update(
-    {
-      archived: req.body.archived,
-    },
-    {
-      where: {
-        tid: teacher.id,
-        id: req.body.id,
-      },
-    }
-  )
-    .then((course) => {
-      res.status(200);
-      res.send({
-        success: true,
-        message: "archived successful!",
-      });
-    })
-    .catch((err) => {
-      res.status(400);
-      res.send({
-        success: false,
-        message: err.message,
-      });
-    });
+	const { archived, id } = req.body;
+
+	return await Course.update(
+		{
+			archived: archived ? true : false,
+		},
+		{
+			where: {
+				id: id,
+				tid: teacher.id,
+			},
+		}
+	)
+		.then(() => {
+			return res.status(200).json({
+				success: true,
+				message: 'Course section archived successfully!',
+			});
+		})
+		.catch((err) => {
+			return res.status(400).json({
+				success: false,
+				message: err.message,
+			});
+		});
 };
 
 module.exports = {
-  add,
-  list,
-  update,
-  remove,
-  archived,
+	add,
+	list,
+	update,
+	remove,
+	archived,
 };
