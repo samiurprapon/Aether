@@ -13,7 +13,6 @@
     android:layout_height="match_parent"
     tools:context=".views.teacher.TeacherHomeActivity">
 
-<<<<<<< HEAD
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="0dp"
@@ -107,13 +106,12 @@
             app:bt_title="@string/nav_item_more"
             app:bt_titlePadding="4dp" />
     </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
-=======
+
     <FrameLayout
         android:id="@+id/fragment_layout_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </FrameLayout>
->>>>>>> ad60ca38fdaaa3472589e9bfe433cedb49d8439c
 
 </androidx.constraintlayout.widget.ConstraintLayout>
