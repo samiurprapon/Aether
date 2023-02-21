@@ -7,26 +7,25 @@
 
 package life.nsu.aether.views.teacher.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import life.nsu.aether.R;
-import life.nsu.aether.utils.networking.responses.StudentProfileDetailsResponse;
 import life.nsu.aether.utils.networking.responses.TeacherProfileDetailsResponse;
-import life.nsu.aether.viewModels.student.StudentProfileViewModel;
 import life.nsu.aether.viewModels.teacher.TeacherProfileViewModel;
-import life.nsu.aether.views.teacher.exam.TeacherExamFragment;
+import life.nsu.aether.views.PageActivity;
+import life.nsu.aether.views.authentication.RegistrationActivity;
 
 public class TeacherProfileFragment extends Fragment {
 
@@ -34,6 +33,7 @@ public class TeacherProfileFragment extends Fragment {
     TextView mName;
     TextView mInitial;
     TextView mSex;
+    FloatingActionButton mEditButton;
     TeacherProfileViewModel teacherProfileViewModel;
 
     public static TeacherProfileFragment newInstance() {
@@ -62,9 +62,17 @@ public class TeacherProfileFragment extends Fragment {
         mName = view.findViewById(R.id.tv_name);
         mInitial = view.findViewById(R.id.tv_initial);
         mSex = view.findViewById(R.id.tv_sex);
+        mEditButton = view.findViewById(R.id.fb_profile_edit);
 
         // Fetch students previous data and place them on ui for editing profile
         teacherProfileViewModel.getTeacherProfileDetailsResponseMutableLiveData().observe(getActivity(), this::changeUiAccordingToStudentsProfileData);
+
+        mEditButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), PageActivity.class);
+            intent.putExtra(getResources().getString((R.string.selected_fragment)),
+                    getResources().getString(R.string.teacher_profile_edit));
+            getActivity().startActivity(intent);
+        });
 
     }
 

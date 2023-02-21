@@ -11,6 +11,7 @@ import life.nsu.aether.utils.networking.requests.LoginRequest;
 import life.nsu.aether.utils.networking.requests.LogoutRequest;
 import life.nsu.aether.utils.networking.requests.ProfileUpdateRequest;
 import life.nsu.aether.utils.networking.requests.RegistrationRequest;
+import life.nsu.aether.utils.networking.requests.TeacherProfileUpdateRequest;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
@@ -48,5 +49,8 @@ public interface ServerEndpoints {
 
     @GET("teacher/profile")
     Call<TeacherProfileDetailsResponse> getTeacherProfile(@Header("Authorization") String accessToken);
+
+    @POST("teacher/profile")
+    Call<TeacherProfileDetailsResponse> postTeacherProfile(@Header("Authorization") String accessToken, @Body TeacherProfileUpdateRequest request);
 
 }
