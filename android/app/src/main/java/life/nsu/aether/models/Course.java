@@ -7,14 +7,31 @@
 
 package life.nsu.aether.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Course {
 
+    @SerializedName("id")
+    @Expose()
     private String id;
+    @SerializedName("name")
+    @Expose()
     private String name;
+    @SerializedName("section")
+    @Expose()
     private String section;
+    @SerializedName("enrollCode")
+    @Expose()
     private String enrollCode;
+    @SerializedName("semester")
+    @Expose()
     private String semester;
+    @SerializedName("isArchived")
+    @Expose()
     private boolean isArchived;
+    @SerializedName("teacherUid")
+    @Expose()
     private String teacherUid;
 
     public Course() {
