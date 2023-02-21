@@ -109,4 +109,9 @@
     <!-- Teacher profile Fragment -->
     <string name="title_initial">INITIAL</string>
 
+    <!-- Fragment's List -->
+    <string name="selected_fragment">Selected Fragment</string>
+    <string name="teacher_profile_edit">Teacher Profile Edit</string>
+    <string name="title_update">Update</string>
+
 </resources>

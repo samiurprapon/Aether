@@ -13,6 +13,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".views.PageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.teacher.TeacherHomeActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".views.student.profile.EditProfileActivity"
             android:exported="true" />
         <activity android:name=".views.student.StudentHomeActivity" />

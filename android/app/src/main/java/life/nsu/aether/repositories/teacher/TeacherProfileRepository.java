@@ -12,12 +12,21 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+
 import life.nsu.aether.models.Student;
 import life.nsu.aether.models.Teacher;
+import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.NetworkingService;
+import life.nsu.aether.utils.networking.requests.LoginRequest;
+import life.nsu.aether.utils.networking.requests.TeacherProfileUpdateRequest;
+import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.TeacherProfileDetailsResponse;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Converter;
 import retrofit2.Response;
 
 public class TeacherProfileRepository {
@@ -68,6 +77,41 @@ public class TeacherProfileRepository {
         });
 
         return teacherProfileDetailsResponseMutableLiveData;
+    }
+
+    public MutableLiveData<TeacherProfileDetailsResponse> postMutableTeacherProfileRequest(String accessToken, String name, String initial, String sex) {
+        Call<TeacherProfileDetailsResponse> call = NetworkingService.getInstance()
+                .getRoute()
+                .postTeacherProfile(accessToken, new TeacherProfileUpdateRequest(initial, name, sex));
+
+        call.enqueue(new Callback<TeacherProfileDetailsResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<TeacherProfileDetailsResponse> call, @NonNull Response<TeacherProfileDetailsResponse> response) {
+                if (response.body() != null) {
+                    teacherProfileUpdateDetailsResponseMutableLiveData.postValue(response.body());
+                }
+
+                if (response.errorBody() != null) {
+                    Converter<ResponseBody, TeacherProfileDetailsResponse> converter = NetworkingService.getInstance().getRetrofit()
+                            .responseBodyConverter(LoginResponse.class, new Annotation[0]);
+
+                    try {
+                        TeacherProfileDetailsResponse errorResponse = converter.convert(response.errorBody());
+                        teacherProfileUpdateDetailsResponseMutableLiveData.postValue(errorResponse);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<TeacherProfileDetailsResponse> call, @NonNull Throwable t) {
+//                Log.d("messageResponse", "onFailure: " + t.getMessage());
+                teacherProfileDetailsResponseMutableLiveData.postValue(new TeacherProfileDetailsResponse(false, t.getMessage(), new Teacher()));
+            }
+        });
+
+        return teacherProfileUpdateDetailsResponseMutableLiveData;
     }
 
 }
