@@ -18,7 +18,7 @@ import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import life.nsu.aether.R;
 import life.nsu.aether.utils.adapters.ViewPagerAdapter;
 import life.nsu.aether.views.teacher.classroom.TeacherClassroomFragment;
-import life.nsu.aether.views.teacher.courses.TeacherCourseFragment;
+import life.nsu.aether.views.teacher.courses.TeacherAllCoursesFragment;
 import life.nsu.aether.views.teacher.dashboard.TeacherDashboardFragment;
 import life.nsu.aether.views.teacher.exam.TeacherExamFragment;
 import life.nsu.aether.views.teacher.profile.TeacherProfileFragment;
@@ -42,7 +42,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), 1);
 
         adapter.addFragment(TeacherDashboardFragment.newInstance());
-        adapter.addFragment(TeacherCourseFragment.newInstance());
+        adapter.addFragment(TeacherAllCoursesFragment.newInstance());
         adapter.addFragment(TeacherClassroomFragment.newInstance());
         adapter.addFragment(TeacherExamFragment.newInstance());
         adapter.addFragment(TeacherProfileFragment.newInstance());
