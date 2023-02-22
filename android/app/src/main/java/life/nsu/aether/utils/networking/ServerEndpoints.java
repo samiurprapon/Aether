@@ -64,4 +64,7 @@ public interface ServerEndpoints {
     @HTTP(method = "DELETE", path = "teacher/courses", hasBody = true)
     Call<TeacherCoursesResponse> deleteTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
 
+    @POST("teacher/courses/archive")
+    Call<TeacherCoursesResponse> archiveTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
+
 }

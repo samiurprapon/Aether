@@ -13,10 +13,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -28,25 +31,26 @@ import java.util.Random;
 
 import life.nsu.aether.R;
 import life.nsu.aether.models.Course;
+import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
 import life.nsu.aether.views.PageActivity;
 
 public class TeacherOnGoingCourseAdapter extends RecyclerView.Adapter<TeacherOnGoingCourseAdapter.ViewHolder> {
 
     Context mContext;
     LayoutInflater layoutInflater;
-
     List<Course> courseList;
+    TeacherCourseViewModel viewModel;
 
     public TeacherOnGoingCourseAdapter(Context context) {
         this.mContext = context;
         layoutInflater = LayoutInflater.from(mContext);
+        viewModel = new ViewModelProvider((ViewModelStoreOwner) mContext).get(TeacherCourseViewModel.class);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = layoutInflater.inflate(R.layout.item_teacher_ongoing_courses, parent, false);
-
         return new ViewHolder(itemView);
     }
 
@@ -70,6 +74,10 @@ public class TeacherOnGoingCourseAdapter extends RecyclerView.Adapter<TeacherOnG
                 intent.putExtra(mContext.getResources()
                         .getString(R.string.intent_course_id), course.getId());
                 mContext.startActivity(intent);
+            });
+
+            holder.archiveButton.setOnClickListener(view -> {
+                viewModel.archiveTeacherCourseResponseMutableLiveData(course.getId());
             });
         }
     }
@@ -126,6 +134,7 @@ public class TeacherOnGoingCourseAdapter extends RecyclerView.Adapter<TeacherOnG
         TextView courseTitle;
         TextView courseCode;
         TextView courseSemester;
+        ImageButton archiveButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -134,6 +143,7 @@ public class TeacherOnGoingCourseAdapter extends RecyclerView.Adapter<TeacherOnG
             courseTitle = itemView.findViewById(R.id.tv_course_title);
             courseCode = itemView.findViewById(R.id.tv_course_code);
             courseSemester = itemView.findViewById(R.id.tv_course_semester);
+            archiveButton = itemView.findViewById(R.id.ib_archive);
         }
     }
 }

@@ -40,4 +40,9 @@ public class TeacherCourseViewModel extends AndroidViewModel {
                 .deleteTeacherCourseResponseMutableLiveData(preference.getAccessToken(), courseId);
     }
 
+    public LiveData<TeacherCoursesResponse> archiveTeacherCourseResponseMutableLiveData(String courseId){
+        return  courseRepository
+                .archiveTeacherCourseResponseMutableLiveData(preference.getAccessToken(), courseId);
+    }
+
 }
