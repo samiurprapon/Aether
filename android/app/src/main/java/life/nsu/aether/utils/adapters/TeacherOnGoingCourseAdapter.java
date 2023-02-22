@@ -9,30 +9,35 @@ package life.nsu.aether.utils.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.vision.text.Text;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 import java.util.Random;
 
 import life.nsu.aether.R;
 import life.nsu.aether.models.Course;
+import life.nsu.aether.views.PageActivity;
 
-public class TeacherCourseRecyclerAdapter extends RecyclerView.Adapter<TeacherCourseRecyclerAdapter.ViewHolder> {
+public class TeacherOnGoingCourseAdapter extends RecyclerView.Adapter<TeacherOnGoingCourseAdapter.ViewHolder> {
 
     Context mContext;
     LayoutInflater layoutInflater;
 
     List<Course> courseList;
 
-    public TeacherCourseRecyclerAdapter(Context context) {
+    public TeacherOnGoingCourseAdapter(Context context) {
         this.mContext = context;
         layoutInflater = LayoutInflater.from(mContext);
     }
@@ -51,6 +56,19 @@ public class TeacherCourseRecyclerAdapter extends RecyclerView.Adapter<TeacherCo
             Course course = courseList.get(position);
 
             setCourseAvatar(holder.mCourseAvatar);
+            holder.courseTitle.setText(course.getName());
+            holder.courseCode.setText(course.getCode()+"."+course.getSection());
+            holder.courseSemester.setText(course.getSemester());
+
+            holder.cardView.setOnClickListener(view -> {
+                Intent intent = new Intent(mContext, PageActivity.class);
+                intent.putExtra(mContext.getResources()
+                                .getString((R.string.selected_fragment)),
+                                mContext.getResources().getString(R.string.teacher_course));
+                intent.putExtra(mContext.getResources()
+                                .getString(R.string.intent_course_name), course.getName());
+                mContext.startActivity(intent);
+            });
         }
     }
 
@@ -102,13 +120,18 @@ public class TeacherCourseRecyclerAdapter extends RecyclerView.Adapter<TeacherCo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         AppCompatImageView mCourseAvatar;
-        //AppCompatTextView mCourseTitle;
-        //AppCompatTextView mCourseInstructor;
+        MaterialCardView cardView;
+        TextView courseTitle;
+        TextView courseCode;
+        TextView courseSemester;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             mCourseAvatar = itemView.findViewById(R.id.iv_course_avatar);
+            cardView = itemView.findViewById(R.id.mcv_teacher_courses);
+            courseTitle = itemView.findViewById(R.id.tv_course_title);
+            courseCode = itemView.findViewById(R.id.tv_course_code);
+            courseSemester = itemView.findViewById(R.id.tv_course_semester);
         }
     }
 }

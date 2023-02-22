@@ -106,13 +106,15 @@
     <string name="title_all_student">All Student</string>
     <string name="title_student_status">Student Status</string>
     <string name="title_task">Assigned Task</string>
+    <string name="intent_course_name">Course Name</string>
 
     <!-- Teacher profile Fragment -->
     <string name="title_initial">INITIAL</string>
+    <string name="title_update">Update</string>
 
     <!-- Fragment's List -->
     <string name="selected_fragment">Selected Fragment</string>
     <string name="teacher_profile_edit">Teacher Profile Edit</string>
-    <string name="title_update">Update</string>
+    <string name="teacher_course">Teacher Course</string>
 
 </resources>

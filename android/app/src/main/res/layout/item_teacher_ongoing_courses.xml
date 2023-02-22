@@ -7,6 +7,7 @@
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mcv_teacher_courses"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
@@ -66,12 +67,12 @@
             </TextView>
 
             <TextView
+                android:id="@+id/tv_course_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
                 style="@style/TextAppearance.AppCompat.Body2"
-                android:text="@string/demo_course_instructor"
                 android:textColor="@color/black">
 
             </TextView>
@@ -97,7 +98,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="@string/demo_course_semester"
                     android:textColor="@color/black">
 
                 </TextView>
@@ -110,7 +110,6 @@
             android:id="@+id/ib_archive"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginEnd="10dp"
             android:src="@drawable/ic_archive"
             android:background="@color/card_color"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"

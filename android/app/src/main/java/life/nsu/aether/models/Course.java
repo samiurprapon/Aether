@@ -18,10 +18,13 @@ public class Course {
     @SerializedName("name")
     @Expose()
     private String name;
+    @SerializedName("code")
+    @Expose()
+    private String code;
     @SerializedName("section")
     @Expose()
     private String section;
-    @SerializedName("enrollCode")
+    @SerializedName("enroll")
     @Expose()
     private String enrollCode;
     @SerializedName("semester")
@@ -66,5 +69,9 @@ public class Course {
 
     public String getTeacherUid() {
         return teacherUid;
+    }
+
+    public String getCode() {
+        return code;
     }
 }

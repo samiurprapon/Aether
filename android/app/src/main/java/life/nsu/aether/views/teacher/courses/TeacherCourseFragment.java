@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -36,6 +37,7 @@ import life.nsu.aether.views.teacher.dashboard.TeacherStudentsAdapter;
 public class TeacherCourseFragment extends Fragment {
 
     static TeacherCourseFragment fragment = null;
+    TextView mCourseNameTextView;
     private RecyclerView mStudentsRecyclerView;
     private TeacherStudentsAdapter teacherStudentsAdapter;
     private PieChart mStudentStatusPieChart;
@@ -73,9 +75,18 @@ public class TeacherCourseFragment extends Fragment {
     }
 
     private void initializeVariables(@NotNull View view) {
+        mCourseNameTextView = view.findViewById(R.id.tv_course_name);
         mStudentsRecyclerView = view.findViewById(R.id.rv_all_student);
         mStudentStatusPieChart = view.findViewById(R.id.pc_studentStatus);
         mTasksRecyclerView = view.findViewById(R.id.rv_task);
+
+        // set values according to that particular course
+        setUpValues();
+    }
+
+    private void setUpValues(){
+        mCourseNameTextView.setText(getArguments()
+                .getString(getResources().getString(R.string.intent_course_name)));
     }
 
     private void setUpStudentsRecyclerView() {

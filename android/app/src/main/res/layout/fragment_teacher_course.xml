@@ -38,9 +38,9 @@
             </com.google.android.material.button.MaterialButton>
 
             <TextView
+                android:id="@+id/tv_course_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Software Engineering"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
