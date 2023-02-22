@@ -7,6 +7,7 @@
 
 package life.nsu.aether.views.teacher.courses;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +18,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.button.MaterialButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import life.nsu.aether.R;
+import life.nsu.aether.models.Course;
+import life.nsu.aether.utils.adapters.TeacherCourseRecyclerAdapter;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
 import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
 
 public class TeacherAllCoursesFragment extends Fragment {
+
+    MaterialButton mOngoing;
+    MaterialButton mArchived;
+    RecyclerView courseRecyclerView;
+    List<Course> courseList;
+    TeacherCourseRecyclerAdapter courseRecyclerAdapter;
 
     static TeacherAllCoursesFragment fragment = null;
     private TeacherCourseViewModel viewModel;
@@ -52,13 +69,50 @@ public class TeacherAllCoursesFragment extends Fragment {
 
         viewModel = new ViewModelProvider(getActivity()).get(TeacherCourseViewModel.class);
 
+        mOngoing = view.findViewById(R.id.mb_ongoing_course);
+        mArchived = view.findViewById(R.id.mb_archive_course);
+        courseRecyclerView = view.findViewById(R.id.rv_course);
+
+        // initialize courses
+        courseList = new ArrayList<>();
+        courseRecyclerAdapter = new TeacherCourseRecyclerAdapter(getContext());
+
+        mOngoing.setEnabled(false);
+
         // Fetch all courses data
-        viewModel.getTeacherCourseResponseMutableLiveData().observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
+        viewModel.getTeacherCourseResponseMutableLiveData()
+                .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
+
+        mArchived.setOnClickListener(v -> {
+            mArchived.setEnabled(false);
+            mOngoing.setEnabled(true);
+
+            mOngoing.setTextColor(Color.parseColor("#B3B3B3"));
+            mArchived.setTextColor(Color.parseColor("#000000"));
+        });
+
+        mOngoing.setOnClickListener(v -> {
+            mOngoing.setEnabled(false);
+            mArchived.setEnabled(true);
+
+            mArchived.setTextColor(Color.parseColor("#B3B3B3"));
+            mOngoing.setTextColor(Color.parseColor("#000000"));
+        });
 
     }
 
     private void changeUiAccordingToTeacherProfileData(TeacherCoursesResponse teacherCoursesResponse){
+        courseList = teacherCoursesResponse.getCourses();
+        initializeRecyclerView();
+    }
 
+    private void initializeRecyclerView() {
+        courseRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        courseRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        courseRecyclerView.setNestedScrollingEnabled(true);
+
+        courseRecyclerAdapter.setCourseList(courseList);
+        courseRecyclerView.setAdapter(courseRecyclerAdapter);
     }
 
 }
