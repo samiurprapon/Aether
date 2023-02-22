@@ -40,7 +40,7 @@ public class TeacherCourseRepository {
     public MutableLiveData<TeacherCoursesResponse> getTeacherCourseResponseMutableLiveData(String accessToken){
         Call<TeacherCoursesResponse> call = NetworkingService.getInstance()
                 .getRoute()
-                .getTeacherCourses(accessToken, true);
+                .getTeacherCourses(accessToken/*, true*/);
 
         call.enqueue(new Callback<TeacherCoursesResponse>() {
             @Override

@@ -15,11 +15,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.List;
 import java.util.Random;
