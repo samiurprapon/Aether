@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,7 +28,7 @@ import java.util.List;
 
 import life.nsu.aether.R;
 import life.nsu.aether.models.Course;
-import life.nsu.aether.utils.adapters.TeacherCourseRecyclerAdapter;
+import life.nsu.aether.utils.adapters.TeacherOnGoingCourseAdapter;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
 import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
 
@@ -39,7 +38,7 @@ public class TeacherAllCoursesFragment extends Fragment {
     MaterialButton mArchived;
     RecyclerView courseRecyclerView;
     List<Course> courseList;
-    TeacherCourseRecyclerAdapter courseRecyclerAdapter;
+    TeacherOnGoingCourseAdapter courseRecyclerAdapter;
 
     static TeacherAllCoursesFragment fragment = null;
     private TeacherCourseViewModel viewModel;
@@ -75,7 +74,7 @@ public class TeacherAllCoursesFragment extends Fragment {
 
         // initialize courses
         courseList = new ArrayList<>();
-        courseRecyclerAdapter = new TeacherCourseRecyclerAdapter(getContext());
+        courseRecyclerAdapter = new TeacherOnGoingCourseAdapter(getContext());
 
         mOngoing.setEnabled(false);
 

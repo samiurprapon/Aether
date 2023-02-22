@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import life.nsu.aether.R;
+import life.nsu.aether.views.teacher.courses.TeacherCourseFragment;
 import life.nsu.aether.views.teacher.profile.TeacherProfileEditFragment;
 
 public class PageActivity extends AppCompatActivity {
@@ -41,6 +42,22 @@ public class PageActivity extends AppCompatActivity {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_layout_id, teacherProfileEditFragment)
+                    .commit();
+        }else if(selectedFragment.equals(getResources().getString(R.string.teacher_course))){
+            TeacherCourseFragment teacherCourseFragment
+                    = new TeacherCourseFragment();
+
+            String courseName = getIntent().getExtras().getString(
+                    getResources().getString(R.string.intent_course_name)
+            );
+
+            Bundle args = new Bundle();
+            args.putString(getResources().getString(R.string.intent_course_name), courseName);
+            teacherCourseFragment.setArguments(args);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout_id, teacherCourseFragment)
                     .commit();
         }
 
