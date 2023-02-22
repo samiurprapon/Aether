@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import life.nsu.aether.R;
-import life.nsu.aether.views.teacher.dashboard.TeacherDashboardFragment;
+import life.nsu.aether.utils.adapters.TeacherTaskAdapter;
 import life.nsu.aether.views.teacher.dashboard.TeacherStudentsAdapter;
 
 public class TeacherCourseFragment extends Fragment {

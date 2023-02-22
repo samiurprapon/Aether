@@ -24,6 +24,9 @@ public class TeacherCourseViewModel extends AndroidViewModel {
 
     public TeacherCourseViewModel(@NonNull Application application) {
         super(application);
+
+        preference = new Preference(application);
+        courseRepository =  TeacherCourseRepository.getInstance(application);
     }
 
     public LiveData<TeacherCoursesResponse> getTeacherCourseResponseMutableLiveData(){

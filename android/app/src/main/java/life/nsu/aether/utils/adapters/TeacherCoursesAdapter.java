@@ -1,15 +1,13 @@
 /*
  * TeacherCoursesAdapter Created by Samiur Prapon
- * Last modified  2/10/23, 1:56 AM
+ * Last modified  2/10/23, 2:58 AM
  * Copyright (c) 2023. All rights reserved.
  *
  */
 
-package life.nsu.aether.views.teacher.courses;
+package life.nsu.aether.utils.adapters;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +30,7 @@ public class TeacherCoursesAdapter extends RecyclerView.Adapter<TeacherCoursesAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.adapter_teacher_courses, parent,false);
+        View view = layoutInflater.inflate(R.layout.item_teacher_courses, parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return  viewHolder;
     }
