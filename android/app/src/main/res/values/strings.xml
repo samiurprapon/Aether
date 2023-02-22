@@ -107,6 +107,8 @@
     <string name="title_student_status">Student Status</string>
     <string name="title_task">Assigned Task</string>
     <string name="intent_course_name">Course Name</string>
+    <string name="intent_course_id">Course Id</string>
+    <string name="title_delete_course">Delete Course</string>
 
     <!-- Teacher profile Fragment -->
     <string name="title_initial">INITIAL</string>

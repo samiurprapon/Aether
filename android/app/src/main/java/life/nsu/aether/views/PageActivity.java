@@ -1,6 +1,6 @@
 /*
- * PageActivity Created by Mahfuj Ahmed Jim
- * Last modified  2/21/23, 10:29 PM
+ * PageActivity Created by Samiur Prapon
+ * Last modified  2/23/23, 4:10 AM
  * Copyright (c) 2023. All rights reserved.
  *
  */
@@ -50,9 +50,13 @@ public class PageActivity extends AppCompatActivity {
             String courseName = getIntent().getExtras().getString(
                     getResources().getString(R.string.intent_course_name)
             );
+            String courseId = getIntent().getExtras().getString(
+                    getResources().getString(R.string.intent_course_id)
+            );
 
             Bundle args = new Bundle();
             args.putString(getResources().getString(R.string.intent_course_name), courseName);
+            args.putString(getResources().getString(R.string.intent_course_id), courseId);
             teacherCourseFragment.setArguments(args);
 
             getSupportFragmentManager()

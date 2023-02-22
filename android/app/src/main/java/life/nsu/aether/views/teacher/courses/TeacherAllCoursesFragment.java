@@ -78,10 +78,6 @@ public class TeacherAllCoursesFragment extends Fragment {
 
         mOngoing.setEnabled(false);
 
-        // Fetch all courses data
-        viewModel.getTeacherCourseResponseMutableLiveData()
-                .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
-
         mArchived.setOnClickListener(v -> {
             mArchived.setEnabled(false);
             mOngoing.setEnabled(true);
@@ -101,6 +97,7 @@ public class TeacherAllCoursesFragment extends Fragment {
     }
 
     private void changeUiAccordingToTeacherProfileData(TeacherCoursesResponse teacherCoursesResponse){
+        courseList.clear();
         courseList = teacherCoursesResponse.getCourses();
         initializeRecyclerView();
     }
@@ -114,4 +111,12 @@ public class TeacherAllCoursesFragment extends Fragment {
         courseRecyclerView.setAdapter(courseRecyclerAdapter);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Fetch all courses data
+        viewModel.getTeacherCourseResponseMutableLiveData()
+                .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
+    }
 }

@@ -11,6 +11,7 @@ import life.nsu.aether.utils.networking.requests.LoginRequest;
 import life.nsu.aether.utils.networking.requests.LogoutRequest;
 import life.nsu.aether.utils.networking.requests.ProfileUpdateRequest;
 import life.nsu.aether.utils.networking.requests.RegistrationRequest;
+import life.nsu.aether.utils.networking.requests.TeacherCourseRequest;
 import life.nsu.aether.utils.networking.requests.TeacherProfileUpdateRequest;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
@@ -21,7 +22,9 @@ import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
 import life.nsu.aether.utils.networking.responses.TeacherProfileDetailsResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -57,5 +60,8 @@ public interface ServerEndpoints {
 
     @GET("teacher/courses")
     Call<TeacherCoursesResponse> getTeacherCourses(@Header("Authorization") String accessToken/*, @Query("archive") boolean archive*/);
+
+    @HTTP(method = "DELETE", path = "teacher/courses", hasBody = true)
+    Call<TeacherCoursesResponse> deleteTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
 
 }

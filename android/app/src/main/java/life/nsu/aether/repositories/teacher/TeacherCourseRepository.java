@@ -12,6 +12,7 @@ import android.app.Application;
 import androidx.lifecycle.MutableLiveData;
 
 import life.nsu.aether.utils.networking.NetworkingService;
+import life.nsu.aether.utils.networking.requests.TeacherCourseRequest;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,6 +22,7 @@ public class TeacherCourseRepository {
 
     Application application;
     MutableLiveData<TeacherCoursesResponse> teacherCourseResponseMutableLiveData;
+    MutableLiveData<TeacherCoursesResponse> teacherDeleteCourseResponseMutableLiveData;
 
     private static TeacherCourseRepository courseRepository = null;
 
@@ -61,6 +63,36 @@ public class TeacherCourseRepository {
         });
 
         return  teacherCourseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<TeacherCoursesResponse> deleteTeacherCourseResponseMutableLiveData(String accessToken, String courseId){
+        Call<TeacherCoursesResponse> call = NetworkingService.getInstance()
+                .getRoute()
+                .deleteTeacherCourses(accessToken, new TeacherCourseRequest(courseId));
+
+        call.enqueue(new Callback<TeacherCoursesResponse>() {
+            @Override
+            public void onResponse(Call<TeacherCoursesResponse> call, Response<TeacherCoursesResponse> response) {
+                if (response.body() != null) {
+                    try{
+                        teacherDeleteCourseResponseMutableLiveData.postValue(response.body());
+                    }catch (Exception e){
+
+                    }
+                }
+
+                if (response.errorBody() != null) {
+                    teacherDeleteCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TeacherCoursesResponse> call, Throwable t) {
+                teacherDeleteCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+            }
+        });
+
+        return  teacherDeleteCourseResponseMutableLiveData;
     }
 
 }
