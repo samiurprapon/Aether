@@ -12,13 +12,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -32,12 +35,15 @@ import java.util.List;
 
 import life.nsu.aether.R;
 import life.nsu.aether.utils.adapters.TeacherTaskAdapter;
+import life.nsu.aether.viewModels.authentication.LoginViewModel;
+import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
 import life.nsu.aether.views.teacher.dashboard.TeacherStudentsAdapter;
 
 public class TeacherCourseFragment extends Fragment {
 
     static TeacherCourseFragment fragment = null;
     TextView mCourseNameTextView;
+    Button mDeleteCourseButton;
     private RecyclerView mStudentsRecyclerView;
     private TeacherStudentsAdapter teacherStudentsAdapter;
     private PieChart mStudentStatusPieChart;
@@ -46,6 +52,7 @@ public class TeacherCourseFragment extends Fragment {
     private PieData studentStatusChartData;
     private RecyclerView mTasksRecyclerView;
     private TeacherTaskAdapter teacherTaskAdapter;
+    private TeacherCourseViewModel viewModel;
 
     public static TeacherCourseFragment newInstance() {
         if (fragment == null) {
@@ -79,9 +86,23 @@ public class TeacherCourseFragment extends Fragment {
         mStudentsRecyclerView = view.findViewById(R.id.rv_all_student);
         mStudentStatusPieChart = view.findViewById(R.id.pc_studentStatus);
         mTasksRecyclerView = view.findViewById(R.id.rv_task);
+        mDeleteCourseButton = view.findViewById(R.id.mb_delete_course);
+
+        viewModel = new ViewModelProvider(getActivity()).get(TeacherCourseViewModel.class);
 
         // set values according to that particular course
         setUpValues();
+
+        mDeleteCourseButton.setOnClickListener(v -> {
+            try{
+                viewModel.deleteTeacherCourseResponseMutableLiveData(getArguments()
+                        .getString(getResources().getString(R.string.intent_course_id)));
+                getActivity().onBackPressed();
+            }catch (Exception e){
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     private void setUpValues(){

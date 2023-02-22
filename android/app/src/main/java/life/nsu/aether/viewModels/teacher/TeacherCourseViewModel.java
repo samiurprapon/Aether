@@ -12,6 +12,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import life.nsu.aether.repositories.teacher.TeacherCourseRepository;
 import life.nsu.aether.utils.Preference;
@@ -32,6 +33,11 @@ public class TeacherCourseViewModel extends AndroidViewModel {
     public LiveData<TeacherCoursesResponse> getTeacherCourseResponseMutableLiveData(){
         return  courseRepository
                 .getTeacherCourseResponseMutableLiveData(preference.getAccessToken());
+    }
+
+    public LiveData<TeacherCoursesResponse> deleteTeacherCourseResponseMutableLiveData(String courseId){
+        return  courseRepository
+                .deleteTeacherCourseResponseMutableLiveData(preference.getAccessToken(), courseId);
     }
 
 }

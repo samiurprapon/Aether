@@ -47,6 +47,10 @@ public class Course {
         this.teacherUid = teacherUid;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

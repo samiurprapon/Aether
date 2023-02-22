@@ -67,6 +67,8 @@ public class TeacherOnGoingCourseAdapter extends RecyclerView.Adapter<TeacherOnG
                                 mContext.getResources().getString(R.string.teacher_course));
                 intent.putExtra(mContext.getResources()
                                 .getString(R.string.intent_course_name), course.getName());
+                intent.putExtra(mContext.getResources()
+                        .getString(R.string.intent_course_id), course.getId());
                 mContext.startActivity(intent);
             });
         }
