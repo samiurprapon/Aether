@@ -10,9 +10,15 @@ package life.nsu.aether.utils.networking.requests;
 public class TeacherCourseRequest {
 
     private String courseId;
+    private boolean archive;
 
     public TeacherCourseRequest(String courseId) {
         this.courseId = courseId;
+    }
+
+    public TeacherCourseRequest(String courseId, boolean archive) {
+        this.courseId = courseId;
+        this.archive = archive;
     }
 
 }

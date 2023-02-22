@@ -23,6 +23,7 @@ public class TeacherCourseRepository {
     Application application;
     MutableLiveData<TeacherCoursesResponse> teacherCourseResponseMutableLiveData;
     MutableLiveData<TeacherCoursesResponse> teacherDeleteCourseResponseMutableLiveData;
+    MutableLiveData<TeacherCoursesResponse> teacherArchiveCourseResponseMutableLiveData;
 
     private static TeacherCourseRepository courseRepository = null;
 
@@ -93,6 +94,36 @@ public class TeacherCourseRepository {
         });
 
         return  teacherDeleteCourseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<TeacherCoursesResponse> archiveTeacherCourseResponseMutableLiveData(String accessToken, String courseId){
+        Call<TeacherCoursesResponse> call = NetworkingService.getInstance()
+                .getRoute()
+                .archiveTeacherCourses(accessToken, new TeacherCourseRequest(courseId, true));
+
+        call.enqueue(new Callback<TeacherCoursesResponse>() {
+            @Override
+            public void onResponse(Call<TeacherCoursesResponse> call, Response<TeacherCoursesResponse> response) {
+                if (response.body() != null) {
+                    try{
+                        teacherArchiveCourseResponseMutableLiveData.postValue(response.body());
+                    }catch (Exception e){
+
+                    }
+                }
+
+                if (response.errorBody() != null) {
+                    teacherArchiveCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TeacherCoursesResponse> call, Throwable t) {
+                teacherArchiveCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+            }
+        });
+
+        return  teacherArchiveCourseResponseMutableLiveData;
     }
 
 }
