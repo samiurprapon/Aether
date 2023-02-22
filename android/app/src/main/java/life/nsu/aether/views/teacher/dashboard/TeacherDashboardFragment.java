@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import life.nsu.aether.R;
-import life.nsu.aether.views.teacher.courses.TeacherCoursesAdapter;
+import life.nsu.aether.utils.adapters.TeacherCoursesAdapter;
 
 public class TeacherDashboardFragment extends Fragment {
 

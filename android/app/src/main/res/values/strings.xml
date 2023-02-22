@@ -17,6 +17,7 @@
     <string name="demo_course_name">Bio-organic Chemistry I</string>
     <string name="demo_course_name_2">Software Engineering</string>
     <string name="demo_course_instructor">Jesse Pinkman</string>
+    <string name="demo_course_semester">Semester:</string>
 
     <!-- Authentication   -->
     <string name="title_email_address">Email</string>

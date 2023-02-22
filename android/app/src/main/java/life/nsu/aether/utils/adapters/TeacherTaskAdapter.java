@@ -1,11 +1,11 @@
 /*
  * TeacherTaskAdapter Created by Samiur Prapon
- * Last modified  2/10/23, 2:42 AM
+ * Last modified  2/10/23, 2:44 AM
  * Copyright (c) 2023. All rights reserved.
  *
  */
 
-package life.nsu.aether.views.teacher.courses;
+package life.nsu.aether.utils.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ public class TeacherTaskAdapter extends RecyclerView.Adapter<TeacherTaskAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.adapter_tasks, parent,false);
+        View view = layoutInflater.inflate(R.layout.item_tasks, parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return  viewHolder;
     }
