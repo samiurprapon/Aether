@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ fragment_teacher_profile_edit.xml Created by Samiur Prapon
+  ~ fragment_teacher_profile_edit.xml Created by Mahfuj Ahmed Jim
   ~ Last modified  2/21/23, 10:36 PM
   ~ Copyright (c) 2023. All rights reserved.
   ~
@@ -71,6 +71,7 @@
             android:layout_marginHorizontal="20dp"
             android:labelFor="@id/et_email"
             app:boxStrokeErrorColor="@color/red_800"
+            app:boxStrokeColor="@color/teacher_main_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
@@ -82,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/title_name"
+                android:textColorHint="@color/teacher_main_color"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -100,6 +102,8 @@
             android:layout_marginHorizontal="20dp"
             android:labelFor="@id/et_email"
             app:boxStrokeErrorColor="@color/red_800"
+            app:boxStrokeColor="@color/teacher_main_color"
+            android:textColorHint="@color/teacher_main_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
@@ -111,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/title_initial"
+                android:textColorHint="@color/teacher_main_color"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"

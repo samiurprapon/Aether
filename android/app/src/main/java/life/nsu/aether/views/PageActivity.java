@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import life.nsu.aether.R;
 import life.nsu.aether.views.teacher.courses.TeacherCourseFragment;
+import life.nsu.aether.views.teacher.courses.TeacherModifyCourseFragment;
 import life.nsu.aether.views.teacher.profile.TeacherProfileEditFragment;
 
 public class PageActivity extends AppCompatActivity {
@@ -62,6 +63,21 @@ public class PageActivity extends AppCompatActivity {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_layout_id, teacherCourseFragment)
+                    .commit();
+        }else if(selectedFragment.equals(getResources().getString(R.string.teacher_modify_course))){
+            TeacherModifyCourseFragment teacherModifyCourseFragment
+                    = new TeacherModifyCourseFragment();
+
+            boolean isModify = getIntent().getExtras().getBoolean(
+                    getResources().getString(R.string.teacher_modify_course));
+
+            Bundle args = new Bundle();
+            args.putBoolean(getResources().getString(R.string.teacher_modify_course), isModify);
+            teacherModifyCourseFragment.setArguments(args);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout_id, teacherModifyCourseFragment)
                     .commit();
         }
 

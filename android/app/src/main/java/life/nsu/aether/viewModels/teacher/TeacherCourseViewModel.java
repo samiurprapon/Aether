@@ -35,6 +35,11 @@ public class TeacherCourseViewModel extends AndroidViewModel {
                 .getTeacherCourseResponseMutableLiveData(preference.getAccessToken());
     }
 
+    public LiveData<TeacherCoursesResponse> addTeacherCourseResponseMutableLiveData(String name, int section, String code, String semester){
+        return  courseRepository
+                .addTeacherCourseResponseMutableLiveData(preference.getAccessToken(), name, section, code, semester);
+    }
+
     public LiveData<TeacherCoursesResponse> deleteTeacherCourseResponseMutableLiveData(String courseId){
         return  courseRepository
                 .deleteTeacherCourseResponseMutableLiveData(preference.getAccessToken(), courseId);

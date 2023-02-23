@@ -8,9 +8,12 @@
 package life.nsu.aether.repositories.teacher;
 
 import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
+import life.nsu.aether.models.Teacher;
 import life.nsu.aether.utils.networking.NetworkingService;
 import life.nsu.aether.utils.networking.requests.TeacherCourseRequest;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
@@ -22,6 +25,7 @@ public class TeacherCourseRepository {
 
     Application application;
     MutableLiveData<TeacherCoursesResponse> teacherCourseResponseMutableLiveData;
+    MutableLiveData<TeacherCoursesResponse> teacherAddCourseResponseMutableLiveData;
     MutableLiveData<TeacherCoursesResponse> teacherDeleteCourseResponseMutableLiveData;
     MutableLiveData<TeacherCoursesResponse> teacherArchiveCourseResponseMutableLiveData;
 
@@ -64,6 +68,40 @@ public class TeacherCourseRepository {
         });
 
         return  teacherCourseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<TeacherCoursesResponse> addTeacherCourseResponseMutableLiveData(String accessToken, String name, int section, String code, String semester){
+        try{
+            Call<TeacherCoursesResponse> call = NetworkingService.getInstance()
+                    .getRoute()
+                    .postTeacherCourses(accessToken, new TeacherCourseRequest(name, section, code, semester));
+
+            call.enqueue(new Callback<TeacherCoursesResponse>() {
+                @Override
+                public void onResponse(Call<TeacherCoursesResponse> call, Response<TeacherCoursesResponse> response) {
+                    if (response.body() != null) {
+                        try{
+                            teacherAddCourseResponseMutableLiveData.postValue(response.body());
+                        }catch (Exception e){
+
+                        }
+                    }
+
+                    if (response.errorBody() != null) {
+                        teacherAddCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<TeacherCoursesResponse> call, Throwable t) {
+                    teacherAddCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(application, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        return  teacherAddCourseResponseMutableLiveData;
     }
 
     public MutableLiveData<TeacherCoursesResponse> deleteTeacherCourseResponseMutableLiveData(String accessToken, String courseId){

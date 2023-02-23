@@ -7,6 +7,7 @@
 
 package life.nsu.aether.views.teacher.courses;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +33,14 @@ import life.nsu.aether.models.Course;
 import life.nsu.aether.utils.adapters.TeacherOnGoingCourseAdapter;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
 import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
+import life.nsu.aether.views.PageActivity;
 
 public class TeacherAllCoursesFragment extends Fragment {
 
     MaterialButton mOngoing;
     MaterialButton mArchived;
     RecyclerView courseRecyclerView;
+    FloatingActionButton mAddButton;
     List<Course> courseList;
     TeacherOnGoingCourseAdapter courseRecyclerAdapter;
 
@@ -71,6 +75,7 @@ public class TeacherAllCoursesFragment extends Fragment {
         mOngoing = view.findViewById(R.id.mb_ongoing_course);
         mArchived = view.findViewById(R.id.mb_archive_course);
         courseRecyclerView = view.findViewById(R.id.rv_course);
+        mAddButton = view.findViewById(R.id.fb_profile_add);
 
         // initialize courses
         courseList = new ArrayList<>();
@@ -94,6 +99,16 @@ public class TeacherAllCoursesFragment extends Fragment {
             mOngoing.setTextColor(Color.parseColor("#000000"));
         });
 
+        mAddButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), PageActivity.class);
+            intent.putExtra(getContext().getResources()
+                            .getString((R.string.selected_fragment)),
+                    getContext().getResources().getString(R.string.teacher_modify_course));
+            intent.putExtra(getContext().getResources()
+                    .getString(R.string.teacher_modify_course), true);
+            getContext().startActivity(intent);
+        });
+
     }
 
     private void changeUiAccordingToTeacherProfileData(TeacherCoursesResponse teacherCoursesResponse){
@@ -114,7 +129,6 @@ public class TeacherAllCoursesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         // Fetch all courses data
         viewModel.getTeacherCourseResponseMutableLiveData()
                 .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
