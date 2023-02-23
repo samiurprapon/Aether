@@ -103,12 +103,16 @@
 
     <!-- Teacher Course Fragment -->
     <string name="search_bar_hint">   Search material or people</string>
-    <string name="title_all_student">All Student</string>
+    <string name="title_all_student">All Student</string>F
     <string name="title_student_status">Student Status</string>
     <string name="title_task">Assigned Task</string>
     <string name="intent_course_name">Course Name</string>
     <string name="intent_course_id">Course Id</string>
     <string name="title_delete_course">Delete Course</string>
+    <string name="title_course_code">Course Code</string>
+    <string name="title_course_semester">Semester</string>
+    <string name="title_course_section">Section</string>
+    <string name="title_add_course">Add Course</string>
 
     <!-- Teacher profile Fragment -->
     <string name="title_initial">INITIAL</string>
@@ -118,5 +122,6 @@
     <string name="selected_fragment">Selected Fragment</string>
     <string name="teacher_profile_edit">Teacher Profile Edit</string>
     <string name="teacher_course">Teacher Course</string>
+    <string name="teacher_modify_course">Teacher Modify Course</string>
 
 </resources>

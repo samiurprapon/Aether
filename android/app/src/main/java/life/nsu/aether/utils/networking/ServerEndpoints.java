@@ -61,6 +61,9 @@ public interface ServerEndpoints {
     @GET("teacher/courses")
     Call<TeacherCoursesResponse> getTeacherCourses(@Header("Authorization") String accessToken/*, @Query("archive") boolean archive*/);
 
+    @POST("teacher/courses")
+    Call<TeacherCoursesResponse> postTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
+
     @HTTP(method = "DELETE", path = "teacher/courses", hasBody = true)
     Call<TeacherCoursesResponse> deleteTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
 
