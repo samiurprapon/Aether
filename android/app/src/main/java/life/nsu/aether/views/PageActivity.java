@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import life.nsu.aether.R;
+import life.nsu.aether.models.Course;
 import life.nsu.aether.views.teacher.courses.TeacherCourseFragment;
 import life.nsu.aether.views.teacher.courses.TeacherModifyCourseFragment;
 import life.nsu.aether.views.teacher.profile.TeacherProfileEditFragment;
@@ -48,15 +49,14 @@ public class PageActivity extends AppCompatActivity {
             TeacherCourseFragment teacherCourseFragment
                     = new TeacherCourseFragment();
 
-            String courseName = getIntent().getExtras().getString(
-                    getResources().getString(R.string.intent_course_name)
-            );
+            Course course = (Course) getIntent().
+                    getSerializableExtra(getResources().getString(R.string.intent_course_name));
             String courseId = getIntent().getExtras().getString(
                     getResources().getString(R.string.intent_course_id)
             );
 
             Bundle args = new Bundle();
-            args.putString(getResources().getString(R.string.intent_course_name), courseName);
+            args.putSerializable(getResources().getString(R.string.intent_course_name), course);
             args.putString(getResources().getString(R.string.intent_course_id), courseId);
             teacherCourseFragment.setArguments(args);
 

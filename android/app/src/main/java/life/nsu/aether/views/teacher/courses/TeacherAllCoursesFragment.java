@@ -105,7 +105,7 @@ public class TeacherAllCoursesFragment extends Fragment {
                             .getString((R.string.selected_fragment)),
                     getContext().getResources().getString(R.string.teacher_modify_course));
             intent.putExtra(getContext().getResources()
-                    .getString(R.string.teacher_modify_course), true);
+                    .getString(R.string.teacher_modify_course), false);
             getContext().startActivity(intent);
         });
 

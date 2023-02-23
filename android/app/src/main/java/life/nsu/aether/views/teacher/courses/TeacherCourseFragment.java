@@ -7,6 +7,7 @@
 
 package life.nsu.aether.views.teacher.courses;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -34,15 +35,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import life.nsu.aether.R;
+import life.nsu.aether.models.Course;
 import life.nsu.aether.utils.adapters.TeacherTaskAdapter;
 import life.nsu.aether.viewModels.authentication.LoginViewModel;
 import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
+import life.nsu.aether.views.PageActivity;
 import life.nsu.aether.views.teacher.dashboard.TeacherStudentsAdapter;
 
 public class TeacherCourseFragment extends Fragment {
 
     static TeacherCourseFragment fragment = null;
     TextView mCourseNameTextView;
+    Button mEditCourseButton;
     Button mDeleteCourseButton;
     private RecyclerView mStudentsRecyclerView;
     private TeacherStudentsAdapter teacherStudentsAdapter;
@@ -53,6 +57,7 @@ public class TeacherCourseFragment extends Fragment {
     private RecyclerView mTasksRecyclerView;
     private TeacherTaskAdapter teacherTaskAdapter;
     private TeacherCourseViewModel viewModel;
+    private Course course;
 
     public static TeacherCourseFragment newInstance() {
         if (fragment == null) {
@@ -86,17 +91,34 @@ public class TeacherCourseFragment extends Fragment {
         mStudentsRecyclerView = view.findViewById(R.id.rv_all_student);
         mStudentStatusPieChart = view.findViewById(R.id.pc_studentStatus);
         mTasksRecyclerView = view.findViewById(R.id.rv_task);
+        mEditCourseButton = view.findViewById(R.id.mb_edit_course);
         mDeleteCourseButton = view.findViewById(R.id.mb_delete_course);
 
         viewModel = new ViewModelProvider(getActivity()).get(TeacherCourseViewModel.class);
 
+        course = (Course) getArguments().getSerializable(getResources().getString(R.string.intent_course_name));
+
         // set values according to that particular course
         setUpValues();
 
+        mEditCourseButton.setOnClickListener(v -> {
+            TeacherModifyCourseFragment teacherModifyCourseFragment
+                    = new TeacherModifyCourseFragment();
+
+            Bundle args = new Bundle();
+            args.putBoolean(getResources().getString(R.string.teacher_modify_course), true);
+            args.putSerializable(getResources().getString(R.string.intent_course_name), course);
+            teacherModifyCourseFragment.setArguments(args);
+
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout_id, teacherModifyCourseFragment)
+                    .commit();
+        });
+
         mDeleteCourseButton.setOnClickListener(v -> {
             try{
-                viewModel.deleteTeacherCourseResponseMutableLiveData(getArguments()
-                        .getString(getResources().getString(R.string.intent_course_id)));
+                viewModel.deleteTeacherCourseResponseMutableLiveData(course.getId());
                 getActivity().onBackPressed();
             }catch (Exception e){
                 Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -106,8 +128,7 @@ public class TeacherCourseFragment extends Fragment {
     }
 
     private void setUpValues(){
-        mCourseNameTextView.setText(getArguments()
-                .getString(getResources().getString(R.string.intent_course_name)));
+
     }
 
     private void setUpStudentsRecyclerView() {

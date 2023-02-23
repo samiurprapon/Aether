@@ -28,6 +28,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.Objects;
 
 import life.nsu.aether.R;
+import life.nsu.aether.models.Course;
 import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
 
 public class TeacherModifyCourseFragment extends Fragment {
@@ -39,6 +40,8 @@ public class TeacherModifyCourseFragment extends Fragment {
     Button mAddCourseButton;
     static TeacherModifyCourseFragment fragment = null;
     private TeacherCourseViewModel viewModel;
+    private Course course;
+    private boolean isModify;
 
     public static TeacherModifyCourseFragment newInstance() {
         if (fragment == null) {
@@ -70,24 +73,44 @@ public class TeacherModifyCourseFragment extends Fragment {
         mAddCourseButton = view.findViewById(R.id.mb_add_course);
 
         viewModel = new ViewModelProvider(getActivity()).get(TeacherCourseViewModel.class);
+        isModify = getArguments().getBoolean(getResources().getString(R.string.teacher_modify_course));
+
+        if(isModify){
+            setValues();
+        }
 
         mAddCourseButton.setOnClickListener(v -> {
             mAddCourseButton.setEnabled(false);
             hideKeyboard(getContext(), v);
-            addCourse();
+            updateCourse();
             mAddCourseButton.setEnabled(true);
         });
 
     }
 
-    private void addCourse() {
+    private void setValues() {
+        course = (Course) getArguments().getSerializable(getResources().getString(R.string.intent_course_name));
+
+        mCourseNameEditText.setText(course.getName());
+        mCourseCodeEditText.setText(course.getCode());
+        mSectionEditText.setText(course.getSection());
+        mSemesterEditText.setText(course.getSemester());
+        mAddCourseButton.setText(getResources().getString(R.string.title_edit_course));
+    }
+
+    private void updateCourse() {
         String name = Objects.requireNonNull(mCourseNameEditText.getText()).toString().trim();
         String section = Objects.requireNonNull(mSectionEditText.getText()).toString().trim();
         String code = Objects.requireNonNull(mCourseCodeEditText.getText()).toString().trim();
         String semester = Objects.requireNonNull(mSemesterEditText.getText()).toString().trim();
 
-        viewModel.addTeacherCourseResponseMutableLiveData(name, Integer.parseInt(section), code, semester);
-
+        if (isModify) {
+            viewModel.updateTeacherCourseResponseMutableLiveData(
+                    course.getId(), name, Integer.parseInt(section), code, semester);
+        } else {
+            viewModel.addTeacherCourseResponseMutableLiveData(name, Integer.parseInt(section), code, semester);
+        }
+        ;
         getActivity().onBackPressed();
     }
 

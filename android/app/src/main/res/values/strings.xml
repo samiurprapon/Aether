@@ -113,6 +113,7 @@
     <string name="title_course_semester">Semester</string>
     <string name="title_course_section">Section</string>
     <string name="title_add_course">Add Course</string>
+    <string name="title_edit_course">Edit Course</string>
 
     <!-- Teacher profile Fragment -->
     <string name="title_initial">INITIAL</string>

@@ -32,4 +32,11 @@ public class TeacherCourseRequest {
         this.semester = semester;
     }
 
+    public TeacherCourseRequest(String courseId, String name, int section, String code, String semester) {
+        this.courseId = courseId;
+        this.name = name;
+        this.section = section;
+        this.code = code;
+        this.semester = semester;
+    }
 }

@@ -140,6 +140,20 @@
 
         <!-- delete button -->
         <Button
+            android:id="@+id/mb_edit_course"
+            android:text="@string/title_edit_course"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:backgroundTint="@color/teacher_main_color"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+        </Button>
+
+        <Button
             android:id="@+id/mb_delete_course"
             android:text="@string/title_delete_course"
             android:textAllCaps="false"
@@ -147,7 +161,7 @@
             android:textSize="18sp"
             android:backgroundTint="@color/teacher_main_color"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="30dp"
+            android:layout_marginBottom="30dp"
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
