@@ -27,6 +27,7 @@ import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ServerEndpoints {
@@ -63,6 +64,9 @@ public interface ServerEndpoints {
 
     @POST("teacher/courses")
     Call<TeacherCoursesResponse> postTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
+
+    @PUT("teacher/courses")
+    Call<TeacherCoursesResponse> updateTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
 
     @HTTP(method = "DELETE", path = "teacher/courses", hasBody = true)
     Call<TeacherCoursesResponse> deleteTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
