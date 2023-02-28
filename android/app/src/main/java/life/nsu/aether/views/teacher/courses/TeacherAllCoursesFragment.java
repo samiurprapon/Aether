@@ -89,6 +89,8 @@ public class TeacherAllCoursesFragment extends Fragment {
 
             mOngoing.setTextColor(Color.parseColor("#B3B3B3"));
             mArchived.setTextColor(Color.parseColor("#000000"));
+
+            mAddButton.setVisibility(View.GONE);
         });
 
         mOngoing.setOnClickListener(v -> {
@@ -97,6 +99,8 @@ public class TeacherAllCoursesFragment extends Fragment {
 
             mArchived.setTextColor(Color.parseColor("#B3B3B3"));
             mOngoing.setTextColor(Color.parseColor("#000000"));
+
+            mAddButton.setVisibility(View.VISIBLE);
         });
 
         mAddButton.setOnClickListener(v -> {

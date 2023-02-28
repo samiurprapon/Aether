@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ teacher_navigation_menu.xml Created by Mahfuj Ahmed Jim
+  ~ Last modified  2/28/23, 10:59 PM
+  ~ Copyright (c) 2023. All rights reserved.
+  ~
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item android:title="Task">
+            <menu>
+
+                <item
+                    android:id="@+id/mHome"
+                    android:icon="@drawable/ic_home"
+                    android:title="@string/nav_item_home" />
+
+                <item
+                    android:id="@+id/mCourse"
+                    android:icon="@drawable/ic_courses"
+                    android:title="@string/nav_item_course" />
+
+                <item
+                    android:id="@+id/mClassroom"
+                    android:icon="@drawable/ic_classroom"
+                    android:title="@string/nav_item_class" />
+
+                <item
+                    android:id="@+id/mExam"
+                    android:icon="@drawable/ic_test"
+                    android:title="@string/nav_item_exam" />
+
+                <item
+                    android:id="@+id/mMore"
+                    android:icon="@drawable/ic_more"
+                    android:title="@string/nav_item_more" />
+
+            </menu>
+
+        </item>
+
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item android:title="Task">
+            <menu>
+
+                <item
+                    android:id="@+id/mLogout"
+                    android:title="@string/logout" />
+
+            </menu>
+
+        </item>
+
+    </group>
+
+</menu>

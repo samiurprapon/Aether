@@ -18,79 +18,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- appbar -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView2"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/home_page_person_character_image"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ib_notification"
-                app:layout_constraintStart_toEndOf="@+id/circleImageView2"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hello Harry!"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/appbar_teacher"
-                    android:textColor="@color/black"
-                    android:textSize="12dp">
-
-                </TextView>
-
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/ib_notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:foreground="?attr/selectableItemBackground"
-                android:padding="2dp"
-                android:src="@drawable/ic_notification_active"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <!-- appbar ends -->
-
         <!-- dashboard -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="12dp">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"

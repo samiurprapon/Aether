@@ -91,6 +91,8 @@
     <string name="title_date_of_birth">DATE OF BIRTH</string>
 
     <!-- Teacher Home Fragment -->
+    <string name="open">open</string>
+    <string name="close">close</string>
     <string name="appbar_teacher">It’s good to see you again.</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_dashboard_monthly_earning">This Month’s Earning</string>
