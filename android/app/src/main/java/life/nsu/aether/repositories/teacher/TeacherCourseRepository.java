@@ -17,6 +17,8 @@ import life.nsu.aether.models.Teacher;
 import life.nsu.aether.utils.networking.NetworkingService;
 import life.nsu.aether.utils.networking.requests.TeacherCourseRequest;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
+import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
+import life.nsu.aether.views.teacher.courses.TeacherAllCoursesFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,6 +45,10 @@ public class TeacherCourseRepository {
     private TeacherCourseRepository(Application application) {
         this.application = application;
         teacherCourseResponseMutableLiveData = new MutableLiveData<>();
+        teacherAddCourseResponseMutableLiveData = new MutableLiveData<>();
+        teacherUpdateCourseResponseMutableLiveData = new MutableLiveData<>();
+        teacherDeleteCourseResponseMutableLiveData = new MutableLiveData<>();
+        teacherArchiveCourseResponseMutableLiveData = new MutableLiveData<>();
     }
 
     public MutableLiveData<TeacherCoursesResponse> getTeacherCourseResponseMutableLiveData(String accessToken){
@@ -83,8 +89,9 @@ public class TeacherCourseRepository {
                     if (response.body() != null) {
                         try{
                             teacherAddCourseResponseMutableLiveData.postValue(response.body());
+                            new TeacherAllCoursesFragment().addCourse(response.body().getCourse());
                         }catch (Exception e){
-
+                            Log.d("Verify", e.getMessage());
                         }
                     }
 

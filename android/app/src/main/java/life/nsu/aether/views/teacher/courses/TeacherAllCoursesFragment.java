@@ -10,6 +10,7 @@ package life.nsu.aether.views.teacher.courses;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,11 +42,24 @@ public class TeacherAllCoursesFragment extends Fragment {
     MaterialButton mArchived;
     RecyclerView courseRecyclerView;
     FloatingActionButton mAddButton;
-    List<Course> courseList;
     TeacherOnGoingCourseAdapter courseRecyclerAdapter;
 
     static TeacherAllCoursesFragment fragment = null;
     private TeacherCourseViewModel viewModel;
+    private static List<Course> courseList = new ArrayList<>();
+
+    public void addCourse(Course course){
+        this.courseList.add(course);
+        Log.d("Verify", course.getName());
+    }
+
+    public List<Course> getCourseList() {
+        return this.courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
 
     public static TeacherAllCoursesFragment newInstance() {
         if (fragment == null) {
@@ -78,8 +92,11 @@ public class TeacherAllCoursesFragment extends Fragment {
         mAddButton = view.findViewById(R.id.fb_profile_add);
 
         // initialize courses
-        courseList = new ArrayList<>();
         courseRecyclerAdapter = new TeacherOnGoingCourseAdapter(getContext());
+
+        // Fetch all courses data
+        viewModel.getTeacherCourseResponseMutableLiveData()
+                .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
 
         mOngoing.setEnabled(false);
 
@@ -116,8 +133,8 @@ public class TeacherAllCoursesFragment extends Fragment {
     }
 
     private void changeUiAccordingToTeacherProfileData(TeacherCoursesResponse teacherCoursesResponse){
-        courseList.clear();
-        courseList = teacherCoursesResponse.getCourses();
+        Log.d("Verify", "Yes");
+        setCourseList(teacherCoursesResponse.getCourses());
         initializeRecyclerView();
     }
 
@@ -126,15 +143,13 @@ public class TeacherAllCoursesFragment extends Fragment {
         courseRecyclerView.setItemAnimator(new DefaultItemAnimator());
         courseRecyclerView.setNestedScrollingEnabled(true);
 
-        courseRecyclerAdapter.setCourseList(courseList);
+        courseRecyclerAdapter.setCourseList(getCourseList());
         courseRecyclerView.setAdapter(courseRecyclerAdapter);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        // Fetch all courses data
-        viewModel.getTeacherCourseResponseMutableLiveData()
-                .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
+        initializeRecyclerView();
     }
 }

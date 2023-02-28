@@ -14,6 +14,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import life.nsu.aether.models.Course;
 import life.nsu.aether.repositories.teacher.TeacherCourseRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
@@ -25,7 +29,6 @@ public class TeacherCourseViewModel extends AndroidViewModel {
 
     public TeacherCourseViewModel(@NonNull Application application) {
         super(application);
-
         preference = new Preference(application);
         courseRepository =  TeacherCourseRepository.getInstance(application);
     }
