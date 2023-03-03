@@ -1,0 +1,169 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Database schemas
+model Credentials {
+  id       String @id @default(uuid())
+  password String @db.VarChar(255)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User Users[]
+}
+
+model Users {
+  id     String  @id @default(uuid())
+  email  String  @unique @db.VarChar(255)
+  name   String? @db.VarChar(255)
+  sex    SEX     @default(MALE)
+  school String? @db.VarChar(255)
+  isBan  Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cid               String?
+  credentials       Credentials?        @relation(fields: [cid], references: [id])
+  Teachers          Teachers[]
+  Roles             Roles[]
+  Students          Students[]
+  CourseEnrollments CourseEnrollments[]
+  ReadingSessions   ReadingSessions[]
+}
+
+model Roles {
+  id    String     @id @default(uuid())
+  type  USER_ROLE  @default(STUDENT)
+  level ROLE_LEVEL @default(ONE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  uid   String?
+  users Users?  @relation(fields: [uid], references: [id])
+}
+
+model Students {
+  id        String  @id @default(uuid())
+  studentID String? @unique @db.VarChar(10)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  uid   String?
+  users Users?  @relation(fields: [uid], references: [id])
+}
+
+model Teachers {
+  id      String  @id @default(uuid())
+  initial String? @unique @db.VarChar(10)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  uid     String?
+  users   Users?    @relation(fields: [uid], references: [id])
+  Courses Courses[]
+}
+
+model Courses {
+  id         String    @id @default(uuid())
+  name       String    @db.VarChar(255)
+  status     String?   @db.VarChar(255)
+  courseCode String    @unique @db.VarChar(10)
+  section    String?   @db.VarChar(10)
+  enrollCode String?   @unique @db.VarChar(10)
+  semester   SEMESTER? @default(SPRING)
+  year       Int?      @default(2023)
+  isArchived Boolean   @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  instructor        String?
+  teachers          Teachers?           @relation(fields: [instructor], references: [id])
+  CourseEnrollments CourseEnrollments[]
+  CourseMaterials   CourseMaterials[]
+}
+
+model CourseEnrollments {
+  id String @id @default(uuid())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cid String?
+  uid String?
+
+  courses Courses? @relation(fields: [cid], references: [id])
+  users   Users?   @relation(fields: [uid], references: [id])
+}
+
+model CourseMaterials {
+  id       String  @id @default(uuid())
+  title    String  @db.VarChar(255)
+  type     String? @db.VarChar(255)
+  url      String? @db.VarChar(255)
+  isPublic Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cid             String?
+  courses         Courses?          @relation(fields: [cid], references: [id])
+  ReadingSessions ReadingSessions[]
+}
+
+model ReadingSessions {
+  id       String    @id @default(uuid())
+  startsAt DateTime?
+  endsAt   DateTime? @default(now())
+  duration Int?      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  uid             String?
+  mid             String?
+  users           Users?           @relation(fields: [uid], references: [id])
+  courseMaterials CourseMaterials? @relation(fields: [mid], references: [id])
+}
+
+// enums
+enum SEX {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum USER_ROLE {
+  STUDENT
+  TEACHER
+  AUTHORITY
+  ADMIN
+}
+
+enum ROLE_LEVEL {
+  ZERO
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+}
+
+enum SEMESTER {
+  SPRING
+  SUMMER
+  FALL
+}
