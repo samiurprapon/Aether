@@ -9,25 +9,29 @@ package life.nsu.aether.views.teacher;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
+import com.google.android.material.navigation.NavigationView;
 
 import life.nsu.aether.R;
-import life.nsu.aether.utils.adapters.ViewPagerAdapter;
-import life.nsu.aether.views.teacher.classroom.TeacherClassroomFragment;
 import life.nsu.aether.views.teacher.courses.TeacherAllCoursesFragment;
 import life.nsu.aether.views.teacher.dashboard.TeacherDashboardFragment;
-import life.nsu.aether.views.teacher.exam.TeacherExamFragment;
 import life.nsu.aether.views.teacher.profile.TeacherProfileFragment;
 
 public class TeacherHomeActivity extends AppCompatActivity {
 
-    BubbleNavigationLinearView navigationView;
-    ViewPager viewPager;
-    ViewPagerAdapter adapter;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
+    ImageButton mMenuButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,40 +39,82 @@ public class TeacherHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_home);
 
-        navigationView = findViewById(R.id.nav_container);
-//        navigationView.setTypeface(ResourcesCompat.getFont(this, R.font.roboto_medium));
+        teacherHomePage();
 
-        viewPager = findViewById(R.id.view_pager);
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), 1);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_View);
+        mMenuButton = findViewById(R.id.ib_menu);
 
-        adapter.addFragment(TeacherDashboardFragment.newInstance());
-        adapter.addFragment(TeacherAllCoursesFragment.newInstance());
-        adapter.addFragment(TeacherClassroomFragment.newInstance());
-        adapter.addFragment(TeacherExamFragment.newInstance());
-        adapter.addFragment(TeacherProfileFragment.newInstance());
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-        viewPager.setAdapter(adapter);
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onPageScrolled(int i, float v, int i1) {
-            }
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            @Override
-            public void onPageSelected(int i) {
-                navigationView.setCurrentActiveItem(i);
-            }
+                switch (item.getItemId()) {
+                    case R.id.mHome:
+                        teacherHomePage();
+                        drawerLayout.closeDrawers();
+                        break;
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
+                    case R.id.mCourse:
+                        teacherCoursePage();
+                        drawerLayout.closeDrawers();
+                        break;
 
+                    case R.id.mMore:
+                        teacherMorePage();
+                        drawerLayout.closeDrawers();
+                        break;
+
+                    case R.id.mLogout:
+
+                }
+
+                return false;
             }
         });
 
-        navigationView.setNavigationChangeListener((view, position) -> {
-            // automatic fragment changing
-            viewPager.setCurrentItem(position, true);
+        mMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Code Here
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
         });
 
     }
+
+    private void teacherHomePage() {
+        TeacherDashboardFragment teacherDashboardFragment
+                = new TeacherDashboardFragment();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout_id, teacherDashboardFragment)
+                .commit();
+    }
+
+    private void teacherCoursePage() {
+        TeacherAllCoursesFragment teacherAllCoursesFragment
+                = new TeacherAllCoursesFragment();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout_id, teacherAllCoursesFragment)
+                .commit();
+    }
+
+    private void teacherMorePage() {
+        TeacherProfileFragment teacherProfileFragment
+                = new TeacherProfileFragment();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout_id, teacherProfileFragment)
+                .commit();
+    }
+
 }

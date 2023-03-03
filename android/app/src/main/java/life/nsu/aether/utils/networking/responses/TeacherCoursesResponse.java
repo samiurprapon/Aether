@@ -25,6 +25,9 @@ public class TeacherCoursesResponse {
     @SerializedName("courses")
     @Expose()
     List<Course> courses;
+    @SerializedName("course")
+    @Expose()
+    private Course course;
 
     public TeacherCoursesResponse(boolean success) {
         this.success = success;
@@ -57,6 +60,14 @@ public class TeacherCoursesResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
 }
