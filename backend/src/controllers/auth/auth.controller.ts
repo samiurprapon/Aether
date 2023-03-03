@@ -17,9 +17,7 @@ export async function register(req: Request, res: Response) {
 }
 
 export async function deAuth(req: Request, res: Response) {
+	console.log('user is trying to de-authenticate');
 
-  console.log(`user is trying to de-authenticate`);
-
-  return res.status(200).json({ message: 'Logout successful!' });
-  
+	return res.status(200).json({ message: 'Logout successful!' });
 }
