@@ -29,49 +29,52 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
-
+​
 public interface ServerEndpoints {
-
+​
     @POST("auth/signup")
     Call<MessageResponse> registration(@Body RegistrationRequest request);
-
+​
     @POST("auth/login")
     Call<LoginResponse> login(@Body LoginRequest request);
-
+​
     @POST("auth/refresh")
     Call<RefreshResponse> refreshSession(@Header("Authorization") String refreshToken);
-
+​
     @POST("auth/logout")
     Call<MessageResponse> deAuthentication(@Header("Authorization") String accessToken, @Body LogoutRequest request);
-
+​
     @GET("student/valid")
     Call<ProfileValidityResponse> validateStudentProfile(@Header("Authorization") String accessToken);
-
+​
     @POST("student")
     Call<StudentProfileDetailsResponse> updateProfile(@Header("Authorization") String accessToken, @Body ProfileUpdateRequest request);
-
+​
     @GET("student/profile")
     Call<StudentProfileDetailsResponse> getStudentProfile(@Header("Authorization") String accessToken);
-
+​
     @GET("teacher/profile")
     Call<TeacherProfileDetailsResponse> getTeacherProfile(@Header("Authorization") String accessToken);
-
+​
     @POST("teacher/profile")
     Call<TeacherProfileDetailsResponse> postTeacherProfile(@Header("Authorization") String accessToken, @Body TeacherProfileUpdateRequest request);
-
+​
     @GET("teacher/courses")
-    Call<TeacherCoursesResponse> getTeacherCourses(@Header("Authorization") String accessToken/*, @Query("archive") boolean archive*/);
-
+    Call<TeacherCoursesResponse> getTeacherCourses(@Header("Authorization") String accessToken);
+​
+    @GET("teacher/courses")
+    Call<TeacherCoursesResponse> getTeacherArchiveCourses(@Header("Authorization") String accessToken, @Query("archive") boolean archive);
+​
     @POST("teacher/courses")
     Call<TeacherCoursesResponse> postTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
-
+​
     @PUT("teacher/courses")
     Call<TeacherCoursesResponse> updateTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
-
+​
     @HTTP(method = "DELETE", path = "teacher/courses", hasBody = true)
     Call<TeacherCoursesResponse> deleteTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
-
+​
     @POST("teacher/courses/archive")
     Call<TeacherCoursesResponse> archiveTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);
-
+​
 }
