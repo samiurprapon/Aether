@@ -1,16 +1,17 @@
+import fs from 'fs';
 import { Express, Request, Response } from 'express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-// import { version } from '../../package.json';
+const { name, version, description } = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 const options: swaggerJSDoc.Options = {
 	definition: {
 		openapi: '3.0.0',
 		info: {
-			title: 'Aether API Documentation',
-			version: '0.0.0',
-			description: 'Shopy API Documentation',
+			title: `${name} API Documentation`,
+			version: version,
+			description: description,
 		},
 		components: {
 			securitySchemes: {

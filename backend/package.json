@@ -1,5 +1,5 @@
 {
-	"name": "backend",
+	"name": "aether-backend",
 	"version": "2.0.0",
 	"description": "Ravamp previous apis to much better technologies",
 	"type": "module",
