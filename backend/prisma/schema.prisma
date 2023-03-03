@@ -97,7 +97,8 @@ model Courses {
 }
 
 model CourseEnrollments {
-  id String @id @default(uuid())
+  id        String  @id @default(uuid())
+  isDropped Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -107,6 +108,8 @@ model CourseEnrollments {
 
   courses Courses? @relation(fields: [cid], references: [id])
   users   Users?   @relation(fields: [uid], references: [id])
+
+  @@unique([cid, uid])
 }
 
 model CourseMaterials {
