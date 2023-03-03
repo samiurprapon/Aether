@@ -1,0 +1,23 @@
+{
+	"ts-node": { "esm": true, "experimentalSpecifierResolution": "node" },
+	"compilerOptions": {
+		"strict": true, // used to strictly check the types of variables
+		"target": "es2016",
+		"lib": ["ES6"],
+		"module": "ES6",
+		"outDir": "build",
+		"rootDir": "./src",
+		"noImplicitAny": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": false,
+		"noUnusedLocals": true, // used to check if any variable is not used
+		"noUnusedParameters": true, // used to check if any parameter is not used
+		"moduleResolution": "node",
+
+		"types": ["node", "express"]
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "build"]
+}
