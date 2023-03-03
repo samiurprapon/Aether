@@ -18,13 +18,14 @@ model Credentials {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  User Users[]
+  User Users?
 }
 
 model Users {
   id     String  @id @default(uuid())
   email  String  @unique @db.VarChar(255)
   name   String? @db.VarChar(255)
+  phone  String? @unique @db.VarChar(11)
   sex    SEX     @default(MALE)
   school String? @db.VarChar(255)
   isBan  Boolean @default(false)
@@ -32,13 +33,12 @@ model Users {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  cid               String?
-  credentials       Credentials?        @relation(fields: [cid], references: [id])
-  Teachers          Teachers[]
-  Roles             Roles[]
-  Students          Students[]
-  CourseEnrollments CourseEnrollments[]
-  ReadingSessions   ReadingSessions[]
+  cid             String            @unique
+  Credentials     Credentials       @relation(fields: [cid], references: [id])
+  Teachers        Teachers?
+  Roles           Roles?
+  Students        Students?
+  ReadingSessions ReadingSessions[]
 }
 
 model Roles {
@@ -49,8 +49,8 @@ model Roles {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  uid   String?
-  users Users?  @relation(fields: [uid], references: [id])
+  uid   String @unique
+  users Users  @relation(fields: [uid], references: [id])
 }
 
 model Students {
@@ -60,8 +60,9 @@ model Students {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  uid   String?
-  users Users?  @relation(fields: [uid], references: [id])
+  uid               String              @unique
+  Users             Users               @relation(fields: [uid], references: [id])
+  CourseEnrollments CourseEnrollments[]
 }
 
 model Teachers {
@@ -71,8 +72,8 @@ model Teachers {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  uid     String?
-  users   Users?    @relation(fields: [uid], references: [id])
+  uid     String    @unique
+  Users   Users     @relation(fields: [uid], references: [id])
   Courses Courses[]
 }
 
@@ -91,9 +92,9 @@ model Courses {
   updatedAt DateTime @updatedAt
 
   instructor        String?
-  teachers          Teachers?           @relation(fields: [instructor], references: [id])
+  Teachers          Teachers?           @relation(fields: [instructor], references: [id])
   CourseEnrollments CourseEnrollments[]
-  CourseMaterials   CourseMaterials[]
+  CourseMaterials   CourseMaterials?
 }
 
 model CourseEnrollments {
@@ -104,12 +105,12 @@ model CourseEnrollments {
   updatedAt DateTime @updatedAt
 
   cid String?
-  uid String?
+  sid String?
 
-  courses Courses? @relation(fields: [cid], references: [id])
-  users   Users?   @relation(fields: [uid], references: [id])
+  Courses  Courses?  @relation(fields: [cid], references: [id])
+  Students Students? @relation(fields: [sid], references: [id])
 
-  @@unique([cid, uid])
+  @@unique([cid, sid])
 }
 
 model CourseMaterials {
@@ -122,8 +123,8 @@ model CourseMaterials {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  cid             String?
-  courses         Courses?          @relation(fields: [cid], references: [id])
+  cid             String            @unique
+  Courses         Courses?          @relation(fields: [cid], references: [id])
   ReadingSessions ReadingSessions[]
 }
 
@@ -138,8 +139,8 @@ model ReadingSessions {
 
   uid             String?
   mid             String?
-  users           Users?           @relation(fields: [uid], references: [id])
-  courseMaterials CourseMaterials? @relation(fields: [mid], references: [id])
+  Users           Users?           @relation(fields: [uid], references: [id])
+  CourseMaterials CourseMaterials? @relation(fields: [mid], references: [id])
 }
 
 // enums
