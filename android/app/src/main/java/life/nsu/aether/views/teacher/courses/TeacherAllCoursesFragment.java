@@ -47,6 +47,7 @@ public class TeacherAllCoursesFragment extends Fragment {
     static TeacherAllCoursesFragment fragment = null;
     private TeacherCourseViewModel viewModel;
     private static List<Course> courseList = new ArrayList<>();
+    private static List<Course> archiveCourseList = new ArrayList<>();
 
     public void addCourse(Course course){
         this.courseList.add(course);
@@ -59,6 +60,14 @@ public class TeacherAllCoursesFragment extends Fragment {
 
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
+    }
+
+    public static List<Course> getArchiveCourseList() {
+        return archiveCourseList;
+    }
+
+    public void setArchiveCourseList(List<Course> archiveCourseList) {
+        this.archiveCourseList = archiveCourseList;
     }
 
     public static TeacherAllCoursesFragment newInstance() {
@@ -98,6 +107,9 @@ public class TeacherAllCoursesFragment extends Fragment {
         viewModel.getTeacherCourseResponseMutableLiveData()
                 .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
 
+        viewModel.getTeacherArchiveCourseResponseMutableLiveData()
+                .observe(getActivity(), this::archiveCourseData);
+
         mOngoing.setEnabled(false);
 
         mArchived.setOnClickListener(v -> {
@@ -106,6 +118,9 @@ public class TeacherAllCoursesFragment extends Fragment {
 
             mOngoing.setTextColor(Color.parseColor("#B3B3B3"));
             mArchived.setTextColor(Color.parseColor("#000000"));
+
+            courseRecyclerAdapter.setCourseList(archiveCourseList);
+            courseRecyclerAdapter.notifyDataSetChanged();
 
             mAddButton.setVisibility(View.GONE);
         });
@@ -116,6 +131,9 @@ public class TeacherAllCoursesFragment extends Fragment {
 
             mArchived.setTextColor(Color.parseColor("#B3B3B3"));
             mOngoing.setTextColor(Color.parseColor("#000000"));
+
+            courseRecyclerAdapter.setCourseList(courseList);
+            courseRecyclerAdapter.notifyDataSetChanged();
 
             mAddButton.setVisibility(View.VISIBLE);
         });
@@ -130,6 +148,10 @@ public class TeacherAllCoursesFragment extends Fragment {
             getContext().startActivity(intent);
         });
 
+    }
+
+    private void archiveCourseData(TeacherCoursesResponse teacherCoursesResponse){
+        setArchiveCourseList(teacherCoursesResponse.getCourses());
     }
 
     private void changeUiAccordingToTeacherProfileData(TeacherCoursesResponse teacherCoursesResponse){

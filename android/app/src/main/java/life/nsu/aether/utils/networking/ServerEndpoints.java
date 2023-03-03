@@ -60,7 +60,10 @@ public interface ServerEndpoints {
     Call<TeacherProfileDetailsResponse> postTeacherProfile(@Header("Authorization") String accessToken, @Body TeacherProfileUpdateRequest request);
 
     @GET("teacher/courses")
-    Call<TeacherCoursesResponse> getTeacherCourses(@Header("Authorization") String accessToken/*, @Query("archive") boolean archive*/);
+    Call<TeacherCoursesResponse> getTeacherCourses(@Header("Authorization") String accessToken);
+
+    @GET("teacher/courses")
+    Call<TeacherCoursesResponse> getTeacherArchiveCourses(@Header("Authorization") String accessToken, @Query("archive") boolean archive);
 
     @POST("teacher/courses")
     Call<TeacherCoursesResponse> postTeacherCourses(@Header("Authorization") String accessToken, @Body TeacherCourseRequest request);

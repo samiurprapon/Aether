@@ -54,7 +54,33 @@ public class TeacherCourseRepository {
     public MutableLiveData<TeacherCoursesResponse> getTeacherCourseResponseMutableLiveData(String accessToken){
         Call<TeacherCoursesResponse> call = NetworkingService.getInstance()
                 .getRoute()
-                .getTeacherCourses(accessToken/*, true*/);
+                .getTeacherCourses(accessToken);
+
+        call.enqueue(new Callback<TeacherCoursesResponse>() {
+            @Override
+            public void onResponse(Call<TeacherCoursesResponse> call, Response<TeacherCoursesResponse> response) {
+                if (response.body() != null) {
+                    teacherCourseResponseMutableLiveData.postValue(response.body());
+                }
+
+                if (response.errorBody() != null) {
+                    teacherCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TeacherCoursesResponse> call, Throwable t) {
+                teacherCourseResponseMutableLiveData.postValue(new TeacherCoursesResponse(false));
+            }
+        });
+
+        return  teacherCourseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<TeacherCoursesResponse> getTeacherArchiveCourseResponseMutableLiveData(String accessToken){
+        Call<TeacherCoursesResponse> call = NetworkingService.getInstance()
+                .getRoute()
+                .getTeacherArchiveCourses(accessToken, true);
 
         call.enqueue(new Callback<TeacherCoursesResponse>() {
             @Override

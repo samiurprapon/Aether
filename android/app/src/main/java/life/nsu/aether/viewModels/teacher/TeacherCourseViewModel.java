@@ -38,6 +38,11 @@ public class TeacherCourseViewModel extends AndroidViewModel {
                 .getTeacherCourseResponseMutableLiveData(preference.getAccessToken());
     }
 
+    public LiveData<TeacherCoursesResponse> getTeacherArchiveCourseResponseMutableLiveData(){
+        return courseRepository
+                .getTeacherArchiveCourseResponseMutableLiveData(preference.getAccessToken());
+    }
+
     public LiveData<TeacherCoursesResponse> addTeacherCourseResponseMutableLiveData(String name, int section, String code, String semester){
         return courseRepository
                 .addTeacherCourseResponseMutableLiveData(preference.getAccessToken(), name, section, code, semester);
