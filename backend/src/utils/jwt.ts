@@ -1,4 +1,5 @@
-import { sign, verify } from 'jsonwebtoken';
+import pkg from 'jsonwebtoken';
+const { sign, verify } = pkg;
 
 import { User, StudentOrTeacher, Role } from '../types';
 
