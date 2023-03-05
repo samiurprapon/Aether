@@ -2,19 +2,25 @@ version: '3.8'
 
 services:
   backend:
+    container_name: aether
     build:
       context: ./
     ports:
       - '${APP_PORT}:3030'
+      - '5555:5555'
     volumes:
       - ./:/app
       - /app/node_modules
     restart: always
     networks:
       - backend
+    depends_on:
+      - db
+
   # postgres
   db:
     image: postgres:latest
+    container_name: postgres
     ports:
       - '${DB_PORT}:5432'
     environment:
