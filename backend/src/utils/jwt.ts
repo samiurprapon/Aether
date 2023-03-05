@@ -8,12 +8,12 @@ const secretRefresh: string = process.env.REFRESH_TOKEN_SECRET || 'somemoresecre
 
 export async function generateTokens({ user, details, permissions }: { user: User; details: StudentOrTeacher; permissions: Role }) {
 	const accessToken = sign({ user, details, permissions }, secretAccess, {
-		algorithm: 'RS256',
+		algorithm: 'HS512',
 		expiresIn: '15m',
 	});
 
 	const refreshToken = sign({ user, details, permissions }, secretRefresh, {
-		algorithm: 'RS256',
+		algorithm: 'HS512',
 		expiresIn: '7d',
 	});
 
