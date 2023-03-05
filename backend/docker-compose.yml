@@ -14,7 +14,7 @@ services:
       - backend
   # postgres
   db:
-    image: postgres:14
+    image: postgres:latest
     ports:
       - '${DB_PORT}:5432'
     environment:
@@ -27,9 +27,14 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${DB_USER} -d ${DB_NAME}'"]
       interval: 10s
       timeout: 3s
       retries: 3
 
-  # nginx
+volumes:
+  db_data:
+
+networks:
+  backend:
+    driver: bridge
