@@ -49,20 +49,29 @@ export async function login(req: Request, res: Response) {
 
 	let details = null;
 	// if role is student or teacher, get student or teacher details
-	if (user.Roles.type === 'STUDENT') {
-		details = await prisma.students.findUnique({
-			where: {
-				id: user.id,
-			},
-			select: {
-				id: true,
-				studentID: true,
-			},
-		});
-	} else if (user.Roles.type === 'TEACHER') {
+	if (user?.Roles?.type === 'STUDENT') {
+		details = await prisma.students
+			.findUnique({
+				where: {
+					uid: user.id,
+				},
+				select: {
+					id: true,
+					studentID: true,
+				},
+			})
+			.then(student => {
+				console.log('student :', student);
+				return student;
+			})
+			.catch(err => {
+				console.log(err);
+				return null;
+			});
+	} else if (user?.Roles?.type === 'TEACHER') {
 		details = await prisma.teachers.findUnique({
 			where: {
-				id: user.id,
+				uid: user.id,
 			},
 			select: {
 				id: true,
@@ -86,9 +95,9 @@ export async function login(req: Request, res: Response) {
 			id: details.id,
 		},
 		permissions: {
-			id: user.Roles.id,
-			type: user.Roles.type,
-			level: user.Roles.level,
+			id: user?.Roles?.id || '',
+			type: user?.Roles?.type || '',
+			level: user?.Roles?.level || '',
 		},
 	});
 
@@ -102,13 +111,13 @@ export async function login(req: Request, res: Response) {
 }
 
 export async function register(req: Request, res: Response) {
-	let { email, password, type } = req.body;
+	let { email, password }: { email: string; password: string } = req.body;
+	const { type }: { type: 'STUDENT' | 'TEACHER' | 'AUTHORITY' | 'ADMIN' } = req.body;
 
 	if (!email || !password || !type) {
 		return res.status(400).json({ message: 'Invalid request!' });
 	}
 
-	type = type.toUpperCase();
 	email = email.toLowerCase();
 	password = password.trim();
 
@@ -129,7 +138,7 @@ export async function register(req: Request, res: Response) {
 
 	const hashedPassword = await bcrypt.hash(password, 14);
 
-	const newUserData: Prisma.UsersCreateInput = {
+	let newUserData: Prisma.UsersCreateInput = {
 		email,
 		Credentials: {
 			create: {
@@ -143,16 +152,25 @@ export async function register(req: Request, res: Response) {
 		},
 	};
 
+	// if role is student  add new key to common input
+	if (type === 'STUDENT') {
+		newUserData = { ...newUserData, Students: { create: {} } };
+	} else if (type === 'TEACHER') {
+		newUserData = { ...newUserData, Teachers: { create: {} } };
+	}
+
 	return await prisma.users
 		.create({
 			data: newUserData,
 			include: {
 				Credentials: true,
 				Roles: true,
+				Students: type === 'STUDENT' ? true : false,
+				Teachers: type === 'TEACHER' ? true : false,
 			},
 		})
 		.then(user => {
-			console.log(`'${user.email}' has been registered as '${user.Roles.type}'`);
+			return res.status(200).json({ message: 'Registration successful!' });
 		})
 		.catch(err => {
 			console.log(err);
