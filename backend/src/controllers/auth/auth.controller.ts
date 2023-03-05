@@ -61,7 +61,6 @@ export async function login(req: Request, res: Response) {
 				},
 			})
 			.then(student => {
-				console.log('student :', student);
 				return student;
 			})
 			.catch(err => {
