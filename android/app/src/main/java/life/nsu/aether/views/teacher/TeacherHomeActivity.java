@@ -64,7 +64,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
 
-                    case R.id.mMore:
+                    case R.id.mProfile:
                         teacherMorePage();
                         drawerLayout.closeDrawers();
                         break;
