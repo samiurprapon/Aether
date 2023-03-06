@@ -80,27 +80,37 @@ public class TeacherProfileEditFragment extends Fragment {
 
         mUpdateButton.setOnClickListener(v -> {
 
-            mUpdateButton.setEnabled(false); // prevent double clicking
-            hideKeyboard(getActivity(), v);
-            progressBar.show("");
-
-            String initial = Objects.requireNonNull(mInitialEditText.getText()).toString();
-            String name = Objects.requireNonNull(mNameEditText.getText()).toString();
-            String sex = Objects.requireNonNull(
-                    mMaleRadioButton.isChecked()? "Male" :
-                            mFemaleRadioButton.isChecked()? "Female" : "");
-
-            viewModel.postMutableTeacherProfileRequest(initial, name, sex)
-                    .observe(getActivity(), teacherProfileDetailsResponse -> {
-
-                        getActivity().onBackPressed(); // back to previous page
-
-            });
-
-            mUpdateButton.setEnabled(true);
+            if(mNameEditText.getText().toString().isEmpty() || mInitialEditText.getText().toString().isEmpty() || (!mMaleRadioButton.isChecked() && !mFemaleRadioButton.isChecked())){
+                // set warning
+                Toast.makeText(getActivity(), "Fill All the Information",
+                        Toast.LENGTH_LONG).show();
+            }else{
+                updateTeacherPorfile(v);
+            }
 
         });
 
+    }
+
+    private void updateTeacherPorfile(View v) {
+        mUpdateButton.setEnabled(false); // prevent double clicking
+        hideKeyboard(getActivity(), v);
+        progressBar.show("");
+
+        String initial = Objects.requireNonNull(mInitialEditText.getText()).toString();
+        String name = Objects.requireNonNull(mNameEditText.getText()).toString();
+        String sex = Objects.requireNonNull(
+                mMaleRadioButton.isChecked()? "Male" :
+                        mFemaleRadioButton.isChecked()? "Female" : "");
+
+        viewModel.postMutableTeacherProfileRequest(initial, name, sex)
+                .observe(getActivity(), teacherProfileDetailsResponse -> {
+
+                    getActivity().onBackPressed(); // back to previous page
+
+                });
+
+        mUpdateButton.setEnabled(true);
     }
 
     public void hideKeyboard(Context context, View view) {
