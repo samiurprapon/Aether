@@ -18,9 +18,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +32,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.google.android.material.button.MaterialButton;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,9 +50,8 @@ import life.nsu.aether.views.teacher.dashboard.TeacherStudentsAdapter;
 public class TeacherCourseFragment extends Fragment {
 
     static TeacherCourseFragment fragment = null;
-    TextView mCourseNameTextView;
-    Button mEditCourseButton;
-    Button mDeleteCourseButton;
+    private MaterialButton mMoreButton;
+    private TextView mCourseNameTextView;
     private RecyclerView mStudentsRecyclerView;
     private TeacherStudentsAdapter teacherStudentsAdapter;
     private PieChart mStudentStatusPieChart;
@@ -87,12 +91,11 @@ public class TeacherCourseFragment extends Fragment {
     }
 
     private void initializeVariables(@NotNull View view) {
+        mMoreButton = view.findViewById(R.id.mb_more);
         mCourseNameTextView = view.findViewById(R.id.tv_course_name);
         mStudentsRecyclerView = view.findViewById(R.id.rv_all_student);
         mStudentStatusPieChart = view.findViewById(R.id.pc_studentStatus);
         mTasksRecyclerView = view.findViewById(R.id.rv_task);
-        mEditCourseButton = view.findViewById(R.id.mb_edit_course);
-        mDeleteCourseButton = view.findViewById(R.id.mb_delete_course);
 
         viewModel = new ViewModelProvider(getActivity()).get(TeacherCourseViewModel.class);
 
@@ -101,34 +104,65 @@ public class TeacherCourseFragment extends Fragment {
         // set values according to that particular course
         setUpValues();
 
-        mEditCourseButton.setOnClickListener(v -> {
-            TeacherModifyCourseFragment teacherModifyCourseFragment
-                    = new TeacherModifyCourseFragment();
-
-            Bundle args = new Bundle();
-            args.putBoolean(getResources().getString(R.string.teacher_modify_course), true);
-            args.putSerializable(getResources().getString(R.string.intent_course_name), course);
-            teacherModifyCourseFragment.setArguments(args);
-
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_layout_id, teacherModifyCourseFragment)
-                    .commit();
-        });
-
-        mDeleteCourseButton.setOnClickListener(v -> {
+        /*mDeleteCourseButton.setOnClickListener(v -> {
             try{
                 viewModel.deleteTeacherCourseResponseMutableLiveData(course.getId());
                 getActivity().onBackPressed();
             }catch (Exception e){
                 Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
             }
+        });*/
+
+        mMoreButton.setOnClickListener(v -> {
+            createMenu(v);
         });
 
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.teacher_course_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mEdit:
+                editCourse();
+                break;
+
+            case R.id.mArchive:
+
+                break;
+        }
+
+        return false;
+    }
+
     private void setUpValues(){
 
+    }
+
+    private void createMenu(View v) {
+        PopupMenu pm = new PopupMenu(getContext(), v);
+        pm.getMenuInflater().inflate(R.menu.teacher_course_menu, pm.getMenu());
+        pm.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.mEdit:
+                        editCourse();
+                        break;
+
+                    case R.id.mArchive:
+
+                        break;
+                }
+
+                return false;
+            }
+        }); pm.show();
     }
 
     private void setUpStudentsRecyclerView() {
@@ -161,6 +195,21 @@ public class TeacherCourseFragment extends Fragment {
 
         mStudentStatusPieChart.setData(studentStatusChartData);
         mStudentStatusPieChart.invalidate();
+    }
+
+    private void editCourse(){
+        TeacherModifyCourseFragment teacherModifyCourseFragment
+                = new TeacherModifyCourseFragment();
+
+        Bundle args = new Bundle();
+        args.putBoolean(getResources().getString(R.string.teacher_modify_course), true);
+        args.putSerializable(getResources().getString(R.string.intent_course_name), course);
+        teacherModifyCourseFragment.setArguments(args);
+
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout_id, teacherModifyCourseFragment)
+                .commit();
     }
 
     private void setUpTaskRecyclerView() {

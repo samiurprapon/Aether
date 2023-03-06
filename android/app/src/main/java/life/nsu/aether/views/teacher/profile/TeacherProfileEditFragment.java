@@ -97,6 +97,10 @@ public class TeacherProfileEditFragment extends Fragment {
         hideKeyboard(getActivity(), v);
         progressBar.show("");
 
+        // initialize view model
+        viewModel = new ViewModelProvider(this)
+                .get(TeacherProfileViewModel.class);
+
         String initial = Objects.requireNonNull(mInitialEditText.getText()).toString();
         String name = Objects.requireNonNull(mNameEditText.getText()).toString();
         String sex = Objects.requireNonNull(
