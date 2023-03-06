@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { Prisma, PrismaClient } from '@prisma/client';
 
 export async function create(req: Request, res: Response) {
 	const { name, section, code, semester } = req.body;
@@ -11,23 +12,87 @@ export async function create(req: Request, res: Response) {
 }
 
 export async function getCourses(req: Request, res: Response) {
+	const data = res.locals.data;
+
 	const { archive } = req.query;
 
-	console.log(`Get courses which are '${archive ? 'Archived' : 'Not Archived'}'`);
+	const prisma = new PrismaClient();
 
-	return res.status(200).json({
-		message: 'Courses fetched successfully!',
-	});
+	return await prisma.courses
+		.findMany({
+			where: {
+				isArchived: archive ? true : false,
+
+				Teachers: {
+					id: data.details.id,
+				},
+			},
+		})
+		.then(courses => {
+			return res.status(200).json({
+				message: 'Courses fetched successfully!',
+				courses,
+			});
+		})
+		.catch(err => {
+			console.log(err);
+
+			return res.status(400).json({
+				message: 'Courses could not be fetched!',
+			});
+		})
+		.finally(async () => {
+			await prisma.$disconnect();
+		});
 }
 
 export async function update(req: Request, res: Response) {
-	const { courseId, name, section, code, semester } = req.body;
+	const data = res.locals.data;
+	const {
+		courseId,
+		name,
+		section,
+		code,
+		semester,
+	}: { courseId: string; name: string; section: string; code: string; semester: 'SUMMER' | 'SPRING' | 'FALL' } = req.body;
 
-	console.log(` courseId: '${courseId}' name: '${name}', secion:  '${section}', courseCode: '${code}', and semester: '${semester}'`);
+	if (!courseId) return res.status(400).json({ message: 'Course ID is required!' });
 
-	return res.status(200).json({
-		message: 'Course updated successfully!',
-	});
+	const newCourse: Prisma.CoursesUpdateInput = {
+		name,
+		section,
+		courseCode: code,
+		semester,
+	};
+
+	const course: Prisma.CoursesWhereInput = {
+		id: courseId,
+		instructor: data.details.id,
+	};
+
+	const prisma = new PrismaClient();
+
+	return await prisma.courses
+		.updateMany({
+			where: course,
+			data: newCourse,
+		})
+		.then(course => {
+			return res.status(200).json({
+				message: 'Course updated successfully!',
+				course,
+			});
+		})
+		.catch(err => {
+			console.log(err);
+
+			return res.status(400).json({
+				message: 'Course could not be updated!',
+			});
+		})
+		.finally(async () => {
+			await prisma.$disconnect();
+		});
 }
 
 export async function setArchive(req: Request, res: Response) {
