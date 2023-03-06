@@ -47,7 +47,7 @@ public class TeacherAllCoursesFragment extends Fragment {
     static TeacherAllCoursesFragment fragment = null;
     private TeacherCourseViewModel viewModel;
     private static List<Course> courseList = new ArrayList<>();
-    private static List<Course> archiveCourseList = new ArrayList<>();
+    //private static List<Course> archiveCourseList = new ArrayList<>();
 
     public void addCourse(Course course){
         this.courseList.add(course);
@@ -62,13 +62,13 @@ public class TeacherAllCoursesFragment extends Fragment {
         this.courseList = courseList;
     }
 
-    public static List<Course> getArchiveCourseList() {
+    /*public static List<Course> getArchiveCourseList() {
         return archiveCourseList;
     }
 
     public void setArchiveCourseList(List<Course> archiveCourseList) {
         this.archiveCourseList = archiveCourseList;
-    }
+    }*/
 
     public static TeacherAllCoursesFragment newInstance() {
         if (fragment == null) {
@@ -107,8 +107,8 @@ public class TeacherAllCoursesFragment extends Fragment {
         viewModel.getTeacherCourseResponseMutableLiveData()
                 .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
 
-        viewModel.getTeacherArchiveCourseResponseMutableLiveData()
-                .observe(getActivity(), this::archiveCourseData);
+        /*viewModel.getTeacherArchiveCourseResponseMutableLiveData()
+                .observe(getActivity(), this::archiveCourseData);*/
 
         mOngoing.setEnabled(false);
 
@@ -119,7 +119,7 @@ public class TeacherAllCoursesFragment extends Fragment {
             mOngoing.setTextColor(Color.parseColor("#B3B3B3"));
             mArchived.setTextColor(Color.parseColor("#000000"));
 
-            courseRecyclerAdapter.setCourseList(archiveCourseList);
+            //courseRecyclerAdapter.setCourseList(archiveCourseList);
             courseRecyclerAdapter.notifyDataSetChanged();
 
             mAddButton.setVisibility(View.GONE);
@@ -150,9 +150,9 @@ public class TeacherAllCoursesFragment extends Fragment {
 
     }
 
-    private void archiveCourseData(TeacherCoursesResponse teacherCoursesResponse){
+    /*private void archiveCourseData(TeacherCoursesResponse teacherCoursesResponse){
         setArchiveCourseList(teacherCoursesResponse.getCourses());
-    }
+    }*/
 
     private void changeUiAccordingToTeacherProfileData(TeacherCoursesResponse teacherCoursesResponse){
         Log.d("Verify", "Yes");
