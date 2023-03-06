@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
@@ -33,11 +34,12 @@ import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
 
 public class TeacherModifyCourseFragment extends Fragment {
 
-    TextInputEditText mCourseNameEditText;
-    TextInputEditText mCourseCodeEditText;
-    TextInputEditText mSectionEditText;
-    TextInputEditText mSemesterEditText;
-    Button mAddCourseButton;
+    private TextInputEditText mCourseNameEditText;
+    private TextInputEditText mCourseCodeEditText;
+    private TextInputEditText mSectionEditText;
+    private TextInputEditText mSemesterEditText;
+    private Button mAddCourseButton;
+    private MaterialButton mBackButton;
     static TeacherModifyCourseFragment fragment = null;
     private TeacherCourseViewModel viewModel;
     private Course course;
@@ -66,6 +68,7 @@ public class TeacherModifyCourseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mBackButton = view.findViewById(R.id.mb_back);
         mCourseNameEditText = view.findViewById(R.id.et_course_name);
         mCourseCodeEditText = view.findViewById(R.id.et_course_code);
         mSectionEditText = view.findViewById(R.id.et_course_section);
@@ -78,6 +81,10 @@ public class TeacherModifyCourseFragment extends Fragment {
         if(isModify){
             setValues();
         }
+
+        mBackButton.setOnClickListener(v -> {
+            getActivity().onBackPressed();
+        });
 
         mAddCourseButton.setOnClickListener(v -> {
             mAddCourseButton.setEnabled(false);
