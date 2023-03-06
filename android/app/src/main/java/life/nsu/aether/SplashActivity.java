@@ -14,7 +14,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import life.nsu.aether.utils.CustomProgressBar;
 import life.nsu.aether.viewModels.SplashViewModel;
 
 @SuppressLint("CustomSplashScreen")

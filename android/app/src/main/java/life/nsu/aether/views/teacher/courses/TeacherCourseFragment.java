@@ -7,8 +7,15 @@
 
 package life.nsu.aether.views.teacher.courses;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,17 +23,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.PopupMenu;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -42,9 +38,7 @@ import java.util.List;
 import life.nsu.aether.R;
 import life.nsu.aether.models.Course;
 import life.nsu.aether.utils.adapters.TeacherTaskAdapter;
-import life.nsu.aether.viewModels.authentication.LoginViewModel;
 import life.nsu.aether.viewModels.teacher.TeacherCourseViewModel;
-import life.nsu.aether.views.PageActivity;
 import life.nsu.aether.views.teacher.dashboard.TeacherStudentsAdapter;
 
 public class TeacherCourseFragment extends Fragment {
@@ -141,7 +135,7 @@ public class TeacherCourseFragment extends Fragment {
     }
 
     private void setUpValues(){
-
+        mCourseNameTextView.setText(course.getName());
     }
 
     private void createMenu(View v) {
@@ -156,7 +150,7 @@ public class TeacherCourseFragment extends Fragment {
                         break;
 
                     case R.id.mArchive:
-
+                        archiveCourse();
                         break;
                 }
 
@@ -176,7 +170,7 @@ public class TeacherCourseFragment extends Fragment {
         mStudentsRecyclerView.setAdapter(teacherStudentsAdapter);
     }
 
-    void getStudentStatusPieChart(){
+    private void getStudentStatusPieChart(){
         studentStatusData.add(new PieEntry(60, ""));
         studentStatusData.add(new PieEntry(13, ""));
         studentStatusData.add(new PieEntry(13, ""));
@@ -210,6 +204,11 @@ public class TeacherCourseFragment extends Fragment {
                 .beginTransaction()
                 .replace(R.id.fragment_layout_id, teacherModifyCourseFragment)
                 .commit();
+    }
+
+    private void archiveCourse(){
+        viewModel.archiveTeacherCourseResponseMutableLiveData(course.getId());
+        getActivity().onBackPressed();
     }
 
     private void setUpTaskRecyclerView() {
