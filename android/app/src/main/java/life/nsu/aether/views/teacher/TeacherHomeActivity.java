@@ -9,6 +9,8 @@ package life.nsu.aether.views.teacher;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -18,10 +20,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.navigation.NavigationView;
 
 import life.nsu.aether.R;
+import life.nsu.aether.utils.CustomProgressBar;
+import life.nsu.aether.viewModels.student.StudentMoreViewModel;
+import life.nsu.aether.viewModels.teacher.TeacherMenuViewModel;
 import life.nsu.aether.views.teacher.courses.TeacherAllCoursesFragment;
 import life.nsu.aether.views.teacher.dashboard.TeacherDashboardFragment;
 import life.nsu.aether.views.teacher.profile.TeacherProfileFragment;
@@ -32,6 +38,8 @@ public class TeacherHomeActivity extends AppCompatActivity {
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     ImageButton mMenuButton;
+    CustomProgressBar progressBar;
+    TeacherMenuViewModel viewModel;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,6 +48,12 @@ public class TeacherHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teacher_home);
 
         teacherHomePage();
+
+        // view model initialize
+        viewModel = new ViewModelProvider(this).get(TeacherMenuViewModel.class);
+
+        // initialize progress showing dialog
+        progressBar = new CustomProgressBar(this);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_View);
@@ -70,6 +84,9 @@ public class TeacherHomeActivity extends AppCompatActivity {
                         break;
 
                     case R.id.mLogout:
+                        teacherLogOut();
+                        drawerLayout.closeDrawers();
+                        break;
 
                 }
 
@@ -85,6 +102,16 @@ public class TeacherHomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void teacherLogOut() {
+        progressBar.show("Logging out ...");
+
+        new Handler(Looper.myLooper()).postDelayed(() -> viewModel.getDeAuthResponse().observe(this, deAuthResponse -> {
+            progressBar.hide();
+
+            viewModel.switchActivity(deAuthResponse);
+        }), 500);
     }
 
     private void teacherHomePage() {
