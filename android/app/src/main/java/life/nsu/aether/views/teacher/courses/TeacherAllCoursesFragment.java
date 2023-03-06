@@ -38,20 +38,19 @@ import life.nsu.aether.views.PageActivity;
 
 public class TeacherAllCoursesFragment extends Fragment {
 
-    MaterialButton mOngoing;
-    MaterialButton mArchived;
-    RecyclerView courseRecyclerView;
-    FloatingActionButton mAddButton;
-    TeacherOnGoingCourseAdapter courseRecyclerAdapter;
+    private MaterialButton mOngoing;
+    private MaterialButton mArchived;
+    private RecyclerView courseRecyclerView;
+    private FloatingActionButton mAddButton;
+    private TeacherOnGoingCourseAdapter courseRecyclerAdapter;
 
     static TeacherAllCoursesFragment fragment = null;
     private TeacherCourseViewModel viewModel;
     private static List<Course> courseList = new ArrayList<>();
-    //private static List<Course> archiveCourseList = new ArrayList<>();
+    private static List<Course> archiveCourseList = new ArrayList<>();
 
     public void addCourse(Course course){
         this.courseList.add(course);
-        Log.d("Verify", course.getName());
     }
 
     public List<Course> getCourseList() {
@@ -62,13 +61,13 @@ public class TeacherAllCoursesFragment extends Fragment {
         this.courseList = courseList;
     }
 
-    /*public static List<Course> getArchiveCourseList() {
-        return archiveCourseList;
+    public List<Course> getArchiveCourseList() {
+        return this.archiveCourseList;
     }
 
     public void setArchiveCourseList(List<Course> archiveCourseList) {
         this.archiveCourseList = archiveCourseList;
-    }*/
+    }
 
     public static TeacherAllCoursesFragment newInstance() {
         if (fragment == null) {
@@ -103,9 +102,6 @@ public class TeacherAllCoursesFragment extends Fragment {
         // initialize courses
         courseRecyclerAdapter = new TeacherOnGoingCourseAdapter(getContext());
 
-        /*viewModel.getTeacherArchiveCourseResponseMutableLiveData()
-                .observe(getActivity(), this::archiveCourseData);*/
-
         mOngoing.setEnabled(false);
 
         mArchived.setOnClickListener(v -> {
@@ -115,8 +111,8 @@ public class TeacherAllCoursesFragment extends Fragment {
             mOngoing.setTextColor(Color.parseColor("#B3B3B3"));
             mArchived.setTextColor(Color.parseColor("#000000"));
 
-            //courseRecyclerAdapter.setCourseList(archiveCourseList);
-            courseRecyclerAdapter.notifyDataSetChanged();
+            viewModel.getTeacherArchiveCourseResponseMutableLiveData()
+                    .observe(getActivity(), this::archiveCourseData);
 
             mAddButton.setVisibility(View.GONE);
         });
@@ -128,8 +124,9 @@ public class TeacherAllCoursesFragment extends Fragment {
             mArchived.setTextColor(Color.parseColor("#B3B3B3"));
             mOngoing.setTextColor(Color.parseColor("#000000"));
 
-            courseRecyclerAdapter.setCourseList(courseList);
-            courseRecyclerAdapter.notifyDataSetChanged();
+            // Fetch all courses data
+            viewModel.getTeacherCourseResponseMutableLiveData()
+                    .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
 
             mAddButton.setVisibility(View.VISIBLE);
         });
@@ -146,13 +143,14 @@ public class TeacherAllCoursesFragment extends Fragment {
 
     }
 
-    /*private void archiveCourseData(TeacherCoursesResponse teacherCoursesResponse){
-        setArchiveCourseList(teacherCoursesResponse.getCourses());
-    }*/
+    private void archiveCourseData(TeacherCoursesResponse archiveTeacherCourseResponse){
+        setArchiveCourseList(archiveTeacherCourseResponse.getCourses());
+        courseRecyclerAdapter.setCourseList(archiveCourseList);
+    }
 
     private void changeUiAccordingToTeacherProfileData(TeacherCoursesResponse teacherCoursesResponse){
-        Log.d("Verify", "Yes");
         setCourseList(teacherCoursesResponse.getCourses());
+        courseRecyclerAdapter.setCourseList(courseList);
         initializeRecyclerView();
     }
 
@@ -168,6 +166,7 @@ public class TeacherAllCoursesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         // Fetch all courses data
         viewModel.getTeacherCourseResponseMutableLiveData()
                 .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);

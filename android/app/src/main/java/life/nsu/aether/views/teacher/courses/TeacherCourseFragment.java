@@ -44,6 +44,7 @@ import life.nsu.aether.views.teacher.dashboard.TeacherStudentsAdapter;
 public class TeacherCourseFragment extends Fragment {
 
     static TeacherCourseFragment fragment = null;
+    private MaterialButton mBackButton;
     private MaterialButton mMoreButton;
     private TextView mCourseNameTextView;
     private RecyclerView mStudentsRecyclerView;
@@ -85,6 +86,7 @@ public class TeacherCourseFragment extends Fragment {
     }
 
     private void initializeVariables(@NotNull View view) {
+        mBackButton = view.findViewById(R.id.mb_back);
         mMoreButton = view.findViewById(R.id.mb_more);
         mCourseNameTextView = view.findViewById(R.id.tv_course_name);
         mStudentsRecyclerView = view.findViewById(R.id.rv_all_student);
@@ -109,6 +111,10 @@ public class TeacherCourseFragment extends Fragment {
 
         mMoreButton.setOnClickListener(v -> {
             createMenu(v);
+        });
+
+        mBackButton.setOnClickListener(v -> {
+            getActivity().onBackPressed();
         });
 
     }
