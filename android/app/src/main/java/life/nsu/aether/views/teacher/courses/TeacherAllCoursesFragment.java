@@ -103,10 +103,6 @@ public class TeacherAllCoursesFragment extends Fragment {
         // initialize courses
         courseRecyclerAdapter = new TeacherOnGoingCourseAdapter(getContext());
 
-        // Fetch all courses data
-        viewModel.getTeacherCourseResponseMutableLiveData()
-                .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
-
         /*viewModel.getTeacherArchiveCourseResponseMutableLiveData()
                 .observe(getActivity(), this::archiveCourseData);*/
 
@@ -172,6 +168,8 @@ public class TeacherAllCoursesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        initializeRecyclerView();
+        // Fetch all courses data
+        viewModel.getTeacherCourseResponseMutableLiveData()
+                .observe(getActivity(), this::changeUiAccordingToTeacherProfileData);
     }
 }
