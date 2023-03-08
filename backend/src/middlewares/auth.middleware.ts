@@ -15,14 +15,14 @@ export async function authentication(req: Request, res: Response, next: NextFunc
 		return res.status(401).json({ message: 'Unauthorized' });
 	}
 
-	try {
-		const decoded = await decodeToken(token, false);
-		res.locals.data = decoded;
+	const decoded: any = await decodeToken(token, false);
 
-		next();
-	} catch (error) {
+	if (!decoded) {
 		return res.status(401).json({ message: 'Unauthorized' });
 	}
+
+	res.locals.data = decoded;
+	next();
 }
 
 export async function authorization(req: Request, res: Response, next: NextFunction) {

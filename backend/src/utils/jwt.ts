@@ -25,7 +25,7 @@ export async function decodeToken(token: string, refresh: boolean) {
 		token,
 		refresh ? secretRefresh : secretAccess,
 		{
-			algorithms: ['RS256'],
+			algorithms: ['HS512'],
 		},
 		(err, decoded) => {
 			if (err) {
