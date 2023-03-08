@@ -33,7 +33,7 @@ public class CourseEnrollDialog {
     private void setUpDialog() {
         dialog = new Dialog(activity);
         dialog.setContentView(R.layout.dialog_enroll_course);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
     }
 
 }
