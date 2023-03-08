@@ -29,7 +29,8 @@ public class StudentCourseResponse {
     @Expose()
     private Course course;
 
-    public StudentCourseResponse() {
+    public StudentCourseResponse(boolean success) {
+        this.success = success;
     }
 
     public String getMessage() {
