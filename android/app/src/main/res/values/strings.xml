@@ -54,6 +54,9 @@
   <string name="title_ongoing_course">Ongoing</string>
   <string name="title_archived_course">Archive</string>
   <string name="title_by">by</string>
+  <string name="title_enroll">Enroll</string>
+  <string name="title_enroll_course">Enter Course Enroll Code</string>
+  <string name="title_enroll_code">Enroll Code</string>
 
   <!--  Student Class Fragment  -->
   <string name="title_today_class">Today\’s Class</string>
