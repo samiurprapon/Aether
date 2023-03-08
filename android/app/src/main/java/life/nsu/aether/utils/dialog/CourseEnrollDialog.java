@@ -12,14 +12,20 @@ import android.app.Dialog;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
+
 import life.nsu.aether.R;
+import life.nsu.aether.viewModels.student.StudentCourseViewModel;
 
 public class CourseEnrollDialog {
 
     private Activity activity;
     private Dialog dialog;
-    private EditText mEnrollEditText;
-    private Button mEnrollButton;
+    public EditText mEnrollEditText;
+    public Button mEnrollButton;
+    private StudentCourseViewModel viewModel;
 
     public CourseEnrollDialog(Activity activity) {
         this.activity = activity;
@@ -39,13 +45,9 @@ public class CourseEnrollDialog {
         dialog.setContentView(R.layout.dialog_enroll_course);
         dialog.setCancelable(true);
 
-        // init view
+
         mEnrollEditText = dialog.findViewById(R.id.et_enroll);
         mEnrollButton = dialog.findViewById(R.id.mb_enroll);
-
-        mEnrollButton.setOnClickListener(view -> {
-            
-        });
     }
 
 }
