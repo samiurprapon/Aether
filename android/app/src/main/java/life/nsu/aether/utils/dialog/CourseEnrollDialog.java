@@ -9,6 +9,8 @@ package life.nsu.aether.utils.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.widget.Button;
+import android.widget.EditText;
 
 import life.nsu.aether.R;
 
@@ -16,6 +18,8 @@ public class CourseEnrollDialog {
 
     private Activity activity;
     private Dialog dialog;
+    private EditText mEnrollEditText;
+    private Button mEnrollButton;
 
     public CourseEnrollDialog(Activity activity) {
         this.activity = activity;
@@ -34,6 +38,14 @@ public class CourseEnrollDialog {
         dialog = new Dialog(activity);
         dialog.setContentView(R.layout.dialog_enroll_course);
         dialog.setCancelable(true);
+
+        // init view
+        mEnrollEditText = dialog.findViewById(R.id.et_enroll);
+        mEnrollButton = dialog.findViewById(R.id.mb_enroll);
+
+        mEnrollButton.setOnClickListener(view -> {
+            
+        });
     }
 
 }

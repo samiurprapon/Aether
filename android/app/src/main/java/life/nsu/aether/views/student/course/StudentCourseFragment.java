@@ -64,15 +64,14 @@ public class StudentCourseFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        // adapter initialized
-        adapter = new CourseRecyclerAdapter(getContext());
-        courseEnrollDialog = new CourseEnrollDialog(getActivity());
-
         mOngoing = view.findViewById(R.id.mb_ongoing_course);
         mArchived = view.findViewById(R.id.mb_archive_course);
         mStudy = view.findViewById(R.id.mb_start_study);
         recyclerView = view.findViewById(R.id.rv_course);
+
+        // adapter initialized
+        adapter = new CourseRecyclerAdapter(getContext());
+        courseEnrollDialog = new CourseEnrollDialog(getActivity());
 
         // initialize courses
         courseList = new ArrayList<>();
