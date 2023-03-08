@@ -11,12 +11,14 @@ import life.nsu.aether.utils.networking.requests.LoginRequest;
 import life.nsu.aether.utils.networking.requests.LogoutRequest;
 import life.nsu.aether.utils.networking.requests.ProfileUpdateRequest;
 import life.nsu.aether.utils.networking.requests.RegistrationRequest;
+import life.nsu.aether.utils.networking.requests.StudentCourseRequest;
 import life.nsu.aether.utils.networking.requests.TeacherCourseRequest;
 import life.nsu.aether.utils.networking.requests.TeacherProfileUpdateRequest;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.MessageResponse;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
+import life.nsu.aether.utils.networking.responses.StudentCourseResponse;
 import life.nsu.aether.utils.networking.responses.StudentProfileDetailsResponse;
 import life.nsu.aether.utils.networking.responses.TeacherCoursesResponse;
 import life.nsu.aether.utils.networking.responses.TeacherProfileDetailsResponse;
@@ -58,6 +60,9 @@ public interface ServerEndpoints {
 
     @POST("teacher/profile")
     Call<TeacherProfileDetailsResponse> postTeacherProfile(@Header("Authorization") String accessToken, @Body TeacherProfileUpdateRequest request);
+
+    @POST("student/courses")
+    Call<StudentCourseResponse> postEnrollStudentCourse(@Header("Authorization") String accessToken, @Body StudentCourseRequest request);
 
     @GET("teacher/courses")
     Call<TeacherCoursesResponse> getTeacherCourses(@Header("Authorization") String accessToken);
