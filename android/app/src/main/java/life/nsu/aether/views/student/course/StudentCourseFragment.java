@@ -28,6 +28,7 @@ import java.util.List;
 import life.nsu.aether.R;
 import life.nsu.aether.models.Course;
 import life.nsu.aether.utils.adapters.CourseRecyclerAdapter;
+import life.nsu.aether.utils.dialog.CourseEnrollDialog;
 import life.nsu.aether.views.student.dashboard.StudentHomeFragment;
 
 
@@ -41,6 +42,7 @@ public class StudentCourseFragment extends Fragment {
     List<Course> courseList;
 
     CourseRecyclerAdapter adapter;
+    private CourseEnrollDialog courseEnrollDialog;
     static StudentCourseFragment fragment = null;
 
     public static StudentCourseFragment newInstance() {
@@ -62,13 +64,15 @@ public class StudentCourseFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        // adapter initialized
+        adapter = new CourseRecyclerAdapter(getContext());
+        courseEnrollDialog = new CourseEnrollDialog(getActivity());
+
         mOngoing = view.findViewById(R.id.mb_ongoing_course);
         mArchived = view.findViewById(R.id.mb_archive_course);
         mStudy = view.findViewById(R.id.mb_start_study);
         recyclerView = view.findViewById(R.id.rv_course);
-
-        // course adapter initialized
-        adapter = new CourseRecyclerAdapter(getContext());
 
         // initialize courses
         courseList = new ArrayList<>();
@@ -80,7 +84,7 @@ public class StudentCourseFragment extends Fragment {
         mStudy.setOnClickListener(v -> {
             // Go to immediate next course material
             // immediate next course will be selected with respect to time
-
+            courseEnrollDialog.show();
         });
 
         mArchived.setOnClickListener(v -> {
