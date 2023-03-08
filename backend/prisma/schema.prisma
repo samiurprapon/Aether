@@ -95,6 +95,8 @@ model Courses {
   Teachers          Teachers?           @relation(fields: [instructor], references: [id])
   CourseEnrollments CourseEnrollments[]
   CourseMaterials   CourseMaterials?
+
+  @@unique([id, instructor])
 }
 
 model CourseEnrollments {
