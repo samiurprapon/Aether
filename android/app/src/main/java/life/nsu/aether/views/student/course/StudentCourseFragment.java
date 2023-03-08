@@ -80,6 +80,7 @@ public class StudentCourseFragment extends Fragment {
         mStudy.setOnClickListener(v -> {
             // Go to immediate next course material
             // immediate next course will be selected with respect to time
+
         });
 
         mArchived.setOnClickListener(v -> {
@@ -113,10 +114,5 @@ public class StudentCourseFragment extends Fragment {
     private void getCourseList() {
         courseList.clear();
 
-        courseList.add(new Course("Software Engineering", false, "Jesse Pinkman"));
-        courseList.add(new Course("Discrete Mathematics", false, "Christopher Nolan"));
-        courseList.add(new Course("Bio-organic Chemistry I", false, "Walter White"));
-        courseList.add(new Course("Engineering Drawing", false, " Leonardo da Vinci"));
-        courseList.add(new Course("Data Structures  and Algorithm", false, "David Green"));
     }
 }
