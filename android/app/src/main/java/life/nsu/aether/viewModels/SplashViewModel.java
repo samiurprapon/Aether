@@ -11,6 +11,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -48,7 +49,8 @@ public class SplashViewModel extends AndroidViewModel {
     public void switchActivity(RefreshResponse refreshResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
             Intent intent;
-            if (refreshResponse.isError()) {
+            //Log.d("Verify", refreshResponse.toString());
+            if (refreshResponse.getMessage().equals("Unauthorized")) {
                 intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
             } else if (preference.getType().equals("student")){
                 preference.setAccessToken(refreshResponse.getAccessToken());
