@@ -9,5 +9,5 @@ package life.nsu.aether.utils;
 
 public class NetworkCredentials {
 
-    public static String SERVER_BASE_URL = "https://aether.obboy.org/api/v1/";
+    public static String SERVER_BASE_URL = "https://aether.destroyed.cloud/api/";
 }
