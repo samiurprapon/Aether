@@ -37,6 +37,11 @@ public class TeacherProfileFragment extends Fragment {
     FloatingActionButton mEditButton;
     TeacherProfileViewModel teacherProfileViewModel;
 
+    private String name;
+    private String initial;
+    private String school;
+    private String sex;
+
     public static TeacherProfileFragment newInstance() {
         if (fragment == null) {
             synchronized (TeacherProfileFragment.class) {
@@ -70,19 +75,34 @@ public class TeacherProfileFragment extends Fragment {
         teacherProfileViewModel.getTeacherProfileDetailsResponseMutableLiveData().observe(getActivity(), this::changeUiAccordingToStudentsProfileData);
 
         mEditButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), PageActivity.class);
-            intent.putExtra(getResources().getString((R.string.selected_fragment)),
-                    getResources().getString(R.string.teacher_profile_edit));
-            getActivity().startActivity(intent);
+            editProfileScreen();
         });
 
     }
 
+    private void editProfileScreen() {
+        Intent intent = new Intent(getActivity(), PageActivity.class);
+        intent.putExtra(getResources().getString(R.string.selected_fragment),
+                getResources().getString(R.string.teacher_profile_edit));
+
+        intent.putExtra(getResources().getString(R.string.title_name), name);
+        intent.putExtra(getResources().getString(R.string.title_initial), initial);
+        intent.putExtra(getResources().getString(R.string.title_school), school);
+        intent.putExtra(getResources().getString(R.string.title_gender), sex);
+
+        getActivity().startActivity(intent);
+    }
+
     private void changeUiAccordingToStudentsProfileData(TeacherProfileDetailsResponse teacherProfileDetailsResponse) {
-        mName.setText(teacherProfileDetailsResponse.getTeacher().getUsers().getName());
-        mInitial.setText(teacherProfileDetailsResponse.getTeacher().getInitial());
-        mSchool.setText(teacherProfileDetailsResponse.getTeacher().getUsers().getSchool());
-        mSex.setText(teacherProfileDetailsResponse.getTeacher().getUsers().getSex());
+        name = teacherProfileDetailsResponse.getTeacher().getUsers().getName();
+        initial = teacherProfileDetailsResponse.getTeacher().getInitial();
+        school = teacherProfileDetailsResponse.getTeacher().getUsers().getSchool();
+        sex = teacherProfileDetailsResponse.getTeacher().getUsers().getSex();
+
+        mName.setText(name);
+        mInitial.setText(initial);
+        mSchool.setText(school);
+        mSex.setText(sex);
     }
 
 }
