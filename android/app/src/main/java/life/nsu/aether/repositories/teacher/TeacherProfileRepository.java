@@ -51,7 +51,6 @@ public class TeacherProfileRepository {
     }
 
     public MutableLiveData<TeacherProfileDetailsResponse> getTeacherProfileDetailsResponseMutableLiveData(String accessToken) {
-        accessToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMWYxNTAzMzEtMDI0Ny00OTQ5LWExNDktYjkwYWJiYmIxMjdkIiwiZW1haWwiOiJ0ZWFjaGVyMTFAZ21haWwuY29tIiwibmFtZSI6Ik1haGZ1aiBBaG1lZCBKaW0iLCJzY2hvb2wiOiJOb3J0aCBTb3V0aCBVbml2ZXJzaXR5In0sImRldGFpbHMiOnsiaWQiOiIyNTZmMjM0OS1iYzZlLTQ1ZWYtODhiMS00ZTA4NWI0ZDI1NjUifSwicGVybWlzc2lvbnMiOnsiaWQiOiI2ZDQ5ODViYi0zMWE0LTQ4M2YtYTY2Mi00OGUzODU5Y2UzMTUiLCJ0eXBlIjoiVEVBQ0hFUiIsImxldmVsIjoiT05FIn0sImlhdCI6MTY3ODkwMzM3MiwiZXhwIjoxNjc4OTA0MjcyfQ.milk36u2Kfo6OELUImeJTRM6X6yuo_O1ak1y_GAh6NP-DW18D_iTMV3jzNEK2Qd4pDc6pV_W3xnwkYqSitjXiQ";
         Call<TeacherProfileDetailsResponse> call = NetworkingService.getInstance()
                 .getRoute()
                 .getTeacherProfile("Bearer "+accessToken);
@@ -79,7 +78,6 @@ public class TeacherProfileRepository {
     }
 
     public MutableLiveData<TeacherProfileDetailsResponse> postMutableTeacherProfileRequest(String accessToken, String name, String initial, String school, String sex) {
-        accessToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMWYxNTAzMzEtMDI0Ny00OTQ5LWExNDktYjkwYWJiYmIxMjdkIiwiZW1haWwiOiJ0ZWFjaGVyMTFAZ21haWwuY29tIiwibmFtZSI6Ik1haGZ1aiBBaG1lZCBKaW0iLCJzY2hvb2wiOiJOb3J0aCBTb3V0aCBVbml2ZXJzaXR5In0sImRldGFpbHMiOnsiaWQiOiIyNTZmMjM0OS1iYzZlLTQ1ZWYtODhiMS00ZTA4NWI0ZDI1NjUifSwicGVybWlzc2lvbnMiOnsiaWQiOiI2ZDQ5ODViYi0zMWE0LTQ4M2YtYTY2Mi00OGUzODU5Y2UzMTUiLCJ0eXBlIjoiVEVBQ0hFUiIsImxldmVsIjoiT05FIn0sImlhdCI6MTY3ODkwMzM3MiwiZXhwIjoxNjc4OTA0MjcyfQ.milk36u2Kfo6OELUImeJTRM6X6yuo_O1ak1y_GAh6NP-DW18D_iTMV3jzNEK2Qd4pDc6pV_W3xnwkYqSitjXiQ";
         Call<TeacherProfileDetailsResponse> call = NetworkingService.getInstance()
                 .getRoute()
                 .postTeacherProfile("Bearer "+accessToken, new TeacherProfileUpdateRequest(initial, name, school, sex));

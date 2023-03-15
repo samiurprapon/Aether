@@ -71,9 +71,6 @@ public class TeacherProfileFragment extends Fragment {
         mSex = view.findViewById(R.id.tv_sex);
         mEditButton = view.findViewById(R.id.fb_profile_edit);
 
-        // Fetch students previous data and place them on ui for editing profile
-        teacherProfileViewModel.getTeacherProfileDetailsResponseMutableLiveData().observe(getActivity(), this::changeUiAccordingToStudentsProfileData);
-
         mEditButton.setOnClickListener(v -> {
             editProfileScreen();
         });
@@ -105,4 +102,11 @@ public class TeacherProfileFragment extends Fragment {
         mSex.setText(sex);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Fetch students previous data and place them on ui for editing profile
+        teacherProfileViewModel.getTeacherProfileDetailsResponseMutableLiveData().observe(getActivity(), this::changeUiAccordingToStudentsProfileData);
+    }
 }
