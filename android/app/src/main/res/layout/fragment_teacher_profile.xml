@@ -86,7 +86,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="2.5dp"
-                android:text="John Doe"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +121,41 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="2.5dp"
-                android:text="Jde"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+
+            </TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/teacher_main_color">
+
+            </View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/title_school"
+                android:textColor="@color/grey_500"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="2.5dp"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -158,7 +191,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="2.5dp"
-                android:text="Male"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -181,7 +213,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fb_profile_edit"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginRight="25dp"
         android:layout_width="68dp"
         android:layout_height="68dp"

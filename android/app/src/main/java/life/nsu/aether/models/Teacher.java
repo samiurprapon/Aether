@@ -18,9 +18,9 @@ public class Teacher {
     @SerializedName("initial")
     @Expose()
     private String initial;
-    @SerializedName("uid")
+    @SerializedName("Users")
     @Expose()
-    private String uid;
+    private User Users;
 
     public String getId() {
         return id;
@@ -30,7 +30,7 @@ public class Teacher {
         return initial;
     }
 
-    public String getUid() {
-        return uid;
+    public User getUsers() {
+        return Users;
     }
 }

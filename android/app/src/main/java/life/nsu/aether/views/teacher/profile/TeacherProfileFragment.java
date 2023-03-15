@@ -32,6 +32,7 @@ public class TeacherProfileFragment extends Fragment {
     static TeacherProfileFragment fragment = null;
     TextView mName;
     TextView mInitial;
+    TextView mSchool;
     TextView mSex;
     FloatingActionButton mEditButton;
     TeacherProfileViewModel teacherProfileViewModel;
@@ -61,6 +62,7 @@ public class TeacherProfileFragment extends Fragment {
         teacherProfileViewModel = new ViewModelProvider(this).get(TeacherProfileViewModel.class);
         mName = view.findViewById(R.id.tv_name);
         mInitial = view.findViewById(R.id.tv_initial);
+        mSchool = view.findViewById(R.id.tv_school);
         mSex = view.findViewById(R.id.tv_sex);
         mEditButton = view.findViewById(R.id.fb_profile_edit);
 
@@ -77,7 +79,10 @@ public class TeacherProfileFragment extends Fragment {
     }
 
     private void changeUiAccordingToStudentsProfileData(TeacherProfileDetailsResponse teacherProfileDetailsResponse) {
+        mName.setText(teacherProfileDetailsResponse.getTeacher().getUsers().getName());
         mInitial.setText(teacherProfileDetailsResponse.getTeacher().getInitial());
+        mSchool.setText(teacherProfileDetailsResponse.getTeacher().getUsers().getSchool());
+        mSex.setText(teacherProfileDetailsResponse.getTeacher().getUsers().getSex());
     }
 
 }
