@@ -57,37 +57,30 @@ public class LoginViewModel extends AndroidViewModel {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
             Log.d("LoginViewModel", "switchActivity: " + loginResponse.getTokens().getAccessToken());
 
-            if (!loginResponse.isError()) {
-
-//                slice token
-                if (loginResponse.getTokens().getAccessToken() != null) {
-                    preference.setAccessToken(loginResponse.getTokens().getAccessToken());
-                    preference.setRefreshToken(loginResponse.getTokens().getRefreshToken());
-
-                    gson = new Gson();
-                    Student student = gson.fromJson(preference.getDecodedAccessToken(), Student.class);
+            if (loginResponse.getTokens().getAccessToken() != null) {
+                preference.setAccessToken(loginResponse.getTokens().getAccessToken());
+                preference.setRefreshToken(loginResponse.getTokens().getRefreshToken());
+                gson = new Gson();
+                Student student = gson.fromJson(preference.getDecodedAccessToken(), Student.class);
 
 
 //                    Log.d("LoginViewModel", "switchActivity: " + loginResponse.getTokens().getAccessToken());
 //                    Log.d("LoginViewModel", "Decode : " + student.getUser().toString());
 //                    Log.d("LoginViewModel", "Decode-user : " + student.getPermission().getType());
 
-                    if (student.getPermission().getType().equals("student")) {
-                        preference.setType("student");
-                        Intent intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        getApplication().getApplicationContext().startActivity(intent);
-                    } else if(student.getPermission().getType().equals("teacher")){
-                        preference.setType("teacher");
-                        Intent intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        getApplication().getApplicationContext().startActivity(intent);
-                    }
-
+                if (student.getPermission().getType().equals("STUDENT")) {
+                    preference.setType("student");
+                    Intent intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    getApplication().getApplicationContext().startActivity(intent);
+                } else if(student.getPermission().getType().equals("TEACHER")){
+                    Log.d("LoginViewModel", "Log IN");
+                    preference.setType("teacher");
+                    Intent intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    getApplication().getApplicationContext().startActivity(intent);
                 }
-            } else {
-                Log.d("loginResponse", loginResponse.getMessage() + " " + loginResponse.getMessage());
-                Toast.makeText(getApplication().getApplicationContext(), "" + loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
 
         }, 250);

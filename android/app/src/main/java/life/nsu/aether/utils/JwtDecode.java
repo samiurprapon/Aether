@@ -48,10 +48,10 @@ public class JwtDecode {
 
     public String getDecodedString(String jsonWebToken) {
         //        split words
-        String[] splitWords = jsonWebToken.split(" ");
+        //String[] splitWords = jsonWebToken.split(" ");
 
 //        split token
-        String[] splitData = splitWords[1].split("\\.");
+        String[] splitData = jsonWebToken.split("\\.");//splitWords[1].split("\\.");
         String token = splitData[1];
 
         return decode(token);

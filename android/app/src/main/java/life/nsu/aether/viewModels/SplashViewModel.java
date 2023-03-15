@@ -50,7 +50,7 @@ public class SplashViewModel extends AndroidViewModel {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
             Intent intent;
             //Log.d("Verify", refreshResponse.toString());
-            if (refreshResponse.getMessage().equals("Unauthorized")) {
+            if (refreshResponse.getAccessToken() == null) {
                 intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
             } else if (preference.getType().equals("student")){
                 preference.setAccessToken(refreshResponse.getAccessToken());
