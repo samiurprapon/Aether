@@ -21,6 +21,10 @@ public class User {
     @Expose()
     private String email;
 
+    @SerializedName("school")
+    @Expose()
+    private String school;
+
     @SerializedName("name")
     @Expose()
     private String name;
@@ -52,6 +56,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getSchool() {
+        return school;
     }
 
     public String getSex() {

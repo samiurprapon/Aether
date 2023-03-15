@@ -55,7 +55,6 @@ public class LoginViewModel extends AndroidViewModel {
 
     public void switchActivity(LoginResponse loginResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
-            Log.d("LoginViewModel", "switchActivity: " + loginResponse.getTokens().getAccessToken());
 
             if (loginResponse.getTokens().getAccessToken() != null) {
                 preference.setAccessToken(loginResponse.getTokens().getAccessToken());
@@ -69,13 +68,12 @@ public class LoginViewModel extends AndroidViewModel {
 //                    Log.d("LoginViewModel", "Decode-user : " + student.getPermission().getType());
 
                 if (student.getPermission().getType().equals("STUDENT")) {
-                    preference.setType("student");
+                    preference.setType("STUDENT");
                     Intent intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     getApplication().getApplicationContext().startActivity(intent);
                 } else if(student.getPermission().getType().equals("TEACHER")){
-                    Log.d("LoginViewModel", "Log IN");
-                    preference.setType("teacher");
+                    preference.setType("TEACHER");
                     Intent intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     getApplication().getApplicationContext().startActivity(intent);

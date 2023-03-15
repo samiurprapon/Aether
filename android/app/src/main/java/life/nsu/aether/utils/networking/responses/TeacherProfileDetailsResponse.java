@@ -26,7 +26,7 @@ public class TeacherProfileDetailsResponse {
     @SerializedName("message")
     @Expose()
     private String message;
-    @SerializedName("teacher")
+    @SerializedName("profile")
     @Expose()
     private Teacher teacher;
 

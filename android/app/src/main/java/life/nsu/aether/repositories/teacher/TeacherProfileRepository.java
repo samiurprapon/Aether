@@ -8,6 +8,7 @@
 package life.nsu.aether.repositories.teacher;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -54,14 +55,16 @@ public class TeacherProfileRepository {
     }
 
     public MutableLiveData<TeacherProfileDetailsResponse> getTeacherProfileDetailsResponseMutableLiveData(String accessToken) {
+        accessToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMWYxNTAzMzEtMDI0Ny00OTQ5LWExNDktYjkwYWJiYmIxMjdkIiwiZW1haWwiOiJ0ZWFjaGVyMTFAZ21haWwuY29tIiwibmFtZSI6Ik1haGZ1aiBBaG1lZCBKaW0iLCJzY2hvb2wiOiJOb3J0aCBTb3V0aCBVbml2ZXJzaXR5In0sImRldGFpbHMiOnsiaWQiOiIyNTZmMjM0OS1iYzZlLTQ1ZWYtODhiMS00ZTA4NWI0ZDI1NjUifSwicGVybWlzc2lvbnMiOnsiaWQiOiI2ZDQ5ODViYi0zMWE0LTQ4M2YtYTY2Mi00OGUzODU5Y2UzMTUiLCJ0eXBlIjoiVEVBQ0hFUiIsImxldmVsIjoiT05FIn0sImlhdCI6MTY3ODg5NjA5MCwiZXhwIjoxNjc4ODk2OTkwfQ.zPSyXmZb3eL3jJL4RONDLZj9g7MldSw8mlcy9K4pP5A81cyKZSpqFETn2rwlv4QwhCkvTw6WKmBnahk2dCMTww";
         Call<TeacherProfileDetailsResponse> call = NetworkingService.getInstance()
                 .getRoute()
-                .getTeacherProfile(accessToken);
+                .getTeacherProfile("Bearer "+accessToken);
 
         call.enqueue(new Callback<TeacherProfileDetailsResponse>() {
             @Override
             public void onResponse(@NonNull Call<TeacherProfileDetailsResponse> call, @NonNull Response<TeacherProfileDetailsResponse> response) {
                 if (response.body() != null) {
+                    Log.d("Verify", response.body().toString());
                     teacherProfileDetailsResponseMutableLiveData.postValue(response.body());
                 }
 
