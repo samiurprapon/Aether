@@ -40,11 +40,17 @@ public class TeacherProfileEditFragment extends Fragment {
 
     TextInputEditText mNameEditText;
     TextInputEditText mInitialEditText;
+    TextInputEditText mSchoolEditText;
     RadioButton mMaleRadioButton;
     RadioButton mFemaleRadioButton;
     MaterialButton mUpdateButton;
     TeacherProfileViewModel viewModel;
     CustomProgressBar progressBar;
+
+    private String name;
+    private String initial;
+    private String school;
+    private String sex;
 
     static TeacherProfileEditFragment fragment = null;
 
@@ -72,11 +78,14 @@ public class TeacherProfileEditFragment extends Fragment {
 
         mNameEditText = view.findViewById(R.id.et_name);
         mInitialEditText = view.findViewById(R.id.et_initial);
+        mSchoolEditText = view.findViewById(R.id.et_school);
         mMaleRadioButton = view.findViewById(R.id.rb_male);
         mFemaleRadioButton = view.findViewById(R.id.rb_female);
         mUpdateButton = view.findViewById(R.id.mb_update);
 
         progressBar = new CustomProgressBar(getActivity());
+
+        getUserValues();
 
         mUpdateButton.setOnClickListener(v -> {
 
@@ -92,6 +101,23 @@ public class TeacherProfileEditFragment extends Fragment {
 
     }
 
+    private void getUserValues() {
+        name = getArguments().getString(getResources().getString(R.string.title_name));
+        initial = getArguments().getString(getResources().getString(R.string.title_initial));
+        school = getArguments().getString(getResources().getString(R.string.title_school));
+        sex = getArguments().getString(getResources().getString(R.string.title_gender));
+
+        setUserValues();
+    }
+
+    private void setUserValues() {
+        mNameEditText.setText(name);
+        mInitialEditText.setText(initial);
+        mSchoolEditText.setText(school);
+        mMaleRadioButton.setChecked(sex.equals("MALE")? true : false);
+        mFemaleRadioButton.setChecked(sex.equals("FEMALE")? true : false);
+    }
+
     private void updateTeacherPorfile(View v) {
         mUpdateButton.setEnabled(false); // prevent double clicking
         hideKeyboard(getActivity(), v);
@@ -103,11 +129,12 @@ public class TeacherProfileEditFragment extends Fragment {
 
         String initial = Objects.requireNonNull(mInitialEditText.getText()).toString();
         String name = Objects.requireNonNull(mNameEditText.getText()).toString();
+        String school = Objects.requireNonNull(mSchoolEditText.getText().toString().trim());
         String sex = Objects.requireNonNull(
-                mMaleRadioButton.isChecked()? "Male" :
-                        mFemaleRadioButton.isChecked()? "Female" : "");
+                mMaleRadioButton.isChecked()? "MALE" :
+                        mFemaleRadioButton.isChecked()? "FEMALE" : "");
 
-        viewModel.postMutableTeacherProfileRequest(initial, name, sex)
+        viewModel.postMutableTeacherProfileRequest(initial, name, school, sex)
                 .observe(getActivity(), teacherProfileDetailsResponse -> {
 
                     getActivity().onBackPressed(); // back to previous page

@@ -51,9 +51,9 @@ public class PageActivity extends AppCompatActivity {
                     getString(R.string.title_gender));
 
             Bundle args = new Bundle();
-            args.putSerializable(getResources().getString(R.string.title_name), name);
+            args.putString(getResources().getString(R.string.title_name), name);
             args.putString(getResources().getString(R.string.title_initial), initial);
-            args.putSerializable(getResources().getString(R.string.title_school), school);
+            args.putString(getResources().getString(R.string.title_school), school);
             args.putString(getResources().getString(R.string.title_gender), gender);
             teacherProfileEditFragment.setArguments(args);
 

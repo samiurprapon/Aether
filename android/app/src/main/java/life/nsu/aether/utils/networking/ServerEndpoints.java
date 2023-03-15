@@ -58,7 +58,7 @@ public interface ServerEndpoints {
     @GET("teacher/profile")
     Call<TeacherProfileDetailsResponse> getTeacherProfile(@Header("Authorization") String accessToken);
 
-    @POST("teacher/profile")
+    @PUT("teacher/profile")
     Call<TeacherProfileDetailsResponse> postTeacherProfile(@Header("Authorization") String accessToken, @Body TeacherProfileUpdateRequest request);
 
     @POST("student/courses")

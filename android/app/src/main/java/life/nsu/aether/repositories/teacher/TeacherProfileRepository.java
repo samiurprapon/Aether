@@ -16,13 +16,9 @@ import androidx.lifecycle.MutableLiveData;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
-import life.nsu.aether.models.Student;
 import life.nsu.aether.models.Teacher;
-import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.NetworkingService;
-import life.nsu.aether.utils.networking.requests.LoginRequest;
 import life.nsu.aether.utils.networking.requests.TeacherProfileUpdateRequest;
-import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.TeacherProfileDetailsResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -55,7 +51,7 @@ public class TeacherProfileRepository {
     }
 
     public MutableLiveData<TeacherProfileDetailsResponse> getTeacherProfileDetailsResponseMutableLiveData(String accessToken) {
-        accessToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMWYxNTAzMzEtMDI0Ny00OTQ5LWExNDktYjkwYWJiYmIxMjdkIiwiZW1haWwiOiJ0ZWFjaGVyMTFAZ21haWwuY29tIiwibmFtZSI6Ik1haGZ1aiBBaG1lZCBKaW0iLCJzY2hvb2wiOiJOb3J0aCBTb3V0aCBVbml2ZXJzaXR5In0sImRldGFpbHMiOnsiaWQiOiIyNTZmMjM0OS1iYzZlLTQ1ZWYtODhiMS00ZTA4NWI0ZDI1NjUifSwicGVybWlzc2lvbnMiOnsiaWQiOiI2ZDQ5ODViYi0zMWE0LTQ4M2YtYTY2Mi00OGUzODU5Y2UzMTUiLCJ0eXBlIjoiVEVBQ0hFUiIsImxldmVsIjoiT05FIn0sImlhdCI6MTY3ODg5NjA5MCwiZXhwIjoxNjc4ODk2OTkwfQ.zPSyXmZb3eL3jJL4RONDLZj9g7MldSw8mlcy9K4pP5A81cyKZSpqFETn2rwlv4QwhCkvTw6WKmBnahk2dCMTww";
+        accessToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMWYxNTAzMzEtMDI0Ny00OTQ5LWExNDktYjkwYWJiYmIxMjdkIiwiZW1haWwiOiJ0ZWFjaGVyMTFAZ21haWwuY29tIiwibmFtZSI6Ik1haGZ1aiBBaG1lZCBKaW0iLCJzY2hvb2wiOiJOb3J0aCBTb3V0aCBVbml2ZXJzaXR5In0sImRldGFpbHMiOnsiaWQiOiIyNTZmMjM0OS1iYzZlLTQ1ZWYtODhiMS00ZTA4NWI0ZDI1NjUifSwicGVybWlzc2lvbnMiOnsiaWQiOiI2ZDQ5ODViYi0zMWE0LTQ4M2YtYTY2Mi00OGUzODU5Y2UzMTUiLCJ0eXBlIjoiVEVBQ0hFUiIsImxldmVsIjoiT05FIn0sImlhdCI6MTY3ODkwMzM3MiwiZXhwIjoxNjc4OTA0MjcyfQ.milk36u2Kfo6OELUImeJTRM6X6yuo_O1ak1y_GAh6NP-DW18D_iTMV3jzNEK2Qd4pDc6pV_W3xnwkYqSitjXiQ";
         Call<TeacherProfileDetailsResponse> call = NetworkingService.getInstance()
                 .getRoute()
                 .getTeacherProfile("Bearer "+accessToken);
@@ -82,10 +78,11 @@ public class TeacherProfileRepository {
         return teacherProfileDetailsResponseMutableLiveData;
     }
 
-    public MutableLiveData<TeacherProfileDetailsResponse> postMutableTeacherProfileRequest(String accessToken, String name, String initial, String sex) {
+    public MutableLiveData<TeacherProfileDetailsResponse> postMutableTeacherProfileRequest(String accessToken, String name, String initial, String school, String sex) {
+        accessToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMWYxNTAzMzEtMDI0Ny00OTQ5LWExNDktYjkwYWJiYmIxMjdkIiwiZW1haWwiOiJ0ZWFjaGVyMTFAZ21haWwuY29tIiwibmFtZSI6Ik1haGZ1aiBBaG1lZCBKaW0iLCJzY2hvb2wiOiJOb3J0aCBTb3V0aCBVbml2ZXJzaXR5In0sImRldGFpbHMiOnsiaWQiOiIyNTZmMjM0OS1iYzZlLTQ1ZWYtODhiMS00ZTA4NWI0ZDI1NjUifSwicGVybWlzc2lvbnMiOnsiaWQiOiI2ZDQ5ODViYi0zMWE0LTQ4M2YtYTY2Mi00OGUzODU5Y2UzMTUiLCJ0eXBlIjoiVEVBQ0hFUiIsImxldmVsIjoiT05FIn0sImlhdCI6MTY3ODkwMzM3MiwiZXhwIjoxNjc4OTA0MjcyfQ.milk36u2Kfo6OELUImeJTRM6X6yuo_O1ak1y_GAh6NP-DW18D_iTMV3jzNEK2Qd4pDc6pV_W3xnwkYqSitjXiQ";
         Call<TeacherProfileDetailsResponse> call = NetworkingService.getInstance()
                 .getRoute()
-                .postTeacherProfile(accessToken, new TeacherProfileUpdateRequest(initial, name, sex));
+                .postTeacherProfile("Bearer "+accessToken, new TeacherProfileUpdateRequest(initial, name, school, sex));
 
         call.enqueue(new Callback<TeacherProfileDetailsResponse>() {
             @Override
@@ -96,7 +93,7 @@ public class TeacherProfileRepository {
 
                 if (response.errorBody() != null) {
                     Converter<ResponseBody, TeacherProfileDetailsResponse> converter = NetworkingService.getInstance().getRetrofit()
-                            .responseBodyConverter(LoginResponse.class, new Annotation[0]);
+                            .responseBodyConverter(TeacherProfileDetailsResponse.class, new Annotation[0]);
 
                     try {
                         TeacherProfileDetailsResponse errorResponse = converter.convert(response.errorBody());
