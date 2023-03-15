@@ -33,8 +33,8 @@ public class TeacherProfileViewModel extends AndroidViewModel {
         return profileRepository.getTeacherProfileDetailsResponseMutableLiveData(preference.getAccessToken());
     }
 
-    public LiveData<TeacherProfileDetailsResponse> postMutableTeacherProfileRequest(String initial, String name, String sex){
-        return  profileRepository.postMutableTeacherProfileRequest(preference.getAccessToken(), name, initial, sex);
+    public LiveData<TeacherProfileDetailsResponse> postMutableTeacherProfileRequest(String initial, String name, String school, String sex){
+        return  profileRepository.postMutableTeacherProfileRequest(preference.getAccessToken(), name, initial, school, sex);
     }
 
 }

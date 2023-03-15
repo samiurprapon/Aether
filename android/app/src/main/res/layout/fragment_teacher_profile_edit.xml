@@ -124,6 +124,38 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_school"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:labelFor="@id/et_school"
+            app:boxStrokeErrorColor="@color/red_800"
+            app:boxStrokeColor="@color/teacher_main_color"
+            android:textColorHint="@color/teacher_main_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintWidth_percent=".80">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/title_school"
+                android:textColorHint="@color/teacher_main_color"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColor="#2F281E"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <RadioGroup
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
