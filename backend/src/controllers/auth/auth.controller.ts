@@ -1,8 +1,9 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
-import { PrismaClient, Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
-import { generateTokens } from '../../utils/jwt';
+import prisma from '../../utils/prisma';
+import { generateTokens, generateAccessToken } from '../../utils/jwt';
 
 export async function login(req: Request, res: Response) {
 	let { email, password }: { email: string; password: string } = req.body;
@@ -13,8 +14,6 @@ export async function login(req: Request, res: Response) {
 
 	email = email.toLowerCase();
 	password = password.trim();
-
-	const prisma = new PrismaClient();
 
 	const user = await prisma.users.findUnique({
 		where: {
@@ -120,8 +119,6 @@ export async function register(req: Request, res: Response) {
 	email = email.toLowerCase();
 	password = password.trim();
 
-	const prisma = new PrismaClient();
-
 	const user = await prisma.users.findUnique({
 		where: {
 			email,
@@ -168,7 +165,7 @@ export async function register(req: Request, res: Response) {
 				Teachers: type === 'TEACHER' ? true : false,
 			},
 		})
-		.then(user => {
+		.then(() => {
 			return res.status(200).json({ message: 'Registration successful!' });
 		})
 		.catch(err => {
@@ -186,4 +183,15 @@ export async function deAuth(req: Request, res: Response) {
 	// TODO: Add redis to store refresh tokens and invalidate them when user logs out
 
 	return res.status(200).json({ message: 'Logout successful!' });
+}
+
+export async function refresh(req: Request, res: Response) {
+	const data = res.locals.data;
+
+	const token = await generateAccessToken(data);
+
+	return res.status(200).json({
+		message: 'Token refreshed successfully!',
+		accessToken: token,
+	});
 }

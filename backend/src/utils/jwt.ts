@@ -36,3 +36,15 @@ export async function decodeToken(token: string, refresh: boolean) {
 		},
 	);
 }
+
+export async function generateAccessToken(data: any) {
+	if (data) {
+		delete data['iat'];
+		delete data['exp'];
+	}
+	// console.log("Generate Access Token: starts");
+
+	return sign(data, secretAccess, {
+		expiresIn: '15m',
+	});
+}

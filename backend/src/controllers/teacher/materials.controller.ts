@@ -1,5 +1,7 @@
-import { Prisma, PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
+import { Prisma, PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export async function create(req: Request, res: Response) {
 	const { courseId, isPublic, title, type }: { courseId: string; isPublic: boolean; title: string; type: 'pdf' | 'docs' } = req.body;
@@ -9,8 +11,6 @@ export async function create(req: Request, res: Response) {
 			message: 'No file uploaded',
 		});
 	}
-
-	const prisma = new PrismaClient();
 
 	const material: Prisma.CourseMaterialsCreateInput = {
 		isPublic: isPublic || false,
@@ -52,8 +52,6 @@ export async function read(req: Request, res: Response) {
 			message: 'No course found!',
 		});
 	}
-
-	const prisma = new PrismaClient();
 
 	return await prisma.courseMaterials
 		.findMany({

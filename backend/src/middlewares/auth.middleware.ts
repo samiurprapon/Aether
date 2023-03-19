@@ -34,7 +34,7 @@ export async function authorization(req: Request, res: Response, next: NextFunct
 
 	const [type, token] = authorization.split(' ');
 
-	if (type !== 'Bearer') {
+	if (type !== 'Bearer' || !token) {
 		return res.status(401).json({ message: 'Unauthorized' });
 	}
 
@@ -46,5 +46,4 @@ export async function authorization(req: Request, res: Response, next: NextFunct
 	} catch (error) {
 		return res.status(401).json({ message: 'Unauthorized' });
 	}
-	next();
 }

@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 
+const prisma = new PrismaClient();
+
 export async function getCourses(req: Request, res: Response) {
 	const studentId: string = res.locals.data.details.id;
-
-	const prisma = new PrismaClient();
 
 	return await prisma.courseEnrollments
 		.findMany({
@@ -35,8 +35,6 @@ export async function getCourses(req: Request, res: Response) {
 export async function enrollCourse(req: Request, res: Response) {
 	const { enroll } = req.body;
 	const studentId: string = res.locals.data.details.id;
-
-	const prisma = new PrismaClient();
 
 	const course = await prisma.courses.findUnique({
 		where: {
@@ -89,8 +87,6 @@ export async function enrollCourse(req: Request, res: Response) {
 export async function dropCourse(req: Request, res: Response) {
 	const studentId: string = res.locals.data.details.id;
 	const { courseId, enrollId } = req.body;
-
-	const prisma = new PrismaClient();
 
 	return await prisma.courseEnrollments
 		.update({

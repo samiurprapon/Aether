@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 
+const prisma = new PrismaClient();
+
 export async function read(req: Request, res: Response) {
 	const { courseId } = req.params;
 	const { details } = res.locals.data;
@@ -10,8 +12,6 @@ export async function read(req: Request, res: Response) {
 			message: 'No course found!',
 		});
 	}
-
-	const prisma = new PrismaClient();
 
 	return await prisma.courseMaterials
 		.findMany({

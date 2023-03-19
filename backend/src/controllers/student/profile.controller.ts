@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import { PrismaClient, Prisma } from '@prisma/client';
 
+const prisma = new PrismaClient();
+
 export async function getProfile(req: Request, res: Response) {
 	const data = res.locals.data;
 
 	const student: Prisma.StudentsWhereUniqueInput = {
 		id: data.details.id,
 	};
-
-	const prisma = new PrismaClient();
 
 	return await prisma.students
 		.findUnique({
@@ -64,8 +64,6 @@ export async function updateProfile(req: Request, res: Response) {
 			},
 		},
 	};
-
-	const prisma = new PrismaClient();
 
 	return await prisma.students
 		.update({

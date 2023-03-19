@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 
-import { Prisma, PrismaClient } from '@prisma/client';
+import { Prisma } from '@prisma/client';
+import prisma from '../../utils/prisma';
 
 export async function getProfile(req: Request, res: Response) {
 	const data = res.locals.data;
-
-	const prisma = new PrismaClient();
 
 	return await prisma.teachers
 		.findUnique({
@@ -60,8 +59,6 @@ export async function updateProfile(req: Request, res: Response) {
 			},
 		},
 	};
-
-	const prisma = new PrismaClient();
 
 	return await prisma.teachers
 		.update({

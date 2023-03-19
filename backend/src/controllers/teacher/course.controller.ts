@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { Prisma, PrismaClient } from '@prisma/client';
 
+const prisma = new PrismaClient();
+
 export async function create(req: Request, res: Response) {
 	const { name, section, code, semester } = req.body;
 
@@ -15,8 +17,6 @@ export async function getCourses(req: Request, res: Response) {
 	const data = res.locals.data;
 
 	const { archive } = req.query;
-
-	const prisma = new PrismaClient();
 
 	return await prisma.courses
 		.findMany({
@@ -69,8 +69,6 @@ export async function update(req: Request, res: Response) {
 		id: courseId,
 		instructor: data.details.id,
 	};
-
-	const prisma = new PrismaClient();
 
 	return await prisma.courses
 		.updateMany({
