@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 // material-ui
 import { useTheme, styled } from '@mui/material/styles';
-import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, Grid, Typography } from '@mui/material';
 
 // project imports
 import { gridSpacing } from '../config/constant';
