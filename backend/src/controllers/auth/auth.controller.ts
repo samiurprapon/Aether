@@ -2,8 +2,8 @@ import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { Prisma } from '@prisma/client';
 
-import prisma from '../../utils/prisma';
-import { generateTokens, generateAccessToken } from '../../utils/jwt';
+import prisma from '@utils/prisma';
+import { generateTokens, generateAccessToken } from '@utils/jwt';
 
 export async function login(req: Request, res: Response) {
 	let { email, password }: { email: string; password: string } = req.body;
@@ -109,8 +109,7 @@ export async function login(req: Request, res: Response) {
 }
 
 export async function register(req: Request, res: Response) {
-	let { email, password }: { email: string; password: string } = req.body;
-	const { type }: { type: 'STUDENT' | 'TEACHER' | 'AUTHORITY' | 'ADMIN' } = req.body;
+	let { email, password, type }: { email: string; password: string; type: string } = req.body;
 
 	if (!email || !password || !type) {
 		return res.status(400).json({ message: 'Invalid request!' });
@@ -118,6 +117,11 @@ export async function register(req: Request, res: Response) {
 
 	email = email.toLowerCase();
 	password = password.trim();
+	type = type.toUpperCase();
+
+	if (!['STUDENT', 'TEACHER', 'AUTHORITY', 'ADMIN'].includes(type)) {
+		return res.status(400).json({ message: 'Invalid request!' });
+	}
 
 	const user = await prisma.users.findUnique({
 		where: {
@@ -143,7 +147,7 @@ export async function register(req: Request, res: Response) {
 		},
 		Roles: {
 			create: {
-				type: type,
+				type: type.toUpperCase(),
 			},
 		},
 	};
@@ -179,8 +183,6 @@ export async function register(req: Request, res: Response) {
 
 export async function deAuth(req: Request, res: Response) {
 	console.log('user is trying to de-authenticate');
-
-	// TODO: Add redis to store refresh tokens and invalidate them when user logs out
 
 	return res.status(200).json({ message: 'Logout successful!' });
 }
