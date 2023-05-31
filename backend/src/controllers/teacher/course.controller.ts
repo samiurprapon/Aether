@@ -1,18 +1,20 @@
 import { Request, Response } from 'express';
-import { Prisma, PrismaClient } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
-const prisma = new PrismaClient();
+import prisma from '../../utils/prisma';
+import { customAlphabet } from 'nanoid';
 
 export async function create(req: Request, res: Response) {
 	const { name, section, code, semester } = req.body;
 
-	console.log(`'${name}' is trying to create a course with section '${section}', code '${code}', and semester '${semester}'`);
+	const enrollCode = `${customAlphabet('ABCDEFGHJKLMNPQRSTUVWXYZ2456789', 6)}`;
 
 	const course = await prisma.courses.create({
 		data: {
 			name,
 			section,
 			courseCode: code,
+			enrollCode: enrollCode,
 			semester,
 			Teachers: {
 				connect: {
