@@ -11,8 +11,8 @@
 		"node": ">=18.0.0"
 	},
 	"scripts": {
-		"start": "ts-node app.ts",
-		"dev": "nodemon src/app.ts",
+		"start": "ts-node index.ts",
+		"dev": "nodemon",
 		"lint": "eslint src/**/*.ts --fix --ext .ts",
 		"format": "prettier --write ."
 	},

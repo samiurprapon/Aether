@@ -2,8 +2,8 @@ import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { Prisma } from '@prisma/client';
 
-import prisma from '@utils/prisma';
-import { generateTokens, generateAccessToken } from '@utils/jwt';
+import prisma from '../../utils/prisma';
+import { generateTokens, generateAccessToken } from '../../utils/jwt';
 
 export async function login(req: Request, res: Response) {
 	let { email, password }: { email: string; password: string } = req.body;

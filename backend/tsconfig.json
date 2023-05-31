@@ -1,36 +1,29 @@
 {
-	"compileOnSave": true,
 	"ts-node": { "esm": true, "experimentalSpecifierResolution": "node" },
 	"compilerOptions": {
 		"strict": true, // used to strictly check the types of variables
 		"target": "es2016",
 		"lib": ["ES6"],
-		"types": ["node", "express"],
-		"module": "commonjs",
+		"module": "ES6",
 		"outDir": "build",
-		"rootDir": ".",
-		"sourceMap": true,
-		"moduleResolution": "node",
+		"rootDir": "./src",
 		"noImplicitAny": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"noUnusedLocals": false, // used to check if any variable is not used
-		"noUnusedParameters": false, // used to check if any parameter is not used
-		"importHelpers": true,
-		"baseUrl": "src",
+		"skipLibCheck": false,
+		"noUnusedLocals": true, // used to check if any variable is not used
+		"noUnusedParameters": true, // used to check if any parameter is not used
+		"moduleResolution": "node",
+		"types": ["node", "express"],
+		"baseUrl": "./src",
 		"paths": {
 			"@/*": ["*"],
-			"@config": ["config"],
 			"@controllers/*": ["controllers/*"],
 			"@middlewares/*": ["middlewares/*"],
 			"@routes/*": ["routes/*"],
-			"@exceptions/*": ["utils/exceptions/*"],
-			"@interfaces/*": ["utils/interfaces/*"],
-			"@utils/*": ["utils/*"],
-			"@services/*": ["services/*"]
+			"@utils/*": ["utils/*"]
 		}
 	},
 	"include": ["src/**/*.ts", "src/**/*.json", ".env"],
