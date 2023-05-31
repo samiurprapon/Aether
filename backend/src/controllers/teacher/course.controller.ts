@@ -8,8 +8,23 @@ export async function create(req: Request, res: Response) {
 
 	console.log(`'${name}' is trying to create a course with section '${section}', code '${code}', and semester '${semester}'`);
 
+	const course = await prisma.courses.create({
+		data: {
+			name,
+			section,
+			courseCode: code,
+			semester,
+			Teachers: {
+				connect: {
+					id: res.locals.data.details.id,
+				},
+			},
+		},
+	});
+
 	return res.status(201).json({
 		message: 'Course created successfully!',
+		course: course,
 	});
 }
 
