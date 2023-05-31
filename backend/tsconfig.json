@@ -1,5 +1,6 @@
 {
 	"compileOnSave": true,
+	"ts-node": { "esm": true, "experimentalSpecifierResolution": "node" },
 	"compilerOptions": {
 		"strict": true, // used to strictly check the types of variables
 		"target": "es2016",
