@@ -2,12 +2,14 @@ import { Request, Response } from 'express';
 import { Prisma } from '@prisma/client';
 
 import prisma from '../../utils/prisma';
-import { customAlphabet } from 'nanoid';
+import { customAlphabet } from 'nanoid/async';
 
 export async function create(req: Request, res: Response) {
 	const { name, section, code, semester } = req.body;
 
-	const enrollCode = `${customAlphabet('ABCDEFGHJKLMNPQRSTUVWXYZ2456789', 6)}`;
+	const nanoid = customAlphabet('ABCDEFGHJKLMNPQRSTUVWXYZ2456789', 6);
+
+	const enrollCode = await nanoid();
 
 	const course = await prisma.courses.create({
 		data: {
