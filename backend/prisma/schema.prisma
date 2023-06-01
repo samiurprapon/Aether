@@ -81,7 +81,7 @@ model Courses {
   id         String    @id @default(uuid())
   name       String    @db.VarChar(255)
   status     String?   @db.VarChar(255)
-  courseCode String    @unique @db.VarChar(10)
+  courseCode String    @db.VarChar(10)
   section    String?   @db.VarChar(10)
   enrollCode String?   @unique @db.VarChar(10)
   semester   SEMESTER? @default(SPRING)
@@ -97,6 +97,7 @@ model Courses {
   CourseMaterials   CourseMaterials?
 
   @@unique([id, instructor])
+  @@unique([courseCode, section, semester, year])
 }
 
 model CourseEnrollments {
