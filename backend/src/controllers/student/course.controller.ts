@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
-const prisma = new PrismaClient();
+import prisma from '../../utils/prisma';
 
 export async function getCourses(req: Request, res: Response) {
 	const studentId: string = res.locals.data.details.id;
@@ -36,6 +36,9 @@ export async function enrollCourse(req: Request, res: Response) {
 	const { enroll } = req.body;
 	const studentId: string = res.locals.data.details.id;
 
+	/**
+	 * ToDo: If course is archived, then don't allow enrollment
+	 */
 	const course = await prisma.courses.findUnique({
 		where: {
 			enrollCode: enroll,
@@ -88,18 +91,23 @@ export async function dropCourse(req: Request, res: Response) {
 	const studentId: string = res.locals.data.details.id;
 	const { courseId, enrollId } = req.body;
 
+	/**
+	 * ToDo: Add flag to archive courses, and check if course is archived, If archived, then don't allow drop.
+	 */
+	const course: Prisma.CourseEnrollmentsWhereUniqueInput = {
+		id: enrollId,
+		cid_sid: {
+			cid: courseId,
+			sid: studentId,
+		},
+	};
+
 	return await prisma.courseEnrollments
 		.update({
 			data: {
 				isDropped: true,
 			},
-			where: {
-				id: enrollId,
-				cid_sid: {
-					cid: courseId,
-					sid: studentId,
-				},
-			},
+			where: course,
 		})
 		.then(() => {
 			return res.status(200).json({
@@ -107,9 +115,9 @@ export async function dropCourse(req: Request, res: Response) {
 			});
 		})
 		.catch(err => {
+			console.log(err);
 			return res.status(400).json({
 				message: 'Course drop failed!',
-				error: err,
 			});
 		})
 		.finally(async () => {

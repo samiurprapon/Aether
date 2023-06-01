@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
-const prisma = new PrismaClient();
+import prisma from '../../utils/prisma';
 
 export async function read(req: Request, res: Response) {
 	const { courseId } = req.params;
@@ -13,22 +13,24 @@ export async function read(req: Request, res: Response) {
 		});
 	}
 
-	return await prisma.courseMaterials
-		.findMany({
-			where: {
-				isPublic: true,
-				Courses: {
-					id: courseId,
+	const courseMaterials: Prisma.CourseMaterialsWhereInput = {
+		isPublic: true,
+		Courses: {
+			id: courseId,
 
-					CourseEnrollments: {
-						some: {
-							sid: details.id,
-							cid: courseId,
-							isDropped: false,
-						},
-					},
+			CourseEnrollments: {
+				some: {
+					sid: details.id,
+					cid: courseId,
+					isDropped: false,
 				},
 			},
+		},
+	};
+
+	return await prisma.courseMaterials
+		.findMany({
+			where: courseMaterials,
 			include: {
 				Courses: true,
 			},
