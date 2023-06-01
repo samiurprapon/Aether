@@ -13,11 +13,11 @@ export async function create(req: Request, res: Response) {
 
 	const course = await prisma.courses.create({
 		data: {
-			name,
-			section,
+			name: name,
+			section: section,
 			courseCode: code,
 			enrollCode: enrollCode,
-			semester,
+			semester: semester,
 			Teachers: {
 				connect: {
 					id: res.locals.data.details.id,
