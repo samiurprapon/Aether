@@ -3,6 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+// import styles
+import "./assets/scss/style.scss";
+
 import App from './App';
 import { store, persister } from './store';
 import { ConfigProvider } from './contexts/ConfigContext';
