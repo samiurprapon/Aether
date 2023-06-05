@@ -1,5 +1,16 @@
+import { Container, Typography } from "@mui/material";
+import LoginContent from '../components/LoginContent';
+import Nav from "../components/Nav";
+
 export default function Login() {
-  return <>
-  <h1>Login</h1>
-  </>;
+    return (
+        <Container sx={{ paddingX: 0 }}>
+          <Typography variant="h3">
+            <Nav />
+            <Container maxWidth={"lg"}>
+                <LoginContent/>
+            </Container>
+          </Typography>
+        </Container>
+      );
 }

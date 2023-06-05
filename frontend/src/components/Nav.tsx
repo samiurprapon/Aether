@@ -7,14 +7,14 @@ export default function Nav() {
     alert(action)
   }
   return (
-    <nav>
+    <nav style={{margin: '3rem 0'}}>
       <div className="logo">
         <img src={logo} alt="logo"/>
       </div>
 
       <ul className="nav-lists">
         <li><Button variant="contained" size="large" onClick={() => {handleNavBtnCLick('signup')}}>Sign up</Button></li>
-        <li><Button variant="outlined" size="large" onClick={() => {handleNavBtnCLick('login')}}>Login</Button></li>
+        <li><Button variant="outlined" size="large" href="/login">Login</Button></li>
       </ul>
 
     </nav>
