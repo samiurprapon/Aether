@@ -21,20 +21,13 @@ export async function generateTokens({ user, details, permissions }: { user: Use
 }
 
 export async function decodeToken(token: string, refresh: boolean) {
-	return verify(
-		token,
-		refresh ? secretRefresh : secretAccess,
-		{
-			algorithms: ['HS512'],
-		},
-		(err, decoded) => {
-			if (err) {
-				return null;
-			}
+	return verify(token, refresh ? secretRefresh : secretAccess, (err, decoded) => {
+		if (err) {
+			return null;
+		}
 
-			return decoded;
-		},
-	);
+		return decoded;
+	});
 }
 
 export async function generateAccessToken(data: TokenData) {
