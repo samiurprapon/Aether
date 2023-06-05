@@ -7,14 +7,21 @@
 
 package life.nsu.aether.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import life.nsu.aether.models.tokenDecode.Details;
 import life.nsu.aether.models.tokenDecode.Permissions;
 import life.nsu.aether.models.tokenDecode.User;
 
 public class TokenData {
+    @SerializedName("details")
     private Details details;
+
+    @SerializedName("permissions")
     private Permissions permissions;
+    @SerializedName("user")
     private User user;
+
 
     public TokenData() {
     }

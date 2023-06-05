@@ -13,10 +13,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RefreshResponse {
-    @SerializedName("isError")
-    @Expose()
-    private boolean isError;
-
     @SerializedName("message")
     @Expose()
     private String message;
@@ -29,15 +25,11 @@ public class RefreshResponse {
         // empty constructor for Retrofit
     }
 
-    public RefreshResponse(boolean isError, String message, String accessToken) {
-        this.isError = isError;
+    public RefreshResponse(String message, String accessToken) {
         this.message = message;
         this.accessToken = accessToken;
     }
 
-    public boolean isError() {
-        return isError;
-    }
 
     public String getMessage() {
         return message;
@@ -51,7 +43,6 @@ public class RefreshResponse {
     @Override
     public String toString() {
         return "RefreshResponse{" +
-                "isError=" + isError +
                 ", message='" + message + '\'' +
                 ", accessToken='" + accessToken + '\'' +
                 '}';

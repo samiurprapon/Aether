@@ -32,11 +32,7 @@ public class SplashActivity extends AppCompatActivity {
 //            Log.d("SplashActivity", "onCreate: " + refreshResponse.toString());
 
             viewModel.switchActivity(refreshResponse);
-            /*if (!refreshResponse.isError()) {
-                viewModel.switchActivity(refreshResponse);
-            } else {
-                new CustomProgressBar(this).show(refreshResponse.getMessage());
-            }*/
+
         });
     }
 

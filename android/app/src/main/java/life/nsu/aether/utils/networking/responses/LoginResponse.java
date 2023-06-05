@@ -15,11 +15,6 @@ import com.google.gson.annotations.SerializedName;
 import life.nsu.aether.models.Tokens;
 
 public class LoginResponse {
-
-    @SerializedName("isError")
-    @Expose()
-    private boolean isError;
-
     @SerializedName("message")
     @Expose()
     private String message;
@@ -32,15 +27,10 @@ public class LoginResponse {
         // empty constructor for Retrofit
     }
 
-    public LoginResponse(boolean isError, String message) {
-        this.isError = isError;
+    public LoginResponse( String message) {
         this.message = message;
     }
 
-
-    public boolean isError() {
-        return isError;
-    }
 
     public String getMessage() {
         return message;
@@ -54,7 +44,6 @@ public class LoginResponse {
     @Override
     public String toString() {
         return "LoginResponse{" +
-                "isError=" + isError +
                 ", message='" + message + '\'' +
                 ", tokens=" + tokens.toString() +
                 '}';

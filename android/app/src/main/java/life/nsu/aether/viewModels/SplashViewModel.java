@@ -11,7 +11,6 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -19,8 +18,8 @@ import androidx.lifecycle.LiveData;
 
 import java.util.Objects;
 
-import life.nsu.aether.repositories.student.StudentProfileRepository;
 import life.nsu.aether.repositories.authorization.RefreshRepository;
+import life.nsu.aether.repositories.student.StudentProfileRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.RefreshResponse;
 import life.nsu.aether.views.authentication.LoginActivity;
@@ -49,16 +48,18 @@ public class SplashViewModel extends AndroidViewModel {
     public void switchActivity(RefreshResponse refreshResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
             Intent intent;
-            //Log.d("Verify", refreshResponse.toString());
-            if (refreshResponse.getAccessToken() == null) {
+
+            if (preference.getRefreshToken() == null || refreshResponse.getAccessToken() == null) {
+                preference.clearAuth();
                 intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
-            } else if (preference.getType().equals("student")){
+            } else if (preference.getType().equals("STUDENT")){
                 preference.setAccessToken(refreshResponse.getAccessToken());
                 intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
             } else {
                 preference.setAccessToken(refreshResponse.getAccessToken());
                 intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
             }
+
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             getApplication().getApplicationContext().startActivity(intent);
         }, 250);
