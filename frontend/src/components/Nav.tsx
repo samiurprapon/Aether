@@ -13,7 +13,7 @@ export default function Nav() {
       </div>
 
       <ul className="nav-lists">
-        <li><Button variant="contained" size="large" onClick={() => {handleNavBtnCLick('signup')}}>Sign up</Button></li>
+        <li><Button variant="contained" size="large" href="/signup">Sign up</Button></li>
         <li><Button variant="outlined" size="large" href="/login">Login</Button></li>
       </ul>
 
