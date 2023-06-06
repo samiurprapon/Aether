@@ -6,7 +6,7 @@ export default function Signup(){
     return (
         <Container sx={{ paddingX: 0 }}>
           <Typography variant="h3">
-            <Nav />
+            <Nav primary_btn={{text: 'Login', href: '/login'}} secondary_btn={{text: 'home', href: '/'}}/>
             <Container maxWidth={"lg"}>
                 <SignupContent/>
             </Container>
