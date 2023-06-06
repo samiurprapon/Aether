@@ -11,10 +11,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -70,11 +68,8 @@ public class LoginActivity extends AppCompatActivity {
             }
             viewModel.getMessageResponseLiveData(email, password).observe(this, loginResponse -> {
                 progressBar.hide();
-                if (!loginResponse.isError()) {
                     viewModel.switchActivity(loginResponse);
-                } else {
-                    Toast.makeText(getApplication().getApplicationContext(), "Invalid Credentials!", Toast.LENGTH_SHORT).show();
-                }
+
             });
             mLogin.setEnabled(true);
         });

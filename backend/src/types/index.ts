@@ -14,3 +14,11 @@ export type Role = {
 	type: string;
 	level: string;
 };
+
+export type TokenData = {
+	user: User;
+	details: StudentOrTeacher;
+	permissions: Role;
+	iat?: number;
+	exp?: number;
+};

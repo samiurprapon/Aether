@@ -8,7 +8,6 @@
 package life.nsu.aether.repositories.authorization;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -74,7 +73,7 @@ public class LoginRepository {
             @Override
             public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
 //                Log.d("messageResponse", "onFailure: " + t.getMessage());
-                mutableLoginResponse.postValue(new LoginResponse(true, t.getMessage()));
+                mutableLoginResponse.postValue(new LoginResponse(t.getMessage()));
             }
         });
 

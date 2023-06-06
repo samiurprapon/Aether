@@ -29,13 +29,13 @@ export async function authorization(req: Request, res: Response, next: NextFunct
 	const { authorization } = req.headers;
 
 	if (!authorization) {
-		return res.status(401).json({ message: 'Unauthorized' });
+		return res.status(403).json({ message: 'Forbidden' });
 	}
 
 	const [type, token] = authorization.split(' ');
 
 	if (type !== 'Bearer' || !token) {
-		return res.status(401).json({ message: 'Unauthorized' });
+		return res.status(403).json({ message: 'Forbidden' });
 	}
 
 	try {
