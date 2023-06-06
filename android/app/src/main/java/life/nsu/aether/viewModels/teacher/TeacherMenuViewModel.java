@@ -42,14 +42,13 @@ public class TeacherMenuViewModel extends AndroidViewModel {
 
     public void switchActivity(MessageResponse messageResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
-            if (!messageResponse.isError()) {
                 preference.clearAuth();
+
                 Intent intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 getApplication().getApplicationContext().startActivity(intent);
-            } else {
+
                 Toast.makeText(getApplication().getApplicationContext(), "request failed!", Toast.LENGTH_SHORT).show();
-            }
 
         }, 250);
     }

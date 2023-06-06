@@ -66,7 +66,7 @@ public class RegisterRepository {
                         MessageResponse errorResponse = converter.convert(response.errorBody());
                         mutableMessage.postValue(errorResponse);
                     } catch (IOException e) {
-                        mutableMessage.postValue(new MessageResponse(false, e.getMessage()));
+                        mutableMessage.postValue(new MessageResponse(e.getMessage()));
                         e.printStackTrace();
                     }
                 }
@@ -75,7 +75,7 @@ public class RegisterRepository {
             @Override
             public void onFailure(@NonNull Call<MessageResponse> call, @NonNull Throwable t) {
 //                Log.d("messageResponse", "onFailure: " + t.getMessage());
-                mutableMessage.postValue(new MessageResponse(false, t.getMessage()));
+                mutableMessage.postValue(new MessageResponse(t.getMessage()));
             }
         });
 

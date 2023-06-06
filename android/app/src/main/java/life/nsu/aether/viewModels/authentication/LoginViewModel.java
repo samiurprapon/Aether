@@ -11,8 +11,6 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -23,8 +21,8 @@ import com.google.gson.Gson;
 import java.util.Objects;
 
 import life.nsu.aether.models.Student;
-import life.nsu.aether.repositories.student.StudentProfileRepository;
 import life.nsu.aether.repositories.authorization.LoginRepository;
+import life.nsu.aether.repositories.student.StudentProfileRepository;
 import life.nsu.aether.utils.Preference;
 import life.nsu.aether.utils.networking.responses.LoginResponse;
 import life.nsu.aether.utils.networking.responses.ProfileValidityResponse;
@@ -56,7 +54,7 @@ public class LoginViewModel extends AndroidViewModel {
     public void switchActivity(LoginResponse loginResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
 
-            if (loginResponse.getTokens().getAccessToken() != null) {
+            if (loginResponse.getTokens() != null && loginResponse.getTokens().getAccessToken() != null) {
                 preference.setAccessToken(loginResponse.getTokens().getAccessToken());
                 preference.setRefreshToken(loginResponse.getTokens().getRefreshToken());
                 gson = new Gson();
@@ -72,7 +70,7 @@ public class LoginViewModel extends AndroidViewModel {
                     Intent intent = new Intent(getApplication().getApplicationContext(), StudentHomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     getApplication().getApplicationContext().startActivity(intent);
-                } else if(student.getPermission().getType().equals("TEACHER")){
+                } else if (student.getPermission().getType().equals("TEACHER")) {
                     preference.setType("TEACHER");
                     Intent intent = new Intent(getApplication().getApplicationContext(), TeacherHomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

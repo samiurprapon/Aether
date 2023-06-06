@@ -40,15 +40,11 @@ public class RegistrationViewModel extends AndroidViewModel {
 
     public void switchActivity(MessageResponse messageResponse) {
         new Handler(Objects.requireNonNull(Looper.myLooper())).postDelayed(() -> {
+            Intent intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            getApplication().getApplicationContext().startActivity(intent);
 
-            if (!messageResponse.isError()) {
-                Intent intent = new Intent(getApplication().getApplicationContext(), LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                getApplication().getApplicationContext().startActivity(intent);
-            } else {
-                Log.d("messageResponse", messageResponse.getMessage() + " " + messageResponse.isError());
-                Toast.makeText(getApplication().getApplicationContext(), "Error" + messageResponse.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getApplication().getApplicationContext(), "Error" + messageResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
         }, 250);
     }

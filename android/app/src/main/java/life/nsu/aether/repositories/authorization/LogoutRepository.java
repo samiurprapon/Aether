@@ -56,7 +56,7 @@ public class LogoutRepository {
             public void onResponse(@NonNull Call<MessageResponse> call, @NonNull Response<MessageResponse> response) {
                 if (response.body() != null) {
                     deAuthResponseMutableLiveData.postValue(response.body());
-                    Log.d("refreshResponse", response.body().getMessage() + " " + response.body().isError() + " " + response.body().getMessage());
+                    Log.d("refreshResponse", response.body().getMessage() + "  " + response.body().getMessage());
                 }
 
                 if (response.errorBody() != null) {
@@ -76,7 +76,7 @@ public class LogoutRepository {
             @Override
             public void onFailure(@NonNull Call<MessageResponse> call, @NonNull Throwable t) {
 //                Log.d("refreshResponse", t.getMessage());
-                deAuthResponseMutableLiveData.postValue(new MessageResponse(false, t.getMessage()));
+                deAuthResponseMutableLiveData.postValue(new MessageResponse(t.getMessage()));
             }
         });
 
