@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-export async function allowStudent(req: Request, res: Response, next: NextFunction) {
+export async function allowStudent(_req: Request, res: Response, next: NextFunction) {
 	const { permissions } = res.locals.data;
 
 	if (permissions.type !== 'STUDENT') {
@@ -10,7 +10,7 @@ export async function allowStudent(req: Request, res: Response, next: NextFuncti
 	next();
 }
 
-export async function allowTeacher(req: Request, res: Response, next: NextFunction) {
+export async function allowTeacher(_req: Request, res: Response, next: NextFunction) {
 	const { permissions } = res.locals.data;
 
 	if (permissions.type !== 'TEACHER') {

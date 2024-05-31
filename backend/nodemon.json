@@ -1,6 +1,6 @@
 {
-	"watch": ["src", ".env"],
+	"watch": ["src", ".env", "tsconfig.json", "nodemon.json"],
 	"ext": "js,ts,json",
-	"ignore": ["build", "node_modules"],
-	"exec": "ts-node --transpile-only src/index.ts"
+	"ignore": ["build", "node_modules", "src/logs/*", "src/**/*.{spec,test}.ts"],
+	"exec": "ts-node -r tsconfig-paths/register --transpile-only src/index.ts"
 }
