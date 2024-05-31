@@ -1,0 +1,120 @@
+version: '3.9'
+
+services:
+  backend:
+    container_name: aether-app
+    build:
+      context: ./
+    ports:
+      - '${APP_PORT}:3030'
+      - '5555:5555'
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    restart: always
+    networks:
+      - aether-backend
+    depends_on:
+      - postgres
+      - mysql
+      - redis
+
+  postgres:
+    image: postgres:16
+    container_name: aether-postgres
+    ports:
+      - '${POSTGRES_PORT}:5432'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - aether-backend
+    healthcheck:
+      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${DB_USER} -d ${DB_NAME}'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  redis:
+    image: redis:7.2
+    container_name: linkage-redis
+    volumes:
+      - redis-data:/data
+    ports:
+      - '6379:6379'
+    networks:
+      - aether-backend
+    environment:
+      - maxmemory-policy=noeviction
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+        reservations:
+          memory: 128M
+      endpoint_mode: 'vip'
+      mode: 'replicated'
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 1s
+        max_attempts: 3
+        window: 120s
+    healthcheck:
+      test: ['CMD-SHELL', "sh -c 'redis-cli ping'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  mysql:
+    image: mysql:8.4
+    container_name: aether-mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      command: --default-authentication-plugin=caching_sha2_password
+    ports:
+      - '${MYSQL_PORT}:3306'
+    networks:
+      - aether-backend
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+        reservations:
+          memory: 256M
+      endpoint_mode: 'vip'
+      mode: 'replicated'
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 1s
+        max_attempts: 3
+        window: 120s
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  db_data:
+    driver: local
+  redis-data:
+    driver: local
+  mysql-data:
+    driver: local
+
+networks:
+  aether-backend:
+    driver: bridge

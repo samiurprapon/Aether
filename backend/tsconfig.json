@@ -1,31 +1,69 @@
 {
-	"ts-node": { "esm": true, "experimentalSpecifierResolution": "node" },
+	"compileOnSave": true,
 	"compilerOptions": {
-		"strict": true, // used to strictly check the types of variables
-		"target": "es2016",
-		"lib": ["ES6"],
-		"module": "ES6",
-		"outDir": "build",
-		"rootDir": "./src",
-		"noImplicitAny": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": false,
-		"noUnusedLocals": true, // used to check if any variable is not used
-		"noUnusedParameters": true, // used to check if any parameter is not used
+		"composite": true,
+		"incremental": true,
+		"target": "ESNext",
+		"useDefineForClassFields": true,
+		"lib": [
+			"es6",
+			"ES2021"
+		],
+		"types": [
+			"node",
+			"express",
+			"jest"
+		],
 		"moduleResolution": "node",
-		"types": ["node", "express"],
-		"baseUrl": "./src",
+		"module": "CommonJS",
+		"skipLibCheck": true,
+		/* Bundler mode */
+		"outDir": "./dist",
+		"rootDir": ".",
+		"sourceMap": false,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": false,
+		"removeComments": true,
+		/* Linting */
+		"strict": true,
+		"strictNullChecks": true,
+		"noUnusedLocals": true,
+		"noImplicitAny": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		/* Other */
+		"forceConsistentCasingInFileNames": true,
+		"allowSyntheticDefaultImports": true,
+		"importHelpers": true,
+		"baseUrl": ".",
 		"paths": {
-			"@/*": ["*"],
-			"@controllers/*": ["controllers/*"],
-			"@middlewares/*": ["middlewares/*"],
-			"@routes/*": ["routes/*"],
-			"@utils/*": ["utils/*"]
-		}
+			"@/*": [
+				"src/*"
+			],
+		},
+		// typeorm
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"strictPropertyInitialization": false,
 	},
-	"include": ["src/**/*.ts", "src/**/*.json", ".env"],
-	"exclude": ["node_modules", "build"]
+	"ts-node": {
+		"require": [
+			"tsconfig-paths/register"
+		],
+		"compilerOptions": {
+			"module": "commonjs",
+		},
+	},
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.json",
+		".env",
+		"package.json"
+	],
+	"exclude": [
+		"node_modules",
+		"build"
+	],
 }

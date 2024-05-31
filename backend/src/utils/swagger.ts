@@ -44,7 +44,7 @@ export default (app: Express): void => {
 	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, UIConfig));
 
 	// docs in json format
-	app.get('/docs.json', (req: Request, res: Response) => {
+	app.get('/docs.json', (_req: Request, res: Response) => {
 		res.setHeader('Content-Type', 'application/json');
 		res.send(swaggerSpec);
 	});
