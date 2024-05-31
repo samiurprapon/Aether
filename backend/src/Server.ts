@@ -2,12 +2,11 @@ import { createServer, Server as HttpServer } from 'http';
 import dotenv from 'dotenv';
 
 import app from '@/libs/express';
-import { Provider } from '@/providers';
+import { AppDataProvider, LogDataProvider } from '@/providers';
 
 dotenv.config();
 class Server {
 	private server: HttpServer;
-	private provider: Provider;
 
 	private port: string | number;
 
@@ -15,20 +14,15 @@ class Server {
 		this.port = port || process.env.APP_PORT || 3000;
 
 		this.server = createServer(app);
-		try {
-			this.provider = Provider.getInstance();
-		} catch (error) {
-			console.error('Error initializing provider:', error);
-		}
 	}
 
 	private async initializeDatabases() {
-		// try {
-		this.provider.initializeAppDataSource();
-		// } catch (error) {
-		// console.error('Error initializing app data source');
-		// }
-		// this.provider.initializeLogsDataSource();
+		try {
+			AppDataProvider.initialize();
+			LogDataProvider.initialize();
+		} catch (error) {
+			console.error('Error initializing data source', error);
+		}
 	}
 
 	async start() {
