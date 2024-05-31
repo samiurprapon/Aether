@@ -17,8 +17,11 @@
 		"lint": "eslint src/**/*.ts --fix --ext .ts",
 		"format": "prettier --write .",
 		"migrate:generate": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm migration:generate -d src/providers/index",
-		"migrate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/providers/index.ts",
-		"revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./src/providers/index.ts"
+		"migrate:app": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/providers/postgres/Provider.ts",
+		"revert:app": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./src/providers/postgres/Provider.ts",
+		"devider": "echo \"----\"",
+		"migrate:log": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/providers/mysql/Provider.ts",
+		"revert:log": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./src/providers/mysql/Provider.ts"
 	},
 	"devDependencies": {
 		"@esbuild-kit/esm-loader": "^2.6.5",
@@ -62,6 +65,7 @@
 		"jsonwebtoken": "^9.0.2",
 		"morgan": "^1.10.0",
 		"multer": "^1.4.5-lts.1",
+		"mysql2": "^3.10.0",
 		"nanoid": "^5.0.7",
 		"pg": "^8.11.5",
 		"reflect-metadata": "^0.2.2",

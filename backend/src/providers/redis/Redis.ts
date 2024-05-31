@@ -3,7 +3,7 @@ import { Cluster, Redis } from 'ioredis';
 import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT, REDIS_USER } from '@/providers/configs/redis.config';
 import IRedis from './interface/redis.interface';
 
-class RedisClient<T extends Redis> implements IRedis {
+export class RedisClient<T extends Redis> implements IRedis {
 	private static instance: RedisClient<Redis>;
 	private redisInstance: T;
 
@@ -111,5 +111,3 @@ class RedisClient<T extends Redis> implements IRedis {
 		return this.redisInstance.duplicate();
 	}
 }
-
-export default RedisClient.getInstance();
