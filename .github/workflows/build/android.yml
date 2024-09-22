@@ -1,15 +1,15 @@
 name: Android Build
   
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [main, android]
+    types: [opened, synchronize, closed]
+  push:
+    branches: [main, android]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'android')"  # skips everything in this job if head commit message does not contain 'android'
 
     steps:
     - name: Enter to android folder
