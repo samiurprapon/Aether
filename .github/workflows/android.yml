@@ -30,15 +30,11 @@ jobs:
     
     # change directory to android
     - name: Enter to android folder
-      run: cd android
-
-    - name: Diagnose project structure
-      run: |
-        echo "Current directory:"
-        pwd
+      run: cd ./android
 
     - name: Set Gradle Wrapper Permissions
       run: chmod +x ./gradlew
+      working-directory: ./android
 
     - name: Cache Gradle packages
       uses: actions/cache@v3
@@ -49,13 +45,16 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/**/*.gradle*', '**/android/**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
+          
 
     - name: Build gradle project
       run: ./gradlew build
+      working-directory: ./android
 
     - name: Build debug APK
       run: ./gradlew assembleDebug
-
+      working-directory: ./android
+      
   # release:
   #   needs: build
   #   if: github.event_name == 'release' && github.event.action == 'created'
