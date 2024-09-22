@@ -16,7 +16,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="ScrollViewSize">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -39,13 +40,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:text="@string/title_edit_profile"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/mb_back"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlSymmetry">
 
             </TextView>
 
@@ -165,7 +167,7 @@
 
             <RadioButton
                 android:id="@+id/rb_male"
-                android:text="Male"
+                android:text="@string/male"
                 android:textColor="#2F281E"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -174,9 +176,9 @@
 
             <RadioButton
                 android:id="@+id/rb_female"
-                android:text="Female"
+                android:text="@string/female"
                 android:textColor="#2F281E"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -184,7 +186,7 @@
 
         </RadioGroup>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/mb_update"
             android:text="@string/title_update"
             android:textAllCaps="false"
@@ -196,7 +198,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
-        </Button>
+        </com.google.android.material.button.MaterialButton>
 
     </LinearLayout>
 

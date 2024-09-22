@@ -1,52 +1,101 @@
 name: Android Build
-  
+
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [main, android]
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main, android]
+  release:
+    types: [created]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'android')"  # skips everything in this job if head commit message does not contain 'android'
+    permissions:
+      contents: write
 
     steps:
-    - name: Enter to android folder
-      run: cd android
-    
-    - name: Set Up JDK
-      uses: actions/setup-java@v1
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
       with:
-        java-version: 11
+        java-version: '17'
+        distribution: 'temurin'
 
-    - name: Change wrapper permissions
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+    
+    # change directory to android
+    - name: Enter to android folder
+      run: cd ./android
+
+    - name: Set Gradle Wrapper Permissions
       run: chmod +x ./gradlew
+      working-directory: ./android
 
-    # Run Build Project
+    - name: Cache Gradle packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/**/*.gradle*', '**/android/**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+          
+
     - name: Build gradle project
       run: ./gradlew build
+      working-directory: ./android
 
-    # Create APK Debug
-    - name: Build apk debug project (APK) 
+    - name: Build debug APK
       run: ./gradlew assembleDebug
+      working-directory: ./android
+      
+  # release:
+  #   needs: build
+  #   if: github.event_name == 'release' && github.event.action == 'created'
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: write
 
-    # Create APK Release
-    - name: Build apk release project (APK) 
-      run: ./gradlew assemble
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v3
 
+  #   - name: Set up JDK
+  #     uses: actions/setup-java@v3
+  #     with:
+  #       java-version: '17'
+  #       distribution: 'temurin'
 
-    # Upload Artifact Build
-    # Noted For Output [main_project_module]/build/outputs/apk/debug/
-    - name: Upload APK Debug
-      uses: actions/upload-artifact@v2
-      with:
-        name: APK(s) debug generated
-        path: app/build/outputs/apk/debug/
+  #   - name: Setup Android SDK
+  #     uses: android-actions/setup-android@v2
 
-    # Noted For Output [main_project_module]/build/outputs/apk/release/
-    - name: Upload APK Release
-      uses: actions/upload-artifact@v2
-      with:
-        name: APK(s) release generated
-        path: app/build/outputs/apk/release/
+  #   - name: Set Gradle Wrapper Permissions
+  #     run: |
+  #       chmod +x ./android/gradlew
+  #       echo "GRADLEW_PATH=./android/gradlew" >> $GITHUB_ENV
+
+  #   - name: Build release APK
+  #     run: ${{ env.GRADLEW_PATH }} assembleRelease
+  #     working-directory: ./android
+
+  #   - name: Upload release APK
+  #     uses: actions/upload-artifact@v3
+  #     with:
+  #       name: app-release
+  #       path: android/app/build/outputs/apk/release/*.apk
+
+  #   - name: Upload release APK to GitHub release
+  #     uses: actions/upload-release-asset@v1
+  #     env:
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     with:
+  #       upload_url: ${{ github.event.release.upload_url }}
+  #       asset_path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+  #       asset_name: app-release-${{ github.ref_name }}.apk
+  #       asset_content_type: application/vnd.android.package-archive
