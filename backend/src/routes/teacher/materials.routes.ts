@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { create, read } from '../../controllers/teacher/materials.controller';
+import { create, read } from '../../apps/teacher/materials.controller';
 
 import { fileUpload } from '../../middlewares/file.middleware';
 

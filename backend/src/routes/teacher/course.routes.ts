@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { create, getCourses, update, setArchive, remove } from '../../controllers/teacher/course.controller';
+import { create, getCourses, update, setArchive, remove } from '../../apps/teacher/course.controller';
 
 const router = Router();
 

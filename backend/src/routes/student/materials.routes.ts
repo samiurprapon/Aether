@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { read } from '../../controllers/student/materials.controller';
+import { read } from '../../apps/student/materials.controller';
 
 const router = Router();
 
