@@ -1,46 +1,23 @@
- <img height=100 src="./assets/aether_banner.png"/>
+# Aether - Museum Branch
 
-<b>Taking online education system to the moon 🚀</b>
+> **Note:** The core feature of Aether — **eye tracking and attention detection** — has never been open-sourced due to confidentiality. It will be released when Aether has matured enough to fully deliver on its vision. Without this feature, Aether is just another concept of an LMS, but with it, Aether aims to become something truly transformative for education.
 
----
+## History
 
-Aether or quintessence goes by many names such as spirit, soul or void, so for simplicity we will call it the <b>fifth element of education</b>. The main purpose of <b>Aether</b> is to track how long a student reads a certain section by tracking his eyes. Using that data instructor can get information about individual students that in which portion of the material student face difficulties and according to that he can make decisions.
+Welcome to the **Museum** branch of **Aether**. This branch holds the legacy code of a project that has been close to my heart since its inception. On **May 27, 2019**, this project was born out of a collaborative effort between me and my three amazing teammates: **[Shabab Rahman](https://github.com/ShababR)**, **[Mustafizur Rahaman](https://github.com/MustfizurRahaman)**, and **[Moshiur Mubin](https://github.com/moshiurmubin)**. What started as a simple idea grew into something much bigger.
 
-## Contribution
+Over time, as life took its course, Aether became a personal project for me. However, the original vision remains unchanged — a tool to help our education system, one that would always be **free** and **open-source**.
 
-I highly encourage the community to step forward and improve this project further. You can fix any reported bug, propose or implement new features, write tests, etc.
+## Aether's Vision
 
-Pull requests are welcome! See the [contributor guidelines](https://github.com/samiurprapon/Aether/blob/master/CONTRIBUTING.md) for more details.
+Aether was designed with the belief that education should be accessible to all, and that the right tools can empower both students and educators. Although this branch is dedicated to the legacy code, it represents a foundation built on hope and hard work. The journey is far from over, and I still believe that one day, Aether will evolve into something transformative for the education system.
 
+## Why "Museum"?
 
-## ⭐️ Stargazers
+The **museum** branch serves as a preservation of our initial work, showcasing the early stages of Aether. While much of this code may no longer be used in the main project, it remains an important part of Aether's history and growth.
 
-[![Stargazers repo roster for @samiurprapon/Aether](https://reporoster.com/stars/notext/samiurprapon/Aether)](https://github.com/samiurprapon/Aether/stargazers)
+## Future Aspirations
 
-## 🍴 Forkers
+Aether is not just a relic of the past. Even though it's a pet project now, I continue to nurture it, believing that it will eventually reach its full potential. This project will stay open to anyone who wishes to contribute, use, or learn from it. Together, we can make a positive impact on the education system.
 
-[![Forkers repo roster for @samiurprapon/Aether](https://reporoster.com/forks/notext/samiurprapon/Aether)](https://github.com/samiurprapon/Aether/network/members)
-
-## 🤝 Contributors
-
-[![Contributors repo roster for @samiurprapon/Aether](https://contributors-img.web.app/image?repo=samiurprapon/Aether)](https://github.com/samiurprapon/Aether/graphs/contributors)
-
-## 💳 License
-
-
-```
-Copyright 2021 Samiur Prapon
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
-
+Stay tuned for more updates, and feel free to explore the **museum**.

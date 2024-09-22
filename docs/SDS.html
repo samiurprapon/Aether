@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+	<title>Aether</title>
+
+	<head>
+		<h1 align="middle" >
+					Software Design Specifications<br>for<br>Project Aether
+		</h1>
+		<br><br>
+		<h4 align="center">Version 1.00 Approved</h4>
+		<br><br>
+		<h3 align="center"><font size="4">Prepared by -</font></h3>
+		<p align="center"> <font size="4">Samiur Rahman Prapon<br> Shabab Rahman<br>Kazi Moshiur Rahaman<br>Mustafizur Rahaman</font><br></p>
+		<br><br>
+		<h3 align="center"><font size="4">Organization</font></h3>
+		<p align="center"><font size="4">CSE327.2, North South University</font></p>
+		<br><br>
+		<h3 align="center"><font size="4">Date of Submission</font></h3>
+		<p align="center" style="page-break-after:always"><font size="4">14<sup>th</sup> July, 2019</font></p>
+	</head>
+
+	<h3 align="left">Table of Contents</h3>
+
+	<p style="line-height:1.10">
+			<span style="font-size:11pt"><b>Table of Contents</b>&emsp;.......................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;01</span><br>
+			<span style="font-size:11pt"><b>Revision History</b>&emsp;.........................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;01</span><br>
+	</p>
+
+	<p style="line-height:1.10">
+			<span style="font-size:11pt"><b>1.&emsp;Introduction</b>&emsp;........................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;	01</span><br>
+			<span style="font-size:11pt"><b>&emsp;1.1&emsp;Project Overview</b>&emsp;&nbsp;&nbsp;.........................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;01</span><br>
+			<span style="font-size:11pt"><b>&emsp;1.2&emsp;Project Scope</b>&emsp;..................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;01</span><br>
+			<span style="font-size:11pt"><b>&emsp;1.3&emsp;Document Preview</b>&emsp;.........................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;01</span><br>
+			<br>
+			<span style="font-size:11pt"><b>2.&emsp;Architectural Design</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+			<span style="font-size:11pt"><b>&emsp;2.1&emsp;Section Overview</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+			<span style="font-size:11pt"><b>&emsp;2.2&emsp;General Constraints</b>&emsp;.......................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+			<span style="font-size:11pt"><b>&emsp;2.3&emsp;Data Design</b>&emsp;.....................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+			<span style="font-size:11pt"><b>&emsp;2.4&emsp;Program Structure</b>&emsp;.........................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+			<span style="font-size:11pt"><b>&emsp;2.5&emsp;Alternatives Considered</b>&emsp;................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+			<br>
+			<span style="font-size:11pt"><b>3.&emsp;Detailed Design</b>&emsp;.....................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+			<span style="font-size:11pt"><b>&emsp;3.1&emsp;Section Overview</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+			<span style="font-size:11pt"><b>&emsp;3.2&emsp;Components and Details</b>&emsp;................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+			<span style="font-size:11pt"><b>&emsp;&emsp;3.2.1&emsp;Description</b>&emsp;...............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+			<span style="font-size:11pt"><b>&emsp;&emsp;3.2.2&emsp;Data Members (include type, visibility, and description)</b>&emsp;....................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+			<span style="font-size:11pt"><b>&emsp;&emsp;3.2.3&emsp;Methods</b>&emsp;....................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+			<br>
+			<span style="font-size:11pt"><b>4.&emsp;User Interface Design</b>&emsp;...........................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+			<span style="font-size:11pt"><b>&emsp;4.1&emsp;Section Overview</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+			<span style="font-size:11pt"><b>&emsp;4.2&emsp;Interface Design Rules</b>&emsp;...................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+			<span style="font-size:11pt"><b>&emsp;4.3&emsp;Section Overview</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+			<span style="font-size:11pt"><b>&emsp;4.4&emsp;Detailed Description</b>&emsp;.......................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+			<br>
+			<span style="font-size:11pt"><b>5.&emsp;Conclusion</b>&emsp;.............................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+			<br>
+			<span style="font-size:11pt"><b>6.&emsp;Appendices</b>&emsp;............................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+			<span style="font-size:11pt"><b>&emsp;6.1&emsp;Database Entity-Relationship Diagram</b>&emsp;.......................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+			<span style="font-size:11pt"><b>&emsp;6.2&emsp;Architectural Design Block Diagram(s)</b>&emsp;.......................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+			<span style="font-size:11pt"><b>&emsp;6.3&emsp;Class Diagram(s)</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+			<span style="font-size:11pt"><b>&emsp;6.4&emsp;Class Sequence Diagram(s)</b>&emsp;...........................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+			<span style="font-size:11pt"><b>&emsp;6.5&emsp;User Interface Screen Snapshots</b>&emsp;..................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+</p>
+	<br>
+	<h3 align="left">Revision History</h3>
+
+	<table border="1" style="width:50%"" style="border-spacing: 2pt" style="page-break-after:always" >
+		<tr>
+			<th style="text-align: left;" style="width:20%;">Name</th>
+			<th style="text-align: left;" style="width:15%;">Date</th>
+			<th style="text-align: left;" style="width:30%;">Reason for Changes</th>
+			<th style="text-align: left;" style="width:15%;">Version</th>
+		</tr>
+		<tr>
+			<td style="text-align: left;" >&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+		</tr>
+	</table>
+	<p style="page-break-after:always"></p>
+
+	<!-- 3rd page Starts from here -->
+	<h3 align="left">1.&emsp;Introduction</h3>
+	<h4 align="left">&emsp;1.1&emsp;Project Overview</h4> 	
+
+	<p>&emsp;&emsp;The project is mainly based on an eye tracking system that tracks how 
+		much time a student has spent on reading a study material given by the teacher and 
+		then represents this data to the teacher in the form of a bar chart.
+	</p>
+
+	<h4 align="left">&emsp;1.2&emsp;Project Scope</h4>
+	<p>&emsp;&emsp;Other than providing a platform for the teachers and students to communicate,
+		the main objective of this system is to provide a way for the teacher to better evaluate
+		his/her students in a more efficient way.
+	</p>
+	
+	<h4 align="left">&emsp;1.3&emsp;Document Preview</h4>
+	<p style="page-break-after:always">&emsp;&emsp;lorem ipsum</p>
+
+	<!-- 4th page Starts from here -->
+	<h3 align="left">2.&emsp;Architectural Design</h3>
+	
+	<h4 align="left">&emsp;2.1&emsp;Section Overview</h4> 	
+	<p>&emsp;&emsp;lorem ipsum</p>
+
+	<h4 align="left">&emsp;2.2&emsp;General Constraints</h4>
+	<p>&emsp;&emsp;lorem ipsum</p>
+  
+
+	<h4 align="left">&emsp;2.3&emsp;Design and Implementation Constraints</h4>
+	<p>&emsp;&emsp;lorem ipsum</p>
+
+	<h4 align="left">&emsp;2.4&emsp;Program Structure</h4>
+	<p>&emsp;&emsp;lorem ipsum</p>
+
+	<h4 align="left">&emsp;2.5&emsp;Alternatives Considered</h4>
+	<p style="page-break-after:always">&emsp;&emsp;lorem ipsum</p>
+
+	<!-- 5th page Starts from here -->
+	<h3 align="left">3.&emsp;Detailed Design</h3>
+
+	<h4 align="left">&emsp;3.1&emsp;Section Overview</h4> 	
+	<p>&emsp;&emsp;lorem ipsum</p>
+
+	<h4 align="left">&emsp;3.2&emsp;Components and Details</h4> 	
+	<p>&emsp;&emsp;lorem ipsum</p>
+	
+	<h4 align="left">&emsp;&emsp;3.2.1&emsp;Description</h4> 	
+	<p>&emsp;&emsp;&emsp;lorem ipsum</p>
+
+	<h4 align="left">&emsp;&emsp;3.2.2&emsp;Data Members (include type, visibility, and description)</h4> 	
+	<p>&emsp;&emsp;&emsp;lorem ipsum</p>
+	
+	<h4 align="left">&emsp;&emsp;3.2.3&emsp;Methods</h4>
+	<p style="page-break-after:always">&emsp;&emsp;&emsp;lorem ipsum</p>
+	
+	<!-- 6th page Starts from here -->
+	<h3 align="left">4.&emsp;User Interface Design</h3>
+
+	<h4 align="left">&emsp;4.1&emsp;Section Overview</h4> 	
+	<p>&emsp;&emsp;lorem ipsum</p>
+	
+	<h4 align="left">&emsp;4.2&emsp;Interface Design Rules</h4>
+	<p>&emsp;&emsp;lorem ipsum</p>
+
+	<h4 align="left">&emsp;4.3&emsp;Section Overview</h4> 	
+	<p style="page-break-after:always">&emsp;&emsp;lorem ipsum</p>
+
+	<h3 align="left">5.&emsp;Conclusion</h3>
+	<p>
+		&emsp;&emsp;lorem ipsum<br>&emsp;&emsp;
+	</p>
+	
+	
+	<!-- 7th page Starts from here -->
+	<h3 align="left">6.&emsp;Database Design</h3>
+
+	<h4 align="left">&emsp;6.1&emsp;Database Entity-Relationship Diagram</h4>
+	<p>&emsp;&emsp;<img src="ER DIAGRAM.png" alt="ER Diagram" width="780" height="530"></p>
+	
+	<h4 align="left">&emsp;6.2&emsp;Architectural Design Block Diagram(s)</h4>
+	<p>&emsp;&emsp;<img src="Relation Table schema.png" alt="Table Details" width="800" height="500"></p>
+
+	<h3 align="left">7.&emsp;UML</h3>
+	
+	<h4 align="left">&emsp;7.1&emsp;Class Diagram(s)</h4>
+	<p>&emsp;&emsp;<img src="Aether UML.png" alt="UML class diagram" width="850" height="600"></p>
+	
+
+	<h4 align="left">&emsp;7.2&emsp;Sequence Diagram(s) of login system</h4>
+	<p>&emsp;&emsp;<img src="Aether Sequence Diagram(login).png" alt="Sequence diagram for login" width="850" height="600"></p>
+
+	<h4 align="left">&emsp;7.21&emsp;Sequence Diagram(s) for pdf reading</h4>
+	<p>&emsp;&emsp;<img src="PDF reading sequence diagram.png" alt="Sequence diagram for pdf reading" width="850" height="600"></p>
+
+	<h4 align="left">&emsp;7.3&emsp;User Interface Screen Snapshots</h4>
+	<p>&emsp;&emsp;lorem ipsum</p>
+
+	
+</html>

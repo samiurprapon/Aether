@@ -1,8 +1,0 @@
-
-/node_modules
-.eslintrc
-.eslintignore
-.prettierrc
-jest.config.js
-Dockerfile
-docker-compose.yml

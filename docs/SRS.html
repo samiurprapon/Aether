@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+	<title>Aether</title>
+
+	<head>
+		<h1 align="middle" >
+					Software Requirements Specifications<br>for<br>Project Aether
+		</h1>
+		<br><br>
+		<h4 align="center">Version 1.00 Approved</h4>
+		<br><br>
+		<h3 align="center"><font size="4">Prepared by -</font></h3>
+		<p align="center"> <font size="4">Samiur Rahman Prapon<br> Shabab Rahman<br>Kazi Moshiur Rahaman<br>Mustafizur Rahaman</font><br></p>
+		<br><br>
+		<h3 align="center"><font size="4">Organization</font></h3>
+		<p align="center"><font size="4">CSE327.2, North South University</font></p>
+		<br><br>
+		<h3 align="center"><font size="4">Date of Submission</font></h3>
+		<p align="center" style="page-break-after:always"><font size="4">24<sup>th</sup> June, 2019</font></p>
+	</head>
+
+	<h3 align="left">Table of Contents</h3>
+
+	<p style="line-height:1.10">
+			<span  ><b>Table of Contents</b>&emsp;......................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;01</span><br>
+			<span  ><b>Revision History</b>&emsp;........................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;01</span><br>
+	</p>
+
+	<p style="line-height:1.10">
+		<span><b>1.&emsp;Introduction</b>&emsp;........................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+		<span><b>&emsp;1.1&emsp;Purpose</b>&emsp;&nbsp;&nbsp;........................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+		<span><b>&emsp;1.2&emsp;Document Conventions</b>&emsp;................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+		<span><b>&emsp;1.3&emsp;Intended Audience and Reading Suggestions</b>&emsp;............................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+		<span><b>&emsp;1.4&emsp;Product Scope</b>&emsp;...............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+		<span><b>&emsp;1.5&emsp;References</b>&emsp;.....................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;02</span><br>
+
+		<span><b>2.&emsp;Overall Description</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+		<span><b>&emsp;2.1&emsp;Product Perspective</b>&emsp;.....................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+		<span><b>&emsp;2.2&emsp;Product Functions</b>&emsp;........................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+		<span><b>&emsp;2.3&emsp;User Classes and Characteristics</b>&emsp;................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+		<span><b>&emsp;2.4&emsp;Operating Environment</b>&emsp;...............................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+		<span><b>&emsp;2.5&emsp;Design and Implementation Constraints</b>&emsp;....................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+		<span><b>&emsp;2.6&emsp;User Documentation</b>&emsp;.....................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+		<span><b>&emsp;2.7&emsp;Assumptions and Dependencies</b>&emsp;...................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;03</span><br>
+
+		<span><b>3.&emsp;External Interface Requirements</b>&emsp;.......................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+		<span><b>&emsp;3.1&emsp;User Interfaces</b>&emsp;...............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+		<span><b>&emsp;3.2&emsp;Hardware Interfaces</b>&emsp;.....................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+		<span><b>&emsp;3.3&emsp;Software Interfaces</b>&emsp;....................................................................................................................... &nbsp;&nbsp;&nbsp;&nbsp;04</span><br>
+		<span><b>&emsp;3.4&emsp;Communications Interfaces</b>&emsp;..........................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+
+		<span><b>4.&emsp;System Features</b>&emsp;...................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+		<span><b>&emsp;4.1&emsp;System Feature 1</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+		<span><b>&emsp;4.2&emsp;System Feature 2</b>&emsp;............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;05</span><br>
+
+		<span><b>5.&emsp;Other Nonfunctional Requirements</b>&emsp;...................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+		<span><b>&emsp;5.1&emsp;Performance Requirements</b>&emsp;...........................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+		<span><b>&emsp;5.2&emsp;Safety Requirements</b>&emsp;......................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+		<span><b>&emsp;5.3&emsp;Security Requirements</b>&emsp;...................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+		<span><b>&emsp;5.4&emsp;Software Quality Attributes</b>&emsp;..........................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+		<span><b>&emsp;5.5&emsp;Business Rules</b>&emsp;.................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+
+		<span><b>Appendix A: Glossary</b>&emsp;.................................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+		<span><b>Appendix B: Analysis Models</b>&emsp;....................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+		<span><b>Appendix C: To Be Determined List</b>&emsp;.........................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;06</span><br>
+	</p>
+	<br>
+	<h3 align="left">Revision History</h3>
+
+	<table border="1" style="width:50%"" style="border-spacing: 2pt" style="page-break-after:always" >
+		<tr>
+			<th style="text-align: left;" style="width:20%;">Name</th>
+			<th style="text-align: left;" style="width:15%;">Date</th>
+			<th style="text-align: left;" style="width:30%;">Reason for Changes</th>
+			<th style="text-align: left;" style="width:15%;">Version</th>
+		</tr>
+		<tr>
+			<td style="text-align: left;" >&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+			<td style="text-align: left;">&nbsp;</td>
+		</tr>
+	</table>
+	<p style="page-break-after:always"></p>
+
+	<!-- 3rd page Starts from here -->
+	<h3 align="left">1.	Introduction</h3>
+	<h4 align="left">&emsp;1.1&emsp;Purpose</h4> 	
+
+	<p>
+		&emsp;&emsp;The product is called Aether.The purpose of Aether is to track how long a student
+		<br>&emsp;&emsp;reads a certain selection given by the instructor by tracking his eyes with AI. This
+		<br>&emsp;&emsp;srs describes the whole system of Aether.
+	</p>
+
+	<h4 align="left">&emsp;1.2&emsp;Document Conventions</h4>
+	<p>	
+		&emsp;&emsp;Here is some very few documentation that we have used
+		<br>
+		<br>&emsp;&emsp; DB &emsp13; &emsp13;&emsp13;           Database.
+		<br>&emsp;&emsp; ER &emsp13; &emsp13;&emsp13;           Entity Relationship
+		<br>&emsp;&emsp; API&emsp13; &emsp13;&emsp13;          Application programming interface
+		<br>&emsp;&emsp; SRS&emsp13; &emsp13;&emsp13;          Software Requirements Specification
+	</p>
+
+	<h4 align="left">&emsp;1.3&emsp;Intended Audience and Reading Suggestions</h4>
+	<p>
+		&emsp;&emsp;This srs is intended for teachers who will evaluate this project and also for any
+		<br>&emsp;&emsp;user might use this system. The rest of the srs mostly contains the system featu
+		<br>&emsp;&emsp;-res which is most pertinent for both the teachers and the users.
+	</p>
+	
+	<h4 align="left">&emsp;1.4&emsp;Product Scope</h4>
+	<p>
+		&emsp;&emsp;Aether will be used by teachers to check whether a student assigned to read a specific
+		<br>&emsp;&emsp;pdf is reading the pdf or not and how long is the student spending in specific paragraphs
+		<br>&emsp;&emsp;of that pdf. Aether will then give the teachers feedback with data of specific students.
+		<br>&emsp;&emsp;Aether can also be used for other business strategies for checking whether someone 
+		<br>&emsp;&emsp;is spending more time in seeing some specific advertisements or a how much time a
+		<br>&emsp;&emsp;customer is spending in seeing a certain product.
+	</p>
+
+	<h4 align="left">&emsp;1.5&emsp;References</h4>
+	<p>
+		<ul>
+			<li>&emsp; Fundamentals of database systems by Ramez Elmarsi and Shamkant B.Navathe </li>
+			<li>&emsp; <a href = "https://ieeexplore.ieee.org/document/278253" target="_blank" > https://ieeexplore.ieee.org/document/278253</a>   	
+		</ul>	
+	</p>
+	<p style="page-break-after:always"></p>
+
+	<!-- 4th page Starts from here -->
+	<h3 align="left">2.	Overall Description</h3>
+	
+	<h4 align="left">&emsp;2.1&emsp;Product Perspective</h4> 	
+	<p>&emsp;&emsp;This is a new self contained product.</p>
+
+	<h4 align="left">&emsp;2.2&emsp;Product Functions</h4>
+	<p>
+		<ul>
+			<li>&emsp;Teachers can create an account and open a class with a unique code.</li>
+			<li>&emsp;Students can create an account.</li>
+			<li>&emsp;Students can enroll under a teacher with the required code for a specific class of that teacher.</li>
+			<li>&emsp;Students and teachers can sign in using their facebook, google, twitter or phone number.</li>
+			<li>&emsp;Teachers can upload pdf files to their specific class.</li>
+			<li>&emsp;Student can open and view the pdf uploaded by their teachers.</li>
+			<li>&emsp;Teachers can check which student has spent how much time in reading a specific paragraph of
+				<br>&emsp;a specific pdf.</li>
+			</ul> 
+	</p>
+
+	<h4 align="left">&emsp;2.3&emsp;User Classes and Characteristics</h4>
+	<p>
+		&emsp;&emsp;It is anticipated that this product will be mainly used by students and teachers. However it might also
+		<br>&emsp;&emsp;be used by data analysts of various companies. Students and teachers are more important user classes
+		<br>&emsp;&emsp;compared to the other users.
+	</p>
+	
+	<h4 align="left">&emsp;2.4&emsp;Operating Environment</h4>
+	<p>
+		&emsp;&emsp;This system will operate on android smart phones and on desktops. The android version of the smart
+		<br>&emsp;&emsp;phones must be at least 19
+	</p>
+  
+
+	<h4 align="left">&emsp;2.5&emsp;Design and Implementation Constraints</h4>
+	<p>
+		&emsp;&emsp;In order to effectively use the web version of this system, the user's pc must have a built in webcam or
+		<br>&emsp;&emsp;a webcam connected to their pc. Developers must have access to firebase since firebase is used for user
+		<br>&emsp;&emsp;authentication. For developing android versions developers must know java and for the web version
+		<br>&emsp;&emsp;a php framework. For communication protocol developers must be familiar with git and Bitbucket.
+	</p>
+
+
+	<h4 align="left">&emsp;2.6&emsp;User Documentation</h4>
+	<p>
+		&emsp;&emsp;A manual in the form of a use case diagram shall be provided with the software.
+	</p>
+
+	<h4 align="left">&emsp;2.7&emsp;Assumptions and Dependencies</h4>
+	<p style="page-break-after:always">&emsp;&emsp;The API used for image processing in this software will be reused from one of Google's API.</p>
+
+	<!-- 5th page Starts from here -->
+	<h3 align="left">3.	External Interface Requirements</h3>
+
+	<h4 align="left">&emsp;3.1&emsp;User Interfaces</h4> 	
+	<p>
+		&emsp;&emsp;<img src="Use Case Diagram.png" alt="ER Diagram" width="780" height="530">
+	</p>
+
+	<h4 align="left">&emsp;3.2&emsp;Hardware Interfaces</h4> 	
+	<p>
+		&emsp;<b>Website</b>&emsp;
+		<ul>
+			<li>&emsp;&emsp;Windows</li>
+			<li>&emsp;&emsp;A browser which supports CGI, HTML & Javascript </li>
+			<li>&emsp;&emsp;webcam</li>
+		</ul>
+		<br>
+		&emsp; <b>Android App</b>&emsp;
+		<ul>
+			<li>&emsp;&emsp; Any android device with at least Android version 5.0 and well operated front camera </li>
+		</ul>
+	</p>
+	
+	<h4 align="left">&emsp;3.3&emsp;Software Interfaces</h4> 	
+	<p style="page-break-after:always">&emsp;&emsp;The android application of this product was developed using android studio. The website version of the product 
+			<br>&emsp;&emsp;was done using django, a python framework. The database was created using MySQL on the Apache server. 
+			<br>&emsp;&emsp;The server was created using javascript. User Information like username and password are shared between 
+			<br>&emsp;&emsp;the database and the server. The student's study records are also shared between the database and the server.</p>
+	
+	<h4 align="left">&emsp;3.4&emsp;Communications Interfaces</h4>
+	<p>
+		&emsp;&emsp;This project supports all types of web browsers andd Android smart phone with minimum android Version 5.0.
+			<br>&emsp;&emsp;But the convenient way of using by Google Chrome.We use front camera for recognition of face and eye
+			<br>&emsp;&emsp;tracking. For desktop/laptop adequate webcam must be needed with minimum configuration Performance.
+			<br>&emsp;&emsp;Dedicated server based on Apache and MySQL will be used for database.
+	</p>
+
+	<!-- 6th page Starts from here -->
+	<h3 align="left">4.	System Features</h3>
+
+	<h4 align="left">&emsp;4.1&emsp;System Feature 1</h4> 	
+	<p>
+		&emsp;&emsp;Use Case: Student/Teacher login
+		<br>&emsp;&emsp;Actor: Student/Teacher
+		<br>&emsp;&emsp;Type: Primary
+		<br>&emsp;&emsp;Trigger: The user clicks on the login button.
+		<br>&emsp;&emsp;Purpose: Entering username and password to enter their dashboard and get access to the rest of the product 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;features.
+		<br>&emsp;&emsp;Overview: The teacher or the student enters their username and password. The username and password pair
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;is cross checked with the username and password on the database and if a pair matches then the user 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;is given access.
+		<br>&emsp;&emsp;Preconditions: The user must have an internet connection.
+		<br>&emsp;&emsp;Exception: The user could enter a blank username or password. In this case the user will be shown an 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;error message saying to enter the necessary information. 
+	</p>
+	
+	<h4 align="left">&emsp;4.2&emsp;System Feature 2</h4>
+	<p>
+		&emsp;&emsp;Use Case: PDF upload
+		<br>&emsp;&emsp;Actor: Teacher
+		<br>&emsp;&emsp;Type: Primary
+		<br>&emsp;&emsp;Trigger: The teacher selects a pdf and clicks on upload.
+		<br>&emsp;&emsp;Purpose: Uploading a pdf file of a certain course of a section for the students of that section.
+		<br>&emsp;&emsp;Overview: The teacher is only allowed to upload pdf files. After clicking on upload the the pdf file is stored in the 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;database.
+		<br>&emsp;&emsp;Preconditions: The file selected for upload must be in pdf format.
+	</p>
+
+	<h4 align="left">&emsp;4.2&emsp;System Feature 3</h4>
+	<p>
+		&emsp;&emsp;Use Case: Reading pdf
+		<br>&emsp;&emsp;Actor: Student
+		<br>&emsp;&emsp;Type: Primary
+		<br>&emsp;&emsp;Trigger: The student clicks on a pdf to read from the dashboard.
+		<br>&emsp;&emsp;Purpose: Viewing a pdf to read.
+		<br>&emsp;&emsp;Overview: After clicking on a pdf the browser or the app asks for the permission to access the user's webcam. 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;After granting permission the user can start reading the pdf and the system tracks the user's eyes  
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;recording how long the user has read a certain part of the pdf.
+		<br>&emsp;&emsp;Preconditions: The user must have a webcam.
+		<br>&emsp;&emsp;Exception: The student could make someone else read the pdf as an act of fraud. In this case the user's face 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;will be detected and compared with the image of the user and a warning message will be shown 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;if the images don't match.
+	</p>
+
+	<h4 align="left">&emsp;4.2&emsp;System Feature 4</h4>
+	<p>
+		&emsp;&emsp;Use Case: Viewing student's reading records
+		<br>&emsp;&emsp;Actor: Teacher
+		<br>&emsp;&emsp;Type: Primary
+		<br>&emsp;&emsp;Trigger: The teacher selects a particular student's reading record.
+		<br>&emsp;&emsp;Purpose: Viewing a particular student's reading record in the form of various graphs and charts.
+		<br>&emsp;&emsp;Overview: After clicking on a specific student's reading record the data of that student's reading record is 
+		<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;selected from a table in the database which is represented by graphs.
+		<br>&emsp;&emsp;Preconditions: The teacher must be logged in and have an internet connection.
+	</p>				
+	
+	
+	<!-- 7th page Starts from here -->
+	<h3 align="left">5.	Other Nonfunctional Requirements</h3>
+
+	<h4 align="left">&emsp;5.1&emsp;Performance Requirements</h4>
+	<p>
+		<ul>
+			<li>&emsp;Face recognition API must have to be faster and able to detect 
+				<br>&emsp;the face and eyes from from various angle</li>
+			<li>&emsp;Use of better API for make system faster </li>
+			<li>&emsp;Multiple page or slide will turn smoothly</li>
+			<li>&emsp;If advertisements appear there will be a skip option also</li>
+			<li>&emsp;The duration of the reading will be calculated faster</li>
+			<li>&emsp; Detecting the movement of face for make sure it is not a still picture</li>
+			<li>&emsp;Searching for previous pdf need to be quicker</li>
+		</ul> 
+	</p>
+	
+	<h4 align="left">&emsp;5.2&emsp;Safety Requirements</h4>
+	<p>
+		&emsp;&emsp;Since the system requires the user to stare at the screen for it to work, prolong use of the
+		<br>&emsp;&emsp;system can damage the eye sight of the user. Other than that no other physical harm can 
+		<br>&emsp;&emsp;occur from using the system. To reduce the risk of damaging the eye sight the user can use
+		<br>&emsp;&emsp;reading glasses or decrease the intensity of the blue light of the screen.
+	</p>
+	
+	<h4 align="left">&emsp;5.3&emsp;Security Requirements</h4>
+	<p>
+		&emsp;&emsp;The system requires access to the user's webcam in order to fully function. Using the webcam the 
+		<br>&emsp;&emsp;system takes a picture of the user to later identify if anyone else other than the user is 
+		<br>&emsp;&emsp;using the system from the user's account. The user will be notified prior to using the system
+		<br>&emsp;&emsp;that this is the sole purpose of taking the picture and the picture will not be misused in
+		<br>&emsp;&emsp;any other way.
+		<ul>
+			<li>&emsp;It must be ensure that pdf screening quality doesn't become so dull to read</li>
+			<li>&emsp;Feature and context of the app will be easy to read</li>
+			<li>&emsp;Uploaded file must have a backup on the system</li>
+			<li>&emsp;Make sure that only the enrolled student reading the pdf rather than others</li>
+			<li>&emsp;Student will not able to see the other reading material without his/her class</li>
+			<li>&emsp;Performance level of the a student will only monitored by the teacher </li>
+			<li>&emsp;Informations of a student are private from other student</li>
+			<li>&emsp;Enrollment of a student should must be ensure by the teacher</li>
+			<li>&emsp;Enrollment of a student to a certain class should must be permitted by the class creator</li>
+		</ul>
+	</p>
+	
+
+	<h4 align="left">&emsp;5.4&emsp;Software Quality Attributes</h4>
+	<p>
+		&emsp;&emsp;Well documentation for readability. The software will be classify into small part 
+		<br>&emsp;&emsp;in  development stage for further adding feature.Upload pdf file and reading file are separate feature
+		<br>&emsp;&emsp;from each other for easy testing. It is based on multi-platform which increase its availability. Rest API
+		<br>&emsp;&emsp;make sure its database flexibility. It is really a effective and secure software for educational purpose. 
+		<br>&emsp;&emsp;In future it can be also used for survey of product for marketing company.
+		</p>
+
+	<h4 align="left">&emsp;5.5&emsp;Business Rules</h4>
+	<p>
+		&emsp;&emsp;Every failure case for login/upload file/classroom accessibility  will be audited.
+		<br>&emsp;&emsp;User can make complain for any error and take help from software authority.
+		<br>&emsp;&emsp;User can also give rating and suggestion through comment.
+	</p>
+
+	<h3 align="left">6.	Others Requirements</h3>
+	<p>
+		<ul>
+			<li>&emsp;Users must change the initially assigned login password immediately after the  
+				<br>&emsp;first successful login.Moreover, the initial should never be reused.</li>
+			<li>&emsp;The software should be portable.So moving from one OS to other OS does not 
+				<br>&emsp; create any problem.</li>
+			
+		</ul>
+	</p>
+
+	<p style="page-break-after:always"></p>
+
+	
+</html>
