@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { decodeToken } from '../utils/jwt';
+import { decodeToken } from '@/utils/jwt';
+import { StatusCodes } from 'http-status-codes';
 
 export async function authentication(req: Request, res: Response, next: NextFunction) {
 	const { authorization } = req.headers;
@@ -44,7 +45,8 @@ export async function authorization(req: Request, res: Response, next: NextFunct
 		res.locals.data = decoded;
 
 		next();
-	} catch (error) {
-		return res.status(401).json({ message: 'Unauthorized' });
+	} catch (error: unknown) {
+		console.error(error);
+		return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Unauthorized' });
 	}
 }
