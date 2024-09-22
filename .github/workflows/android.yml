@@ -34,18 +34,13 @@ jobs:
         pwd
         echo "Directory contents:"
         ls -R
-        echo "Searching for gradlew:"
-        find . -name gradlew
+        echo "Android directory contents:"
+        ls -R android
 
     - name: Set Gradle Wrapper Permissions
       run: |
-        GRADLEW_PATH=$(find . -name gradlew | head -n 1)
-        if [ -z "$GRADLEW_PATH" ]; then
-          echo "gradlew not found. Exiting."
-          exit 1
-        fi
-        chmod +x $GRADLEW_PATH
-        echo "GRADLEW_PATH=$GRADLEW_PATH" >> $GITHUB_ENV
+        chmod +x ./android/gradlew
+        echo "GRADLEW_PATH=./android/gradlew" >> $GITHUB_ENV
 
     - name: Cache Gradle packages
       uses: actions/cache@v3
@@ -53,26 +48,30 @@ jobs:
         path: |
           ~/.gradle/caches
           ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/**/*.gradle*', '**/android/**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
 
     - name: Build gradle project
       run: ${{ env.GRADLEW_PATH }} build
+      working-directory: ./android
 
     - name: Build debug APK
       run: ${{ env.GRADLEW_PATH }} assembleDebug
+      working-directory: ./android
 
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
       with:
         name: app-debug
-        path: '**/build/outputs/apk/debug/*.apk'
+        path: android/app/build/outputs/apk/debug/*.apk
 
   # release:
   #   needs: build
   #   if: github.event_name == 'release' && github.event.action == 'created'
   #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: write
 
   #   steps:
   #   - name: Checkout repository
@@ -83,34 +82,24 @@ jobs:
   #     with:
   #       java-version: '17'
   #       distribution: 'temurin'
-    
-  #   - name: Change directory
-  #     run: cd android
 
   #   - name: Setup Android SDK
   #     uses: android-actions/setup-android@v2
 
-  #   - name: Cache Gradle packages
-  #     uses: actions/cache@v3
-  #     with:
-  #       path: |
-  #         ~/.gradle/caches
-  #         ~/.gradle/wrapper
-  #       key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-  #       restore-keys: |
-  #         ${{ runner.os }}-gradle-
-
-  #   - name: Change wrapper permissions
-  #     run: chmod +x ./gradlew
+  #   - name: Set Gradle Wrapper Permissions
+  #     run: |
+  #       chmod +x ./android/gradlew
+  #       echo "GRADLEW_PATH=./android/gradlew" >> $GITHUB_ENV
 
   #   - name: Build release APK
-  #     run: ./gradlew assembleRelease
+  #     run: ${{ env.GRADLEW_PATH }} assembleRelease
+  #     working-directory: ./android
 
   #   - name: Upload release APK
   #     uses: actions/upload-artifact@v3
   #     with:
   #       name: app-release
-  #       path: app/build/outputs/apk/release/app-release-unsigned.apk
+  #       path: android/app/build/outputs/apk/release/*.apk
 
   #   - name: Upload release APK to GitHub release
   #     uses: actions/upload-release-asset@v1
@@ -118,6 +107,6 @@ jobs:
   #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   #     with:
   #       upload_url: ${{ github.event.release.upload_url }}
-  #       asset_path: app/build/outputs/apk/release/app-release-unsigned.apk
+  #       asset_path: android/app/build/outputs/apk/release/app-release-unsigned.apk
   #       asset_name: app-release-${{ github.ref_name }}.apk
   #       asset_content_type: application/vnd.android.package-archive
