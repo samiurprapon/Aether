@@ -32,6 +32,6 @@
 		"@types/react-redux": "^7.1.25",
 		"@vitejs/plugin-react": "^3.1.0",
 		"typescript": "^4.9.3",
-		"vite": "^4.1.0"
+		"vite": "^4.5.5"
 	}
 }
