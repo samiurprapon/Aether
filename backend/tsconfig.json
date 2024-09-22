@@ -6,7 +6,10 @@
 		"target": "ESNext",
 		"useDefineForClassFields": true,
 		"lib": [
+			"es2015",
+			"es5",
 			"es6",
+			"dom",
 			"ES2021"
 		],
 		"types": [
@@ -42,19 +45,22 @@
 			"@/*": [
 				"src/*"
 			],
+			"~/certs": [
+				"certs/*"
+			]
 		},
 		// typeorm
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
-		"strictPropertyInitialization": false,
+		"strictPropertyInitialization": false
 	},
 	"ts-node": {
 		"require": [
 			"tsconfig-paths/register"
 		],
 		"compilerOptions": {
-			"module": "commonjs",
-		},
+			"module": "commonjs"
+		}
 	},
 	"include": [
 		"src/**/*.ts",
@@ -65,5 +71,5 @@
 	"exclude": [
 		"node_modules",
 		"build"
-	],
+	]
 }
