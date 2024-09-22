@@ -27,24 +27,18 @@ jobs:
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
-
-    - name: Diagnose project structure
-      run: |
-        echo "Current directory:"
-        pwd
-        echo "Directory contents:"
-        ls -R
-        echo "Android directory contents:"
-        ls -R android
     
     # change directory to android
     - name: Enter to android folder
       run: cd android
 
-    - name: Set Gradle Wrapper Permissions
+    - name: Diagnose project structure
       run: |
-        chmod +x ./gradlew
-        echo "GRADLEW_PATH=./gradlew" >> $GITHUB_ENV
+        echo "Current directory:"
+        pwd
+
+    - name: Set Gradle Wrapper Permissions
+      run: chmod +x ./gradlew
 
     - name: Cache Gradle packages
       uses: actions/cache@v3
@@ -58,17 +52,9 @@ jobs:
 
     - name: Build gradle project
       run: ./gradlew build
-      working-directory: ./android
 
     - name: Build debug APK
       run: ./gradlew assembleDebug
-      working-directory: ./android
-
-    - name: Upload debug APK
-      uses: actions/upload-artifact@v3
-      with:
-        name: app-debug
-        path: app/build/outputs/apk/debug/*.apk
 
   # release:
   #   needs: build
