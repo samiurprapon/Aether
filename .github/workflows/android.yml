@@ -12,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
     - name: Checkout repository
@@ -22,12 +24,28 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    
-    - name: Change directory
-      run: cd android
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
+
+    - name: Diagnose project structure
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Directory contents:"
+        ls -R
+        echo "Searching for gradlew:"
+        find . -name gradlew
+
+    - name: Set Gradle Wrapper Permissions
+      run: |
+        GRADLEW_PATH=$(find . -name gradlew | head -n 1)
+        if [ -z "$GRADLEW_PATH" ]; then
+          echo "gradlew not found. Exiting."
+          exit 1
+        fi
+        chmod +x $GRADLEW_PATH
+        echo "GRADLEW_PATH=$GRADLEW_PATH" >> $GITHUB_ENV
 
     - name: Cache Gradle packages
       uses: actions/cache@v3
@@ -39,20 +57,17 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
 
-    - name: Change wrapper permissions
-      run: chmod +x ./gradlew
-
     - name: Build gradle project
-      run: ./gradlew build
+      run: ${{ env.GRADLEW_PATH }} build
 
     - name: Build debug APK
-      run: ./gradlew assembleDebug
+      run: ${{ env.GRADLEW_PATH }} assembleDebug
 
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
       with:
         name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: '**/build/outputs/apk/debug/*.apk'
 
   # release:
   #   needs: build
