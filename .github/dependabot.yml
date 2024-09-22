@@ -7,20 +7,31 @@ version: 2
 updates:
 
   - package-ecosystem: "npm"
-    # Files stored in `root` directory
-    directory: "/server"
+    directory: "/backend"
     schedule:
       interval: "daily"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+    commit-message:
+      prefix: "backend: "
 
-  - package-ecosystem: "pip"
-    # Files stored in `root` directory
-    directory: "/web"
+  - package-ecosystem: "npm"
+    directory: "/frontend"
     schedule:
       interval: "daily"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+    commit-message:
+      prefix: "frontend: "
 
-  # android
   - package-ecosystem: "gradle"
-    # Files stored in `root` directory
     directory: "/android"
     schedule:
       interval: "daily"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+    commit-message:
+      prefix: "android: "
