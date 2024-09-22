@@ -7,6 +7,7 @@
 
 package life.nsu.aether.views.teacher.profile;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,11 +26,11 @@ import life.nsu.aether.R;
 import life.nsu.aether.utils.networking.responses.TeacherProfileDetailsResponse;
 import life.nsu.aether.viewModels.teacher.TeacherProfileViewModel;
 import life.nsu.aether.views.PageActivity;
-import life.nsu.aether.views.authentication.RegistrationActivity;
 
 public class TeacherProfileFragment extends Fragment {
 
-    static TeacherProfileFragment fragment = null;
+    @SuppressLint("StaticFieldLeak")
+    static volatile TeacherProfileFragment fragment = null;
     TextView mName;
     TextView mInitial;
     TextView mSchool;
@@ -87,7 +88,7 @@ public class TeacherProfileFragment extends Fragment {
         intent.putExtra(getResources().getString(R.string.title_school), school);
         intent.putExtra(getResources().getString(R.string.title_gender), sex);
 
-        getActivity().startActivity(intent);
+        requireActivity().startActivity(intent);
     }
 
     private void changeUiAccordingToStudentsProfileData(TeacherProfileDetailsResponse teacherProfileDetailsResponse) {
@@ -107,6 +108,6 @@ public class TeacherProfileFragment extends Fragment {
         super.onResume();
 
         // Fetch students previous data and place them on ui for editing profile
-        teacherProfileViewModel.getTeacherProfileDetailsResponseMutableLiveData().observe(getActivity(), this::changeUiAccordingToStudentsProfileData);
+        teacherProfileViewModel.getTeacherProfileDetailsResponseMutableLiveData().observe(requireActivity(), this::changeUiAccordingToStudentsProfileData);
     }
 }

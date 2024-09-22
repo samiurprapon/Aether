@@ -7,9 +7,9 @@
 
 package life.nsu.aether.views.teacher.profile;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -33,8 +32,6 @@ import java.util.Objects;
 import life.nsu.aether.R;
 import life.nsu.aether.utils.CustomProgressBar;
 import life.nsu.aether.viewModels.teacher.TeacherProfileViewModel;
-import life.nsu.aether.views.authentication.LoginActivity;
-import life.nsu.aether.views.authentication.RegistrationActivity;
 
 public class TeacherProfileEditFragment extends Fragment {
 
@@ -52,7 +49,8 @@ public class TeacherProfileEditFragment extends Fragment {
     private String school;
     private String sex;
 
-    static TeacherProfileEditFragment fragment = null;
+    @SuppressLint("StaticFieldLeak")
+    static volatile TeacherProfileEditFragment fragment = null;
 
     public static TeacherProfileEditFragment newInstance() {
         if (fragment == null) {
@@ -89,7 +87,7 @@ public class TeacherProfileEditFragment extends Fragment {
 
         mUpdateButton.setOnClickListener(v -> {
 
-            if(mNameEditText.getText().toString().isEmpty() || mInitialEditText.getText().toString().isEmpty() || (!mMaleRadioButton.isChecked() && !mFemaleRadioButton.isChecked())){
+            if(Objects.requireNonNull(mNameEditText.getText()).toString().isEmpty() || Objects.requireNonNull(mInitialEditText.getText()).toString().isEmpty() || (!mMaleRadioButton.isChecked() && !mFemaleRadioButton.isChecked())){
                 // set warning
                 Toast.makeText(getActivity(), "Fill All the Information",
                         Toast.LENGTH_LONG).show();
@@ -102,6 +100,7 @@ public class TeacherProfileEditFragment extends Fragment {
     }
 
     private void getUserValues() {
+        assert getArguments() != null;
         name = getArguments().getString(getResources().getString(R.string.title_name));
         initial = getArguments().getString(getResources().getString(R.string.title_initial));
         school = getArguments().getString(getResources().getString(R.string.title_school));
@@ -114,13 +113,13 @@ public class TeacherProfileEditFragment extends Fragment {
         mNameEditText.setText(name);
         mInitialEditText.setText(initial);
         mSchoolEditText.setText(school);
-        mMaleRadioButton.setChecked(sex.equals("MALE")? true : false);
-        mFemaleRadioButton.setChecked(sex.equals("FEMALE")? true : false);
+        mMaleRadioButton.setChecked(sex.equals("MALE"));
+        mFemaleRadioButton.setChecked(sex.equals("FEMALE"));
     }
 
     private void updateTeacherPorfile(View v) {
         mUpdateButton.setEnabled(false); // prevent double clicking
-        hideKeyboard(getActivity(), v);
+        hideKeyboard(requireActivity(), v);
         progressBar.show("");
 
         // initialize view model
@@ -129,15 +128,15 @@ public class TeacherProfileEditFragment extends Fragment {
 
         String initial = Objects.requireNonNull(mInitialEditText.getText()).toString();
         String name = Objects.requireNonNull(mNameEditText.getText()).toString();
-        String school = Objects.requireNonNull(mSchoolEditText.getText().toString().trim());
+        String school = Objects.requireNonNull(Objects.requireNonNull(mSchoolEditText.getText()).toString().trim());
         String sex = Objects.requireNonNull(
                 mMaleRadioButton.isChecked()? "MALE" :
                         mFemaleRadioButton.isChecked()? "FEMALE" : "");
 
         viewModel.postMutableTeacherProfileRequest(initial, name, school, sex)
-                .observe(getActivity(), teacherProfileDetailsResponse -> {
+                .observe(requireActivity(), teacherProfileDetailsResponse -> {
 
-                    getActivity().onBackPressed(); // back to previous page
+                    requireActivity().onBackPressed(); // back to previous page
 
                 });
 
