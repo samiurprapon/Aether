@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
     - name: Checkout repository
@@ -36,11 +36,15 @@ jobs:
         ls -R
         echo "Android directory contents:"
         ls -R android
+    
+    # change directory to android
+    - name: Enter to android folder
+      run: cd android
 
     - name: Set Gradle Wrapper Permissions
       run: |
-        chmod +x ./android/gradlew
-        echo "GRADLEW_PATH=./android/gradlew" >> $GITHUB_ENV
+        chmod +x ./gradlew
+        echo "GRADLEW_PATH=./gradlew" >> $GITHUB_ENV
 
     - name: Cache Gradle packages
       uses: actions/cache@v3
@@ -53,18 +57,18 @@ jobs:
           ${{ runner.os }}-gradle-
 
     - name: Build gradle project
-      run: ${{ env.GRADLEW_PATH }} build
+      run: ./gradlew build
       working-directory: ./android
 
     - name: Build debug APK
-      run: ${{ env.GRADLEW_PATH }} assembleDebug
+      run: ./gradlew assembleDebug
       working-directory: ./android
 
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
       with:
         name: app-debug
-        path: android/app/build/outputs/apk/debug/*.apk
+        path: app/build/outputs/apk/debug/*.apk
 
   # release:
   #   needs: build
