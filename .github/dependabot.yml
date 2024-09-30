@@ -10,7 +10,6 @@ updates:
     directory: "./backend"
     schedule:
       interval: "daily"
-    versioning-strategy: "increase"
     open-pull-requests-limit: 5
     target-branch: "main"
     commit-message:
@@ -20,7 +19,6 @@ updates:
     directory: "./frontend"
     schedule:
       interval: "daily"
-    versioning-strategy: "increase"
     open-pull-requests-limit: 5
     target-branch: "main"
     commit-message:
@@ -30,7 +28,6 @@ updates:
     directory: "./android"
     schedule:
       interval: "daily"
-    versioning-strategy: "increase"
     open-pull-requests-limit: 5
     target-branch: "main"
     commit-message:
