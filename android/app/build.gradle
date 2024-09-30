@@ -87,7 +87,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-vision:20.1.3'
 
 //    PDF reader Library
-    implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.1'
+    implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.3'
 
 //    Bubble Navigation - Bottom Navigation
     implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
