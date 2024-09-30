@@ -15,7 +15,12 @@ export class Role extends AbstractEntity {
 	level: ROLE_LEVEL;
 
 	@Column({ unique: true })
-	uid: string;
+	userId: string;
+
+	constructor(props: Partial<Role>) {
+		super();
+		Object.assign(this, props);
+	}
 
 	@OneToOne(() => User, user => user.role)
 	user: User;

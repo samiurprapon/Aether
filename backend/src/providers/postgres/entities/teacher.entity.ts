@@ -11,11 +11,16 @@ export class Teacher extends AbstractEntity {
 	initial: string;
 
 	@Column({ unique: true })
-	uid: string;
+	userId: string;
+
+	constructor(props: Partial<Teacher>) {
+		super();
+		Object.assign(this, props);
+	}
 
 	@ManyToOne(() => User, user => user.teachers)
 	user: User;
 
-	@OneToMany(() => Course, course => course.teacher)
+	@OneToMany(() => Course, course => course.instructor)
 	courses: Course[];
 }

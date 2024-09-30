@@ -17,10 +17,15 @@ export class Reading extends AbstractEntity {
 	duration: number;
 
 	@Column({ nullable: true })
-	uid: string;
+	userId: string;
 
 	@Column({ nullable: true })
-	mid: string;
+	materialId: string;
+
+	constructor(props: Partial<Reading>) {
+		super();
+		Object.assign(this, props);
+	}
 
 	@ManyToOne(() => User, user => user.sessions)
 	user: User;

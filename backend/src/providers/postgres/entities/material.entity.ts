@@ -20,7 +20,12 @@ export class Material extends AbstractEntity {
 	isPublic: boolean;
 
 	@Column({ unique: true })
-	cid: string;
+	courseId: string;
+
+	constructor(props: Partial<Reading>) {
+		super();
+		Object.assign(this, props);
+	}
 
 	@OneToOne(() => Course, course => course.material)
 	course: Course;

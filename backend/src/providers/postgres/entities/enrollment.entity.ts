@@ -17,6 +17,11 @@ export class Enrollment extends AbstractEntity {
 	@Column({ nullable: true })
 	studentId: string;
 
+	constructor(props: Partial<Enrollment>) {
+		super();
+		Object.assign(this, props);
+	}
+
 	@ManyToOne(() => Course, course => course.enrollments)
 	course: Course;
 

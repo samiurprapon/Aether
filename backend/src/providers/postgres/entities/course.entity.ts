@@ -10,35 +10,35 @@ import { Enrollment } from './enrollment.entity';
 @Unique(['id', 'instructor'])
 @Unique(['courseCode', 'section', 'semester', 'year'])
 export class Course extends AbstractEntity {
-	@Column({ type: 'varchar', length: 255 })
+	@Column()
 	name: string;
 
-	@Column({ type: 'varchar', length: 255, nullable: true })
-	status: string;
+	@Column()
+	status?: string;
 
 	@Column({ type: 'varchar', length: 10 })
 	courseCode: string;
 
-	@Column({ type: 'varchar', length: 10, nullable: true })
+	@Column()
 	section: string;
 
-	@Column({ type: 'varchar', length: 10, unique: true, nullable: true })
+	@Column({ nullable: true })
 	enrollCode: string;
 
-	@Column({ type: 'enum', enum: SEMESTER, default: SEMESTER.SPRING, nullable: true })
+	@Column({ type: 'enum', enum: SEMESTER, default: SEMESTER.SPRING })
 	semester: SEMESTER;
 
-	@Column({ type: 'year', default: 2024, nullable: true })
+	@Column({
+		type: 'smallint',
+		default: new Date().getFullYear(),
+	})
 	year: number;
 
 	@Column({ type: 'boolean', default: false })
 	isArchived: boolean;
 
-	@Column({ nullable: true })
-	instructor: string;
-
 	@ManyToOne(() => Teacher, teacher => teacher.courses)
-	teacher: Teacher;
+	instructor: Teacher;
 
 	@OneToMany(() => Enrollment, enrollment => enrollment.course)
 	enrollments: Enrollment[];

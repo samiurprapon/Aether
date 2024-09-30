@@ -11,10 +11,10 @@ WORKDIR /app
 ENV NODE_ENV=development
 
 # install app dependencies
-RUN yarn 
+RUN npm ci 
 
 # expose port and start application
 EXPOSE 3030
 
 # start command
-CMD ["yarn", "run", "dev"]
+CMD ["npm", "run", "dev"]

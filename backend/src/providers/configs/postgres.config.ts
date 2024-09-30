@@ -1,16 +1,10 @@
 import 'reflect-metadata';
-import fs from 'fs';
+// import fs from 'fs';
 import dotenv from 'dotenv';
 import { DataSourceOptions } from 'typeorm';
 dotenv.config();
 
 import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT, REDIS_USER } from '@/providers/configs/redis.config';
-
-// entities
-import { Credential } from '@/providers/postgres/entities/credential.entity';
-
-// migrations
-import { CreateCredentials1717188639010 } from '@/providers/postgres/migrations/1717188639010-CreateCredentials';
 
 const dataSourceConfig: DataSourceOptions = {
 	type: 'postgres',
@@ -19,10 +13,7 @@ const dataSourceConfig: DataSourceOptions = {
 	username: process.env.POSTGRES_USER,
 	password: process.env.POSTGRES_PASSWORD,
 	database: process.env.POSTGRES_DB,
-	ssl: {
-		rejectUnauthorized: process.env.NODE_ENV === 'production',
-		ca: process.env.NODE_ENV === 'production' ? fs.readFileSync('./src/providers/configs/certs/postgres.pem') : '',
-	},
+	ssl: false,
 	schema: 'public',
 	migrationsRun: false,
 	connectTimeoutMS: 30 * 1000,
@@ -55,8 +46,8 @@ const dataSourceConfig: DataSourceOptions = {
 	// },
 	synchronize: false,
 	logging: ['error', 'warn'],
-	entities: [Credential],
-	migrations: [CreateCredentials1717188639010],
+	entities: ['./src/providers/postgres/entities/*.entity.{ts,js}'],
+	migrations: ['./src/providers/postgres/migrations/*.{ts,js}'],
 };
 
 export default dataSourceConfig;

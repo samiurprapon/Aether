@@ -21,7 +21,7 @@ export class RedisClient<T extends Redis> implements IRedis {
 					password: REDIS_PASSWORD,
 					maxRetriesPerRequest: 3,
 					tls: {
-						rejectUnauthorized: true,
+						rejectUnauthorized: process.env.NODE_ENV === 'production',
 					},
 				}),
 			);
