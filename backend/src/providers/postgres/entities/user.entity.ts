@@ -11,26 +11,31 @@ import { SEX } from '../enums/sex.enum';
 
 @Entity({ name: 'users' })
 export class User extends AbstractEntity {
-	@Column({ type: 'varchar', length: 255, unique: true })
+	@Column({ unique: true })
 	email: string;
 
-	@Column({ type: 'varchar', length: 255, nullable: true })
+	@Column()
 	name: string;
 
-	@Column({ type: 'varchar', length: 11, unique: true, nullable: true })
+	@Column({ type: 'varchar', length: 11, unique: true, nullable: false })
 	phone: string;
 
 	@Column({ type: 'enum', enum: SEX, default: SEX.MALE })
 	sex: SEX;
 
-	@Column({ type: 'varchar', length: 255, nullable: true })
-	school: string;
+	@Column({ type: 'varchar' })
+	school?: string;
 
-	@Column({ type: 'boolean', default: false })
+	@Column({ default: false })
 	isBan: boolean;
 
 	@Column({ unique: true })
-	cid: string;
+	credentialId: string;
+
+	constructor(props: Partial<Credential>) {
+		super();
+		Object.assign(this, props);
+	}
 
 	@OneToOne(() => Credential, credentials => credentials.user)
 	Credentials: Credential;

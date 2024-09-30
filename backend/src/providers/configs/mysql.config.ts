@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+// import fs from 'fs';
 import { DataSourceOptions } from 'typeorm';
 
 import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT, REDIS_USER } from '@/providers/configs/redis.config';
@@ -18,6 +19,8 @@ const dataSourceConfig: DataSourceOptions = {
 	password: process.env.MYSQL_PASSWORD,
 	database: process.env.MYSQL_DB,
 	migrationsRun: false,
+	ssl: false,
+
 	cache: {
 		type: 'ioredis',
 		options: {

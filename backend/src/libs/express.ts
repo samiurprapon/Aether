@@ -1,9 +1,12 @@
 import express, { json, urlencoded, Express as ExpressLib } from 'express';
+
 import compression from '@/libs/compression';
 import cors from '@/libs/cors';
 import hpp from '@/libs/hpp';
 import morgan from '@/libs/morgan';
 import { stream } from '@/libs/logger';
+
+import mainRoutes from '@/routes/MainRouter';
 import { ErrorMiddleware, NotFoundMiddleware } from '@/middlewares/error.middleware';
 
 class Express {
@@ -35,13 +38,10 @@ class Express {
 		this.app.use(hpp());
 		this.app.use(morgan({ stream }));
 
-		// this.app.use('/api', routes);
+		this.app.use('/api', mainRoutes);
 
-		// 404 middleware
-		this.app.use(NotFoundMiddleware);
-
-		// Error middleware
-		this.app.use(ErrorMiddleware);
+		this.app.use(NotFoundMiddleware); // 404 middleware
+		this.app.use(ErrorMiddleware); // Error middleware
 	}
 
 	public getApp() {

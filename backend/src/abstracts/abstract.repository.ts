@@ -13,6 +13,14 @@ export default abstract class AbstractRepository<T extends object> {
 		select?: FindOptionsSelect<T>,
 		relations?: FindOptionsRelations<T>,
 		runner?: QueryRunner,
+		lock?:
+			| 'pessimistic_read'
+			| 'pessimistic_write'
+			| 'dirty_read'
+			| 'pessimistic_partial_write'
+			| 'pessimistic_write_or_fail'
+			| 'for_no_key_update'
+			| 'for_key_share',
 	): Promise<T | null> {
 		const connection = runner ? runner.manager.getRepository(this.repository.target) : this.repository;
 
@@ -21,21 +29,39 @@ export default abstract class AbstractRepository<T extends object> {
 			select: select,
 			where: where,
 			transaction: runner ? true : false,
+			lock: lock ? { mode: lock } : undefined,
+		});
+	}
+
+	async findOneOrFail(
+		where: FindOptionsWhere<T>,
+		select?: FindOptionsSelect<T>,
+		relations?: FindOptionsRelations<T>,
+		runner?: QueryRunner,
+	) {
+		const connection = runner ? runner.manager.getRepository(this.repository.target) : this.repository;
+
+		return await connection.findOneOrFail({
+			select: select,
+			where: where,
+			relations: relations,
 		});
 	}
 
 	async findAll(
-		options: FindOptionsWhere<T> | FindOptionsWhere<T>[],
+		options?: FindOptionsWhere<T> | FindOptionsWhere<T>[],
 		selection?: FindOptionsSelect<T>,
 		relations?: FindOptionsRelations<T>,
 		order?: FindOptionsOrder<T>,
 		take?: number,
 		page?: number,
 		runner?: QueryRunner,
-		cache?: {
-			id: string;
-			milliseconds: number;
-		},
+		cache?:
+			| number
+			| {
+					id: string;
+					milliseconds: number;
+			  },
 	): Promise<T[]> {
 		const connection = runner ? runner.manager.getRepository(this.repository.target) : this.repository;
 
@@ -77,16 +103,29 @@ export default abstract class AbstractRepository<T extends object> {
 		where: FindOptionsWhere<T> | FindOptionsWhere<T>[],
 		updateSet: QueryDeepPartialEntity<T>,
 		runner?: QueryRunner,
+		lock:
+			| 'pessimistic_read'
+			| 'pessimistic_write'
+			| 'dirty_read'
+			| 'pessimistic_partial_write'
+			| 'pessimistic_write_or_fail'
+			| 'for_no_key_update'
+			| 'for_key_share' = 'pessimistic_write',
+		cacheId?: string,
 	): Promise<void> {
 		const connection = runner ? runner.manager.getRepository(this.repository.target) : this.repository;
 		await connection
 			.createQueryBuilder()
 			.useTransaction(runner ? true : false)
-			.setLock('pessimistic_write')
+			.setLock(lock)
 			.update(this.repository.target)
 			.set(updateSet)
 			.where(where)
 			.execute();
+
+		if (connection.manager.connection.queryResultCache) {
+			await connection.manager.connection.queryResultCache.remove([cacheId ?? this.repository.metadata.targetName]);
+		}
 	}
 
 	async create(entity: DeepPartial<T>, runner?: QueryRunner): Promise<T> {
@@ -105,7 +144,7 @@ export default abstract class AbstractRepository<T extends object> {
 	}
 
 	async createOrUpdate(
-		t: QueryDeepPartialEntity<T> | QueryDeepPartialEntity<T>[],
+		t: QueryDeepPartialEntity<T> | QueryDeepPartialEntity<T>[] | T | T[],
 		options: {
 			[P in keyof T]?: true;
 		},
@@ -125,16 +164,21 @@ export default abstract class AbstractRepository<T extends object> {
 		await connection.delete(where);
 	}
 
-	async remove(where: FindOptionsWhere<T>, runner?: QueryRunner): Promise<void> {
+	async remove(where: FindOptionsWhere<T>, runner?: QueryRunner, cacheId?: string): Promise<void> {
 		const connection = runner ? runner.manager.getRepository(this.repository.target) : this.repository;
 
 		await connection.softDelete(where);
+
+		// ToDo: invalidate cache from typeorm
+		if (connection.manager.connection.queryResultCache) {
+			await connection.manager.connection.queryResultCache.remove([cacheId ?? this.repository.metadata.targetName]);
+		}
 	}
 
 	async count(where: FindOptionsWhere<T>, runner?: QueryRunner) {
 		const connection = runner ? runner.manager.getRepository(this.repository.target) : this.repository;
 
-		return await connection.count(where);
+		return await connection.count({ where });
 	}
 
 	async groupByCount(where: FindOptionsWhere<T>, groupBy: string, runner?: QueryRunner) {

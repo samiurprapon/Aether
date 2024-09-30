@@ -7,10 +7,15 @@ import { Enrollment } from './enrollment.entity';
 @Entity({ name: 'students' })
 export class Student extends AbstractEntity {
 	@Column({ type: 'varchar', length: 10, unique: true, nullable: true })
-	studentID: string;
+	studentId: string;
 
 	@Column({ unique: true })
-	uid: string;
+	userId: string;
+
+	constructor(props: Partial<Student>) {
+		super();
+		Object.assign(this, props);
+	}
 
 	@ManyToOne(() => User, user => user.student)
 	Users: User;
