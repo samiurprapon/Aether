@@ -20,7 +20,7 @@
 		"react-dom": "^18.2.0",
 		"react-intl": "^6.2.10",
 		"react-redux": "^8.0.5",
-		"react-router-dom": "^6.9.0",
+		"react-router-dom": "^6.26.2",
 		"redux": "^4.2.1",
 		"redux-persist": "^6.0.0",
 		"zod": "^3.21.4"
