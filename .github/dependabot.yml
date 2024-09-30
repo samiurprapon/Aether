@@ -4,10 +4,10 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
-updates:
 
+updates:
   - package-ecosystem: "npm"
-    directory: "/backend"
+    directory: "./backend"
     schedule:
       interval: "daily"
     versioning-strategy: "increase"
@@ -17,7 +17,7 @@ updates:
       prefix: "backend: "
 
   - package-ecosystem: "npm"
-    directory: "/frontend"
+    directory: "./frontend"
     schedule:
       interval: "daily"
     versioning-strategy: "increase"
@@ -27,7 +27,7 @@ updates:
       prefix: "frontend: "
 
   - package-ecosystem: "gradle"
-    directory: "/android"
+    directory: "./android"
     schedule:
       interval: "daily"
     versioning-strategy: "increase"
