@@ -14,7 +14,6 @@
 		"build": "tsc && tsc-alias",
 		"start": "cross-env NODE_ENV=production node dist/src/index.js",
 		"dev": "cross-env NODE_ENV=development nodemon",
-		"test": "cross-env NODE_ENV=test jest",
 		"coverage": "cross-env NODE_ENV=test jest --coverage",
 		"start:dev": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register ./src/index.ts --port",
 		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
