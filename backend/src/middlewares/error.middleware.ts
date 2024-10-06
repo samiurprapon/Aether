@@ -19,13 +19,16 @@ export const ErrorMiddleware = async (
 ) => {
 	try {
 		const status: number = (error as HttpException).status || 500;
-		const message: string = error.message || 'Something went wrong';
 
-		logger.error(`[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${message}`);
+		logger.error(`[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${error.message}`);
+
+		if (error instanceof HttpException) {
+			return error.message ? res.status(status).json({ message: error.message }) : res.sendStatus(status);
+		}
 
 		if (error instanceof CustomHttpException) {
 			return res.status(status).json({
-				message: message,
+				message: error.message || 'Something went wrong',
 				...(error.custom as object),
 			});
 		}

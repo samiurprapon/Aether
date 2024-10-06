@@ -1,11 +1,10 @@
-import { Column, Entity, OneToOne, OneToMany } from 'typeorm';
+import { Column, Entity, OneToOne, JoinColumn } from 'typeorm';
 import { AbstractEntity } from '@//providers/postgres/abstracts/abstract.entity';
 
 import Credential from './credential.entity';
 import { Teacher } from './teacher.entity';
 import { Role } from './role.entity';
 import { Student } from './student.entity';
-import { Reading } from './reading.entity';
 
 import { SEX } from '../enums/sex.enum';
 
@@ -38,7 +37,8 @@ export class User extends AbstractEntity {
 	}
 
 	@OneToOne(() => Credential, credentials => credentials.user)
-	Credentials: Credential;
+	@JoinColumn()
+	credential: Credential;
 
 	@OneToOne(() => Teacher, teacher => teacher.user)
 	teachers?: Teacher;
@@ -48,7 +48,4 @@ export class User extends AbstractEntity {
 
 	@OneToOne(() => Student, student => student.Users)
 	student?: Student;
-
-	@OneToMany(() => Reading, session => session.user)
-	sessions: Reading[];
 }

@@ -1,4 +1,4 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity, OneToOne } from 'typeorm';
 import bcrypt from 'bcrypt';
 
 import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
@@ -9,8 +9,7 @@ export class Credential extends AbstractEntity {
 	@Column({ select: false })
 	public password: string;
 
-	@OneToOne(() => User, user => user.Credentials)
-	@JoinColumn({ name: 'userId' })
+	@OneToOne(() => User, user => user.credential)
 	user?: User;
 
 	constructor(props: Partial<Credential>) {

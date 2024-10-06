@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 
 import { User } from './user.entity';
 import { AbstractEntity } from '../abstracts/abstract.entity';
@@ -23,5 +23,6 @@ export class Role extends AbstractEntity {
 	}
 
 	@OneToOne(() => User, user => user.role)
+	@JoinColumn()
 	user: User;
 }

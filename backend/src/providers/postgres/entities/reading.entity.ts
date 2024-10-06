@@ -1,8 +1,8 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
 
 import { AbstractEntity } from '../abstracts/abstract.entity';
-import { User } from './user.entity';
 import { Material } from './material.entity';
+import { Student } from './student.entity';
 
 // ReadingSessions Entity
 @Entity({ name: 'readings' })
@@ -17,7 +17,7 @@ export class Reading extends AbstractEntity {
 	duration: number;
 
 	@Column({ nullable: true })
-	userId: string;
+	studentId: string;
 
 	@Column({ nullable: true })
 	materialId: string;
@@ -27,8 +27,8 @@ export class Reading extends AbstractEntity {
 		Object.assign(this, props);
 	}
 
-	@ManyToOne(() => User, user => user.sessions)
-	user: User;
+	@ManyToOne(() => Student, user => user.sessions)
+	student: Student;
 
 	@ManyToOne(() => Material, materials => materials.sessions)
 	material: Material;
