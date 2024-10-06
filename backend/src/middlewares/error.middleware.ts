@@ -33,9 +33,11 @@ export const ErrorMiddleware = async (
 			});
 		}
 
-		return res.status(status).json({
-			message: message,
-		});
+		return res.status(status).json(
+			error.message ?? {
+				message: error.message,
+			},
+		);
 	} catch (error: unknown) {
 		console.error('Error middleware : ', error);
 
