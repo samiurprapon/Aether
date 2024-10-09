@@ -1,18 +1,16 @@
 import 'reflect-metadata';
 // import fs from 'fs';
-import dotenv from 'dotenv';
 import { DataSourceOptions } from 'typeorm';
-dotenv.config();
 
-import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT, REDIS_USER } from '@/providers/configs/redis.config';
+import { config } from '@/configs';
 
 const dataSourceConfig: DataSourceOptions = {
 	type: 'postgres',
-	host: process.env.POSTGRES_HOST || 'localhost',
-	port: parseInt(process.env.POSTGRES_PORT || '5432'),
-	username: process.env.POSTGRES_USER,
-	password: process.env.POSTGRES_PASSWORD,
-	database: process.env.POSTGRES_DB,
+	host: config.DB_HOST,
+	port: config.DB_PORT,
+	username: config.DB_USER,
+	password: config.DB_PASSWORD,
+	database: config.DB_NAME,
 	ssl: false,
 	schema: 'public',
 	migrationsRun: false,
@@ -32,13 +30,13 @@ const dataSourceConfig: DataSourceOptions = {
 	cache: {
 		type: 'ioredis',
 		options: {
-			host: REDIS_HOST,
-			port: REDIS_PORT,
-			username: REDIS_USER,
-			password: REDIS_PASSWORD,
-			maxRetriesPerRequest: 3,
-			tls: {
-				rejectUnauthorized: process.env.NODE_ENV === 'production',
+			host: config.REDIS_HOST,
+			port: config.REDIS_PORT,
+			username: config.REDIS_USER,
+			password: config.REDIS_PASSWORD,
+
+			redisOptions: {
+				maxRetriesPerRequest: 1,
 			},
 		},
 	},

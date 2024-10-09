@@ -1,7 +1,7 @@
-import { Cluster, Redis } from 'ioredis';
+import { Redis } from 'ioredis';
 
-import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT, REDIS_USER } from '@/providers/configs/redis.config';
-import IRedis from './interface/redis.interface';
+import { config } from '@/configs';
+import IRedis from '@/providers/redis/interface/redis.interface';
 
 export class RedisClient<T extends Redis> implements IRedis {
 	private static instance: RedisClient<Redis>;
@@ -15,14 +15,10 @@ export class RedisClient<T extends Redis> implements IRedis {
 		if (!this.instance) {
 			this.instance = new RedisClient<Redis>(
 				new Redis({
-					host: REDIS_HOST,
-					port: REDIS_PORT,
-					username: REDIS_USER,
-					password: REDIS_PASSWORD,
-					maxRetriesPerRequest: 3,
-					tls: {
-						rejectUnauthorized: process.env.NODE_ENV === 'production',
-					},
+					host: config.REDIS_HOST,
+					port: config.REDIS_PORT,
+					username: config.REDIS_USER,
+					password: config.REDIS_PASSWORD,
 				}),
 			);
 		}
@@ -107,7 +103,7 @@ export class RedisClient<T extends Redis> implements IRedis {
 		await this.redisInstance.quit();
 	}
 
-	duplicate(): Redis | Cluster {
+	duplicate(): Redis {
 		return this.redisInstance.duplicate();
 	}
 }

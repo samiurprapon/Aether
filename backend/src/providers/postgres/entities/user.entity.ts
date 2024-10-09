@@ -1,12 +1,12 @@
 import { Column, Entity, OneToOne, JoinColumn } from 'typeorm';
-import { AbstractEntity } from '@//providers/postgres/abstracts/abstract.entity';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
-import Credential from './credential.entity';
-import { Teacher } from './teacher.entity';
-import { Role } from './role.entity';
-import { Student } from './student.entity';
+import Credential from '@/providers/postgres/entities/credential.entity';
+import { Teacher } from '@/providers/postgres/entities/teacher.entity';
+import { Role } from '@/providers/postgres/entities/role.entity';
+import { Student } from '@/providers/postgres/entities/student.entity';
 
-import { SEX } from '../enums/sex.enum';
+import { SEX } from '@/providers/postgres/enums/sex.enum';
 
 @Entity({ name: 'users' })
 export class User extends AbstractEntity {

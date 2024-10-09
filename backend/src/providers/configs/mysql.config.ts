@@ -1,8 +1,7 @@
 import 'reflect-metadata';
 // import fs from 'fs';
 import { DataSourceOptions } from 'typeorm';
-
-import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT, REDIS_USER } from '@/providers/configs/redis.config';
+import { config } from '@/configs';
 
 // entities
 import { ServerLog } from '@/providers/mysql/entities/serverLog.entity';
@@ -13,24 +12,24 @@ import { CreateServerLog1717194809707 } from '@/providers/mysql/migrations/17171
 const dataSourceConfig: DataSourceOptions = {
 	type: 'mysql',
 	connectorPackage: 'mysql2',
-	host: process.env.MYSQL_HOST,
-	port: parseInt(process.env.MYSQL_PORT || '3306', 10),
-	username: process.env.MYSQL_USER,
-	password: process.env.MYSQL_PASSWORD,
-	database: process.env.MYSQL_DB,
+	host: config.LOGS_DB_HOST,
+	port: config.LOGS_DB_PORT,
+	username: config.LOGS_DB_USER,
+	password: config.LOGS_DB_PASSWORD,
+	database: config.LOGS_DB_NAME,
 	migrationsRun: false,
 	ssl: false,
 
 	cache: {
 		type: 'ioredis',
 		options: {
-			host: REDIS_HOST,
-			port: REDIS_PORT,
-			username: REDIS_USER,
-			password: REDIS_PASSWORD,
-			maxRetriesPerRequest: 3,
-			tls: {
-				rejectUnauthorized: process.env.NODE_ENV === 'production',
+			host: config.REDIS_HOST,
+			port: config.REDIS_PORT,
+			username: config.REDIS_USER,
+			password: config.REDIS_PASSWORD,
+
+			redisOptions: {
+				maxRetriesPerRequest: 1,
 			},
 		},
 	},

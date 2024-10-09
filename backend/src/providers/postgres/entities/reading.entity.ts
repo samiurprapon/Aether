@@ -1,8 +1,8 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
-import { AbstractEntity } from '../abstracts/abstract.entity';
-import { Material } from './material.entity';
-import { Student } from './student.entity';
+import { Material } from '@/providers/postgres/entities/material.entity';
+import { Student } from '@/providers/postgres/entities/student.entity';
 
 // ReadingSessions Entity
 @Entity({ name: 'readings' })
