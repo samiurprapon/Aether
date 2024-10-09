@@ -1,9 +1,9 @@
-import { Column, Entity, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
-import { User } from './user.entity';
-import { AbstractEntity } from '../abstracts/abstract.entity';
-import { USER_ROLE } from '../enums/userRole.enum';
-import { ROLE_LEVEL } from '../enums/level.enum';
+import { User } from '@/providers/postgres/entities/user.entity';
+import { USER_ROLE } from '@/providers/postgres/enums/userRole.enum';
+import { ROLE_LEVEL } from '@/providers/postgres/enums/level.enum';
 
 // Roles Entity
 @Entity({ name: 'roles' })
@@ -23,5 +23,6 @@ export class Role extends AbstractEntity {
 	}
 
 	@OneToOne(() => User, user => user.role)
+	@JoinColumn()
 	user: User;
 }

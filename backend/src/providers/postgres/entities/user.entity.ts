@@ -1,13 +1,13 @@
-import { Column, Entity, OneToOne, OneToMany } from 'typeorm';
-import { AbstractEntity } from '@//providers/postgres/abstracts/abstract.entity';
+import { Column, Entity, OneToOne, JoinColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
 
-import Credential from './credential.entity';
-import { Teacher } from './teacher.entity';
-import { Role } from './role.entity';
-import { Student } from './student.entity';
-import { Reading } from './reading.entity';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
-import { SEX } from '../enums/sex.enum';
+import Credential from '@/providers/postgres/entities/credential.entity';
+import { Teacher } from '@/providers/postgres/entities/teacher.entity';
+import { Role } from '@/providers/postgres/entities/role.entity';
+import { Student } from '@/providers/postgres/entities/student.entity';
+
+import { SEX } from '@/providers/postgres/enums/sex.enum';
 
 @Entity({ name: 'users' })
 export class User extends AbstractEntity {
@@ -38,7 +38,8 @@ export class User extends AbstractEntity {
 	}
 
 	@OneToOne(() => Credential, credentials => credentials.user)
-	Credentials: Credential;
+	@JoinColumn()
+	credential: Credential;
 
 	@OneToOne(() => Teacher, teacher => teacher.user)
 	teachers?: Teacher;
@@ -49,6 +50,11 @@ export class User extends AbstractEntity {
 	@OneToOne(() => Student, student => student.Users)
 	student?: Student;
 
-	@OneToMany(() => Reading, session => session.user)
-	sessions: Reading[];
+	@BeforeInsert()
+	@BeforeUpdate()
+	async emailToLowerCase() {
+		this.email = this.email.toLowerCase().trim();
+	}
 }
+
+export default User;

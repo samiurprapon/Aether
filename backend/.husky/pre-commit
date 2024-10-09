@@ -1,1 +1,4 @@
+cd backend 
+
+npm run build
 npx lint-staged

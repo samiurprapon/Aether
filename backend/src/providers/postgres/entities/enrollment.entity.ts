@@ -1,8 +1,8 @@
 import { Column, Entity, ManyToOne, Unique } from 'typeorm';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
-import { AbstractEntity } from '../abstracts/abstract.entity';
-import { Course } from './course.entity';
-import { Student } from './student.entity';
+import { Course } from '@/providers/postgres/entities/course.entity';
+import { Student } from '@/providers/postgres/entities/student.entity';
 
 // CourseEnrollments Entity
 @Entity({ name: 'enrollments' })

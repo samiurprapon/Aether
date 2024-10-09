@@ -1,10 +1,10 @@
 import { Column, Entity, OneToOne, OneToMany, ManyToOne, Unique } from 'typeorm';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
-import { AbstractEntity } from '@//providers/postgres/abstracts/abstract.entity';
-import { SEMESTER } from '../enums/semester.enum';
-import { Material } from './material.entity';
-import { Teacher } from './teacher.entity';
-import { Enrollment } from './enrollment.entity';
+import { SEMESTER } from '@/providers/postgres/enums/semester.enum';
+import { Material } from '@/providers/postgres/entities/material.entity';
+import { Teacher } from '@/providers/postgres/entities/teacher.entity';
+import { Enrollment } from '@/providers/postgres/entities/enrollment.entity';
 
 @Entity({ name: 'courses' })
 @Unique(['id', 'instructor'])

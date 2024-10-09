@@ -1,8 +1,8 @@
 import { Column, Entity, OneToOne, OneToMany } from 'typeorm';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
-import { AbstractEntity } from '../abstracts/abstract.entity';
-import { Course } from './course.entity';
-import { Reading } from './reading.entity';
+import { Course } from '@/providers/postgres/entities/course.entity';
+import { Reading } from '@/providers/postgres/entities/reading.entity';
 
 // CourseMaterials Entity
 @Entity({ name: 'materials' })
