@@ -28,3 +28,5 @@ export class Student extends AbstractEntity {
 	@OneToMany(() => Enrollment, enrollment => enrollment.student)
 	enrollments: Enrollment[];
 }
+
+export default Student;

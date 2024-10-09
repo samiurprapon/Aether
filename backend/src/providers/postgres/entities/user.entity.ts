@@ -1,4 +1,5 @@
-import { Column, Entity, OneToOne, JoinColumn } from 'typeorm';
+import { Column, Entity, OneToOne, JoinColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
+
 import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 
 import Credential from '@/providers/postgres/entities/credential.entity';
@@ -48,4 +49,12 @@ export class User extends AbstractEntity {
 
 	@OneToOne(() => Student, student => student.Users)
 	student?: Student;
+
+	@BeforeInsert()
+	@BeforeUpdate()
+	async emailToLowerCase() {
+		this.email = this.email.toLowerCase().trim();
+	}
 }
+
+export default User;
