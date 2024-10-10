@@ -1,8 +1,11 @@
-import React from 'react'
-
-const RightComponent = (props) => {
+interface RightComponentProps {
+    style?: React.CSSProperties;
+}
+  
+  const RightComponent:  React.FC<RightComponentProps> = ({ style }) => {
+    
     return (
-        <div style={props.style}>
+        <div style={style}>
             <div className="w-[90%] mx-auto flex items-center justify-between" >
 
                 <div className='bg-gray-100 flex gap-2 py-4 px-2 rounded-lg'>

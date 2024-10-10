@@ -1,10 +1,20 @@
 import { Box, Button, Typography } from '@mui/material';
-import React from 'react'
 import CourseCard from '../CourseCard';
 
-const MiddleComponent = (props) => {
+interface CoursesItem {
+    title: string;
+    instructor: string;
+    progress: number;
+    time: string;
+}
 
-    const courses = [
+interface MiddleComponentProps {
+    style?: React.CSSProperties;
+}
+
+const MiddleComponent: React.FC<MiddleComponentProps> = ({ style }) => {
+
+    const courses: CoursesItem[] = [
         {
             title: 'Bioorganic Chemistry I',
             instructor: 'Walter White',
@@ -46,7 +56,7 @@ const MiddleComponent = (props) => {
     };
 
     return (
-        <div style={props.style}>
+        <div style={style}>
 
             <div className='w-[90%]  max-h-[150px] overflow-visible mx-auto rounded-lg bg-gray-100'>
                 <div className="pl-[50px] overflow-visible mx-auto h-full flex  gap-[50px]   ">
@@ -194,4 +204,4 @@ const MiddleComponent = (props) => {
     )
 }
 
-export default MiddleComponent
+export default MiddleComponent;

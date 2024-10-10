@@ -5,9 +5,7 @@ import MiddleComponent from '../components/layouts/MiddleComponent';
 
 import '../styles/globals.css';
 
-interface ComponentProps {
-  style?: React.CSSProperties;
-}
+
 
 const Dashboard: React.FC = () => {
 	 

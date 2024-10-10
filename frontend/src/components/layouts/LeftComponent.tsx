@@ -1,17 +1,17 @@
-import React from 'react'
-import { TbDeviceAnalytics } from "react-icons/tb";
-import { BsJournalBookmark } from "react-icons/bs";
-import { FaRegHeart } from "react-icons/fa6";
-import { MdNoteAlt } from "react-icons/md";
-import { PiMedal } from "react-icons/pi";
-import { GiMedallist } from "react-icons/gi";
-import { IoSettingsOutline } from "react-icons/io5";
-import { IoLogOutOutline } from "react-icons/io5";
-
 import { NavLink } from 'react-router-dom';
+interface NavLinkItem {
+    title: string;
+    link: string;
+    icon: React.ReactNode;
+  }
 
-const LeftComponent = (props: any) => {
-    const Navlinks = [
+interface LeftComponentProps {
+    style?: React.CSSProperties;
+}
+  
+  const LeftComponent:  React.FC<LeftComponentProps> = ({ style }) => {
+    const Navlinks: NavLinkItem[] = [
+      
         {
             title: "Home",
             link: "/dashboard",
@@ -87,13 +87,13 @@ const LeftComponent = (props: any) => {
             </svg>
 
         },
-
+    
     ]
 
 
 
     return (
-        <div style={props.style} className='border-r-2 border-gray-300' >
+        <div style={style} className='border-r-2 border-gray-300' >
             <div className=" flex w-full text-center  justify-center items-baseline">
                 <h1 className=' text-5xl font-bold'>aether</h1>
                 <span className='color-ece text-5xl'>.</span>
@@ -137,4 +137,4 @@ const LeftComponent = (props: any) => {
     )
 }
 
-export default LeftComponent
+export default LeftComponent;
