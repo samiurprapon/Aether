@@ -7,7 +7,7 @@ import GuestGuard from '../utils/guards/GuestGuard';
 
 const Landing = Loadable(lazy(() => import('../pages/landng')));
 const Dashboard = Loadable(lazy(() => import('../pages/dashboard')));
-
+const AuthPage = Loadable(lazy(()=>import("../pages/AuthPage")))
 const PublicRoutes = {
 	path: '/',
 	element: (
@@ -26,6 +26,10 @@ const PublicRoutes = {
 			path: '/Dashboard',
 			element: <Dashboard />
 		},
+		{
+			path:'/auth',
+			element:<AuthPage/>
+		}
 	],
 };
 
