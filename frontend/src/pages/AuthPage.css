@@ -136,4 +136,26 @@ body {
   .dark .auth-options a:hover {
     color: #bbb;
   }
+  /*responsiveness*/
+  @media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column-reverse; 
+
+    }
+
+    .auth-left, .auth-right {
+        width: 100%; 
+        padding: 10px; 
+    }
+
   
+
+    .auth-form {
+        margin-top: 20px; 
+    }
+
+    .auth-right img {
+        margin-bottom: 20px; 
+        max-width: 80%;
+    }
+}
