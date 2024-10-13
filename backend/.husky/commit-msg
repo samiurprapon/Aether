@@ -1,1 +1,5 @@
-npx --no -- commitlint --edit $1
+if git diff --cached --name-only | grep -q "^(backend|frontend)/"; then
+    npx --no -- commitlint --edit $1 --yes
+else
+    echo "Skipping commitlint for non-frontend/backend files"
+fi
