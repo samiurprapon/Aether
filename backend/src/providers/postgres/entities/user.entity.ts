@@ -14,16 +14,16 @@ export class User extends AbstractEntity {
 	@Column({ unique: true })
 	email: string;
 
-	@Column()
+	@Column({ nullable: true })
 	name: string;
 
-	@Column({ type: 'varchar', length: 11, unique: true, nullable: false })
+	@Column({ type: 'varchar', length: 11, unique: true, nullable: true })
 	phone: string;
 
 	@Column({ type: 'enum', enum: SEX, default: SEX.MALE })
 	sex: SEX;
 
-	@Column({ type: 'varchar' })
+	@Column({ type: 'varchar', nullable: true })
 	school?: string;
 
 	@Column({ default: false })

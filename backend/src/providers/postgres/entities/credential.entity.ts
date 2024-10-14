@@ -1,5 +1,5 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, OneToOne } from 'typeorm';
-import { compareSync, hashSync } from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
 import { User } from '@/providers/postgres/entities/user.entity';
@@ -20,11 +20,11 @@ export class Credential extends AbstractEntity {
 	@BeforeInsert()
 	@BeforeUpdate()
 	encryptPassword() {
-		this.password = hashSync(this.password, 10);
+		this.password = bcrypt.hashSync(this.password, 10);
 	}
 
 	public comparePassword(hash: string): boolean {
-		return compareSync(hash, this.password);
+		return bcrypt.compareSync(hash, this.password);
 	}
 }
 

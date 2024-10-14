@@ -47,7 +47,7 @@ export class AuthController {
 		const { email, password, type }: UserRegisterDto = req.body;
 
 		try {
-			if (!['STUDENT', 'TEACHER', 'AUTHORITY', 'ADMIN'].includes(type)) {
+			if (!['STUDENT', 'TEACHER', 'AUTHORITY'].includes(type)) {
 				throw new HttpException(StatusCodes.NOT_IMPLEMENTED);
 			}
 

@@ -41,9 +41,20 @@ export class AuthService {
 	}
 
 	async login({ email, password }: UserLoginDto) {
-		const user = await this.userRepository.findOne({ email: email.toLowerCase() }, undefined, {
-			credential: true,
-		});
+		const user = await this.userRepository.findOne(
+			{ email: email.toLowerCase() },
+			{
+				id: true,
+				isBan: true,
+				credential: {
+					password: true,
+				},
+				credentialId: true,
+			},
+			{
+				credential: true,
+			},
+		);
 
 		if (!user) {
 			throw new HttpException(StatusCodes.BAD_REQUEST);
@@ -99,14 +110,14 @@ export class AuthService {
 				runner,
 			);
 
-			if (type === 'student') {
+			if (type === 'STUDENT') {
 				await this.studentRepository.create(
 					{
 						userId: user.id,
 					},
 					runner,
 				);
-			} else if (type === 'teacher') {
+			} else if (type === 'TEACHER') {
 				await this.teacherRepository.create(
 					{
 						userId: user.id,
