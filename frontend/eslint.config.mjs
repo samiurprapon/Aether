@@ -1,48 +1,24 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
+
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
-import importPlugin from 'eslint-plugin-import';
 
 export default tseslint.config({
 	files: ['src/**/*.ts'],
+	// ignores: ['dist/*', 'dist/*', 'node_modules', 'play/*', 'play/**/*'],
 	extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
 	languageOptions: {
 		parser: tseslint.parser,
 		parserOptions: {
-			project: './tsconfig.json', // Point to the tsconfig file for path resolution
-			ecmaVersion: 2020,
-			sourceType: 'module',
+			project: true,
 		},
-	},
-	settings: {
-		'import/resolver': {
-			node: {
-				extensions: ['.js', '.ts'],
-			},
-			typescript: {
-				project: './tsconfig.json',
-			},
-		},
+		ecmaVersion: 2020,
+		sourceType: 'module',
 	},
 	plugins: {
 		'@typescript-eslint': tseslint.plugin,
-		import: importPlugin,
 	},
 	rules: {
-		'import/default': 'off',
-		'import/no-duplicates': ['error'],
-		'import/no-named-as-default-member': 'off',
-		'import/no-unresolved': 'error',
-		'import/order': [
-			'error',
-			{
-				groups: [
-					['builtin', 'external'],
-					['internal', 'index', 'sibling', 'parent', 'object'],
-				],
-				'newlines-between': 'always-and-inside-groups',
-			},
-		],
 		'spaced-comment': 'warn',
 		'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
 		'no-duplicate-imports': 'off',
@@ -58,8 +34,14 @@ export default tseslint.config({
 		'@typescript-eslint/await-thenable': 'error',
 		'@typescript-eslint/require-await': 'error',
 		'@typescript-eslint/no-unnecessary-condition': 'warn',
-		'@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: 'req|res|next|err' }],
-		'@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+		'@typescript-eslint/no-unused-vars': [
+			'warn',
+			{ argsIgnorePattern: 'req|res|next|err' },
+		],
+		'@typescript-eslint/consistent-type-imports': [
+			'error',
+			{ prefer: 'type-imports' },
+		],
 		'@typescript-eslint/no-floating-promises': 'error',
 		'@typescript-eslint/semi': ['warn'],
 		'@typescript-eslint/member-delimiter-style': [
@@ -76,6 +58,21 @@ export default tseslint.config({
 			},
 		],
 	},
-	...importPlugin.flatConfigs.recommended,
 	...prettierRecommended,
 });
+
+// Those rules were previously in the config but because of the upgrade to ESLint 9, they are no longer supported
+// Add them back when eslint-plugin-import will be support ESLint 9
+// "import/default": "off",
+// "import/no-duplicates": ["error"],
+// "import/no-named-as-default-member": "off",
+// "import/order": [
+//   "error",
+//   {
+//     "groups": [
+//       ["builtin", "external"],
+//       ["internal", "index", "sibling", "parent", "object"]
+//     ],
+//     "newlines-between": "always-and-inside-groups"
+//   }
+// ]

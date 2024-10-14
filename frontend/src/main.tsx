@@ -21,5 +21,5 @@ root.render(
 				</BrowserRouter>
 			</ConfigProvider>
 		</PersistGate>
-	</Provider>
+	</Provider>,
 );

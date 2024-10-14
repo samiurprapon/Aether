@@ -1,8 +1,8 @@
 import { Column, Entity, OneToMany, ManyToOne } from 'typeorm';
 
-import { AbstractEntity } from '../abstracts/abstract.entity';
-import { User } from './user.entity';
-import { Course } from './course.entity';
+import { AbstractEntity } from '@/providers/postgres/abstracts/abstract.entity';
+import { User } from '@/providers/postgres/entities/user.entity';
+import { Course } from '@/providers/postgres/entities/course.entity';
 
 // Teachers Entity
 @Entity({ name: 'teachers' })
@@ -24,3 +24,5 @@ export class Teacher extends AbstractEntity {
 	@OneToMany(() => Course, course => course.instructor)
 	courses: Course[];
 }
+
+export default Teacher;
