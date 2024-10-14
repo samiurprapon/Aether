@@ -94,7 +94,6 @@ export class RedisClient<T extends Redis> implements IRedis {
 		}
 	}
 
-	// Inherited Methods from ioRedis directly
 	async flushdb(): Promise<void> {
 		await this.redisInstance.flushdb();
 	}

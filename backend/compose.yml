@@ -1,21 +1,4 @@
 services:
-  backend:
-    container_name: aether-app
-    build:
-      context: ./
-    ports:
-      - '${APP_PORT}:3030'
-    volumes:
-      - ./:/app
-      - /app/node_modules
-    restart: always
-    networks:
-      - aether-backend
-    depends_on:
-      - postgres
-      - mysql
-      - redis
-
   postgres:
     image: postgres:16
     container_name: aether-postgres
@@ -38,7 +21,7 @@ services:
 
   redis:
     image: redis:7.2
-    container_name: linkage-redis
+    container_name: aether-redis
     volumes:
       - redis-data:/data
     ports:

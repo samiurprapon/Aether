@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 // import fs from 'fs';
 import { DataSourceOptions } from 'typeorm';
+import { BaseDataSourceOptions } from 'typeorm/data-source/BaseDataSourceOptions';
 
 import { config } from '@/configs';
 
@@ -27,19 +28,7 @@ const dataSourceConfig: DataSourceOptions = {
 		console.error('Postgres Pool error: ', (err as Error).message);
 	},
 
-	cache: {
-		type: 'ioredis',
-		options: {
-			host: config.REDIS_HOST,
-			port: config.REDIS_PORT,
-			username: config.REDIS_USER,
-			password: config.REDIS_PASSWORD,
-
-			redisOptions: {
-				maxRetriesPerRequest: 1,
-			},
-		},
-	},
+	cache: getCache(config.NODE_ENV),
 
 	// },
 	synchronize: false,
@@ -47,5 +36,19 @@ const dataSourceConfig: DataSourceOptions = {
 	entities: ['./src/providers/postgres/entities/*.entity.{ts,js}'],
 	migrations: ['./src/providers/postgres/migrations/*.{ts,js}'],
 };
+
+function getCache(env: string): BaseDataSourceOptions['cache'] {
+	if (env === 'development') {
+		return {
+			type: 'ioredis',
+			options: {
+				host: config.REDIS_HOST,
+				port: config.REDIS_PORT,
+			},
+		};
+	} else {
+		return false;
+	}
+}
 
 export default dataSourceConfig;

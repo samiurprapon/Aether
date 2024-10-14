@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 // import fs from 'fs';
 import { DataSourceOptions } from 'typeorm';
+import { BaseDataSourceOptions } from 'typeorm/data-source/BaseDataSourceOptions';
 import { config } from '@/configs';
 
 // entities
@@ -20,23 +21,26 @@ const dataSourceConfig: DataSourceOptions = {
 	migrationsRun: false,
 	ssl: false,
 
-	cache: {
-		type: 'ioredis',
-		options: {
-			host: config.REDIS_HOST,
-			port: config.REDIS_PORT,
-			username: config.REDIS_USER,
-			password: config.REDIS_PASSWORD,
+	cache: getCache(config.NODE_ENV),
 
-			redisOptions: {
-				maxRetriesPerRequest: 1,
-			},
-		},
-	},
 	synchronize: false,
 	logging: ['error', 'warn'],
 	entities: [ServerLog],
 	migrations: [CreateServerLog1717194809707],
 };
+
+function getCache(env: string): BaseDataSourceOptions['cache'] {
+	if (env === 'development') {
+		return {
+			type: 'ioredis',
+			options: {
+				host: config.REDIS_HOST,
+				port: config.REDIS_PORT,
+			},
+		};
+	} else {
+		return false;
+	}
+}
 
 export default dataSourceConfig;
