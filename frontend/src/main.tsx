@@ -7,6 +7,8 @@ import App from './App';
 import { store, persister } from './store';
 import { ConfigProvider } from './contexts/ConfigContext';
 
+import './styles/globals.css';
+
 const container: any = document.getElementById('root');
 const root = createRoot(container);
 
@@ -19,5 +21,5 @@ root.render(
 				</BrowserRouter>
 			</ConfigProvider>
 		</PersistGate>
-	</Provider>
+	</Provider>,
 );
