@@ -1,24 +1,4 @@
-version: '3.9'
-
 services:
-  backend:
-    container_name: aether-app
-    build:
-      context: ./
-    ports:
-      - '${APP_PORT}:3030'
-      - '5555:5555'
-    volumes:
-      - ./:/app
-      - /app/node_modules
-    restart: always
-    networks:
-      - aether-backend
-    depends_on:
-      - postgres
-      - mysql
-      - redis
-
   postgres:
     image: postgres:16
     container_name: aether-postgres
@@ -34,14 +14,14 @@ services:
     networks:
       - aether-backend
     healthcheck:
-      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${DB_USER} -d ${DB_NAME}'"]
+      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
       interval: 10s
       timeout: 3s
       retries: 3
 
   redis:
     image: redis:7.2
-    container_name: linkage-redis
+    container_name: aether-redis
     volumes:
       - redis-data:/data
     ports:

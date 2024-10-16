@@ -1,18 +1,17 @@
 import 'reflect-metadata';
 // import fs from 'fs';
-import dotenv from 'dotenv';
 import { DataSourceOptions } from 'typeorm';
-dotenv.config();
+import { BaseDataSourceOptions } from 'typeorm/data-source/BaseDataSourceOptions';
 
-import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT, REDIS_USER } from '@/providers/configs/redis.config';
+import { config } from '@/configs';
 
 const dataSourceConfig: DataSourceOptions = {
 	type: 'postgres',
-	host: process.env.POSTGRES_HOST || 'localhost',
-	port: parseInt(process.env.POSTGRES_PORT || '5432'),
-	username: process.env.POSTGRES_USER,
-	password: process.env.POSTGRES_PASSWORD,
-	database: process.env.POSTGRES_DB,
+	host: config.DB_HOST,
+	port: config.DB_PORT,
+	username: config.DB_USER,
+	password: config.DB_PASSWORD,
+	database: config.DB_NAME,
 	ssl: false,
 	schema: 'public',
 	migrationsRun: false,
@@ -29,19 +28,7 @@ const dataSourceConfig: DataSourceOptions = {
 		console.error('Postgres Pool error: ', (err as Error).message);
 	},
 
-	cache: {
-		type: 'ioredis',
-		options: {
-			host: REDIS_HOST,
-			port: REDIS_PORT,
-			username: REDIS_USER,
-			password: REDIS_PASSWORD,
-			maxRetriesPerRequest: 3,
-			tls: {
-				rejectUnauthorized: process.env.NODE_ENV === 'production',
-			},
-		},
-	},
+	cache: getCache(config.NODE_ENV),
 
 	// },
 	synchronize: false,
@@ -49,5 +36,19 @@ const dataSourceConfig: DataSourceOptions = {
 	entities: ['./src/providers/postgres/entities/*.entity.{ts,js}'],
 	migrations: ['./src/providers/postgres/migrations/*.{ts,js}'],
 };
+
+function getCache(env: string): BaseDataSourceOptions['cache'] {
+	if (env === 'development') {
+		return {
+			type: 'ioredis',
+			options: {
+				host: config.REDIS_HOST,
+				port: config.REDIS_PORT,
+			},
+		};
+	} else {
+		return false;
+	}
+}
 
 export default dataSourceConfig;

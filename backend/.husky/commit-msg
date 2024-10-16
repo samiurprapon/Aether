@@ -1,1 +1,24 @@
-npx --no -- commitlint --edit $1
+# Function to run commitlint in a specified directory
+run_commitlint() {
+  local dir=$1
+  echo "Running commitlint in $dir directory..."
+  (
+    cd "$dir" || exit 1
+    npx --no-install commitlint --edit "$2"
+  )
+}
+
+# Check if there are staged files in backend or frontend directories
+if git diff --cached --name-only | grep -qE "^(backend|frontend)/"; then
+  # If there are changes in backend, run commitlint from backend directory
+  if git diff --cached --name-only | grep -q "^backend/"; then
+    run_commitlint "backend" "$1"
+  fi
+  
+  # If there are changes in frontend, run commitlint from frontend directory
+  if git diff --cached --name-only | grep -q "^frontend/"; then
+    run_commitlint "frontend" "$1"
+  fi
+else
+  echo "Skipping commitlint as no changes are detected in backend or frontend."
+fi
