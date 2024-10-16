@@ -1,15 +1,16 @@
-import Locales from './components/Locales';
-import Routes from './routes';
-import './index.css'
-import MainContent from './components/MainComponent';
-import Header from './components/Header';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import MainContent from "./components/MainComponent";
 
+const App: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
-const App = () => (
-	<>
-		<Header />
-		<MainContent />
-	</>
-);
+  return (
+    <div className={isDarkMode ? 'dark' : ''}>
+      <Header isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode((prev) => !prev)} />
+      <MainContent isDarkMode={isDarkMode} />
+    </div>
+  );
+};
 
 export default App;
