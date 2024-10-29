@@ -14,6 +14,7 @@
 		"@commitlint/config-conventional": "^19.5.0",
 		"@emotion/react": "^11.13.3",
 		"@emotion/styled": "^11.13.0",
+		"@heroicons/react": "^2.1.5",
 		"@mui/icons-material": "^6.1.5",
 		"@mui/material": "^6.1.5",
 		"@reduxjs/toolkit": "^2.3.0",
