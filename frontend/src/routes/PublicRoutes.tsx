@@ -23,12 +23,12 @@ const PublicRoutes = {
 			element: <Landing />,
 		},
 		{
-			path: '/Dashboard',
-			element: <Dashboard />,
-		},
-		{
 			path: '/auth',
 			element: <AuthPage />,
+		},
+		{
+			path: '/dashboard',
+			element: <Dashboard />,
 		},
 	],
 };
