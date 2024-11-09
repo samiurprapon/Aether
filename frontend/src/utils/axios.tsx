@@ -5,7 +5,7 @@ const services = axios.create({
 	timeout: 10000,
 });
 
-services.interceptors.request.use((config) => {
+services.interceptors.request.use(config => {
 	const token = localStorage.getItem('token');
 	if (token) {
 		if (config.headers) {

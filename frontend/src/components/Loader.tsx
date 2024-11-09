@@ -1,28 +1,28 @@
 const LoaderContainer = {
-	position: 'absolute' as 'absolute',
+	position: 'absolute',
 	top: 0,
 	left: 0,
 	width: '100%',
 	zIndex: 5000,
-};
+} as const;
 
 const LinearProgress = {
 	width: '100%',
 	height: '4px',
 	backgroundColor: '#e0e0e0',
-	position: 'relative' as 'relative',
-	overflow: 'hidden' as 'hidden',
-};
+	position: 'relative',
+	overflow: 'hidden',
+} as const;
 
 const ProgressBar = {
 	width: '50%',
 	height: '100%',
 	backgroundColor: '#3f51b5',
-	position: 'absolute' as 'absolute',
+	position: 'absolute',
 	left: 0,
 	top: 0,
 	animation: 'progress 2s infinite',
-};
+} as const;
 
 const keyframes = `
 @keyframes progress {

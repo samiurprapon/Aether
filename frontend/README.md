@@ -1,6 +1,7 @@
-# Aether - Web client 
+# Aether - Web client
 
-# Table of Contents
+## Table of Contents
+
 - Choose Javascript runtime
   <!-- - [install Bun.js](#install-bunjs) -->
   - [Using Node.js](#using-nodejs)
@@ -22,35 +23,34 @@ For more information on Bun.js, please visit the [Bun.js](https://bun.sh) websit
   bun run dev
 ``` -->
 
-# install-nodejs enviroment
+## install-nodejs enviroment
 
-## install node version manager
 ```bash
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 ```
+
 For more information on nvm, please visit the [nvm](https://github.com/nvm-sh/nvm)
 
-## install nodejs
+### install nodejs
+
 ```bash
   nvm install --lts
 ```
 
-## install yarn
+### Install dependencies
+
 ```bash
-  npm install -g yarn
+  npm ci
 ```
 
-## Install dependencies
-```bash
-  yarn
-```
+### Run the app
 
-## Run the app
 ```bash
-  yarn run dev
+  npm run dev
 ```
 
 ## Down the Road
+
 - `JWT` token based authentication
 - Student & Teacher different Dashboard
 - Teacher can create multiple courses
@@ -60,19 +60,22 @@ For more information on nvm, please visit the [nvm](https://github.com/nvm-sh/nv
 - Based on data system will suggest teacher for maiking changes in materials
 - `System will inform teacher which topic student couldn't understand` by using `eye tracing` data
 - Student can drop course/s.
-- Teacher can archive course after a certain time. 
+- Teacher can archive course after a certain time.
 
 ## Roadmap
+
 - Assignment delivery system.
 - Exam proctoring.
 - Appoinment system.
 - Assignments and Exam Reminder.
-- Video conferencing system 
+- Video conferencing system
 
 ## Policy
+
 - Camera permission will use only at material reading time.
 - No IMAGEs or CLIPs will be stored in any formats inside user's machine or outside any server while student reading course materials.
 - Only reading time and eye positioning data will be stored at server.
 
 ## Demo
+
  <img height=600 src="../assets/demo_student.gif"/>

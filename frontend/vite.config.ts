@@ -15,10 +15,12 @@ function loadEnv({ mode }: { mode?: string }) {
 
 // Function to validate environment variables
 function validateEnvVars() {
-	const missingVars = REQUIRED_ENV_VARS.filter(key => !process.env[key]);
+	if (REQUIRED_ENV_VARS.length > 0) {
+		const missingVars = REQUIRED_ENV_VARS.filter(key => !process.env[key]);
 
-	if (missingVars.length > 0) {
-		throw new Error(`Missing environment variables: ${missingVars.join(', ')}`);
+		if (missingVars.length > 0) {
+			throw new Error(`Missing environment variables: ${missingVars.join(', ')}`);
+		}
 	}
 }
 

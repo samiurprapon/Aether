@@ -1,30 +1,35 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import axios from '../../../utils/axios';
+import axios from '~/utils/axios';
 
 const init = {
 	isAuthenticated: false,
 };
 
-export const login = createAsyncThunk('auth/login', async (payload: any) => {
+interface LoginPayload {
+	email: string;
+	password: string;
+}
+
+export const login = createAsyncThunk('auth/login', async (payload: LoginPayload) => {
 	return await axios
 		.post('/login', payload)
-		.then((response) => response.data)
-		.catch((error) => error.response.data);
+		.then(response => response.data)
+		.catch(error => error.response.data);
 });
 
 export const authSlice = createSlice({
 	name: 'auth',
 	initialState: init,
 	reducers: {
-		changeAuthState: (state) => {
+		changeAuthState: state => {
 			state.isAuthenticated = !state.isAuthenticated;
 		},
-		getAuthState: (state) => {
+		getAuthState: state => {
 			state.isAuthenticated = !!localStorage.getItem('token');
 		},
 	},
-	extraReducers: (builder) => {
+	extraReducers: builder => {
 		builder.addCase(login.fulfilled, (state, action) => {
 			if (action.payload.token) {
 				localStorage.setItem('token', action.payload.token);
