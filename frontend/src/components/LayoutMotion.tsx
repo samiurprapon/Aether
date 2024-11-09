@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
-const LayoutMotion = ({ children }) => {
+const LayoutMotion = ({ children }: { children: ReactNode }) => {
 	const motionVariants = {
 		initial: {
 			opacity: 0,
@@ -23,7 +24,7 @@ const LayoutMotion = ({ children }) => {
 	};
 
 	return (
-		<motion.div initial='initial' animate='in' exit='out' variants={motionVariants} transition={motionTransition}>
+		<motion.div initial="initial" animate="in" exit="out" variants={motionVariants} transition={motionTransition}>
 			{children}
 		</motion.div>
 	);

@@ -1,4 +1,3 @@
-import { Box, Button, Typography } from '@mui/material';
 import CourseCard from '../CourseCard';
 
 interface CoursesItem {
@@ -201,8 +200,8 @@ const MiddleComponent: React.FC<MiddleComponentProps> = ({ style }) => {
 							progress: 83,
 							time: '01:30 PM',
 						},
-					].map(({ title, instructor, time }, index) => (
-						<Box className="flex justify-between items-center p-[16px] my-[16px] py-2 bg-gray-100 rounded-lg">
+					].map(({ title, instructor }) => (
+						<div className="flex justify-between items-center p-[16px] my-[16px] py-2 bg-gray-100 rounded-lg">
 							<div className="img bg-white w-[50px] h-[50px] flex justify-center items-center rounded-lg ">
 								<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path
@@ -249,10 +248,8 @@ const MiddleComponent: React.FC<MiddleComponentProps> = ({ style }) => {
 							</div>
 
 							<div>
-								<Typography variant="h6">{title}</Typography>
-								<Typography variant="body2" color="text.secondary">
-									by {instructor}
-								</Typography>
+								<h6>{title}</h6>
+								<p color="text.secondary">by {instructor}</p>
 							</div>
 
 							<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -274,10 +271,10 @@ const MiddleComponent: React.FC<MiddleComponentProps> = ({ style }) => {
 								/>
 							</svg>
 
-							<Button variant="contained" color="inherit" sx={{ backgroundColor: 'black', color: 'white', borderRadius: '0.5rem' }}>
+							<button color="inherit" style={{ backgroundColor: 'black', color: 'white', borderRadius: '0.5rem' }}>
 								Continue
-							</Button>
-						</Box>
+							</button>
+						</div>
 					))}
 				</div>
 
@@ -309,13 +306,9 @@ const MiddleComponent: React.FC<MiddleComponentProps> = ({ style }) => {
 			</div>
 
 			<div className="w-[90%] mx-auto mt-10">
-				<Typography variant="h4" gutterBottom>
-					Courses
-				</Typography>
+				<h4>Courses</h4>
 
-				<Typography variant="h5" gutterBottom>
-					Ongoing
-				</Typography>
+				<h5>Ongoing</h5>
 
 				{courses.map((course, index) => (
 					<CourseCard

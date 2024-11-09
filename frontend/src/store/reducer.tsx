@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import authSlice from './slices/auth';
+import authSlice from '~/store/slices/auth';
 
 const reducer = combineReducers({
 	auth: persistReducer(
@@ -10,7 +10,7 @@ const reducer = combineReducers({
 			key: 'aether',
 			storage,
 		},
-		authSlice
+		authSlice,
 	),
 });
 

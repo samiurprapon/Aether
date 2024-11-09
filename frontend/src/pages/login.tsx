@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaBars, FaHome, FaMoon, FaSun } from 'react-icons/fa'; // Importing the hamburger and moon/sun icons
-import './AuthPage.css';
-import eyeImage from '../../../assets/eye-image.jpg';
+
+import eyeImage from '~/assets/images/left-image.png';
 
 const AuthPage: React.FC = () => {
 	const [isDarkMode, setIsDarkMode] = useState(false);

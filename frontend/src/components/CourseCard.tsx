@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box, Button, Typography, LinearProgress } from '@mui/material';
 
 interface CourseCardProps {
 	title: string;
@@ -10,9 +9,9 @@ interface CourseCardProps {
 	onViewCourse: () => void;
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ title, instructor, progress, time, onContinue, onViewCourse }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ title, instructor, time, onViewCourse }) => {
 	return (
-		<Box className="flex justify-between items-center p-[16px] my-[16px] py-2 bg-gray-100 rounded-lg">
+		<div className="flex justify-between items-center p-[16px] my-[16px] py-2 bg-gray-100 rounded-lg">
 			<div className="img bg-white w-[50px] h-[50px] flex justify-center items-center rounded-lg ">
 				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
@@ -58,25 +57,16 @@ const CourseCard: React.FC<CourseCardProps> = ({ title, instructor, progress, ti
 				</svg>
 			</div>
 			<div>
-				<Typography variant="h6">{title}</Typography>
-				<Typography variant="body2" color="text.secondary">
-					by {instructor}
-				</Typography>
+				<h6>{title}</h6>
+				<p color="text.secondary">by {instructor}</p>
 			</div>
 
-			<Typography variant="body2" color="text.secondary">
-				{time}
-			</Typography>
+			<p color="text.secondary">{time}</p>
 
-			<Button
-				variant="contained"
-				onClick={onViewCourse}
-				color="inherit"
-				style={{ backgroundColor: '#F37172', color: 'white' }}
-				className="rounded-lg ">
+			<button onClick={onViewCourse} color="inherit" style={{ backgroundColor: '#F37172', color: 'white' }} className="rounded-lg ">
 				View Course
-			</Button>
-		</Box>
+			</button>
+		</div>
 	);
 };
 

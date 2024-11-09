@@ -1,5 +1,5 @@
-import Locales from './components/Locales';
-import Routes from './routes';
+import Locales from '~/components/Locales';
+import Routes from '~/routes';
 
 const App = () => (
 	<Locales>
