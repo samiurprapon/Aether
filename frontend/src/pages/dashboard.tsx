@@ -1,9 +1,8 @@
 import React from 'react';
-import RightComponent from '../components/layouts/RightComponent';
-import LeftComponent from '../components/layouts/LeftComponent';
-import MiddleComponent from '../components/layouts/MiddleComponent';
 
-import '../styles/globals.css';
+import RightComponent from '~/components/layouts/RightComponent';
+import LeftComponent from '~/components/layouts/LeftComponent';
+import MiddleComponent from '~/components/layouts/MiddleComponent';
 
 const Dashboard: React.FC = () => {
 	return (

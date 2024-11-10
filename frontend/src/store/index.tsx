@@ -3,11 +3,11 @@ import { useDispatch as useAppDispatch, useSelector as useAppSelector } from 're
 
 import { persistStore } from 'redux-persist';
 
-import rootReducer from './reducer';
+import rootReducer from '~/store/reducer';
 
 const store = configureStore({
 	reducer: rootReducer,
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false, immutableCheck: false }),
+	middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false, immutableCheck: false }),
 });
 
 const persister = persistStore(store);

@@ -1,8 +1,10 @@
 // import { useNavigate } from 'react-router-dom';
 
-import useAuth from '../../hooks/useAuth';
+// import useAuth from '~/hooks/useAuth';
 
-const GuestGuard = ({ children }) => {
+import { ReactNode } from 'react';
+
+const GuestGuard = ({ children }: { children: ReactNode }) => {
 	// const { isLoggedIn, role } = useAuth();
 
 	return children;
