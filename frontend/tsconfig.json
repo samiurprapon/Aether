@@ -2,9 +2,14 @@
 	"compilerOptions": {
 		"target": "ES2020",
 		"useDefineForClassFields": true,
-		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"lib": [
+			"ES2020",
+			"DOM",
+			"DOM.Iterable"
+		],
 		"module": "ESNext",
 		"skipLibCheck": true,
+		"incremental": false,
 		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
@@ -20,8 +25,14 @@
 		/* path aliases */
 		"baseUrl": "./",
 		"paths": {
-			"~/*": ["src/*"]
+			"~/*": [
+				"src/*"
+			]
 		}
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.mdx"]
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.mdx"
+	]
 }
