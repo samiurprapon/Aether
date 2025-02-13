@@ -6,29 +6,39 @@
 version: 2
 
 updates:
-  - package-ecosystem: "npm"
-    directory: "./backend"
+  # API app dependencies
+  - package-ecosystem: 'npm'
+    directory: './apps/api'
     schedule:
-      interval: "daily"
-    open-pull-requests-limit: 5
-    target-branch: "main"
+      interval: 'daily'
+    versioning-strategy: 'increase'
+    target-branch: 'main'
     commit-message:
-      prefix: "backend: "
+      prefix: 'chore(deps-api)'
+      prefix-development: 'chore(deps-api)'
+      include: 'scope'
 
-  - package-ecosystem: "npm"
-    directory: "./frontend"
+  # Web app dependencies
+  - package-ecosystem: 'npm'
+    directory: './apps/web'
     schedule:
-      interval: "daily"
-    open-pull-requests-limit: 5
-    target-branch: "main"
+      interval: 'daily'
+    versioning-strategy: 'increase'
+    target-branch: 'main'
     commit-message:
-      prefix: "frontend: "
+      prefix: 'chore(deps-web)'
+      prefix-development: 'chore(deps-web)'
+      include: 'scope'
 
-  - package-ecosystem: "gradle"
-    directory: "./android"
+  # Android app dependencies
+  - package-ecosystem: 'gradle'
+    directory: './apps/android'
     schedule:
-      interval: "daily"
+      interval: 'daily'
+    versioning-strategy: 'increase'
     open-pull-requests-limit: 5
-    target-branch: "main"
+    target-branch: 'main'
     commit-message:
-      prefix: "android: "
+      prefix: 'chore(deps-android)'
+      prefix-development: 'chore(deps-android)'
+      include: 'scope'

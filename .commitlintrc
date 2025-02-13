@@ -1,0 +1,49 @@
+{
+	"extends": [
+		"@commitlint/config-conventional"
+	],
+	"rules": {
+		"type-enum": [
+			2,
+			"always",
+			[
+				"feat",
+				"fix",
+				"docs",
+				"style",
+				"refactor",
+				"test",
+				"chore",
+				"wip",
+				"release"
+			]
+		],
+		"scope-enum": [
+			2,
+			"always",
+			[
+				"deps",
+				"deps-android",
+				"deps-api",
+				"deps-web",
+        "android",
+				"api",
+				"web",
+				"config",
+				"core",
+				"ui",
+				"test",
+				"release"
+			]
+		],
+		"subject-case": [
+			2,
+			"never",
+			[
+				"start-case",
+				"pascal-case",
+				"upper-case"
+			]
+		]
+	}
+}

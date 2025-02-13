@@ -10,32 +10,49 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 2
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [22.x]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          # cache: 'npm'
-      - name: Go to directory
-        run: cd ./backend
 
-      - name: Install Packages
-        run: npm install
-        working-directory: ./backend
-      
-      - name: Test backend
-        run: npm run test --if-present
-        working-directory: ./backend
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.STORE_PATH }}
+            **/node_modules
+            **/.node_modules
+            **/.pnpm-store
+          key: ${{ runner.os }}-pnpm-workspace-${{ hashFiles('**/pnpm-lock.yaml', '**/pnpm-workspace.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-workspace-
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile --recursive
 
       - name: Build
-        run: npm run build --if-present
-        working-directory: ./backend
-  
+        run: pnpm -F @aether/api run build --if-present
+

@@ -1,10 +1,8 @@
-
 # First Contributions
-
 
 Aether appreciates [firstcontribution](https://github.com/firstcontributions/first-contributions) community to support beginners like me. I'm excited to add their steps here which I have also followed earlier.
 
-[firstcontribution](https://github.com/firstcontributions/first-contributions)  aims to simplify and guide the way beginners make their first contribution. If you are looking to make your first contribution, follow the steps below.
+[firstcontribution](https://github.com/firstcontributions/first-contributions) aims to simplify and guide the way beginners make their first contribution. If you are looking to make your first contribution, follow the steps below.
 
 _If you're not comfortable with command line, [here are tutorials using GUI tools.](#tutorials-using-other-tools)_
 
@@ -111,10 +109,11 @@ Soon I'll be merging all your changes into the master branch of this project. Yo
 
 Congrats! You just completed the standard _fork -> clone -> edit -> pull request_ workflow that you'll encounter often as a contributor!
 
-# 
+#
 
 ## Acknowledgement
-This steps are explained in another opensource community development project also known as [firstcontributions](https://github.com/firstcontributions/first-contributions). You can get more materials to learn from them. Go [visit](https://firstcontributions.github.io/#project-list) their github page and explore.  
+
+This steps are explained in another opensource community development project also known as [firstcontributions](https://github.com/firstcontributions/first-contributions). You can get more materials to learn from them. Go [visit](https://firstcontributions.github.io/#project-list) their github page and explore.
 
 Celebrate your contribution and share it with your friends and followers by going to [web app](https://firstcontributions.github.io/#social-share).
 

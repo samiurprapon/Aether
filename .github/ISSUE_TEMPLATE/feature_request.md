@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea.
 title: "🌟 [Feature Request] "
 labels: Feature request, enhancement
-assignees: ""
+assignees: ''
 ---
 
 ### Overview 🌟

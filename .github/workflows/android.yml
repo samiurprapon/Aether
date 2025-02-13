@@ -16,45 +16,44 @@ jobs:
       contents: write
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v2
-    
-    # change directory to android
-    - name: Enter to android folder
-      run: cd ./android
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
 
-    - name: Set Gradle Wrapper Permissions
-      run: chmod +x ./gradlew
-      working-directory: ./android
+      # change directory to android
+      - name: Enter to android folder
+        run: cd ./apps/android
 
-    - name: Cache Gradle packages
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/**/*.gradle*', '**/android/**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
-          
+      - name: Set Gradle Wrapper Permissions
+        run: chmod +x ./gradlew
+        working-directory: ./apps/android
 
-    - name: Build gradle project
-      run: ./gradlew build
-      working-directory: ./android
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/**/*.gradle*', '**/android/**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
-    - name: Build debug APK
-      run: ./gradlew assembleDebug
-      working-directory: ./android
-      
+      - name: Build gradle project
+        run: ./gradlew build
+        working-directory: ./apps/android
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug
+        working-directory: ./apps/android
+
   # release:
   #   needs: build
   #   if: github.event_name == 'release' && github.event.action == 'created'

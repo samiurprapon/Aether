@@ -12,7 +12,6 @@ I highly encourage the community to step forward and improve this project furthe
 
 Pull requests are welcome! See the [contributor guidelines](https://github.com/samiurprapon/Aether/blob/master/CONTRIBUTING.md) for more details.
 
-
 ## ⭐️ Stargazers
 
 [![Stargazers repo roster for @samiurprapon/Aether](https://reporoster.com/stars/notext/samiurprapon/Aether)](https://github.com/samiurprapon/Aether/stargazers)
@@ -26,7 +25,6 @@ Pull requests are welcome! See the [contributor guidelines](https://github.com/s
 [![Contributors repo roster for @samiurprapon/Aether](https://contributors-img.web.app/image?repo=samiurprapon/Aether)](https://github.com/samiurprapon/Aether/graphs/contributors)
 
 ## 💳 License
-
 
 ```
 Copyright 2021 Samiur Prapon
@@ -43,4 +41,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-

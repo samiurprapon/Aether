@@ -2,11 +2,11 @@
 
 ## Supported Branches
 
-| Branch    | Supported          |
-| --------- | ------------------ |
-| backend   | :white_check_mark: |
-| frontend  | :white_check_mark: |
-| android   | :white_check_mark: |
+| Branch   | Supported          |
+| -------- | ------------------ |
+| android  | :white_check_mark: |
+| api      | :white_check_mark: |
+| web      | :white_check_mark: |
 
 ## Reporting a Vulnerability
 

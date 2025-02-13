@@ -1,0 +1,38 @@
+{
+	"singleQuote": true,
+	"bracketSpacing": true,
+	"trailingComma": "all",
+	"arrowParens": "avoid",
+	"tabWidth": 2,
+	"semi": true,
+	"useTabs": true,
+	"endOfLine": "lf",
+	"printWidth": 140,
+	"quoteProps": "preserve",
+
+	"overrides": [
+		{
+			"files": "*.yml",
+			"options": {
+				"useTabs": true,
+				"tabWidth": 2
+			}
+		},
+		{
+			"files": ["*.md"],
+			"options": {
+				"printWidth": 140
+			}
+		},
+		{
+			"files": [".vscode/*.json"],
+			"options": {
+				"parser": "jsonc",
+				"quoteProps": "preserve",
+				"singleQuote": false,
+				"trailingComma": "all"
+			}
+		}
+	],
+	"plugins": ["prettier-plugin-tailwindcss"]
+}

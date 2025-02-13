@@ -10,7 +10,7 @@ assignees: "help wanted, question"
 
 <!-- Provide a summary of the question or clarification you're seeking. Be as specific as possible. Or remove other sections and just ask the question. -->
 
-**Question:**  
+**Question:**
 [Write your question or topic of inquiry here.]
 
 ---
@@ -19,7 +19,7 @@ assignees: "help wanted, question"
 
 <!-- Explain any relevant background that led to this question, such as use cases, code snippets, or recent actions. -->
 
-**Context:**  
+**Context:**
 [Describe the situation that prompted the question. Include details like the part of the project you're working on or any recent changes.]
 
 ---
@@ -44,7 +44,7 @@ assignees: "help wanted, question"
 
 <!-- List any research, tests, or attempts you've made to resolve your question. -->
 
-**Attempts/Research:**  
+**Attempts/Research:**
 [Describe what you've tried so far to find an answer or solution. Include any relevant search terms, documentation links, or other references.]
 
 ---
@@ -61,7 +61,7 @@ assignees: "help wanted, question"
 
 <!-- Describe what outcome or answer you're expecting from this question. -->
 
-**Expected Answer/Clarification:**  
+**Expected Answer/Clarification:**
 [Describe what you're hoping to learn or clarify.]
 
 ---

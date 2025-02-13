@@ -1,0 +1,4 @@
+{
+	"**/*.{js,ts,json,tsx,md,css,scss}": ["pnpm --filter {api,web} run format"],
+	"**/*.{ts,tsx}": ["pnpm --filter {api,web} run lint:fix"]
+}
